@@ -1,1 +1,392 @@
-/* pages/wacca/wacca-achievement.wxss */
+.match-dialog {
+    background-color: rgba(0,0,0,.6);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fade .5s both;
+}
+
+.match-dialog.large .match-dialog-inner {
+    width: 650rpx;
+}
+
+.match-dialog .match-dialog-inner {
+    width: 540rpx;
+    border-radius: 10rpx;
+    background-color: #fff;
+    position: relative;
+    animation: zoomIn .2s both;
+}
+
+.match-dialog .match-dialog-inner .title {
+    background-image: url("http://yyb-oss.universal-space.cn/imgs/bg_3.png");
+    background-size: 100% 100%;
+    height: 150rpx;
+    line-height: 150rpx;
+    color: #fff;
+    font-size: 34rpx;
+    text-align: center;
+    overflow: hidden;
+}
+
+.match-dialog .match-dialog-inner .close {
+    width: 42rpx;
+    height: 70rpx;
+    position: absolute;
+    right: 10rpx;
+    top: -70rpx;
+}
+
+.match-dialog .match-dialog-inner .match-dialog-body {
+    padding: 0 30rpx 59rpx;
+    color: #2660e7;
+    font-size: 34rpx;
+}
+
+.match-dialog .match-dialog-inner .match-dialog-body .btn-primary {
+    box-shadow: 0rpx 8rpx 16rpx 0rpx rgba(53,131,254,.22);
+    background: linear-gradient(90deg,#3ca6fd,#2f5fff);
+    height: 96rpx;
+    line-height: 96rpx;
+    min-width: 290rpx;
+    margin-top: 50rpx;
+    border: 0;
+}
+
+.match-dialog .match-dialog-inner .match-dialog-body .btn-group {
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 30rpx;
+    margin-top: 50rpx;
+}
+
+.match-dialog .match-dialog-inner .match-dialog-body .btn-group .btn {
+    min-width: 200rpx;
+    width: auto;
+    height: 90rpx;
+    line-height: 90rpx;
+    border-radius: 55rpx;
+    border: 0;
+    margin: 0;
+}
+
+.match-dialog .match-dialog-inner .match-dialog-body .btn-group .btn.btn-primary {
+    box-shadow: 0rpx 8rpx 16rpx 0rpx rgba(53,131,254,.22);
+    background: linear-gradient(90deg,#3ca6fd,#2f5fff);
+}
+
+.match-dialog .match-dialog-inner .match-dialog-body .btn-group .btn.btn-disabled {
+    background: linear-gradient(90deg,#9a9a9a,#575757);
+    box-shadow: 0rpx 8rpx 16rpx 0rpx hsla(0,0%,63.1%,.22);
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.star-list {
+    display: flex;
+}
+
+.star-list image {
+    width: 44rpx;
+    height: 44rpx;
+    margin: 0 5rpx;
+}
+
+.bg-183 {
+    z-index: 9;
+}
+
+.statusBar {
+    position: relative;
+    z-index: 99;
+}
+
+.icon-group,.statusBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64rpx;
+}
+
+.icon-group {
+    position: fixed;
+    left: 0;
+    width: 174rpx;
+    background-color: rgba(0,0,0,.2);
+    border-radius: 35rpx;
+    margin-left: 30rpx;
+    border: 1rpx solid hsla(0,0%,98%,.3);
+    z-index: 9999!important;
+}
+
+.icon-group .line {
+    width: 3rpx;
+    height: 32rpx;
+    background: hsla(0,0%,98%,.3);
+}
+
+.icon-group .icon {
+    width: 38rpx;
+    height: 38rpx;
+    padding: 10rpx 20rpx;
+}
+
+.btn {
+    position: relative;
+    display: inline-block;
+    height: 88rpx;
+    padding: 0;
+    font-size: 32rpx;
+    line-height: 84rpx;
+    text-align: center;
+    vertical-align: middle;
+    box-sizing: border-box;
+    border-radius: 10rpx;
+    -webkit-appearance: none;
+    -webkit-text-size-adjust: 100%;
+    transition: all .5s;
+}
+
+.btn::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    border: inherit;
+    border-color: #000;
+    border-radius: inherit;
+    content: " ";
+    opacity: 0;
+    transform: translate(-50%,-50%);
+}
+
+.btn::after {
+    border-width: 0;
+}
+
+.btn:active {
+    transform: translateY(.1em);
+}
+
+.btn-active::before {
+    opacity: .15;
+}
+
+.btn-unclickable::after {
+    display: none;
+}
+
+.btn-default {
+    color: #bbb;
+    background-color: #fff;
+    border: 1rpx solid #fff;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #2660e7;
+    border: 1rpx solid #2660e7;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #e13434;
+    border: 1rpx solid #e13434;
+}
+
+.btn-warning {
+    color: #fff;
+    background-color: #f6c96a;
+    border: 1rpx solid #f6c96a;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #5be89b;
+    border: 1rpx solid #5be89b;
+}
+
+.btn-plain {
+    background-color: #fff;
+}
+
+.btn-plain.btn-primary {
+    color: #2660e7;
+}
+
+.btn-plain.btn-black {
+    border: 1rpx solid #999;
+}
+
+.btn-plain.btn-danger {
+    color: #e13434;
+}
+
+.btn-plain.btn-warning {
+    color: #f6c96a;
+}
+
+.btn-large {
+    width: 100%;
+    height: 100rpx;
+    line-height: 96rpx;
+}
+
+.btn-normal {
+    padding: 0 30rpx;
+    font-size: 28rpx;
+}
+
+.btn-small {
+    height: 66rpx;
+    min-width: 120rpx;
+    padding: 0 20rpx;
+    font-size: 26rpx;
+    line-height: 66rpx;
+}
+
+.btn-mini {
+    display: inline-block;
+    width: 100rpx;
+    height: 44rpx;
+    font-size: 20rpx;
+    line-height: 40rpx;
+}
+
+.btn-mini+.btn-mini {
+    margin-left: 10rpx;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.btn-round {
+    border-radius: 2em;
+}
+
+.btn-square {
+    border-radius: 0;
+}
+
+.btn-disabled {
+    color: #fff;
+    background-color: #bbb;
+}
+
+page {
+    background: #f2f9ff;
+    padding-bottom: 50rpx;
+}
+
+.achievement-top {
+    background: #fff;
+    height: 100rpx;
+    padding: 100rpx 0 0 30rpx;
+}
+
+.switch-btn {
+    display: flex;
+    width: 520rpx;
+    height: 72rpx;
+    border-radius: 40rpx;
+    border: 1rpx solid #bbb;
+    margin: 50rpx auto 36rpx;
+}
+
+.switch-btn .switch-item {
+    position: relative;
+    flex: auto;
+    text-align: center;
+    line-height: 72rpx;
+}
+
+.switch-btn .active {
+    color: #fff;
+    background: #2660e7;
+    border-radius: 40rpx;
+}
+
+.achievement-container {
+    width: 670rpx;
+    min-height: 550rpx;
+    background: #fff;
+    border-radius: 18rpx;
+    margin: 0 auto;
+    box-shadow: 0rpx 8rpx 20rpx 0rpx rgba(17,85,233,.22);
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    position: relative;
+    padding-bottom: 50rpx;
+}
+
+.achievement-container .achievement-item {
+    width: 50%;
+    min-height: 100rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50rpx;
+}
+
+.achievement-container .achievement-item .achievement-title {
+    margin-bottom: 26rpx;
+    max-width: 254rpx;
+}
+
+.match-dialog-inner {
+    width: 590rpx!important;
+}
+
+.match-dialog-inner .change-dialog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 70rpx;
+}
+
+.match-dialog-inner .change-dialog .star-list {
+    margin: 56rpx 0 10rpx;
+}
+
+.match-dialog-inner .change-dialog .star-list image {
+    width: 60rpx;
+    height: 60rpx;
+    margin: 0 10rpx;
+}
+
+.match-dialog-inner .btn-primary {
+    width: 460rpx!important;
+}

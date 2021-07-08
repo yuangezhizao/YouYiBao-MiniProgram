@@ -1,1 +1,114 @@
-/* pages/wacca/wacca-record.wxss */
+.bg-183 {
+    z-index: 9;
+}
+
+.statusBar {
+    position: relative;
+    z-index: 99;
+}
+
+.icon-group,.statusBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64rpx;
+}
+
+.icon-group {
+    position: fixed;
+    left: 0;
+    width: 174rpx;
+    background-color: rgba(0,0,0,.2);
+    border-radius: 35rpx;
+    margin-left: 30rpx;
+    border: 1rpx solid hsla(0,0%,98%,.3);
+    z-index: 9999!important;
+}
+
+.icon-group .line {
+    width: 3rpx;
+    height: 32rpx;
+    background: hsla(0,0%,98%,.3);
+}
+
+.icon-group .icon {
+    width: 38rpx;
+    height: 38rpx;
+    padding: 10rpx 20rpx;
+}
+
+page {
+    background: #f2f9ff;
+    padding-bottom: 50rpx;
+}
+
+.record-top {
+    background: #fff;
+    min-height: 200rpx;
+    display: flex;
+    justify-content: space-between;
+    padding: 100rpx 30rpx 0;
+    box-sizing: border-box;
+}
+
+.record-top .record-column {
+    display: flex;
+    flex-direction: column;
+    line-height: 50rpx;
+}
+
+.record-top .record-column text:nth-child(2) {
+    margin-bottom: 40rpx;
+}
+
+.record-top .buy-btn {
+    width: 200rpx;
+    height: 82rpx;
+    border-radius: 55rpx;
+    box-shadow: 0rpx 4rpx 10rpx 0rpx rgba(0,67,173,.22);
+    line-height: 82rpx;
+}
+
+.record-container {
+    display: flex;
+    flex-direction: column;
+    padding: 40rpx 25rpx 0;
+}
+
+.record-container .record-list {
+    width: 100%;
+    min-height: 214rpx;
+    background: #fff;
+    border-radius: 18rpx;
+    margin-top: 24rpx;
+    padding: 32rpx 20rpx 0;
+    box-sizing: border-box;
+}
+
+.record-container .record-list .record-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 20rpx 0;
+}
+
+.record-container .record-list .record-row:nth-child(1) {
+    border-bottom: 1rpx solid #d9d9d9;
+    margin: 0;
+    padding-bottom: 25rpx;
+}
+
+.record-container .record-list .record-row text:nth-child(1) {
+    width: 20%;
+}
+
+.record-container .record-list .record-row text:nth-child(2) {
+    width: 15%;
+}
+
+.record-container .record-list .record-row text:nth-child(3) {
+    width: 20%;
+}
+
+.record-container .record-list .record-row text:last-child {
+    width: 45%;
+}

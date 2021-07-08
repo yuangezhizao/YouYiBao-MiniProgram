@@ -1,25 +1,25 @@
-yuangezhizao@MacMini tool % node wuWxapkg.js -s=/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 _152161865_77.wxapkg
-Unpack file _152161865_77.wxapkg...
+yuangezhizao@MacMini tool % node wuWxapkg.js -s=/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 _152161865_92.wxapkg
+Unpack file _152161865_92.wxapkg...
 
 Header info:
   firstMark: 0xbe
   unknownInfo:  0
   infoListLength:  797
-  dataLength:  480892
+  dataLength:  482227
   lastMark: 0xed
 
 File list info:
   fileCount:  18
 Saving files...
 Unpack done.
-now dir: /Applications/mp-unpack.app/Contents/Resources/tool/_152161865_77
+now dir: /Applications/mp-unpack.app/Contents/Resources/tool/_152161865_92
 param of mainDir: /Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104
-sub package word dir: /Applications/mp-unpack.app/Contents/Resources/tool/_152161865_77/pages/wacca
+sub package word dir: /Applications/mp-unpack.app/Contents/Resources/tool/_152161865_92/pages/wacca
 real mainDir: /Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104
 Split app-service.js and make up configs & wxss & wxml & wxs...
 deal js ok
 deal sub html ok
-splitJs: /Applications/mp-unpack.app/Contents/Resources/tool/_152161865_77/pages/wacca/app-service.js
+splitJs: /Applications/mp-unpack.app/Contents/Resources/tool/_152161865_92/pages/wacca/app-service.js
 /Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-machine.js
 /Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-detail.js
 /Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-statis.js
@@ -36,7 +36,7 @@ splitJs: /Applications/mp-unpack.app/Contents/Resources/tool/_152161865_77/pages
 /Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-track.js
 /Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-single-rank.js
 /Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-rank.js
-Splitting "/Applications/mp-unpack.app/Contents/Resources/tool/_152161865_77/pages/wacca/app-service.js" done.
+Splitting "/Applications/mp-unpack.app/Contents/Resources/tool/_152161865_92/pages/wacca/app-service.js" done.
 Decompile ./pages/wacca/wacca-achievement.wxml...
 Decompile success!
 Decompile ./pages/wacca/wacca-change-avatar.wxml...

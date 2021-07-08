@@ -1,1 +1,94 @@
-<!--pages/wacca/wacca-vip-recharge.wxml--><text>pages/wacca/wacca-vip-recharge.wxml</text>
+<view class="page-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="recharge-wrap">
+        <view class="user-info">
+            <view class="user">
+                <view class="avatar">
+                    <image src="{{userInfo.avatarUrl!=null?userInfo.avatarUrl:'http://yyb-oss.universal-space.cn/imgs/default_avatar.png'}}"></image>
+                </view>
+                <text class="c_33">{{userInfo==''?'昵称':userInfo.nickname}}</text>
+            </view>
+            <view class="amount">
+                <text class="f24 c_99">我的VIP次数： </text>
+                <text class="f40 c_26">{{memberInfo.vipCount}}</text>
+            </view>
+        </view>
+        <view class="detail">
+            <view class="f26 c_99">充值说明</view>
+            <view class="f24 c_337 mb30">
+                <text>• 仅限在WACCA机台使用
+			      • 在基本会员有效的前提下，有VIP次数的即VIP会员
+          </text>
+            </view>
+            <view class="type f28 c_99">购买VIP次数的充值套餐</view>
+            <view class="select-list">
+                <view bindtap="changeOption" class="option-item {{selectIndex==index?'active':''}}" data-wpychangeoption-a="{{index}}" data-wpychangeoption-b="{{item}}" wx:for="{{packageList}}" wx:key="index">
+                    <view class="money">
+                        <text class="Merriweather f90 c_26">{{item.price}}</text>
+                        <text class="f26 c_99">元</text>
+                    </view>
+                    <view class="f26 c_33">{{item.packageName}}</view>
+                </view>
+            </view>
+            <view class="type f28 c_99">选择套餐数量</view>
+            <view class="counter">
+                <view bindtap="cut" class="btn {{count==1?'btn-default':''}}">-</view>
+                <view class="input">{{count}}</view>
+                <view bindtap="plus" class="btn ">+</view>
+            </view>
+            <view class="need-pay f26 c_99 mb30">
+          需支付：<text class="c_ff0">{{price}}元</text>
+            </view>
+            <view bindtap="buyVipPackage" class="btn btn-primary btn-pay">确认支付</view>
+        </view>
+    </view>
+    <view>
+        <view class="{{$customDialog$isShow?'back_warp':'back_warp hide'}}">
+            <view class="confirm-box both_center" wx:if="{{$customDialog$type!='lilybox'}}">
+                <image bindtap="$customDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+                <view class="top">
+                    <image class="bg" src="{{$customDialog$isWacca2==$customDialog$false?'http://yyb-oss.universal-space.cn/imgs/bg_3.png':'http://yyb-oss.universal-space.cn/imgs/wacca2/common/dialog_bg.png'}}" wx:if="{{$customDialog$type!='wacca2-charge'}}"></image>
+                    <text class="title f34 {{$customDialog$type!='wacca2-charge'?'c_ff':'c_66'}} r">{{$customDialog$title}}</text>
+                </view>
+                <view class="f34 content c_99">
+                    <text class="f36 {{$customDialog$type=='wacca2-charge'?'c_FF1':'c_33'}}" wx:if="{{$customDialog$subTitle!=''}}">{{$customDialog$subTitle}}</text>
+                    <image src="{{$customDialog$image}}" style="width:140px;height:38.5px" wx:if="{{$customDialog$image!=''}}"></image>
+                    <text class="f26 c_66" wx:if="{{$customDialog$desc!=''}}">{{$customDialog$desc}}</text>
+                    <text>{{$customDialog$content}}</text>
+                </view>
+                <view class="button_group" wx:if="{{$customDialog$type=='confirm'}}">
+                    <view bindtap="$customDialog$confirm" class="button">
+                        <text class="f30 c_ff">确定</text>
+                    </view>
+                </view>
+                <button bindgetuserinfo="$customDialog$getAuthHandle" class="f34 btn_group_cus bg_blue c_ff" openType="getUserInfo" wx:if="{{$customDialog$type=='getAuth'}}">点击授权</button>
+                <button bindgetphonenumber="$customDialog$getPhoneNumber" class="f34 btn_group_cus bg_blue c_ff" openType="getPhoneNumber" wx:if="{{$customDialog$type=='phoneAuth'}}">点击授权</button>
+                <image bindtap="$customDialog$confirm" src="{{$customDialog$sureImage}}" style="width:{{$customDialog$type=='wacca2'?$customDialog$screenWidth*0.61:150}}px;height:{{$customDialog$type=='wacca2'?$customDialog$screenWidth*0.144:38}}px" wx:if="{{$customDialog$type=='wacca2'||$customDialog$type=='wacca2-charge'}}"></image>
+            </view>
+            <view class="confirm-box both_center" style="padding: 20px 15px;justify-content: start" wx:else>
+                <image bindtap="$customDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+                <view style="margin-top:10px;width: 100%">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/luck_draw.png" style="width: 100%;height: 46.5px"></image>
+                </view>
+                <view class="flex-column flex-between" style="margin-top:8px;height: 30px;">
+                    <text class="f26 c_66">{{$customDialog$title}}</text>
+                    <text class="f26" style="color: #F11A7D">{{$customDialog$subTitle}}</text>
+                </view>
+                <view style="margin-top:20px;">
+                    <image bindtap="$customDialog$confirm" src="http://yyb-oss.universal-space.cn/imgs/wacca2/lilybox/open.png" style="width: 124px;height: 45px"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
