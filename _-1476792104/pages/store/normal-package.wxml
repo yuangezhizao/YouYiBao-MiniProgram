@@ -1,0 +1,75 @@
+<view>
+    <view>
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$customStatusbar$menuButtonTop+60}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$customStatusbar$menuButtonTop}}px;">
+            <image bindtap="$customStatusbar$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$customStatusbar$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$customStatusbar$menuButtonTop}}px;">
+            <text class="title">{{$customStatusbar$title}}</text>
+        </view>
+    </view>
+    <view class="package-top">
+        <image src="{{image==null?'http://yyb-oss.universal-space.cn/imgs/package-img.png':image}}"></image>
+        <view class="package-top-bottom">
+            <view>
+                <text class="f24 c_37">￥</text>
+                <text class="f34 c_37">{{normalPakcageDetail.packages_price}}</text>
+                <text class="f24 c_99">{{normalPakcageDetail.buy_limit==0?'（不限购）':'（限购 '+normalPakcageDetail.buy_limit+'）'}}</text>
+            </view>
+            <view class="f24 c_ff stock">库存：{{normalPakcageDetail.stock}}</view>
+        </view>
+    </view>
+    <view class="package-info">
+        <view class="package-detail r">
+            <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/vipCard_bg.png"></image>
+            <view class="row r">
+                <text class="f28 c_99">门店</text>
+                <text class="f28 c_37">{{normalPakcageDetail.store_name}}</text>
+            </view>
+            <view class="row r">
+                <text class="f28 c_99">套餐详情</text>
+                <text class="f28 c_37">{{normalPakcageDetail.packages_name}}</text>
+            </view>
+            <view class="row r">
+                <text class="f28 c_99">币数</text>
+                <text class="f28 c_37">{{normalPakcageDetail.coins}}</text>
+            </view>
+            <view class="row r">
+                <text class="f24 c_99">使用截止时间：{{normalPakcageDetail.validity}}</text>
+            </view>
+        </view>
+        <text class="f24 c_99 tips">{{normalPakcageDetail.packages_description}}</text>
+        <view class="count">
+            <view bindtap="down" class="down f48 c_ff {{count==1?'active':''}}">-</view>
+            <input bindinput="getCount" min="10" type="number" value="{{count}}"></input>
+            <view bindtap="add" class="down f48 c_ff">+</view>
+        </view>
+        <view class="f26 c_99 agree">
+            <view bindtap="toggleCheckbox" class="checkbox {{isChecked?'checked':''}}"></view>
+            <text bindtap="toggleCheckbox">我已阅读并同意</text>
+            <text bindtap="showAgree" class="c_26">《游艺宝套餐购买服务协议》</text>
+        </view>
+        <view bindtap="createOrder" class="f34 c_ff package-pay bg_blue">立即支付</view>
+    </view>
+    <view>
+        <view class="{{$customDialog$isShow?'back_warp':'back_warp hide'}}">
+            <view class="confirm-box both_center">
+                <image bindtap="$customDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+                <view class="top">
+                    <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
+                    <text class="title f34 c_ff r">{{$customDialog$title}}</text>
+                </view>
+                <view class="f34 content c_99">{{$customDialog$content}}</view>
+                <view class="button_group" wx:if="{{$customDialog$type=='confirm'}}">
+                    <view bindtap="$customDialog$confirm" class="button">
+                        <text class="f30 c_ff">确定</text>
+                    </view>
+                </view>
+                <button bindgetuserinfo="$customDialog$getAuthHandle" class="f34 btn_group_cus bg_blue c_ff" openType="getUserInfo" wx:if="{{$customDialog$type=='getAuth'}}">点击授权</button>
+                <button bindgetphonenumber="$customDialog$getPhoneNumber" class="f34 btn_group_cus bg_blue c_ff" openType="getPhoneNumber" wx:if="{{$customDialog$type=='phoneAuth'}}">点击授权</button>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,120 @@
+<view>
+    <view class="white-bg">
+        <image class="bg-364" src="http://yyb-oss.universal-space.cn/imgs/bg.png"></image>
+        <view class="statusBar ">
+            <text class="title" style="padding-top:{{statusBarHeight+10}}px;">个人中心</text>
+        </view>
+        <view class="user-info">
+            <image bindtap="updateAvatar" class="user-avatar {{userInfo.avatarUrl!=null?'':'active'}}" src="{{userInfo.avatarUrl!=null?userInfo.avatarUrl:'http://yyb-oss.universal-space.cn/imgs/default_avatar.png'}}"></image>
+            <view class="user-info-item">
+                <text class="user-name f34 c_33">{{userInfo==''?'昵称':userInfo.nickname}}</text>
+                <text bindtap="login" class="log-out f24 c_51">{{loginText}}</text>
+            </view>
+            <view bindtap="lottery" class="user-lottery">
+                <image src="http://yyb-oss.universal-space.cn/imgs/user-icon_9.png"></image>
+                <text class="f28 c_ff" decode="true">抽奖</text>
+                <text class="num c_ff" wx:if="{{remainTimes>0}}">{{remainTimes}}</text>
+            </view>
+        </view>
+        <view class="wealth">
+            <text class="wealth-title f32 fwb">会员资产</text>
+            <view class="wealth-list">
+                <view bindtap="coinRecord" class="wealth-list-item">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/user-icon_3.png"></image>
+                    <text class="f26 c_33">{{coins}}</text>
+                    <text class="f26 c_99">游点</text>
+                </view>
+                <view bindtap="eamRecord" class="wealth-list-item">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/user-icon_2.png"></image>
+                    <text class="f26 c_33">{{eamPoint}}</text>
+                    <text class="f26 c_99">e-am点</text>
+                </view>
+                <view bindtap="integralRecord" class="wealth-list-item">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/user-icon_1.png"></image>
+                    <text class="f26 c_33">{{score}}</text>
+                    <text class="f26 c_99">积分</text>
+                </view>
+                <view bindtap="ticketRecord" class="wealth-list-item">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/user-icon_4.png"></image>
+                    <text class="f26 c_33">{{tickets}}</text>
+                    <text class="f26 c_99">门店奖票</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="game-medal">
+        <view class="game-medal-top">
+            <text class="c_99 f30">游戏勋章</text>
+            <text bindtap="myMedal" class="c_99 f24">更多></text>
+        </view>
+        <view class="game-medal-bottom">
+            <view bindtap="myMedal" class="medal-type" wx:if="{{item.medalImage!=''}}" wx:for="{{medalList}}" wx:key="key">
+                <image class="medal-image {{item.unLock==0?'disabled':''}}" src="{{item.medalImage}}"></image>
+                <text class="f22 {{item.unLock==0?'c_99':''}}">{{item.productName}}</text>
+            </view>
+            <view class="btm-tips" wx:if="{{medalList==''}}">
+                <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 登录后查看解锁勋章
+        </view>
+        </view>
+    </view>
+    <view class="card-package" hidden="{{check==0}}">
+        <view class="card-package-top">
+            <text class="c_99 f30">会员卡与套餐</text>
+        </view>
+        <view class="card-package-bottom">
+            <view bindtap="myCard" class="card-package-list">
+                <view class="list-left">
+                    <image mode="aspectFit" src="http://yyb-oss.universal-space.cn/imgs/user-icon_5.png"></image>
+                    <text class="f32 c_33">会员卡包</text>
+                </view>
+                <image src="http://yyb-oss.universal-space.cn/imgs/user-icon_8.png"></image>
+            </view>
+            <view bindtap="mySetMeal" class="card-package-list">
+                <view class="list-left">
+                    <image mode="aspectFit" src="http://yyb-oss.universal-space.cn/imgs/user-icon_6.png"></image>
+                    <text class="f32 c_33">我的套餐</text>
+                </view>
+                <image src="http://yyb-oss.universal-space.cn/imgs/user-icon_8.png"></image>
+            </view>
+            <view bindtap="paySetMeal" class="card-package-list">
+                <view class="list-left">
+                    <image mode="aspectFit" src="http://yyb-oss.universal-space.cn/imgs/user-icon_7.png"></image>
+                    <text class="f32 c_33">套餐购买</text>
+                </view>
+                <image src="http://yyb-oss.universal-space.cn/imgs/user-icon_8.png"></image>
+            </view>
+        </view>
+    </view>
+    <view>
+        <view class="{{$userDialog$isShow?'back_warp':'back_warp hide'}}">
+            <view class="confirm-box both_center">
+                <image bindtap="$userDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+                <view class="top">
+                    <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
+                    <text class="title f34 c_ff r">{{$userDialog$title}}</text>
+                </view>
+                <view class="f34 content c_99">{{$userDialog$content}}</view>
+                <view class="button_group" wx:if="{{$userDialog$type=='confirm'}}">
+                    <view bindtap="$userDialog$confirm" class="button">
+                        <text class="f30 c_ff">确定</text>
+                    </view>
+                </view>
+                <button bindgetuserinfo="$userDialog$getAuthHandle" class="f34 btn_group_cus bg_blue c_ff" openType="getUserInfo" wx:if="{{$userDialog$type=='getAuth'}}">点击授权</button>
+                <button bindgetphonenumber="$userDialog$getPhoneNumber" class="f34 btn_group_cus bg_blue c_ff" openType="getPhoneNumber" wx:if="{{$userDialog$type=='phoneAuth'}}">点击授权</button>
+            </view>
+        </view>
+    </view>
+    <view class="tabbar_box {{$customTabbar$isIphoneX?'iphoneX-height':''}}" style="background-color:{{$customTabbar$tabbar.backgroundColor}}">
+        <block wx:for="{{$customTabbar$tabbar.list}}" wx:key="{{item.pagePath}}">
+            <view bindtap="$customTabbar$scan" class="tabbar_nav" style="color:{{$customTabbar$tabbar.selectedColor}}" wx:if="{{item.isSpecial}}">
+                <view class="special-wrapper">
+                    <image class="tabbar_icon" src="{{item.iconPath}}"></image>
+                </view>
+            </view>
+            <navigator class="tabbar_nav" hoverClass="none" openType="switchTab" style="color:{{item.selected?$customTabbar$tabbar.selectedColor:$customTabbar$tabbar.color}}" url="{{item.pagePath}}" wx:else>
+                <image class="tabbar_icon" src="{{item.selected?item.selectedIconPath:item.iconPath}}"></image>
+                <text>{{item.text}}</text>
+            </navigator>
+        </block>
+    </view>
+</view>

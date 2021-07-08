@@ -1,0 +1,66 @@
+<scroll-view scrollY class="page-wrap" scrollIntoView="{{toView}}">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="shops-wrap">
+        <view bindtap="goSearch" class="search-box">
+            <input disabled focus="{{true}}" placeholder="搜索门店" type="text"></input>
+            <view class="icon"></view>
+        </view>
+        <view class="search-title f30 c_99">
+        距离您最近的店
+      </view>
+        <view class="block">
+            <view bindtap="selectStore" class="field" data-wpyselectstore-a="{{nearestStore}}">
+                <view class="f28 c_49">{{nearestStore.store_name}}</view>
+                <view class="f26 c_ff0">
+                    <view class="icon-locate"></view> {{filters.toFix(nearestStore.distance/1000)}}km
+          </view>
+            </view>
+            <view class="field">
+                <view class="f22 c_99 storeAddress">{{nearestStore.store_address}}</view>
+                <view bindtap="storeDetail" class="f24 c_ff storeDetail" data-wpystoredetail-a="{{nearestStore.store_id}}">门店详情</view>
+            </view>
+        </view>
+        <view class="shop-data-wrap">
+            <view class="shop-group" wx:for="{{cityList}}" wx:for-item="groupData" wx:key="key">
+                <view class="shop-group-name c_99 f30" id="{{groupData.initial}}" wx:if="{{groupData.cityInfo.length>0}}">{{groupData.initial}}</view>
+                <view bindtap="toggleShopList" class="shop-city {{!toggleCity[cityItem.region_name]||'open'}}" data-wpytoggleshoplist-a="{{cityItem.region_name}}" data-wpytoggleshoplist-b="{{index}}" wx:for="{{groupData.cityInfo}}" wx:for-item="cityItem" wx:key="key">
+                    <view class="city-name field">
+                        <text class="f30 c_33" id="{{cityItem.initial}}">{{cityItem.region_name}}</text>
+                        <view class="icon-arrow"></view>
+                    </view>
+                    <view class="shop-list" wx:if="{{index==idx}}">
+                        <view class="f30 loadData" wx:if="{{storeList.length==0}}">数据加载中...</view>
+                        <view catchtap="selectStore" class="shop-item" data-wpyselectstore-a="{{item}}" wx:for="{{storeList}}" wx:key="index">
+                            <view class="f28 c_33">{{item.store_name}}</view>
+                            <view class="f22 c_99 storeAddress">{{item.store_address}}</view>
+                            <view class="locate f26 c_33">
+                                <view class="icon-locate"></view>{{filters.toFix(item.distance/1000)}}km
+                    </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="side-group-bar">
+            <view bindtap="scorllTo" class="group-item" data-wpyscorllto-a="{{letter}}" touchend="test" wx:for="{{letter}}" wx:for-item="letter" wx:key="key">{{letter}}</view>
+        </view>
+        <view class="btm-tips">
+            <image src="http://yyb-oss.universal-space.cn/imgs/index/icon_no_game2.png"></image>
+        </view>
+        <view class="show-chosen-letter" wx:if="{{showChosenLetterToast}}">
+          {{toastShowLetter}}
+        </view>
+    </view>
+</scroll-view>
+<wxs module="filters" src="../../wxs/filter.wxs" />

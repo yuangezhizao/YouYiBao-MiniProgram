@@ -1,0 +1,35 @@
+<view class="my-prize-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="gift-list">
+        <view class="gift-item" wx:for="{{prizeList}}">
+            <view class="gift-card">
+                <view class="img">
+                    <image src="{{item.prizeImage}}"></image>
+                </view>
+                <view class="text">
+                    <view>
+                        <label>获得奖品：</label> {{item.prizeName}}
+            </view>
+                    <view>
+                        <label>获奖时间：</label> {{item.winDate}}
+            </view>
+                    <view bindtap="setAddress" class="btn btn-small btn-round {{item.prizeType==0&&item.isReceive==1?'disabled':'btn-primary'}}" data-wpysetaddress-a="{{item}}">{{item.prizeType==1?'我的游点':item.prizeType==2?'我的积分':item.prizeType==0&&item.isReceive==1?'查看收件信息':'添加收件信息'}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="btm-tips" wx:if="{{canLoadMore==false}}">
+        <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 已经到底啦
+    </view>
+</view>

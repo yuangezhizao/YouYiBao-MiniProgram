@@ -1,0 +1,62 @@
+<view class="page-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="recharge-wrap">
+        <view class="user-info">
+            <view class="user">
+                <view class="avatar">
+                    <image src="{{userInfo.avatarUrl!=null?userInfo.avatarUrl:'http://yyb-oss.universal-space.cn/imgs/default_avatar.png'}}"></image>
+                </view>
+                <text class="c_33">{{userInfo==''?'昵称':userInfo.nickname}}</text>
+            </view>
+            <view class="amount">
+                <text class="f24 c_99">我的e-am点余额 </text>
+                <text class="f40 c_26"> {{eamPoint}}</text>
+            </view>
+        </view>
+        <view class="detail">
+            <view class="f26 c_99">充值说明</view>
+            <view class="f24 c_26 mb30">
+                <text>• ￥1元=1 e-am点
+            • 仅限在KONAMI机台使用
+          </text>
+            </view>
+            <view class="type f28 c_99">购买e-am点充值套餐</view>
+            <view class="select-list">
+                <view bindtap="changeOption" class="option-item {{selectIndex==index?'active':''}}" data-wpychangeoption-a="{{index}}" data-wpychangeoption-b="{{item}}" wx:for="{{packageList}}" wx:key="index">
+                    <view class="money">
+                        <text class="Merriweather f90 c_26">{{item.price}}</text>
+                        <text class="f26 c_99">元</text>
+                    </view>
+                    <view class="f26 c_33">获得{{item.point}}e-am点</view>
+                </view>
+            </view>
+            <view class="type f28 c_99">选择套餐数量</view>
+            <view class="counter">
+                <view bindtap="cut" class="btn {{count==1?'btn-default':''}}">-</view>
+                <view class="input">{{count}}</view>
+                <view bindtap="plus" class="btn ">+</view>
+            </view>
+            <view class="need-pay f26 c_99 mb30">
+          需支付：<text class="c_ff0">{{price}}元</text>
+            </view>
+            <view bindtap="payEamPoint" class="btn btn-primary btn-pay">
+          立即支付
+        </view>
+            <view class="btn-group">
+                <view bindtap="goback" class="btn btn-round btn-plain btn-primary">返回</view>
+                <view bindtap="consumeRocord" class="btn btn-round btn-plain btn-primary">消费记录</view>
+            </view>
+        </view>
+    </view>
+</view>

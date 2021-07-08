@@ -1,0 +1,541 @@
+.match-status-bar {
+    position: relative;
+    z-index: 99;
+}
+
+.match-status-bar .statusBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 64rpx;
+}
+
+.match-status-bar .statusBar .icon-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    width: 174rpx;
+    height: 64rpx;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 35rpx;
+    margin-left: 30rpx;
+    border: 1rpx solid rgba(250,250,250,0.3);
+    z-index: 9999;
+}
+
+.match-status-bar .statusBar .icon-group .line {
+    width: 3rpx;
+    height: 32rpx;
+    background: rgba(250,250,250,0.3);
+}
+
+.match-status-bar .statusBar .icon-group .left {
+    width: 38rpx;
+    height: 38rpx;
+    padding: 10rpx 20rpx;
+}
+
+.btn {
+    position: relative;
+    display: inline-block;
+    height: 88rpx;
+    padding: 0;
+    font-size: 32rpx;
+    line-height: 84rpx;
+    text-align: center;
+    vertical-align: middle;
+    box-sizing: border-box;
+    border-radius: 10rpx;
+    -webkit-appearance: none;
+    -webkit-text-size-adjust: 100%;
+    transition: all 500ms;
+}
+
+.btn::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    border: inherit;
+    border-color: #000;
+    border-radius: inherit;
+    content: ' ';
+    opacity: 0;
+    transform: translate(-50%,-50%);
+}
+
+.btn::after {
+    border-width: 0;
+}
+
+.btn:active {
+    transform: translateY(.1em);
+}
+
+.btn-active::before {
+    opacity: .15;
+}
+
+.btn-unclickable::after {
+    display: none;
+}
+
+.btn-default {
+    color: #bbb;
+    background-color: #fff;
+    border: 1rpx solid #fff;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #2660E7;
+    border: 1rpx solid #2660E7;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #E13434;
+    border: 1rpx solid #E13434;
+}
+
+.btn-warning {
+    color: #fff;
+    background-color: #F6C96A;
+    border: 1rpx solid #F6C96A;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #5BE89B;
+    border: 1rpx solid #5BE89B;
+}
+
+.btn-plain {
+    background-color: #fff;
+}
+
+.btn-plain.btn-primary {
+    color: #2660E7;
+}
+
+.btn-plain.btn-black {
+    border: 1rpx solid #999;
+}
+
+.btn-plain.btn-danger {
+    color: #E13434;
+}
+
+.btn-plain.btn-warning {
+    color: #F6C96A;
+}
+
+.btn-large {
+    width: 100%;
+    height: 100rpx;
+    line-height: 96rpx;
+}
+
+.btn-normal {
+    padding: 0 30rpx;
+    font-size: 28rpx;
+}
+
+.btn-small {
+    height: 66rpx;
+    min-width: 120rpx;
+    padding: 0 20rpx;
+    font-size: 26rpx;
+    line-height: 66rpx;
+}
+
+.btn-mini {
+    display: inline-block;
+    width: 100rpx;
+    height: 44rpx;
+    font-size: 20rpx;
+    line-height: 40rpx;
+}
+
+.btn-mini+.btn-mini {
+    margin-left: 10rpx;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.btn-round {
+    border-radius: 2em;
+}
+
+.btn-square {
+    border-radius: 0;
+}
+
+.btn-disabled {
+    color: #fff;
+    background-color: #bbb;
+}
+
+page {
+    background-color: #fff;
+}
+
+.icon_music_blue {
+    width: 26rpx;
+    height: 26rpx;
+    background: url("http://yyb-oss.universal-space.cn/imgs/match/icon_match_positioning_blue.png") no-repeat center;
+    background-size: 100% 100%;
+}
+
+.icon_music_white {
+    width: 26rpx;
+    height: 26rpx;
+    background: url("http://yyb-oss.universal-space.cn/imgs/match/icon_match_positioning.png") no-repeat center;
+    background-size: 100% 100%;
+}
+
+.icon_record_blue {
+    width: 26rpx;
+    height: 26rpx;
+    background: url("http://yyb-oss.universal-space.cn/imgs/match/icon_match_time _blue.png") no-repeat center;
+    background-size: 100% 100%;
+}
+
+.icon_record_white {
+    width: 26rpx;
+    height: 26rpx;
+    background: url("http://yyb-oss.universal-space.cn/imgs/match/icon_match_time.png") no-repeat center;
+    background-size: 100% 100%;
+}
+
+.arena-rank {
+    margin-top: 82rpx;
+}
+
+.arena-rank .arena-rank-top {
+    padding: 30rpx;
+}
+
+.arena-rank .arena-rank-top .banner {
+    width: 690rpx;
+    height: 360rpx;
+    border-radius: 18rpx;
+    background-color: rgba(4,1,14,0.8);
+    box-shadow: 0 10rpx 20rpx 0 rgba(109,140,214,0.24);
+    overflow: hidden;
+}
+
+.arena-rank .arena-rank-top .banner image {
+    width: 690rpx;
+    height: 360rpx;
+    border-radius: 8rpx;
+}
+
+.arena-rank .arena-rank-top .title {
+    margin-top: 30rpx;
+    margin-bottom: 15rpx;
+    color: #3376fe;
+    font-size: 36rpx;
+}
+
+.arena-rank .arena-rank-top .desc {
+    color: #999;
+    font-size: 26rpx;
+}
+
+.arena-rank .arena-rank-content {
+    background-color: #F2F9FF;
+    border-radius: 30rpx 30rpx 0 0;
+    padding: 30rpx;
+    min-height: 50vh;
+}
+
+.arena-rank .arena-rank-content .my-rank-list,.arena-rank .arena-rank-content .nationwide-rank-list {
+    min-height: 300rpx;
+    position: relative;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .title,.arena-rank .arena-rank-content .nationwide-rank-list .title {
+    margin-bottom: 30rpx;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item,.arena-rank .arena-rank-content .my-rank-list .my-rank-item,.arena-rank .arena-rank-content .nationwide-rank-list .my-rank-item {
+    margin-bottom: 30rpx;
+    width: 690rpx;
+    height: 220rpx;
+    border-radius: 20rpx;
+    background-color: #fff;
+    box-shadow: 0 8rpx 16rpx 0 rgba(17,85,233,0.1);
+    display: flex;
+    align-items: center;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item .rank-num,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item .rank-num,.arena-rank .arena-rank-content .my-rank-list .my-rank-item .rank-num,.arena-rank .arena-rank-content .nationwide-rank-list .my-rank-item .rank-num {
+    text-align: center;
+    padding: 0 30rpx;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item .rank-num .num,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item .rank-num .num,.arena-rank .arena-rank-content .my-rank-list .my-rank-item .rank-num .num,.arena-rank .arena-rank-content .nationwide-rank-list .my-rank-item .rank-num .num {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 84rpx;
+    height: 84rpx;
+    border: 4rpx solid #bbb;
+    color: #2660E7;
+    font-size: 60rpx;
+    border-radius: 50%;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item .rank-num text,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item .rank-num text,.arena-rank .arena-rank-content .my-rank-list .my-rank-item .rank-num text,.arena-rank .arena-rank-content .nationwide-rank-list .my-rank-item .rank-num text {
+    height: 40rpx;
+    color: #999;
+    font-size: 28rpx;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item .right,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item .right,.arena-rank .arena-rank-content .my-rank-list .my-rank-item .right,.arena-rank .arena-rank-content .nationwide-rank-list .my-rank-item .right {
+    width: 540rpx;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item .right .score-part,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item .right .score-part,.arena-rank .arena-rank-content .my-rank-list .my-rank-item .right .score-part,.arena-rank .arena-rank-content .nationwide-rank-list .my-rank-item .right .score-part {
+    padding-right: 30rpx;
+    height: 136rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item .right .score-part .user,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item .right .score-part .user,.arena-rank .arena-rank-content .my-rank-list .my-rank-item .right .score-part .user,.arena-rank .arena-rank-content .nationwide-rank-list .my-rank-item .right .score-part .user {
+    display: flex;
+    align-items: center;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item .right .score-part .user .avatar,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item .right .score-part .user .avatar,.arena-rank .arena-rank-content .my-rank-list .my-rank-item .right .score-part .user .avatar,.arena-rank .arena-rank-content .nationwide-rank-list .my-rank-item .right .score-part .user .avatar {
+    margin-right: 15rpx;
+    width: 84rpx;
+    height: 84rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4rpx solid #fff;
+    box-shadow: 0 8rpx 16rpx 0 rgba(53,131,254,0.22);
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item .right .score-part .user .avatar image,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item .right .score-part .user .avatar image,.arena-rank .arena-rank-content .my-rank-list .my-rank-item .right .score-part .user .avatar image,.arena-rank .arena-rank-content .nationwide-rank-list .my-rank-item .right .score-part .user .avatar image {
+    width: 84rpx;
+    height: 84rpx;
+    border-radius: 50%;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item .right .score-part .user .nickname,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item .right .score-part .user .nickname,.arena-rank .arena-rank-content .my-rank-list .my-rank-item .right .score-part .user .nickname,.arena-rank .arena-rank-content .nationwide-rank-list .my-rank-item .right .score-part .user .nickname {
+    color: #333;
+    max-width: 230rpx;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item .right .score-part .score,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item .right .score-part .score,.arena-rank .arena-rank-content .my-rank-list .my-rank-item .right .score-part .score,.arena-rank .arena-rank-content .nationwide-rank-list .my-rank-item .right .score-part .score {
+    color: #999;
+    font-size: 24rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item .right .score-part .score text,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item .right .score-part .score text,.arena-rank .arena-rank-content .my-rank-list .my-rank-item .right .score-part .score text,.arena-rank .arena-rank-content .nationwide-rank-list .my-rank-item .right .score-part .score text {
+    color: #2660e7;
+    font-size: 50rpx;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item .right .line,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item .right .line,.arena-rank .arena-rank-content .my-rank-list .my-rank-item .right .line,.arena-rank .arena-rank-content .nationwide-rank-list .my-rank-item .right .line {
+    width: 515rpx;
+    height: 3rpx;
+    background: #D8D8D8;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item .right .song,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item .right .song,.arena-rank .arena-rank-content .my-rank-list .my-rank-item .right .song,.arena-rank .arena-rank-content .nationwide-rank-list .my-rank-item .right .song {
+    height: 83rpx;
+    line-height: 83rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #999;
+    font-size: 22rpx;
+    padding-right: 30rpx;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item .right .song .song-name,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item .right .song .song-name,.arena-rank .arena-rank-content .my-rank-list .my-rank-item .right .song .song-name,.arena-rank .arena-rank-content .nationwide-rank-list .my-rank-item .right .song .song-name {
+    display: flex;
+    align-items: center;
+    max-width: 50%;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item .right .song .song-name:before,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item .right .song .song-name:before,.arena-rank .arena-rank-content .my-rank-list .my-rank-item .right .song .song-name:before,.arena-rank .arena-rank-content .nationwide-rank-list .my-rank-item .right .song .song-name:before {
+    content: '';
+    display: inline-block;
+    width: 26rpx;
+    height: 26rpx;
+    background: url("http://yyb-oss.universal-space.cn/imgs/match/icon_match_positioning_blue.png") no-repeat center;
+    background-size: 100% 100%;
+    margin-right: 5rpx;
+    min-width: 26rpx;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item .right .song .level,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item .right .song .level,.arena-rank .arena-rank-content .my-rank-list .my-rank-item .right .song .level,.arena-rank .arena-rank-content .nationwide-rank-list .my-rank-item .right .song .level {
+    display: flex;
+    align-items: center;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item .right .song .level:before,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item .right .song .level:before,.arena-rank .arena-rank-content .my-rank-list .my-rank-item .right .song .level:before,.arena-rank .arena-rank-content .nationwide-rank-list .my-rank-item .right .song .level:before {
+    content: '';
+    display: inline-block;
+    width: 26rpx;
+    height: 26rpx;
+    background: url("http://yyb-oss.universal-space.cn/imgs/match/icon_match_time _blue.png") no-repeat center;
+    background-size: 100% 100%;
+    margin-right: 5rpx;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(2),.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(2) {
+    background: linear-gradient(to right,#DFCE7E,#D6A555);
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(3),.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(3) {
+    background: linear-gradient(to right,#D9E1F7,#7A86A5);
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(4),.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(4) {
+    background: linear-gradient(to right,#DF9B7E,#C46C55);
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(2) .rank-num .num,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(2) .rank-num .num,.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(3) .rank-num .num,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(3) .rank-num .num,.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(4) .rank-num .num,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(4) .rank-num .num {
+    border: 4rpx solid #fff;
+    color: #fff;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(2) .rank-num text,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(2) .rank-num text,.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(3) .rank-num text,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(3) .rank-num text,.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(4) .rank-num text,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(4) .rank-num text {
+    color: #fff;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(2) .right .score-part .user .nickname,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(2) .right .score-part .user .nickname,.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(3) .right .score-part .user .nickname,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(3) .right .score-part .user .nickname,.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(4) .right .score-part .user .nickname,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(4) .right .score-part .user .nickname {
+    color: #fff;
+    max-width: 230rpx;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(2) .right .score-part .score,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(2) .right .score-part .score,.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(3) .right .score-part .score,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(3) .right .score-part .score,.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(4) .right .score-part .score,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(4) .right .score-part .score {
+    color: #fff;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(2) .right .score-part .score text,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(2) .right .score-part .score text,.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(3) .right .score-part .score text,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(3) .right .score-part .score text,.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(4) .right .score-part .score text,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(4) .right .score-part .score text {
+    color: #fff;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(2) .right .song,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(2) .right .song,.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(3) .right .song,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(3) .right .song,.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(4) .right .song,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(4) .right .song {
+    color: #fff;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(2) .right .song .song-name,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(2) .right .song .song-name,.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(3) .right .song .song-name,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(3) .right .song .song-name,.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(4) .right .song .song-name,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(4) .right .song .song-name {
+    display: flex;
+    align-items: center;
+    max-width: 50%;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(2) .right .song .song-name:before,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(2) .right .song .song-name:before,.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(3) .right .song .song-name:before,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(3) .right .song .song-name:before,.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(4) .right .song .song-name:before,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(4) .right .song .song-name:before {
+    content: '';
+    display: inline-block;
+    width: 26rpx;
+    height: 26rpx;
+    background: url("http://yyb-oss.universal-space.cn/imgs/match/icon_match_positioning.png") no-repeat center;
+    background-size: 100% 100%;
+    margin-right: 5rpx;
+    min-width: 26rpx;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(2) .right .song .level,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(2) .right .song .level,.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(3) .right .song .level,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(3) .right .song .level,.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(4) .right .song .level,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(4) .right .song .level {
+    display: flex;
+    align-items: center;
+}
+
+.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(2) .right .song .level:before,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(2) .right .song .level:before,.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(3) .right .song .level:before,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(3) .right .song .level:before,.arena-rank .arena-rank-content .my-rank-list .arena-rank-item:nth-child(4) .right .song .level:before,.arena-rank .arena-rank-content .nationwide-rank-list .arena-rank-item:nth-child(4) .right .song .level:before {
+    content: '';
+    display: inline-block;
+    width: 26rpx;
+    height: 26rpx;
+    background: url("http://yyb-oss.universal-space.cn/imgs/match/icon_match_time.png") no-repeat center;
+    background-size: 100% 100%;
+    margin-right: 5rpx;
+}
+
+.user-rank-info {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding: 30rpx;
+    display: flex;
+    height: 192rpx;
+    width: 100%;
+    background-color: #fff;
+    justify-content: space-between;
+}
+
+.user-rank-info .user {
+    display: flex;
+    align-items: center;
+}
+
+.user-rank-info .user .avatar {
+    width: 110rpx;
+    height: 110rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2rpx solid #3067e8;
+    margin-right: 15rpx;
+}
+
+.user-rank-info .user .avatar image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.user-rank-info .user .song .nickname {
+    color: #333;
+    font-size: 34rpx;
+    max-width: 230rpx;
+}
+
+.user-rank-info .user .song .desc {
+    color: #999;
+    font-size: 26rpx;
+    display: flex;
+    align-items: center;
+}
+
+.user-rank-info .user .song .desc:before {
+    content: '';
+    display: inline-block;
+    width: 26rpx;
+    height: 26rpx;
+    background: url("http://yyb-oss.universal-space.cn/imgs/match/icon_match_positioning_blue.png") no-repeat center;
+    background-size: 100% 100%;
+}
+
+.user-rank-info .rank {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    color: #999;
+    font-size: 28rpx;
+}
+
+.user-rank-info .rank .num {
+    color: #2660e7;
+    font-size: 50rpx;
+    line-height: 80rpx;
+}

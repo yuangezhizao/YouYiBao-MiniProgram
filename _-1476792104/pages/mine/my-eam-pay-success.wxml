@@ -1,0 +1,29 @@
+<view class="pay-success-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="content">
+        <view class="inner">
+            <image class="face" src="http://yyb-oss.universal-space.cn/imgs/pay-success.png"></image>
+            <view class="text1">
+                <view class="icon">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/match/icon_pay_hook.png"></image>
+                </view>
+          支付成功
+        </view>
+        </view>
+        <view class="btn-group">
+            <view bindtap="goBack" class="btn btn-success btn-round">返回</view>
+            <view bindtap="payRecord" class="btn btn-primary btn-round">消费记录</view>
+        </view>
+    </view>
+</view>

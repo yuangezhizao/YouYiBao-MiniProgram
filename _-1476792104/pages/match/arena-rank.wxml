@@ -1,0 +1,97 @@
+<view class="arena-rank-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="arena-rank">
+        <view class="arena-rank-top">
+            <view class="banner">
+                <image src="{{eventDetail.eventImage}}"></image>
+            </view>
+            <view class="title">{{eventDetail.eventName}}</view>
+            <view class="desc">
+         {{eventDetail.beginTime}} 至 {{eventDetail.endTime}}
+        </view>
+        </view>
+        <view class="arena-rank-content">
+            <view class="my-rank-list">
+                <view class="f30 c_99 title">我的最佳成绩排名</view>
+                <view class="my-rank-item" wx:if="{{rankInfo!=null}}">
+                    <view class="rank-num">
+                        <view class="num Merriweather">{{rankInfo.rank}}</view>
+                        <text>排名</text>
+                    </view>
+                    <view class="right">
+                        <view class="score-part">
+                            <view class="user">
+                                <view class="avatar">
+                                    <image src="{{rankInfo.avatarUrl}}"></image>
+                                </view>
+                                <text class="nickname f28 ellipsis-1">{{rankInfo.nickName}}</text>
+                            </view>
+                            <view class="score">
+                  总得分
+                  <text class="Merriweather">{{rankInfo.score}}</text>
+                            </view>
+                        </view>
+                        <view class="line"></view>
+                        <view class="song">
+                            <view class="song-name">
+                                <text class="ellipsis-1">{{rankInfo.storeName}}</text>
+                            </view>
+                            <view class="level">
+                                <text class="ellipsis-1">{{rankInfo.gameDate}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="btm-tips both_center" wx:if="{{rankInfo==null}}">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 暂无排名
+          </view>
+            </view>
+            <view class="nationwide-rank-list">
+                <view class="f30 c_99 title">全国最佳成绩排名</view>
+                <view class="arena-rank-item" wx:if="{{rankList!=''}}" wx:for="{{rankList}}">
+                    <view class="rank-num">
+                        <view class="num Merriweather">{{item.rank}}</view>
+                        <text>排名</text>
+                    </view>
+                    <view class="right">
+                        <view class="score-part">
+                            <view class="user">
+                                <view class="avatar">
+                                    <image src="{{item.avatarUrl}}"></image>
+                                </view>
+                                <text class="nickname f28 ellipsis-1">{{item.nickName}}</text>
+                            </view>
+                            <view class="score">
+                  总得分
+                  <text class="Merriweather">{{item.score}}</text>
+                            </view>
+                        </view>
+                        <view class="line"></view>
+                        <view class="song">
+                            <view class="song-name">
+                                <text class="ellipsis-1">{{item.storeName}}</text>
+                            </view>
+                            <view class="level">
+                                <text class="ellipsis-1">{{item.gameDate}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="btm-tips both_center" wx:if="{{rankList==''}}">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 暂无排名
+          </view>
+            </view>
+        </view>
+    </view>
+</view>

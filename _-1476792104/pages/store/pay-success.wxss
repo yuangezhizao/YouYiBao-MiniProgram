@@ -1,0 +1,91 @@
+.bg-183 {
+    z-index: 9;
+}
+
+.statusBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 64rpx;
+    z-index: 99;
+}
+
+.icon-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    width: 174rpx;
+    height: 64rpx;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 35rpx;
+    margin-left: 30rpx;
+    border: 1rpx solid rgba(250,250,250,0.3);
+    z-index: 9999!important;
+}
+
+.icon-group .line {
+    width: 3rpx;
+    height: 32rpx;
+    background: rgba(250,250,250,0.3);
+}
+
+.icon-group .icon {
+    width: 38rpx;
+    height: 38rpx;
+    padding: 10rpx 20rpx;
+}
+
+page {
+    background: #F2F9FF;
+}
+
+.pay-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pay-success image {
+    width: 200rpx;
+    height: 200rpx;
+    margin: 177rpx 0 15rpx 0;
+}
+
+.pay-success .f26 {
+    margin-top: 10rpx;
+}
+
+.pay-success .package-detail {
+    display: flex;
+    flex-direction: column;
+    width: 650rpx;
+    height: 249rpx;
+    border-radius: 10rpx;
+    padding: 28rpx 35rpx;
+    box-sizing: border-box;
+    border: 1rpx solid #979797;
+    margin-top: 131rpx;
+}
+
+.pay-success .package-detail .row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10rpx;
+}
+
+.pay-success .btn-exchange {
+    width: 570rpx;
+    height: 110rpx;
+    border-radius: 60rpx;
+    background: linear-gradient(to right,#3CA6FD,#2F5FFF);
+    color: #fff;
+    box-shadow: 0 8rpx 20rpx 0 rgba(53,131,254,0.22);
+    font-size: 34rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 80rpx auto;
+}

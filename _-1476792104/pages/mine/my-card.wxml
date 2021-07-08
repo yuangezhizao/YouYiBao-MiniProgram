@@ -1,0 +1,47 @@
+<view class="my-card-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="my-card-top">
+        <view class="left">
+            <text class="f37 c_26">我的卡 </text>
+            <text class="f24 c_99"> 共{{cardList.length}}张</text>
+        </view>
+        <view bindtap="addCard" class="btn-add"></view>
+    </view>
+    <view class="card-list">
+        <view class="card-item silver" wx:if="{{cardList.length>0}}" wx:for="{{cardList}}" wx:key="key">
+            <view bindtap="cardDetail" class="{{item.isExpired==false?'card-bd':'card-no'}}" data-wpycarddetail-a="{{item}}">
+                <view class="name">
+                    <text class="f36">{{item.brand_name}}</text>
+                    <text class="f50">{{item.member_number}}</text>
+                </view>
+                <view class="sub-name">
+                    <text>{{item.store_name}}</text>
+                    <view class="btn btn-round btn-default" wx:if="{{item.isExpired}}">已过期</view>
+                </view>
+                <view class="mobile f30">手机号码: {{item.mobile}}</view>
+            </view>
+        </view>
+        <view class="dis-card-item c_99 f30" wx:if="{{cardList.length==0}}">
+            <image src="http://yyb-oss.universal-space.cn/imgs/mine/icon_card_2.png"></image>
+            <text>还没有会员卡</text>
+            <text>点击右上角添加会员卡或者自助开卡</text>
+        </view>
+    </view>
+    <view bindtap="payCard" class="btn btn-primary btn-round">
+        <image src="http://yyb-oss.universal-space.cn/imgs/mine/icon_card.png"></image> 自助开卡
+    </view>
+    <view class="tc">
+        <text class="f26 c_99">购买开卡套餐，自助会员卡</text>
+    </view>
+</view>

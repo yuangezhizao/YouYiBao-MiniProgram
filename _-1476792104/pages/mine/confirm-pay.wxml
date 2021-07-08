@@ -1,0 +1,37 @@
+<view>
+    <view>
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$customStatusbar$menuButtonTop+60}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$customStatusbar$menuButtonTop}}px;">
+            <image bindtap="$customStatusbar$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$customStatusbar$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$customStatusbar$menuButtonTop}}px;">
+            <text class="title">{{$customStatusbar$title}}</text>
+        </view>
+    </view>
+    <view class="f50 c_37 price">¥<text class="f90">50</text>
+    </view>
+    <view class="package-info">
+        <view class="package-detail r">
+            <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/vipCard_bg.png"></image>
+            <view class="row r">
+                <text class="f28 c_99">会员卡号</text>
+                <text class="f28 c_37">73838392</text>
+            </view>
+            <view class="row r">
+                <text class="f28 c_99">服务门店</text>
+                <text class="f28 c_37">游艺宝高德美居店</text>
+            </view>
+            <view class="row r">
+                <text class="f28 c_99">购买套餐</text>
+                <text class="f28 c_37">50送30</text>
+            </view>
+            <view class="row r">
+                <text class="f28 c_99">支付金额</text>
+                <text class="f28 c_37">￥50</text>
+            </view>
+        </view>
+        <view class="confirm-pay f34 c_ff bg_blue">立即支付</view>
+    </view>
+</view>

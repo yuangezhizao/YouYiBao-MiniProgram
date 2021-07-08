@@ -1,0 +1,35 @@
+<view>
+    <view>
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$customStatusbar$menuButtonTop+60}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$customStatusbar$menuButtonTop}}px;">
+            <image bindtap="$customStatusbar$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$customStatusbar$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$customStatusbar$menuButtonTop}}px;">
+            <text class="title">{{$customStatusbar$title}}</text>
+        </view>
+    </view>
+    <view class="my-medal-wrapper">
+        <view class="my-medal">
+            <view class="medal-num">
+                <text class="f80 c_ff">{{medalNum}}</text>
+                <text class="f24 c_ff">游戏勋章数</text>
+            </view>
+            <view class="line"></view>
+            <view class="medal-tips">
+                <text class="f28 c_ff">如何获取更多勋章？扫码不同
+          机台，酷趣勋章等你拿。</text>
+            </view>
+        </view>
+    </view>
+    <view class="medal-list-wrapper">
+        <text class="f28 c_99 title">游戏勋章馆</text>
+        <view class="medal-list">
+            <view bindtap="myMedal" class="medal-type" wx:if="{{item.medalImage!=''}}" wx:for="{{medalList}}" wx:key="key">
+                <image class="medal-image {{item.unLock==0?'disabled':''}}" src="{{item.medalImage}}"></image>
+                <text class="f22 {{item.unLock==0?'c_99':''}}">{{item.productName}}</text>
+            </view>
+        </view>
+    </view>
+</view>

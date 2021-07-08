@@ -1,0 +1,36 @@
+<view>
+    <view>
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$customStatusbar$menuButtonTop+60}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$customStatusbar$menuButtonTop}}px;">
+            <image bindtap="$customStatusbar$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$customStatusbar$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$customStatusbar$menuButtonTop}}px;">
+            <text class="title">{{$customStatusbar$title}}</text>
+        </view>
+    </view>
+    <view class="shops-wrap">
+        <view class="search-box">
+            <input bindinput="getStoreName" placeholder="输入门店" type="text" value="{{storeName}}"></input>
+            <view bindtap="seek" class="icon"></view>
+        </view>
+        <view bindtap="$scan$scan" class="scan_btn scan"></view>
+    </view>
+    <view class="store-list-wrap">
+        <text class="f30 c_99 title">{{storeTitle}}</text>
+        <view bindtap="storeDetail" class="store-list" data-wpystoredetail-a="{{item}}" wx:for="{{storeList}}" wx:key="key">
+            <image src="{{item.head_image?item.head_image:'http://yyb-oss.universal-space.cn/imgs/default_avatar.png'}}"></image>
+            <view class="store-info">
+                <text class="f26 c_26">{{item.store_name}}</text>
+                <text class="f22 c_99">{{item.store_mobile}}</text>
+                <text class="f22 c_99">{{item.store_address}}</text>
+            </view>
+            <text class="f26 c_d5" wx:if="{{item.distance}}">{{filters.toFix(item.distance/1000)}}km</text>
+        </view>
+    </view>
+    <view class="btm-tips both_center" wx:if="{{storeList.length==0}}">
+        <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 暂无记录
+    </view>
+</view>
+<wxs module="filters" src="../../wxs/filter.wxs" />

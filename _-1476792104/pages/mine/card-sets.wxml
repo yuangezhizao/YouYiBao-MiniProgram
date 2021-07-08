@@ -1,0 +1,36 @@
+<view class="my-prize-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="set-meal-list">
+        <view class="set-meal-item" wx:for="{{packageList}}" wx:key="key">
+            <view bindtap="memberPackageDetail" class="gift-card" data-wpymemberpackagedetail-a="{{item}}">
+                <view class="img">
+                    <image binderror="errorImg" data-wpyerrorimg-a="{{index}}" src="{{item.image}}"></image>
+                </view>
+                <view class="text">
+                    <view class="f32 c_26">{{item.name}}</view>
+                    <view class="f26 c_99">
+              会员价：￥{{item.price}}元
+            </view>
+                    <view class="f26 c_99">
+              充值币数：{{item.coin}}
+            </view>
+                    <view class="limit c_ff0 f24">限购{{item.limitNum|int}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="btm-tips">
+        <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 已经到底啦
+    </view>
+</view>

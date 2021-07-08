@@ -1,0 +1,80 @@
+<view class="page-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="msmd-wrap">
+        <view class="ticket-wrap">
+            <view class="ticket">
+                <text class="Merriweather f90">{{normalPakcageDetail.price}}</text>
+                <text class="f26">元</text>
+            </view>
+            <view class="expire" wx:if="{{status==3}}"></view>
+        </view>
+        <view class="detail">
+            <view class="block">
+                <view class="title f30 c_49">我的套餐详情</view>
+                <view class="field f26 c_99">
+                    <text>门店</text>
+                    <text>{{normalPakcageDetail.store_name}}</text>
+                    <text>套餐名称</text>
+                    <text>{{normalPakcageDetail.name}}</text>
+                    <text>币数</text>
+                    <text>{{normalPakcageDetail.coins}}</text>
+                    <text>数量</text>
+                    <text>{{normalPakcageDetail.qty}}</text>
+                </view>
+                <view class="field f26 c_99 bor">
+                    <text>套餐有效时间</text>
+                    <text>{{normalPakcageDetail.valid_time}}</text>
+                    <text wx:if="{{normalPakcageDetail.ordertime!=0}}">购买时间</text>
+                    <text wx:if="{{normalPakcageDetail.ordertime!=0}}">{{normalPakcageDetail.ordertime}}</text>
+                    <text class="c_49" wx:if="{{normalPakcageDetail.convert_time!=0}}">兑换时间</text>
+                    <text class="c_49" wx:if="{{normalPakcageDetail.convert_time!=0}}">{{normalPakcageDetail.convert_time}}</text>
+                </view>
+            </view>
+            <view class="block">
+                <view class="field f26 c_99">
+                    <text>订单号</text>
+                    <text>{{orderNo}}</text>
+                    <text>支付方式</text>
+                    <text>{{normalPakcageDetail.payment_type==2?'微信支付':normalPakcageDetail.payment_type==1?'支付宝支付':normalPakcageDetail.payment_type==3?'公众号支付':'未支付'}}</text>
+                    <text>已支付</text>
+                    <text>¥ {{normalPakcageDetail.pay_price}}</text>
+                </view>
+            </view>
+            <view class="f24 c_99">
+          注：未使用或过期套餐，超过三个月（购买日计算），将
+          无法申请退款。请尽快到门店兑换。
+        </view>
+            <view class="btn-group" wx:if="{{status==0}}">
+                <view bindtap="cancel" class="btn btn-disabled btn-round">取消订单</view>
+                <view bindtap="pay" class="btn btn-primary btn-round">付款</view>
+            </view>
+            <view class="btn-group" wx:if="{{status==1}}">
+                <view bindtap="convert" class="btn btn-primary btn-round convert">兑换</view>
+            </view>
+        </view>
+    </view>
+    <view class="match-dialog {{$dialog1$size}}" wx:if="{{$dialog1$isShowDialog}}">
+        <view class="match-dialog-inner">
+            <image bindtap="$dialog1$handleClick" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+            <view class="title">{{$dialog1$title}}</view>
+            <view class="match-dialog-body tc">
+                <view class="f34">确定取消该订单吗？</view>
+                <view class="btn-group">
+                    <view bindtap="closeDialog" class="btn btn-disabled btn-round">取消</view>
+                    <view bindtap="cancelOrder" class="btn btn-primary btn-round">是</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

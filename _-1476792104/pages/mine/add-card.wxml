@@ -1,0 +1,31 @@
+<view class="my-prize-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="form">
+        <view class="field">
+            <text bindtap="getStore" class="input" style="width: 100%;">{{store}}</text>
+            <view class="arrow">
+                <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_moee.png"></image>
+            </view>
+        </view>
+        <view class="field">
+            <input bindinput="getPhone" class="input" maxlength="11" placeholder="请输入手机号" type="text" value="{{phone}}"></input>
+            <button bindtap="getUserPhone" class="btn btn-plain btn-round btn-small btn-primary">获取手机号</button>
+        </view>
+        <view class="field" wx:if="{{needCode}}">
+            <input bindinput="getCode" class="input" maxlength="4" placeholder="请输入验证码" type="text" value="{{code}}"></input>
+            <button bindtap="getCaptcha" class="btn btn-plain btn-round btn-small btn-black" disabled="{{!isCaptcha}}">{{codeText}}</button>
+        </view>
+        <button bindtap="addCard" class="btn btn-primary btn-round submit {{nextStep==true?'bg_blue':'disabled'}}" disabled="{{!nextStep}}">确定</button>
+    </view>
+</view>

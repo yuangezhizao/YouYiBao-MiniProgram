@@ -1,0 +1,96 @@
+<view class="page-wrapper">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="match-banner">
+        <image mode="aspectFit" src="{{scoreDetail.productImage}}"></image>
+    </view>
+    <view class="match-title">
+        <text class="f34 c_4a">{{scoreDetail.machineName}}</text>
+    </view>
+    <view class="my-match">
+        <view class="f28 c_99 title space">
+            <text>我的最新战绩</text>
+            <text>{{scoreDetail.gameDate}}</text>
+        </view>
+        <view class="latest-record">
+            <view class="top">
+                <view class="locate">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_positioning_copy.png"></image>
+            {{scoreDetail.storeName}}
+          </view>
+            </view>
+            <view class="cont">
+                <view class="avatar">
+                    <image src="{{scoreDetail.musicImage}}"></image>
+                </view>
+                <view class="info">
+                    <view class="col">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_song.png"></image>
+                        <text class="ellipsis-1">曲目：{{scoreDetail.musicName}}</text>
+                    </view>
+                    <view class="col">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/match/icon_record_white.png"></image>
+                        <text>难度：{{scoreDetail.gradeName}}</text>
+                    </view>
+                    <view class="col">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_type.png"></image>
+                        <text>通关：{{scoreDetail.clearTypeName}}</text>
+                    </view>
+                    <view class="col">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_hit_small.png"></image>
+                        <text>连击：{{scoreDetail.maxChain}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="score">
+                <text>本次游戏得分</text>
+                <text class="Merriweather">{{scoreDetail.score}}</text>
+            </view>
+        </view>
+        <text class="f28 c_99 title">我的全国排名</text>
+        <view class="best-record">
+            <view class="record-item-1">
+                <view class="avatar">
+                    <image src="{{trackRank.avatarUrl}}"></image>
+                </view>
+                <text class="c_f5 f24 ellipsis-1">{{trackRank.nickName}}</text>
+            </view>
+            <view class="left">
+                <view class="col">
+                    <view class="record-item-2">
+                        <text class="Merriweather c_ff f60 font-style">{{trackRank.score}}</text>
+                        <text class="f26 c_f5">我的最高得分</text>
+                    </view>
+                    <view class="line"></view>
+                    <view class="record-item-2 row">
+                        <view class="c_f5 f32">第<text class="Merriweather c_ff f60 font-style">{{trackRank.rank}}</text>名</view>
+                        <text class="f26 c_f5">当前排名</text>
+                    </view>
+                </view>
+                <view class="col song">
+                    <view class="song-name">
+                        <text class="ellipsis-1">曲目：{{trackRank.musicName}}</text>
+                    </view>
+                    <view class="level">
+                        <text class="ellipsis-1">难度：{{trackRank.gradeName}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="btn-group">
+            <view bindtap="rank" class="btn c_ff">全国排行</view>
+            <view bindtap="statisRecord" class="btn c_ff">综合战绩</view>
+            <view bindtap="track" class="btn c_ff">曲目大全</view>
+        </view>
+    </view>
+</view>

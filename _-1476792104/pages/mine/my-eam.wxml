@@ -1,0 +1,89 @@
+<view class="page-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="my-eam-wrap">
+        <view class="amount">
+            <view class="number">
+                <text class="f80">{{eamPoint}}</text>
+                <text class="f24">我的e-am点</text>
+            </view>
+            <view bindtap="eamPointRecord" class="btn btn-round">e-am点记录</view>
+        </view>
+        <view class="block intro" hidden="{{check==0}}">
+            <view class="f30 c_26">e-am点说明</view>
+            <view class="detail">
+                <text class="f24 c_99">购买须知：
+            • e-am点属KONAMI游戏专用点，用于该系列机台游戏；
+            • e-am点兑换服务时，请注意在有效期内使用；
+            • e-am点对账期较长，请酌情谨慎购买；
+            • 若需退款，需扣手续费（退款金额的6%）
+          </text>
+            </view>
+            <view class="f26 c_99 agree">
+                <view bindtap="toggleCheckbox" class="checkbox {{isChecked?'checked':''}}"></view>
+                <text bindtap="toggleCheckbox">我已阅读并同意</text>
+                <text bindtap="showAgree" class="c_26">《游艺宝e-am点协议》</text>
+            </view>
+            <view bindtap="rechargeEamPoint" class="btn btn-success btn-round">充值e-am点</view>
+        </view>
+        <view class="block vip-detail">
+            <view class="title">
+                <text class="f30 c_26">当前KONAMI游戏会员：</text>
+                <view bindtap="memberExchangeCode" class="btn btn-primary btn-plain btn-round">会员兑换码</view>
+            </view>
+            <view bindtap="musicMachine" class="vip-item">
+                <view class="left">
+                    <view class="btn btn-default btn-round">音律炫动5</view>
+                    <text class="f24 c_99" wx:if="{{memberStateMusic.memberType>0}}">{{memberStateMusic.memberType==1?'试用会员':memberStateMusic.memberType==2?'基本会员':'VIP会员'}}，有效期余：{{memberStateMusic.validDate}}天</text>
+                </view>
+                <text class="f24 c_99" wx:if="{{memberStateMusic.memberType==0}}">当前是游客身份，无法体验全部曲目，成为正式会员获得更多权益！</text>
+                <view class="right" wx:if="{{memberStateMusic.memberType>0}}">
+                    <image src="{{memberStateMusic.memberType==1?'http://yyb-oss.universal-space.cn/imgs/record/icon_record_grade3.png':memberStateMusic.memberType==2?'http://yyb-oss.universal-space.cn/imgs/record/icon_record_grade2.png':'http://yyb-oss.universal-space.cn/imgs/record/icon_record_grade1.png'}}"></image>
+                    <text class="f28 c_99">{{memberStateMusic.memberType==1?'试用会员':memberStateMusic.memberType==2?'基本会员':'VIP会员'}}</text>
+                </view>
+            </view>
+            <view bindtap="danceMachine" class="vip-item">
+                <view class="left">
+                    <view class="btn btn-default btn-round">舞律炫步</view>
+                    <text class="f24 c_99" wx:if="{{memberStateDance.memberType>0}}">{{memberStateDance.memberType==1?'试用会员':memberStateDance.memberType==2?'基本会员':'VIP会员'}}，有效期余：{{memberStateDance.validDate}}天</text>
+                </view>
+                <text class="f24 c_99" wx:if="{{memberStateDance.memberType==0}}">当前是游客身份，无法体验全部曲目，成为正式会员获得更多权益！</text>
+                <view class="right" wx:if="{{memberStateDance.memberType>0}}">
+                    <image src="{{memberStateDance.memberType==1?'http://yyb-oss.universal-space.cn/imgs/record/icon_record_grade3.png':memberStateDance.memberType==2?'http://yyb-oss.universal-space.cn/imgs/record/icon_record_grade2.png':'http://yyb-oss.universal-space.cn/imgs/record/icon_record_grade1.png'}}"></image>
+                    <text class="f28 c_99">{{memberStateDance.memberType==1?'试用会员':memberStateDance.memberType==2?'基本会员':'VIP会员'}}</text>
+                </view>
+            </view>
+            <view class="f24 c_99 tips">想知道如何成为会员？了解更多KONAMI游戏吧：</view>
+            <view class="btn-group">
+                <view bindtap="musicMachine" class="btn btn-primary btn-round">音律炫动5</view>
+                <view bindtap="danceMachine" class="btn btn-golden btn-round">舞律炫步</view>
+            </view>
+        </view>
+    </view>
+    <view class="{{showAgreement?'back_warp':'back_warp hide'}}">
+        <view class="confirm-box both_center">
+            <image bindtap="close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+            <view class="top">
+                <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
+                <text class="f34 c_ff r">协议</text>
+            </view>
+            <view class="content c_99 f26">
+                <view wx:for="{{agreeTxt}}" wx:key="index">{{item}}</view>
+            </view>
+            <view class="btn-group">
+                <view bindtap="close" class="btn f34 c_ff">取消</view>
+                <view bindtap="confirm" class="btn f34 c_ff">同意</view>
+            </view>
+        </view>
+    </view>
+</view>

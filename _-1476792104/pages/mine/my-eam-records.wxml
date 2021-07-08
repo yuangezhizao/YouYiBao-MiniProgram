@@ -1,0 +1,52 @@
+<view class="page-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="navbar">
+        <text bindtap="navbarTap" class="item {{currentTab==index?'active':''}}" data-index="{{index}}" wx:for="{{navbar}}" wx:key="unique">{{item}}</text>
+    </view>
+    <view class="ce-wrap">
+        <block wx:if="{{currentTab<3}}">
+            <view class="record-item" wx:for="{{packageList}}" wx:key="index">
+                <view class="f24 {{currentTab==2?'c_d5':'c_99'}}">{{currentTab==0?'使用中':currentTab==1?'已使用':'已退款'}}</view>
+                <view class="f26 c_32 name">{{item.konamiPointPackage.packageName}}套餐：¥{{item.price/100}}元/{{item.point}}e-am点 * {{item.qty}}个</view>
+                <view class="detail">
+                    <view class="left">
+                        <text class="f26 c_99">套餐余额：{{item.remainPoint}}点/￥{{item.remainAmount/100}}元
+                  订单号：{{item.konamiPointChargeOrder.orderNo}}
+                  充值时间:{{item.createDate}}</text>
+                    </view>
+                    <view bindtap="preRefund" class="btn btn-primary btn-plain btn-round" data-wpyprerefund-a="{{item.konamiPointChargeOrder.orderNo}}" wx:if="{{currentTab!=2}}">申请退款</view>
+                </view>
+            </view>
+            <view class="btm-tips both_center" wx:if="{{packageList.length==0}}">
+                <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 暂无记录
+        </view>
+        </block>
+        <block wx:if="{{currentTab===3}}">
+            <view class="record-item" wx:for="{{tempList}}" wx:key="index">
+                <view class="f24 c_99 detail">
+                    <text>{{item.createDate}}</text>
+                    <text wx:if="{{item.storeName}}">地址：{{item.storeName}}</text>
+                </view>
+                <view class="detail f26">
+                    <text class="c_26">{{item.remarks}}</text>
+                    <text class="c_99">
+                        <text wx:if="{{item.point>0}}">+</text> {{item.point}}e-am点</text>
+                </view>
+            </view>
+            <view class="btm-tips both_center" wx:if="{{tempList.length==0}}">
+                <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 暂无记录
+        </view>
+        </block>
+    </view>
+</view>

@@ -1,0 +1,119 @@
+<view>
+    <view>
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$customStatusbar$menuButtonTop+60}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$customStatusbar$menuButtonTop}}px;">
+            <image bindtap="$customStatusbar$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$customStatusbar$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$customStatusbar$menuButtonTop}}px;">
+            <text class="title">{{$customStatusbar$title}}</text>
+        </view>
+    </view>
+    <view class="match-banner">
+        <image src="{{scoreDetail.productImage}}"></image>
+    </view>
+    <view class="match-title">
+        <text class="f34 c_4a">{{scoreDetail.productName}}</text>
+    </view>
+    <view class="my-match">
+        <view class="match-item-1">
+            <view class="item-top">
+                <text class="f28 c_99">本局游戏战绩</text>
+                <text class="f28 c_99">{{scoreDetail.gameDate}}</text>
+            </view>
+            <view class="list-item">
+                <view class="item-top">
+                    <view class="item-top-left">
+                        <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/record-icon_7.png"></image>
+                        <text class="r f24 c_00">{{scoreDetail.modeName}}</text>
+                    </view>
+                    <view class="item-top-right">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_17.png"></image>
+                        <text class=".r f24 c_ff">{{scoreDetail.storeName}}</text>
+                    </view>
+                    <view></view>
+                </view>
+                <view class="item-middle">
+                    <view class="item-middle-info">
+                        <text class="Merriweather-Book f60 c_ff">{{scoreDetail.gameRound}}</text>
+                        <view>
+                            <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_12.png"></image>
+                            <text class="f26 c_cc">闯关数</text>
+                        </view>
+                    </view>
+                    <view class="line"></view>
+                    <view class="item-middle-info">
+                        <text class="Merriweather-Book f60 c_ff">{{scoreDetail.shots}}</text>
+                        <view>
+                            <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_13.png"></image>
+                            <text class="f26 c_cc">投球数</text>
+                        </view>
+                    </view>
+                    <view class="line"></view>
+                    <view class="item-middle-info">
+                        <text class="c_ff f30">
+                            <text class="Merriweather-Book f60 c_ff">{{scoreDetail.hitRate}}</text>%</text>
+                        <view>
+                            <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_14.png"></image>
+                            <text class="f26 c_cc">命中率</text>
+                        </view>
+                    </view>
+                    <view class="line"></view>
+                    <view class="item-middle-info">
+                        <text class="Merriweather-Book f60 c_ff">{{scoreDetail.calories}}</text>
+                        <view>
+                            <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_15.png"></image>
+                            <text class="f26 c_cc">卡路里</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="item-bottom">
+                    <text class="f28 c_33">本次游戏得分</text>
+                    <text class="Merriweather f80 c_ score">{{scoreDetail.score}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="nationwide-rank">
+            <text class="c_99 f30">本局联网游戏排行</text>
+            <view class="list">
+                <view class="rank" wx:for="{{scoreList}}" wx:key="key">
+                    <view class="rank-left">
+                        <text class="f60 c_26 Merriweather">{{item.rank}}</text>
+                        <text class="c_99 f28">排名</text>
+                    </view>
+                    <view class="rank-right">
+                        <view class="rank-right-top">
+                            <image src="{{item.avatarUrl}}"></image>
+                            <text class="f28 c_99 user-name ellipsis-1">{{item.nickName}}</text>
+                            <text class="f24 c_99">得分 <text class="Merriweather f80 c_26">{{item.score}}</text>
+                            </text>
+                        </view>
+                        <view class="rank-right-bottom">
+                            <view class="icon-item">
+                                <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_8.png"></image>
+                                <text class="f26 c_99">{{item.gameRound}}</text>
+                            </view>
+                            <view class="icon-item">
+                                <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_9.png"></image>
+                                <text class="f26 c_99">{{item.shots}}</text>
+                            </view>
+                            <view class="icon-item">
+                                <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_10.png"></image>
+                                <text class="f26 c_99">{{item.hitRate}}%</text>
+                            </view>
+                            <view class="icon-item">
+                                <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_11.png"></image>
+                                <text class="f26 c_99">{{item.calories}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="btn-group">
+            <view bindtap="recordStatis" class="btn f36 c_ff">我的综合战绩</view>
+            <view bindtap="recordRank" class="btn f36 c_ff">全国排行</view>
+        </view>
+    </view>
+</view>

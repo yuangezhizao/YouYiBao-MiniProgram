@@ -1,0 +1,65 @@
+<view class="spa-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="spa-cont">
+        <view class="prize-info">
+            <view class="user">
+                <view class="avatar">
+                    <image src="{{userInfo.avatarUrl!=null?userInfo.avatarUrl:'http://yyb-oss.universal-space.cn/imgs/default_avatar.png'}}"></image>
+                </view>
+                <view class="nickname">{{userInfo==''?'昵称':userInfo.nickname}}</view>
+            </view>
+            <text class="prize-name">领取{{prizeName}}</text>
+        </view>
+        <view class="form">
+            <view class="field">
+                <label>收件人姓名</label>
+                <input bindinput="getExpressName" class="input" placeholder="请输入姓名" type="text" value="{{expressName}}" wx:if="{{isReceive==0}}"></input>
+                <view class="input" wx:else>{{expressName}}</view>
+            </view>
+            <view class="field">
+                <label>收件人手机号</label>
+                <input bindinput="getExpressMobile" class="input" placeholder="请输入手机号" type="number" value="{{expressMobile}}" wx:if="{{isReceive==0}}"></input>
+                <view class="input" wx:else>{{expressMobile}}</view>
+            </view>
+            <view class="field">
+                <label>收件地址</label>
+                <input bindinput="getExpressAddress" class="input" placeholder="请输入收件地址" type="text" value="{{expressAddress}}" wx:if="{{isReceive==0}}"></input>
+                <view class="input" wx:else>{{expressAddress}}</view>
+            </view>
+            <view class="spa-btns" wx:if="{{isReceive==0}}">
+                <view bindtap="goBack" class="btn btn-disabled btn-round">取消</view>
+                <view bindtap="submitHandle" class="btn btn-primary btn-round">确认提交</view>
+            </view>
+            <view class="spa-btns" wx:else>
+                <view bindtap="goBack" class="btn1 btn-primary btn-round">返回</view>
+            </view>
+            <view class="tips">
+                <text>注意：</text>收件信息提交后不可修改，请提交前核对确认。
+        </view>
+        </view>
+    </view>
+    <view class="match-dialog {{$matchDialog$size}}" wx:if="{{$matchDialog$isShowDialog}}">
+        <view class="match-dialog-inner">
+            <image bindtap="$matchDialog$handleClick" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+            <view class="title">{{$matchDialog$title}}</view>
+            <view class="match-dialog-body tc">
+                <text>
+        收件资料提交成功！
+        请耐心等待您的奖品。
+      </text>
+                <view bindtap="goBack" class="btn btn-primary btn-round">返回</view>
+            </view>
+        </view>
+    </view>
+</view>

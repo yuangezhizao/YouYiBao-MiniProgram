@@ -1,0 +1,466 @@
+.confirm-box {
+    width: 540rpx;
+    height: 469rpx;
+    background: #fff;
+    border-radius: 10rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40rpx;
+    box-sizing: border-box;
+}
+
+.confirm-box .close {
+    width: 42rpx;
+    height: 70rpx;
+    position: absolute;
+    right: 10rpx;
+    top: -70rpx;
+}
+
+.confirm-box .top {
+    width: 100%;
+    height: 136rpx;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    line-height: 136rpx;
+}
+
+.confirm-box .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 130rpx 0 40rpx 0;
+    text-align: center;
+}
+
+.confirm-box .btn_group_cus {
+    width: 290rpx;
+    height: 96rpx;
+    border-radius: 55rpx;
+    text-align: center;
+    line-height: 96rpx;
+    box-shadow: 0 8rpx 16rpx 0 rgba(53,131,254,0.22);
+}
+
+.confirm-box .button_group {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.confirm-box .button_group .button {
+    width: 210rpx;
+    height: 90rpx;
+    border-radius: 55rpx;
+    background: linear-gradient(45deg,#9A9A9A,#575757);
+    text-align: center;
+    line-height: 90rpx;
+    box-shadow: 0 8rpx 16rpx 0 rgba(161,161,161,0.22);
+    margin: 0 15rpx;
+}
+
+.confirm-box .button_group .button:last-child {
+    background: linear-gradient(45deg,#3CA6FD,#2F5FFF);
+    box-shadow: 0 8rpx 16rpx 0 rgba(53,131,254,0.22);
+}
+
+.bg-183 {
+    z-index: 9;
+}
+
+.statusBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 64rpx;
+    z-index: 99;
+}
+
+.icon-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    width: 174rpx;
+    height: 64rpx;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 35rpx;
+    margin-left: 30rpx;
+    border: 1rpx solid rgba(250,250,250,0.3);
+    z-index: 9999!important;
+}
+
+.icon-group .line {
+    width: 3rpx;
+    height: 32rpx;
+    background: rgba(250,250,250,0.3);
+}
+
+.icon-group .icon {
+    width: 38rpx;
+    height: 38rpx;
+    padding: 10rpx 20rpx;
+}
+
+page {
+    background: #F2F9FF;
+}
+
+.machine-info {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100rpx;
+    padding: 0 30rpx;
+    line-height: 60rpx;
+}
+
+.machine-info image {
+    width: 690rpx;
+    height: 360rpx;
+    box-shadow: 0 8rpx 16rpx 0 rgba(17,85,233,0.1);
+    margin-bottom: 30rpx;
+    border-radius: 15rpx;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 140rpx;
+    border-radius: 20rpx;
+    background: #fff;
+    box-shadow: 0 6rpx 10rpx 4rpx #e9f1ff;
+    margin-top: 30rpx;
+}
+
+.user-info image {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 50%;
+    box-shadow: 0 2rpx 3rpx 0 rgba(53,131,254,0.2);
+    margin: 0 20rpx 0 20rpx;
+    border: 6rpx solid #fff;
+}
+
+.user-info .user-name {
+    width: 175rpx;
+}
+
+.user-info .right {
+    display: flex;
+    justify-content: flex-end;
+    width: 55%;
+    margin-right: 25rpx;
+}
+
+.user-info .right .coin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-info .right .coin-recharge {
+    width: 198rpx;
+    height: 84rpx;
+    border-radius: 55rpx;
+    background: linear-gradient(45deg,#FF7575,#FF0000);
+    line-height: 84rpx;
+    text-align: center;
+    margin-left: 43rpx;
+}
+
+.machine-tips {
+    display: flex;
+    justify-content: space-between;
+    margin: 30rpx;
+    line-height: 40rpx;
+}
+
+.machine-tips .guide-tips {
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.pay-type {
+    display: flex;
+    flex-direction: column;
+}
+
+.pay-type .pay-title {
+    margin: 0 0 20rpx 30rpx;
+}
+
+.pay-type .pay-list {
+    width: 100%;
+    height: 216rpx;
+    background: #fff;
+    border-radius: 20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pay-type .pay-list .pay-btn {
+    width: 280rpx;
+    height: 96rpx;
+    border-radius: 55rpx;
+    box-shadow: 0 8rpx 20rpx 0 rgba(53,131,254,0.22);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 25rpx;
+}
+
+.pay-type .pay-list .pay-btn image {
+    width: 48rpx;
+    height: 48rpx;
+}
+
+.pay-type .pay-list .pay-btn:last-child {
+    background: linear-gradient(45deg,#5BE89B,#2ECCBD);
+    box-shadow: 0 4rpx 10rpx 0 rgba(194,232,217,0.55);
+}
+
+.pay-type .pay-list .pay-btn:last-child image {
+    margin-right: 10rpx;
+}
+
+.pay-type .pay-list .machine-status {
+    display: flex;
+    align-items: center;
+}
+
+.pay-type .pay-list .machine-status image {
+    width: 76rpx;
+    height: 76rpx;
+    margin-right: 10rpx;
+}
+
+.pay-box,.package-box {
+    width: 540rpx;
+    height: 580rpx;
+    background: #fff;
+    border-radius: 10rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pay-box .close,.package-box .close {
+    width: 42rpx;
+    height: 70rpx;
+    position: absolute;
+    right: 0;
+    top: -70rpx;
+}
+
+.pay-box .top,.package-box .top {
+    width: 100%;
+    height: 136rpx;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    line-height: 136rpx;
+}
+
+.pay-box .middle,.package-box .middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 80rpx 0 40rpx 0;
+}
+
+.pay-box .middle .count,.package-box .middle .count {
+    display: flex;
+    margin: 18rpx 0 25rpx 0;
+}
+
+.pay-box .middle .count .down,.package-box .middle .count .down {
+    width: 78rpx;
+    height: 78rpx;
+    border-radius: 10rpx;
+    background: #3376FE;
+    text-align: center;
+    line-height: 78rpx;
+}
+
+.pay-box .middle .count input,.package-box .middle .count input {
+    width: 160rpx;
+    height: 78rpx;
+    border-radius: 10rpx;
+    border: 1rpx solid #3376FE;
+    margin: 0 20rpx;
+    text-align: center;
+    color: #3376FE;
+    line-height: 78rpx;
+}
+
+.pay-box .middle .count .active,.package-box .middle .count .active {
+    background: #BBBBBB;
+}
+
+.pay-box .btn,.package-box .btn {
+    width: 290rpx;
+    height: 96rpx;
+    border-radius: 55rpx;
+    margin: 0rpx auto;
+    text-align: center;
+    line-height: 96rpx;
+}
+
+.package-box {
+    width: 650rpx!important;
+    height: 800rpx!important;
+}
+
+.package-box .package-wrap {
+    width: 100%;
+    margin-top: 80rpx;
+}
+
+.package-box .package-wrap .headline {
+    margin-left: 50rpx;
+    padding-bottom: 22rpx;
+    box-sizing: border-box;
+}
+
+.package-box .package-wrap scroll-view {
+    background: #F2F9FF;
+    margin-top: 22rpx;
+    position: relative;
+}
+
+.package-box .package-wrap scroll-view .package-list {
+    display: flex;
+    align-items: center;
+    height: 250rpx;
+    white-space: nowrap;
+}
+
+.package-box .package-wrap scroll-view .package-list .shade {
+    position: fixed;
+    right: 0;
+    width: 120rpx;
+    height: 250rpx;
+    background-image: linear-gradient(to right,rgba(242,249,255,0),#f2f9ff);
+}
+
+.package-box .package-wrap scroll-view .package-list .package-item {
+    width: 180rpx;
+    min-width: 180rpx;
+    height: 180rpx;
+    border-radius: 20rpx;
+    background: #fff;
+    border: 5rpx solid #2660E7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 45rpx;
+}
+
+.package-box .package-wrap scroll-view .package-list .test {
+    background: linear-gradient(135deg,#3CA6FD,#2F5FFF);
+    border: none;
+}
+
+.package-box .price-txt {
+    margin: 55rpx 0;
+}
+
+.guide-wrap,.guide-wrap-1 {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #EFFAFF;
+}
+
+.guide-wrap .guide-jackpot,.guide-wrap-1 .guide-jackpot {
+    width: 100%;
+    height: 340rpx;
+    position: absolute;
+}
+
+.guide-wrap .guide-close,.guide-wrap-1 .guide-close {
+    width: 60rpx;
+    height: 60rpx;
+    position: absolute;
+    top: 250rpx;
+    right: 40rpx;
+}
+
+.guide-wrap .guide-img,.guide-wrap-1 .guide-img {
+    width: 100%;
+    height: 1334rpx;
+}
+
+.guide-wrap-1 {
+    z-index: 999;
+}
+
+.guide-wrap-1 .guide-close {
+    top: 325rpx;
+}
+
+.jackpot-img {
+    width: 677rpx;
+    height: 150rpx;
+    margin: 70rpx auto -80rpx;
+    display: block;
+}
+
+.jackpot-box {
+    width: 650rpx;
+    height: 896rpx;
+    background: #fff;
+    border-radius: 10rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.jackpot-box .close {
+    width: 42rpx;
+    height: 70rpx;
+    position: absolute;
+    right: 0;
+    top: -70rpx;
+}
+
+.jackpot-box .top {
+    width: 100%;
+    height: 136rpx;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    line-height: 136rpx;
+}
+
+.jackpot-box .txt-content {
+    margin-top: 150rpx;
+    line-height: 40rpx;
+}
+
+.jackpot-box .txt-content .tilte {
+    line-height: 70rpx;
+}
+
+.jackpot-box .btn {
+    width: 342rpx;
+    height: 96rpx;
+    background: linear-gradient(to right,#3CA6FD,#2F5FFF);
+    border-radius: 55rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20rpx;
+    box-shadow: 0 8rpx 16rpx 0 rgba(53,131,254,0.22);
+}

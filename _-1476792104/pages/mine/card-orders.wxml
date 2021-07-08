@@ -1,0 +1,27 @@
+<view class="page-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="record-list">
+        <view class="item" wx:for="{{packageList}}" wx:key="key">
+            <text class="f26 c_99">{{item.payment_type==2?'微信支付':''}}{{item.price}}元/充值币数：{{item.coin}}币</text>
+            <view class="name">
+                <text class="f30">{{item.name}}</text>
+                <text class="f24 c_99">时间：{{filters.timeToDate(item.addtime)}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="btm-tips both_center" wx:if="{{packageList==''}}">
+        <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 暂无记录
+      </view>
+</view>
+<wxs module="filters" src="../../wxs/filter.wxs" />

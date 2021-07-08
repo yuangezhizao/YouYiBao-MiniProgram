@@ -1,0 +1,209 @@
+<view>
+    <view>
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$customStatusbar$menuButtonTop+60}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$customStatusbar$menuButtonTop}}px;">
+            <image bindtap="$customStatusbar$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$customStatusbar$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$customStatusbar$menuButtonTop}}px;">
+            <text class="title">{{$customStatusbar$title}}</text>
+        </view>
+    </view>
+    <view catchtouchmove="ture" class="guide-wrap" wx:if="{{showGuide&&!isJackpot}}">
+        <image bindtap="closeGuide" class="guide-close" src="http://yyb-oss.universal-space.cn/imgs/machine/close.png"></image>
+        <image class="guide-img" src="http://yyb-oss.universal-space.cn/imgs/machine/guide_1.png" wx:if="{{machineDetail.onlinePay==1}}"></image>
+        <image class="guide-img" src="http://yyb-oss.universal-space.cn/imgs/machine/guide_2.png" wx:if="{{machineDetail.onlinePay==0}}"></image>
+    </view>
+    <view catchtouchmove="ture" class="guide-wrap-1" wx:if="{{showGuide&&isJackpot}}">
+        <image bindtap="showTips" class="guide-jackpot" src="http://yyb-oss.universal-space.cn/imgs/machine/guide_5.png"></image>
+        <image bindtap="closeGuide" class="guide-close" src="http://yyb-oss.universal-space.cn/imgs/machine/close.png"></image>
+        <image class="guide-img" src="http://yyb-oss.universal-space.cn/imgs/machine/guide_3.png" wx:if="{{machineDetail.onlinePay==1}}"></image>
+        <image class="guide-img" src="http://yyb-oss.universal-space.cn/imgs/machine/guide_4.png" wx:if="{{machineDetail.onlinePay==0}}"></image>
+    </view>
+    <image bindtap="showTips" class="jackpot-img" src="http://yyb-oss.universal-space.cn/imgs/machine/guide_6.png" wx:if="{{isJackpot}}"></image>
+    <view class="machine-info">
+        <image src="{{machineDetail.image}}"></image>
+        <text class="c_37 f36">{{machineDetail.name}}</text>
+        <text class="c_99 f28">{{machineDetail.storeAddress}}</text>
+    </view>
+    <view class="user-info">
+        <image src="{{userInfo.avatarUrl}}"></image>
+        <text class="f28 c_33 user-name">{{userInfo.nickname}}</text>
+        <view class="right">
+            <view class="coin">
+                <text class="f40 c_37">{{userAssets.coin}}</text>
+                <text class="f24 c_99">我的游点余额</text>
+            </view>
+        </view>
+    </view>
+    <view class="machine-tips">
+        <view>
+            <view class="f28 c_99">玩法模式</view>
+            <view class="f28 c_37">• 开启联网对战</view>
+            <view class="f28 c_37">• 游戏结束查看战绩记录</view>
+        </view>
+        <image bindtap="showGuide" class="guide-tips" src="http://yyb-oss.universal-space.cn/imgs/machine/guide_7.png"></image>
+    </view>
+    <view class="pay-type">
+        <text class="f28 c_99 pay-title">支付方式</text>
+        <view class="pay-list">
+            <block wx:if="{{machineDetail.isOnline==1&&machineDetail.useStatus==0&&machineDetail.onlinePay==1&&isFree==false}}">
+                <view bindtap="payPrice" class="pay-btn bg_blue" wx:if="{{!showGuide}}">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/icon_wechat.png"></image>
+                    <text class="f34 c_ff">{{singlePrice}}元/局</text>
+                </view>
+            </block>
+            <view class="machine-status" wx:if="{{machineDetail.isOnline==0}}">
+                <image src="http://yyb-oss.universal-space.cn/imgs/icon_offline.png"></image>
+                <text class="f42 c_99">机台离线，请联系管理员</text>
+            </view>
+            <view class="machine-status" wx:if="{{machineDetail.isOnline==1&&machineDetail.onlinePay==1&&machineDetail.useStatus==1}}">
+                <image src="http://yyb-oss.universal-space.cn/imgs/icon_using.png"></image>
+                <text class="f42 c_99">已加入游戏</text>
+            </view>
+            <view class="machine-status" wx:if="{{machineDetail.isOnline==1&&machineDetail.onlinePay==0&&isFree==false}}">
+                <image src="http://yyb-oss.universal-space.cn/imgs/scan/icon_not support.png"></image>
+                <text class="f42 c_99">请线下投游戏币</text>
+            </view>
+            <view class="machine-status" wx:if="{{machineDetail.isOnline==1&&machineDetail.useStatus==0&&machineDetail.usable!=1}}">
+                <image src="http://yyb-oss.universal-space.cn/imgs/scan/icon_disable.png"></image>
+                <text class="f42 c_99">机台已禁用，请联系管理员</text>
+            </view>
+            <block wx:if="{{machineDetail.isOnline==1&&machineDetail.useStatus==0&&isFree==true}}">
+                <view bindtap="payFree" class="pay-btn bg_blue" wx:if="{{!showGuide}}">
+                    <text class="f34 c_ff">免费体验</text>
+                </view>
+            </block>
+        </view>
+    </view>
+    <view class="{{cionPay?'back_warp':'back_warp hide'}}">
+        <view class="pay-box both_center">
+            <image bindtap="close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+            <view class="top">
+                <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
+                <text class="title f34 c_ff r">游点支付</text>
+            </view>
+            <view class="middle">
+                <text class="f28 c_99">请输入局数：</text>
+                <view class="count">
+                    <view bindtap="down" class="down f48 c_ff {{playTimes==1?'active':''}}">-</view>
+                    <input bindinput="getCoinPlayTimes" maxlength="4" type="number" value="{{playTimes}}"></input>
+                    <view bindtap="add" class="down f48 c_ff">+</view>
+                </view>
+                <text class="f28 c_99">需支付：<text class="c_d5">{{payCoin}}游点</text>
+                </text>
+            </view>
+            <view bindtap="confirmPay" class="btn bg_blue c_ff f34">确定支付</view>
+        </view>
+    </view>
+    <view class="{{cionPackagePay?'back_warp':'back_warp hide'}}">
+        <view class="package-box both_center">
+            <image bindtap="close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+            <view class="top">
+                <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
+                <text class="title f34 c_ff r">游点支付</text>
+            </view>
+            <view class="package-wrap">
+                <text class="f28 c_99 headline">请选择套餐：</text>
+                <scroll-view scrollX="true">
+                    <view class="package-list">
+                        <view catchtap="cionPackage" class="package-item {{coinCurrentTab==index?'test':''}}" data-wpycionpackage-a="{{index}}" data-wpycionpackage-b="{{item}}" wx:for="{{machinePackageList}}" wx:key="key">
+                            <text class="Merriweather f80 {{coinCurrentTab==index?'c_ff':'c_26'}}">{{item.totalCoin}}</text>
+                            <text class="f26 {{coinCurrentTab==index?'c_ff':'c_99'}}">游点/{{item.playTimes>1?item.playTimes:''}}局</text>
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+            <text class="f28 c_99 price-txt">需支付：<text class="c_d5">{{packageTotalCoin}}游点/{{packagePlayTimes>1?packagePlayTimes:''}}局</text>
+            </text>
+            <view bindtap="confirmPay" class="btn bg_blue c_ff f34">确定支付</view>
+        </view>
+    </view>
+    <view class="{{pricePay?'back_warp':'back_warp hide'}}">
+        <view class="pay-box both_center">
+            <image bindtap="close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+            <view class="top">
+                <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
+                <text class="title f34 c_ff r">微信支付</text>
+            </view>
+            <view class="middle">
+                <text class="f28 c_99">请输入局数：</text>
+                <view class="count">
+                    <view bindtap="down_1" class="down f48 c_ff {{playTimes==1?'bg_blue':''}}">-</view>
+                    <input bindinput="getPricePlayTimes" maxlength="4" type="number" value="{{playTimes}}"></input>
+                    <view bindtap="add_1" class="down f48 c_ff">+</view>
+                </view>
+                <text class="f28 c_99">需支付：<text class="c_d5">{{payPrice}}元</text>
+                </text>
+            </view>
+            <view bindtap="confirmPay" class="btn bg_blue c_ff f34">确定支付</view>
+        </view>
+    </view>
+    <view class="{{pricePackagePay?'back_warp':'back_warp hide'}}">
+        <view class="package-box both_center">
+            <image bindtap="close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+            <view class="top">
+                <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
+                <text class="title f34 c_ff r">微信支付</text>
+            </view>
+            <view class="package-wrap">
+                <text class="f28 c_99 headline">请选择套餐：</text>
+                <scroll-view scrollX="true">
+                    <view class="package-list">
+                        <view catchtap="pricePackage" class="package-item {{priceCurrentTab==index?'test':''}}" data-wpypricepackage-a="{{index}}" data-wpypricepackage-b="{{item}}" wx:for="{{machinePackageList}}" wx:key="key">
+                            <text class="Merriweather f80 {{priceCurrentTab==index?'c_ff':'c_26'}}">{{item.price}}</text>
+                            <text class="f26 {{priceCurrentTab==index?'c_ff':'c_99'}}">元/{{item.playTimes>1?item.playTimes:''}}局</text>
+                        </view>
+                    </view>
+                </scroll-view>
+            </view>
+            <text class="f28 c_99 price-txt">需支付：<text class="c_d5">{{packagePrice}}元/{{pricePlayTimes>1?pricePlayTimes:''}}局</text>
+            </text>
+            <view bindtap="confirmPay" class="btn bg_blue c_ff f34">确定支付</view>
+        </view>
+    </view>
+    <view class="{{showTips?'back_warp':'back_warp hide'}}">
+        <view class="jackpot-box both_center">
+            <image bindtap="close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+            <view class="top">
+                <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
+                <text class="f34 c_ff r">奖池说明</text>
+            </view>
+            <text class="f24 c_99 txt-content" decode="true">
+                <text class="c_26 f28 tilte">参与方式</text>
+          活动期间，在活动指定门店中扫码活动机台游戏，
+          每次游戏都会增加奖池游戏数。
+          <text class="c_26 f28 tilte">抽奖规则</text>
+          • 活动期间，可重复抽奖，达到抽奖阀值时，立即
+            开奖。开奖后抽奖阀值再次归零，进行重新一轮抽奖。
+          • 活动期结束，游戏次数任未达到抽奖阀值，立即开奖。
+          • 抽奖从参与游戏的玩家中随机抽取中奖者。
+          <text class="c_26 f28 tilte">奖池奖品</text>
+          黄金奖上奖：{{prizeList[0].prizeName}}*{{prizeList[0].prizeNumber}}份
+          超级大奖：{{prizeList[1].prizeName}}*{{prizeList[1].prizeNumber}}份
+          幸运奖：{{prizeList[2].prizeName}}*{{prizeList[2].prizeNumber}}份
+        </text>
+            <view bindtap="jackpotDetail" class="btn c_ff">奖池详情</view>
+        </view>
+    </view>
+    <view>
+        <view class="{{$customDialog$isShow?'back_warp':'back_warp hide'}}">
+            <view class="confirm-box both_center">
+                <image bindtap="$customDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+                <view class="top">
+                    <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
+                    <text class="title f34 c_ff r">{{$customDialog$title}}</text>
+                </view>
+                <view class="f34 content c_99">{{$customDialog$content}}</view>
+                <view class="button_group" wx:if="{{$customDialog$type=='confirm'}}">
+                    <view bindtap="$customDialog$confirm" class="button">
+                        <text class="f30 c_ff">确定</text>
+                    </view>
+                </view>
+                <button bindgetuserinfo="$customDialog$getAuthHandle" class="f34 btn_group_cus bg_blue c_ff" openType="getUserInfo" wx:if="{{$customDialog$type=='getAuth'}}">点击授权</button>
+                <button bindgetphonenumber="$customDialog$getPhoneNumber" class="f34 btn_group_cus bg_blue c_ff" openType="getPhoneNumber" wx:if="{{$customDialog$type=='phoneAuth'}}">点击授权</button>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,25 @@
+<view>
+    <view>
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$customStatusbar$menuButtonTop+60}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$customStatusbar$menuButtonTop}}px;">
+            <image bindtap="$customStatusbar$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$customStatusbar$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$customStatusbar$menuButtonTop}}px;">
+            <text class="title">{{$customStatusbar$title}}</text>
+        </view>
+    </view>
+    <view class="pay-success">
+        <image src="http://yyb-oss.universal-space.cn/imgs/pay-success.png"></image>
+        <text class="f38 c_33">支付成功</text>
+        <text class="f26 c_99">已加入游戏</text>
+        <view bindtap="goBack" class="btn bg_blue f67 c_ff">返回首页</view>
+    </view>
+    <view class="{{isLottery?'back_warp':'back_warp hide'}}">
+        <view class="both_center">
+            <image bindtap="close" class="colse" src="http://yyb-oss.universal-space.cn/imgs/scan/icon-close.png"></image>
+            <image bindtap="myLottery" class="lottery" src="http://yyb-oss.universal-space.cn/imgs/scan/img-lottery-prize.png"></image>
+        </view>
+    </view>
+</view>

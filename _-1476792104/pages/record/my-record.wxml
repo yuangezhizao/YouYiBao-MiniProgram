@@ -1,0 +1,102 @@
+<view>
+    <image class="bg-364" src="http://yyb-oss.universal-space.cn/imgs/bg.png"></image>
+    <view class="statusBar ">
+        <text class="title" style="padding-top:{{statusBarHeight+10}}px;">我的战绩</text>
+    </view>
+    <view class="user-info">
+        <image class="user-avatar {{userInfo.avatarUrl!=null?'':'active'}}" src="{{userInfo.avatarUrl!=null?userInfo.avatarUrl:'http://yyb-oss.universal-space.cn/imgs/default_avatar.png'}}"></image>
+        <view class="user-data">
+            <text class="user-name f30 c_33 fwb">{{userInfo==''?'昵称':userInfo.nickname}}</text>
+            <text class="user-score f24 c_99" wx:if="{{token!=''&&userGameSummary!=''}}">最近玩“{{userGameSummary.lastProductName}}”的得分<text class="c_37">{{userGameSummary.lastScore}}</text>
+            </text>
+            <text class="user-score f24 c_99" wx:else>去附近解锁机台吧！</text>
+        </view>
+    </view>
+    <view class="btn-group">
+        <view bindtap="gameRecord" class="btn">
+            <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_1.png"></image>
+            <view class="btn-info">
+                <text class="c_ff f42">{{token!=''&&userGameSummary!=''?userGameSummary.totalCount:0}}</text>
+                <text class="c_ff f26">总游戏次数</text>
+            </view>
+        </view>
+        <view bindtap="moreGame" class="btn">
+            <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_2.png"></image>
+            <view class="btn-info">
+                <text class="c_ff f42">{{token!=''&&userGameSummary!=''?userGameSummary.unlockCount:0}}</text>
+                <text class="c_ff f26">解锁机型数</text>
+            </view>
+        </view>
+    </view>
+    <view class="record">
+        <view class="record-title">
+            <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_3.png"></image>
+            <text class="f30 c_33">我的战绩</text>
+        </view>
+        <scroll-view scrollX="true" wx:if="{{token!=''&&recordList!=''}}">
+            <view class="record-list">
+                <view bindtap="recordDetail" class="list-item" data-wpyrecorddetail-a="{{item}}" wx:for="{{recordList}}" wx:key="key">
+                    <image src="{{item.productImage}}"></image>
+                    <text class="f26 c_99">{{item.productName}}</text>
+                    <view class="highest-score">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/record/icon-record-highest-score.png"></image>
+                        <text class="f30 c_337">{{item.highestScore}}</text>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+        <view bindtap="nearbyShop" class="unrecorded" wx:else>
+            <view class="list-top-right">
+                <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_6.png"></image>
+                <text class="f24 c_99">附近门店</text>
+            </view>
+            <image class="unrecorded-icon" src="http://yyb-oss.universal-space.cn/imgs/icon_eatDoug.png"></image>
+            <text class="f28 c_bb">暂无游戏记录，去附近门店开启探索之旅吧～</text>
+        </view>
+    </view>
+    <view class="hot-game">
+        <view class="hot-game-title">
+            <view class="hot-game-left">
+                <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_4.png"></image>
+                <text class="f30 c_33">热门游戏</text>
+            </view>
+            <text bindtap="moreGame" class="f24 c_33">更多></text>
+        </view>
+        <view bindtap="hotGameList" class="hot-game-list" data-wpyhotgamelist-a="{{item}}" wx:for="{{hotGameList}}" wx:key="key">
+            <view class="list-top">
+                <view class="tag">
+                    <text>{{item.rank}}</text>{{item.productName}}
+            </view>
+                <view catchtap="nearbyShopMachine" class="list-top-right" data-wpynearbyshopmachine-a="{{item}}">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_6.png"></image>
+                    <text class="f24 c_99">附近门店</text>
+                </view>
+            </view>
+            <view class="list-bottom">
+                <image class="game-img" mode="aspectFit" src="{{item.productImage}}"></image>
+                <view class="list-bottom-info">
+                    <text class="f28 c_33 fwb">{{item.productName}}</text>
+                    <text class="f24 c_99">最强玩家得分</text>
+                    <text class="f40 c_33">{{item.highestScore}}</text>
+                </view>
+                <view class="user-avatar">
+                    <image src="{{item.hightestUserAvatar!=null?item.hightestUserAvatar:'http://yyb-oss.universal-space.cn/imgs/default_avatar.png'}}"></image>
+                    <text class="f24 c_99 ellipsis-1">{{item.highestUser==''?'':item.highestUser}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="tabbar_box {{$customTabbar$isIphoneX?'iphoneX-height':''}}" style="background-color:{{$customTabbar$tabbar.backgroundColor}}">
+        <block wx:for="{{$customTabbar$tabbar.list}}" wx:key="{{item.pagePath}}">
+            <view bindtap="$customTabbar$scan" class="tabbar_nav" style="color:{{$customTabbar$tabbar.selectedColor}}" wx:if="{{item.isSpecial}}">
+                <view class="special-wrapper">
+                    <image class="tabbar_icon" src="{{item.iconPath}}"></image>
+                </view>
+            </view>
+            <navigator class="tabbar_nav" hoverClass="none" openType="switchTab" style="color:{{item.selected?$customTabbar$tabbar.selectedColor:$customTabbar$tabbar.color}}" url="{{item.pagePath}}" wx:else>
+                <image class="tabbar_icon" src="{{item.selected?item.selectedIconPath:item.iconPath}}"></image>
+                <text>{{item.text}}</text>
+            </navigator>
+        </block>
+    </view>
+</view>

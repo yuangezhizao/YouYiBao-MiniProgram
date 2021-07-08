@@ -1,0 +1,352 @@
+./components/scan.wxssrpx.tabbar_box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 98rpx;
+    box-shadow: 0 -4rpx 25rpx 0 rgba(0,0,0,0.08);
+}
+
+.tabbar_box.iphoneX-height {
+    padding-bottom: 68rpx;
+}
+
+.middle-wrapper {
+    position: absolute;
+    right: 310rpx;
+    bottom: 0;
+    background-color: #fff;
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    border-top: 2rpx solid #f2f2f3;
+}
+
+.middle-wrapper.iphoneX-height {
+    bottom: 66rpx;
+}
+
+.tabbar_nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 20rpx;
+    height: 98rpx;
+    position: relative;
+    width: auto;
+}
+
+.tabbar_icon {
+    width: 56rpx;
+    height: 56rpx;
+}
+
+.special-wrapper {
+    position: absolute;
+    top: -50rpx;
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    border-top: 2rpx solid #f2f2f3;
+    background-color: #fff;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.special-wrapper .tabbar_icon {
+    width: 120rpx;
+    height: 120rpx;
+}
+
+.special-text-wrapper {
+    width: 56rpx;
+    height: 56rpx;
+}
+
+page {
+    padding-bottom: 200rpx;
+}
+
+.user-info {
+    position: relative;
+    width: 680rpx;
+    height: 260rpx;
+    background: #fff;
+    border-radius: 10rpx;
+    margin: 0 auto;
+    margin-top: 70rpx;
+    display: flex;
+    box-shadow: 0 4rpx 30rpx 0 rgba(85,145,252,0.4);
+}
+
+.user-info .user-avatar {
+    width: 130rpx;
+    height: 130rpx;
+    border: 4rpx solid #3379FE;
+    border-radius: 50%;
+    margin: 32rpx;
+    box-shadow: 0 8rpx 10rpx 0 rgba(53,131,254,0.2);
+}
+
+.user-info .active {
+    border: 4rpx solid #fff;
+}
+
+.user-info .user-data {
+    display: flex;
+    flex-direction: column;
+    margin-top: 65rpx;
+}
+
+.user-info .user-data .user-name {
+    margin-bottom: 15rpx;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.btn-group .btn {
+    width: 282rpx;
+    height: 110rpx;
+    background: linear-gradient(to right,#3CA6FD,#2F5FFF);
+    border-radius: 55rpx;
+    margin-top: -55rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-group .btn image {
+    width: 58rpx;
+    height: 50rpx;
+    margin-right: 13rpx;
+}
+
+.btn-group .btn .btn-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-group .btn:last-child {
+    background: linear-gradient(to right,#5BE89B,#2ECCBD);
+    margin-left: 26rpx;
+}
+
+.btn-group .btn:last-child image {
+    width: 48rpx;
+    height: 58rpx;
+    margin-right: 28rpx;
+}
+
+.record {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40rpx;
+}
+
+.record .record-title {
+    padding-left: 33rpx;
+    display: flex;
+    align-items: center;
+}
+
+.record .record-title image {
+    width: 35rpx;
+    height: 32rpx;
+    margin-right: 15rpx;
+}
+
+.record .record-list {
+    display: flex;
+    height: 310rpx;
+    padding-left: 33rpx;
+    padding-top: 25rpx;
+}
+
+.record .record-list .list-item {
+    width: 250rpx;
+    height: 266rpx;
+    background: #fff;
+    margin-right: 30rpx;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 8rpx 20rpx 0 rgba(85,145,252,0.2);
+    line-height: 48rpx;
+}
+
+.record .record-list .list-item image {
+    width: 230rpx;
+    height: 144rpx;
+    border-radius: 20rpx;
+    overflow: hidden;
+    margin: 10rpx 10rpx 0;
+}
+
+.record .record-list .list-item .highest-score {
+    display: flex;
+}
+
+.record .record-list .list-item .highest-score image {
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 8rpx;
+}
+
+.record .unrecorded {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 690rpx;
+    height: 269rpx;
+    background: #fff;
+    border-radius: 20rpx;
+    box-shadow: 0 8rpx 10rpx 0 rgba(85,145,252,0.1);
+    margin: 27rpx 0 40rpx 30rpx;
+    position: relative;
+}
+
+.record .unrecorded .list-top-right {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 26rpx;
+    right: 30rpx;
+}
+
+.record .unrecorded .list-top-right image {
+    width: 20rpx;
+    height: 25rpx;
+    margin-right: 11rpx;
+}
+
+.record .unrecorded .unrecorded-icon {
+    width: 162rpx;
+    height: 90rpx;
+    margin-bottom: 26rpx;
+}
+
+.hot-game {
+    display: flex;
+    flex-direction: column;
+    padding: 0 33rpx;
+}
+
+.hot-game .hot-game-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hot-game .hot-game-title .hot-game-left {
+    display: flex;
+    align-items: center;
+}
+
+.hot-game .hot-game-title .hot-game-left image {
+    width: 30rpx;
+    height: 36rpx;
+    margin-right: 14rpx;
+}
+
+.hot-game .hot-game-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 250rpx;
+    background: #fff;
+    border-radius: 20rpx;
+    margin-top: 30rpx;
+    left: 30rpx;
+    overflow: hidden;
+    box-shadow: 0 8rpx 10rpx 0 rgba(85,145,252,0.1);
+}
+
+.hot-game .hot-game-list .list-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hot-game .hot-game-list .list-top .tag {
+    height: 53rpx;
+    line-height: 53rpx;
+    background: url("http://yyb-oss.universal-space.cn/imgs/record/lebel_ blue.png") right no-repeat;
+    background-size: auto 100%;
+    font-size: 26rpx;
+    display: inline-flex;
+    align-items: center;
+    color: #fff;
+    padding-right: 48rpx;
+    padding-left: 10rpx;
+}
+
+.hot-game .hot-game-list .list-top .tag text {
+    font-size: 40rpx;
+    padding: 0 10rpx;
+    font-style: oblique;
+}
+
+.hot-game .hot-game-list .list-top .list-top-right {
+    display: flex;
+    align-items: center;
+    margin-right: 30rpx;
+}
+
+.hot-game .hot-game-list .list-top .list-top-right image {
+    width: 20rpx;
+    height: 25rpx;
+    margin-right: 11rpx;
+}
+
+.hot-game .hot-game-list .list-bottom {
+    display: flex;
+    align-items: center;
+}
+
+.hot-game .hot-game-list .list-bottom .game-img {
+    width: 220rpx;
+    height: 150rpx;
+    border-radius: 20rpx;
+    margin: 20rpx 30rpx;
+}
+
+.hot-game .hot-game-list .list-bottom .list-bottom-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 40rpx;
+    max-width: 270rpx;
+    width: 270rpx;
+}
+
+.hot-game .hot-game-list .list-bottom .user-avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hot-game .hot-game-list .list-bottom .user-avatar image {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 50%;
+    border: 5rpx solid #fff;
+    box-shadow: 0 6rpx 8rpx 0 rgba(136,172,255,0.43);
+    margin-bottom: 13rpx;
+}
+
+.hot-game .hot-game-list .list-bottom .user-avatar text {
+    width: 100rpx;
+    text-align: center;
+}

@@ -1,0 +1,71 @@
+<view>
+    <view>
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$customStatusbar$menuButtonTop+60}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$customStatusbar$menuButtonTop}}px;">
+            <image bindtap="$customStatusbar$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$customStatusbar$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$customStatusbar$menuButtonTop}}px;">
+            <text class="title">{{$customStatusbar$title}}</text>
+        </view>
+    </view>
+    <view class="match-banner">
+        <image src="{{recordList!=''?recordList.productImage:productImage}}"></image>
+    </view>
+    <view class="match-title">
+        <text class="f34 c_4a">{{recordList!=''?recordList.productName:productName}}</text>
+        <view bindtap="nearbyShopMachine" class="title-right">
+            <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_6.png"></image>
+            <text class="f26 c_99">附近门店</text>
+        </view>
+    </view>
+    <view class="my-match">
+        <text class="f30 c_99 title">我的综合战绩</text>
+        <view class="match-item-1">
+            <view class="item-content">
+                <image src="http://yyb-oss.universal-space.cn/imgs/match-icon_1.png"></image>
+                <text class="c_ff f80 Merriweather">{{recordList!=''?recordList.highestScore:'-'}}</text>
+                <text class="c_cc f28">最高游戏得分</text>
+            </view>
+            <view class="line"></view>
+            <view class="item-content">
+                <image src="http://yyb-oss.universal-space.cn/imgs/match-icon_2.png"></image>
+                <text class="c_cc f34">第<text class="c_ff f80 Merriweather">{{recordList!=''?recordList.userRank:'-'}}</text>名</text>
+                <text class="c_cc f28">历史最高排名</text>
+            </view>
+        </view>
+        <view class="match-item-2">
+            <view class="item-content">
+                <image src="http://yyb-oss.universal-space.cn/imgs/match-icon_3.png"></image>
+                <text class="f26 c_99">最高闯关数</text>
+                <text class="c_4a f46 Merriweather">{{recordList!=''?recordList.highestRound:'-'}}</text>
+            </view>
+            <view class="item-content">
+                <image src="http://yyb-oss.universal-space.cn/imgs/match-icon_4.png"></image>
+                <text class="f26 c_99">场均投球数</text>
+                <text class="c_4a f46 Merriweather">{{recordList!=''?recordList.averageShots:'-'}}</text>
+            </view>
+            <view class="item-content">
+                <image src="http://yyb-oss.universal-space.cn/imgs/match-icon_5.png"></image>
+                <text class="f26 c_99">场均命中率</text>
+                <text class="c_4a f46 Merriweather">{{recordList!=''?recordList.averageHitRate:'-'}}%</text>
+            </view>
+            <view class="item-content">
+                <image src="http://yyb-oss.universal-space.cn/imgs/match-icon_6.png"></image>
+                <text class="f26 c_99">总消耗卡路里</text>
+                <text class="c_4a f46 Merriweather">{{recordList!=''?recordList.totalCalories:'-'}}<text class="f24"> 卡</text>
+                </text>
+            </view>
+            <view class="item-content">
+                <image src="http://yyb-oss.universal-space.cn/imgs/match-icon_7.png"></image>
+                <text class="f26 c_99">总游戏次数</text>
+                <text class="c_4a f46 Merriweather">{{recordList!=''?recordList.totalCount:'-'}}</text>
+            </view>
+        </view>
+        <view class="btn-group">
+            <view bindtap="historyRecord" class="btn c_ff">战绩记录</view>
+            <view bindtap="rank" class="btn c_ff">全国排行</view>
+        </view>
+    </view>
+</view>

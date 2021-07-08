@@ -1,0 +1,45 @@
+<view class="my-prize-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="form">
+        <view class="field">
+            <input bindinput="getPhone" maxlength="11" placeholder="请输入手机号" type="text" value="{{phone}}"></input>
+            <button bindtap="getUserPhone" class="btn btn-plain btn-round btn-small btn-primary">获取手机号</button>
+        </view>
+        <view class="field">
+            <input bindinput="getCode" maxlength="4" placeholder="请输入手机验证码" type="text" value="{{code}}"></input>
+            <button bindtap="getCaptcha" class="btn btn-plain btn-round btn-small btn-black" disabled="{{!isCaptcha}}">{{codeText}}</button>
+        </view>
+        <view class="set-meal">
+            <view class="num">
+                <text class="Merriweather f90">{{totalPrice}}</text>
+                <text class="f26">元</text>
+            </view>
+            <view class="f26">{{aemsGoodsName}}</view>
+        </view>
+        <button bindtap="pay" class="btn btn-primary btn-round submit {{nextStep==true?'bg_blue':'disabled'}}" disabled="{{!nextStep}}">支付</button>
+    </view>
+    <view class="match-dialog {{$addCardDialog$size}}" wx:if="{{$addCardDialog$isShowDialog}}">
+        <view class="match-dialog-inner">
+            <image bindtap="$addCardDialog$handleClick" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+            <view class="title">{{$addCardDialog$title}}</view>
+            <view class="match-dialog-body tc">
+                <text class="f28">
+        您的会员卡已登记
+        请尽快到对应实体门店进行兑换
+      </text>
+                <view bindtap="exchangeCard" class="btn btn-primary btn-round">兑换实体卡</view>
+            </view>
+        </view>
+    </view>
+</view>

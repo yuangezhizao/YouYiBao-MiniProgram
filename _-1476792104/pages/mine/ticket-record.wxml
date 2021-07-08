@@ -1,0 +1,83 @@
+<view>
+    <view>
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$customStatusbar$menuButtonTop+60}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$customStatusbar$menuButtonTop}}px;">
+            <image bindtap="$customStatusbar$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$customStatusbar$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$customStatusbar$menuButtonTop}}px;">
+            <text class="title">{{$customStatusbar$title}}</text>
+        </view>
+    </view>
+    <view class="white-bg">
+        <view class="coin">
+            <view class="my-coin">
+                <text class="f70 c_ff">0</text>
+                <text class="f24 c_ff">我的奖票</text>
+            </view>
+            <view bindtap="ticketRecord" class="recharge f30">奖票记录</view>
+        </view>
+    </view>
+    <view class="ticket-list">
+        <view class="f34 c_37 title">门店奖票 <text class="f24 c_99">共0家门店拥有奖票</text>
+        </view>
+        <view class="list-item" wx:for="{{0}}" wx:key="key">
+            <view class="item-top">
+                <text class="f24 c_ff">广州-员村店</text>
+                <view class="ticket">
+                    <text class="f60 c_ff">350000</text>
+                    <text class="f26 c_ff">门店奖票数</text>
+                </view>
+            </view>
+            <view class="item-bottom">
+                <view bindtap="exchangeTicket" class="f30 c_37 btn">提取实体奖票</view>
+                <view bindtap="exchangeIntegral" class="f30 c_33 btn">奖票兑换积分</view>
+            </view>
+        </view>
+        <view class="btm-tips both_center">
+            <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 暂无记录
+      </view>
+    </view>
+    <view class="{{exchangeIntegral?'back_warp':'back_warp hide'}}">
+        <view class="confirm-box both_center">
+            <image bindtap="close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+            <view class="top">
+                <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
+                <text class="title f34 c_ff r">温馨提示</text>
+            </view>
+            <view class="middle">
+                <text class="f28 c_99 txt">需兑换积分数</text>
+                <view class="count">
+                    <view bindtap="down" class="down f48 c_ff {{count==10?'active':''}}">-</view>
+                    <view class="input">{{count}}</view>
+                    <view bindtap="add" class="down f48 c_ff">+</view>
+                </view>
+                <text class="f28 c_99">需支付：<text class="c_37 f50">{{ticket}} </text> 门店奖票</text>
+            </view>
+            <view bindtap="confirmPay" class="btn bg_blue c_ff f34">确定支付</view>
+            <text class="f24 c_99">当前“员村店”的奖票余额：3500</text>
+        </view>
+    </view>
+    <view class="{{exchangeTicket?'back_warp':'back_warp hide'}}">
+        <view class="confirm-box both_center">
+            <image bindtap="close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+            <view class="top">
+                <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
+                <text class="title f34 c_ff r">提取实体奖票</text>
+            </view>
+            <view class="middle">
+                <text class="f28 c_99 txt">需提取奖票数</text>
+                <view class="count">
+                    <view bindtap="down" class="down f48 c_ff {{count==10?'active':''}}">-</view>
+                    <view class="input">{{count}}</view>
+                    <view bindtap="add" class="down f48 c_ff">+</view>
+                </view>
+                <text class="f26 c_99">确认后启动扫码功能</text>
+                <text class="f26 c_99">请扫描奖票门店的任意机台码即可提取。</text>
+            </view>
+            <view bindtap="confirmPay" class="btn bg_blue c_ff f34">确定提取</view>
+            <text class="f24 c_99">当前“员村店”的奖票余额：3500</text>
+        </view>
+    </view>
+</view>

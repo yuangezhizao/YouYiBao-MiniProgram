@@ -1,0 +1,69 @@
+<view>
+    <view>
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$customStatusbar$menuButtonTop+60}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$customStatusbar$menuButtonTop}}px;">
+            <image bindtap="$customStatusbar$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$customStatusbar$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$customStatusbar$menuButtonTop}}px;">
+            <text class="title">{{$customStatusbar$title}}</text>
+        </view>
+    </view>
+    <view class="store-info">
+        <view bindtap="storeExchange" class="select-store">
+            <image src="http://yyb-oss.universal-space.cn/imgs/scan/icon_switch.png"></image>
+            <text class="f24 c_99">切换门店</text>
+        </view>
+        <image class="store-logo" mode="aspectFit" src="{{storeDetail.store_logo}}"></image>
+        <text class="f32 c_37">{{storeDetail.store_name}}</text>
+        <view bindtap="navigationAddress" class="store-address">
+            <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_6.png"></image>
+            <text class="f28 c_99">{{storeDetail.provinceName+storeDetail.cityName+storeDetail.countyName+storeDetail.store_address}}</text>
+        </view>
+        <view class="line"></view>
+        <view bindtap="callPhone" class="store-mobile">
+            <image src="http://yyb-oss.universal-space.cn/imgs/user-icon_10.png"></image>
+            <text class="f28 c_99">{{storeDetail.store_mobile}}</text>
+        </view>
+    </view>
+    <view class="latest-activity" wx:if="{{activityList.length>0}}">
+        <view class="title">
+            <text class="f30 c_99">最新活动</text>
+            <text bindtap="moreActivity" class="f24 c_99 more-activity">更多></text>
+        </view>
+        <view bindtap="activityDetail" class="activity-banner" data-wpyactivitydetail-a="{{item}}" wx:for="{{activityList}}" wx:key="index">
+            <image class="bg" src="{{item.image}}"></image>
+            <view class="activity-banner-title">
+                <text class="f30 c_ff ellipsis-1">{{item.title}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="member-package" wx:if="{{memberPackage.length>0}}">
+        <text class="f30 c_99 title">会员卡套餐</text>
+        <scroll-view scrollX="true">
+            <view class="package-list">
+                <view bindtap="memberPackageDetail" class="list-item" data-wpymemberpackagedetail-a="{{item}}" wx:for="{{memberPackage}}" wx:key="key">
+                    <image binderror="errorImg" data-wpyerrorimg-a="{{index}}" src="{{item.image}}"></image>
+                    <text class="f30 c_51 fwb">会员价：{{item.price}}</text>
+                    <text class="f24 c_99">获得 {{item.coin}}代币</text>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="normal-package" wx:if="{{normalPackage.length>0}}">
+        <text class="f30 c_99 title">非会员套餐</text>
+        <view bindtap="normalPackageDetail" class="package-item" data-wpynormalpackagedetail-a="{{item}}" wx:for="{{normalPackage}}" wx:key="key">
+            <view class="img-group">
+                <image class="type" src="http://yyb-oss.universal-space.cn/imgs/scan/ic_package_type_normal.png"></image>
+                <image class="img" src="{{item.image}}"></image>
+            </view>
+            <view class="item-info">
+                <text class="f30 c_37 ellipsis-1">{{item.packages_name}}</text>
+                <text class="f24 c_99">币数：{{item.coins}}</text>
+                <text class="f24 c_99">库存：{{item.stock}}</text>
+            </view>
+            <view class="item-btn f30 c_ff bg_blue">购买</view>
+        </view>
+    </view>
+</view>

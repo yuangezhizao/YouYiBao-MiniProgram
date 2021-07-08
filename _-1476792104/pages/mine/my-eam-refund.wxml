@@ -1,0 +1,69 @@
+<view class="page-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="refund-wrap">
+        <view class="block">
+            <view class="field">
+                <text class="f26 c_99">套餐</text>
+                <text class="f26 c_26">¥{{preRefundData.totalAmount/100}}元 / {{preRefundData.totalPoint}}e-am点</text>
+            </view>
+            <view class="field">
+                <text class="f26 c_99">订单号</text>
+                <text class="f26 c_26">{{preRefundData.orderNo}}</text>
+            </view>
+            <view class="field">
+                <text class="f26 c_99">剩余点数</text>
+                <text class="f26 c_26">{{preRefundData.remainPoint}} 点</text>
+            </view>
+            <view class="field">
+                <text class="f26 c_99">可退金额</text>
+                <text class="f26 c_26">{{preRefundData.remainAmount/100}} 元</text>
+            </view>
+            <view class="field">
+                <text class="f26 c_99">手续费</text>
+                <text class="f26 c_26">{{(preRefundData.remainAmount-preRefundData.realRemainAmount)/100}} 元</text>
+            </view>
+        </view>
+        <view class="block">
+            <view class="field">
+                <text class="f26 c_99">实际退款</text>
+                <text class="f34 c_26">{{preRefundData.realRemainAmount/100}} 元</text>
+            </view>
+        </view>
+        <view class="tips">
+            <text class="f24 c_99">注：退款确认后，工作人员会在7个工作日内审核
+          并退还至您的充值途径，请注意查账。
+          退款时会收取所退款项的6%作为平台退款手续费</text>
+        </view>
+        <view bindtap="confirmRefund" class="btn btn-round">确定退款</view>
+    </view>
+    <view>
+        <view class="{{$customDialog$isShow?'back_warp':'back_warp hide'}}">
+            <view class="confirm-box both_center">
+                <image bindtap="$customDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+                <view class="top">
+                    <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
+                    <text class="title f34 c_ff r">{{$customDialog$title}}</text>
+                </view>
+                <view class="f34 content c_99">{{$customDialog$content}}</view>
+                <view class="button_group" wx:if="{{$customDialog$type=='confirm'}}">
+                    <view bindtap="$customDialog$confirm" class="button">
+                        <text class="f30 c_ff">确定</text>
+                    </view>
+                </view>
+                <button bindgetuserinfo="$customDialog$getAuthHandle" class="f34 btn_group_cus bg_blue c_ff" openType="getUserInfo" wx:if="{{$customDialog$type=='getAuth'}}">点击授权</button>
+                <button bindgetphonenumber="$customDialog$getPhoneNumber" class="f34 btn_group_cus bg_blue c_ff" openType="getPhoneNumber" wx:if="{{$customDialog$type=='phoneAuth'}}">点击授权</button>
+            </view>
+        </view>
+    </view>
+</view>

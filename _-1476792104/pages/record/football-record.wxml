@@ -1,0 +1,121 @@
+<view class="page-wrapper">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="my-match">
+        <view class="match-banner">
+            <image src="{{recordStatis!=''?recordStatis.productImage:productImage}}"></image>
+        </view>
+        <view class="best-record-wrap">
+            <text class="f30 c_99">我的最高分</text>
+            <view class="best-record">
+                <view class="record-item-1">
+                    <view class="avatar">
+                        <image src="{{userInfo.avatarUrl}}"></image>
+                    </view>
+                    <text class="c_f5 f28 nickname ellipsis-1">{{userInfo.nickname}}</text>
+                </view>
+                <view class="left">
+                    <view class="col">
+                        <view class="record-item-2">
+                            <text class="Merriweather c_ff f60 font-style">{{recordStatis.highestScore}}</text>
+                            <text class="f26 c_f5">我的最高得分</text>
+                        </view>
+                        <view class="line"></view>
+                        <view class="record-item-2 row">
+                            <view class="c_f5 f32">第<text class="Merriweather c_ff f60 font-style"> {{recordStatis.userRank}} </text>名</view>
+                            <text class="f26 c_f5">当前排名</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="record-list">
+            <view class="list-top">
+                <text class="f30 c_99">我的全部记录</text>
+                <view class="switch-btn">
+                    <text bindtap="navbarTap" class="switch-item f24 c_99 {{currentTab==index?'active':''}}" data-index="{{index}}" wx:for="{{navbar}}">{{item}}</text>
+                </view>
+            </view>
+            <view bindtap="recordDetail" class="latest-record" data-wpyrecorddetail-a="{{item}}" wx:for="{{recordList}}" wx:key="{{index}}">
+                <view class="top">
+                    <view class="tag">{{item.modeName}}</view>
+                    <text class="f30 c_26">{{item.tag}}P</text>
+                    <view class="locate">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_positioning.png"></image>
+              {{item.storeName}}
+            </view>
+                </view>
+                <view class="item-middle">
+                    <view class="item-middle-info">
+                        <text class="Merriweather-Book f50 c_26">{{item.goals}}</text>
+                        <view>
+                            <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_9.png"></image>
+                            <text class="f26 c_99">进球数</text>
+                        </view>
+                    </view>
+                    <view class="line"></view>
+                    <view class="item-middle-info">
+                        <text class="Merriweather-Book f50 c_26">{{item.assists}}</text>
+                        <view>
+                            <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_assist_small_blue.png"></image>
+                            <text class="f26 c_99">助攻数</text>
+                        </view>
+                    </view>
+                    <view class="line"></view>
+                    <view class="item-middle-info">
+                        <text class="Merriweather-Book f50 c_26">{{item.steals}}</text>
+                        <view>
+                            <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_steal_small_blue.png"></image>
+                            <text class="f26 c_99">抢断数</text>
+                        </view>
+                    </view>
+                    <view class="line"></view>
+                    <view class="item-middle-info">
+                        <text class="f24 c_26">
+                            <text class="Merriweather-Book f50 c_26">{{item.calories}}</text>千卡</text>
+                        <view>
+                            <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_11.png"></image>
+                            <text class="f26 c_99">卡路里</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="score">
+                    <text>{{item.gameDate}} 游戏得分</text>
+                    <text class="Merriweather">{{item.score}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="btm-tips">
+            <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 已经到底啦
+      </view>
+    </view>
+    <view>
+        <view class="{{$customDialog$isShow?'back_warp':'back_warp hide'}}">
+            <view class="confirm-box both_center">
+                <image bindtap="$customDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+                <view class="top">
+                    <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
+                    <text class="title f34 c_ff r">{{$customDialog$title}}</text>
+                </view>
+                <view class="f34 content c_99">{{$customDialog$content}}</view>
+                <view class="button_group" wx:if="{{$customDialog$type=='confirm'}}">
+                    <view bindtap="$customDialog$confirm" class="button">
+                        <text class="f30 c_ff">确定</text>
+                    </view>
+                </view>
+                <button bindgetuserinfo="$customDialog$getAuthHandle" class="f34 btn_group_cus bg_blue c_ff" openType="getUserInfo" wx:if="{{$customDialog$type=='getAuth'}}">点击授权</button>
+                <button bindgetphonenumber="$customDialog$getPhoneNumber" class="f34 btn_group_cus bg_blue c_ff" openType="getPhoneNumber" wx:if="{{$customDialog$type=='phoneAuth'}}">点击授权</button>
+            </view>
+        </view>
+    </view>
+</view>

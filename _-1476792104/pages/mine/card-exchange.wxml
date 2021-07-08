@@ -1,0 +1,28 @@
+<view class="page-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="ce-wrap">
+        <view class="exchange-item" wx:for="{{cardList}}" wx:key="key">
+            <view class="title">
+                <text class="c_26 f28">{{item.status=='1'?'未支付':item.status=='2'?'未兑换':item.status=='3'?'已兑换':item.status=='4'?'已退款':item.status=='9'?'已取消':'会员卡'}}</text>
+                <text class="c_99 f24">订单号：{{item.no}}</text>
+            </view>
+            <view class="bd">
+                <text class="f26 c_99">{{item.aemsGoodsName}}
+              支付金额：¥{{item.payPrice}}
+            </text>
+                <view bindtap="exchangeCard" class="btn btn-primary btn-round btn-plain" data-wpyexchangecard-a="{{index}}" wx:if="{{item.status=='2'}}">兑换实体卡</view>
+            </view>
+        </view>
+    </view>
+</view>

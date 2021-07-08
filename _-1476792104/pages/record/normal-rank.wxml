@@ -1,0 +1,70 @@
+<view class="page-wrapper">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="navbar">
+        <text bindtap="navbarTap" class="item {{currentTab==index?'active':''}}" data-index="{{index}}" wx:for="{{navbar}}" wx:key="unique">{{item}}</text>
+    </view>
+    <view class="my-rank">
+        <text class="c_99 f30">我的排名</text>
+        <view class="rank" wx:if="{{rankInfo.rank}}">
+            <view class="rank-left">
+                <text class="f{{fontSize}} c_ff Merriweather">{{rankInfo.rank}}</text>
+                <text class="c_FFE f28">排名</text>
+            </view>
+            <view class="rank-right">
+                <view class="rank-right-top">
+                    <image src="{{rankInfo.avatarUrl!=''?rankInfo.avatarUrl:'http://yyb-oss.universal-space.cn/imgs/default_avatar.png'}}"></image>
+                    <text class="f28 c_FFE user-name ellipsis-1">{{rankInfo.nickName}}</text>
+                    <view class="f24 c_FFE score">得分 <text class="Merriweather f80 c_ff">{{rankInfo.score}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="btm-tips both_center" wx:else>
+            <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 暂无排名
+      </view>
+    </view>
+    <view class="nationwide-rank">
+        <text class="c_99 f30">全国排名</text>
+        <view class="top3-user" wx:if="{{rankList!=''}}">
+            <view class="user" wx:for="{{top3}}">
+                <view class="avatar">
+                    <image src="{{item.avatarUrl!=''?item.avatarUrl:'http://yyb-oss.universal-space.cn/imgs/default_avatar.png'}}"></image>
+                </view>
+                <view class="nickname">{{item.nickName}}</view>
+                <view class="score">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_flash.png"></image> {{item.score}}
+          </view>
+            </view>
+        </view>
+        <view class="list" wx:if="{{rankList!=''}}">
+            <view class="rank" wx:for="{{rankList}}" wx:key="key">
+                <view class="rank-left">
+                    <text class="c_26 Merriweather num">{{item.rank}}</text>
+                    <text class="c_99 f28">排名</text>
+                </view>
+                <view class="rank-right">
+                    <view class="rank-right-top">
+                        <image src="{{item.avatarUrl!=''?item.avatarUrl:'http://yyb-oss.universal-space.cn/imgs/default_avatar.png'}}"></image>
+                        <text class="f28 c_66 user-name ellipsis-1">{{item.nickName}}</text>
+                        <view class="f24 c_99 score">得分 <text class="Merriweather f80 c_26">{{item.score}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="btm-tips both_center" wx:else>
+            <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 暂无排名
+      </view>
+    </view>
+</view>

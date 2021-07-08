@@ -1,0 +1,80 @@
+<view>
+    <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png"></image>
+    <view class="statusBar ">
+        <text class="title font-loaded" style="padding-top:{{statusBarHeight+10}}px;">游艺宝</text>
+    </view>
+    <view bindtap="selectAddress" class="location">
+        <view class="location-left">
+            <image class="icon" src="http://yyb-oss.universal-space.cn/imgs/location.png"></image>
+            <text class="c_f6 f30">{{storeDetail?storeDetail.store_name:'请选择门店'}}</text>
+        </view>
+        <view class="c_f6 f24">更多门店></view>
+    </view>
+    <swiper autoplay="true" circular="true" class="swiper square-dot" indicatorColor="#ccc" indicatorDots="true">
+        <swiper-item class="swiper-item" wx:for="{{list}}" wx:key="key">
+            <image bindtap="banner" class="swiper-img" data-wpybanner-a="{{item}}" src="{{item.image}}"></image>
+        </swiper-item>
+    </swiper>
+    <view class="classify">
+        <view bindtap="storeSetMeal" class="classify-item">
+            <image src="http://yyb-oss.universal-space.cn/imgs/classify-2.png"></image>
+            <text class="c_99">门店套餐</text>
+        </view>
+        <view bindtap="mySetMeal" class="classify-item">
+            <image src="http://yyb-oss.universal-space.cn/imgs/classify-1.png"></image>
+            <text class="c_99">我的套餐</text>
+        </view>
+        <view bindtap="exchangeTicket" class="classify-item">
+            <image src="http://yyb-oss.universal-space.cn/imgs/classify-4.png"></image>
+            <text class="c_99">奖票兑换</text>
+        </view>
+        <view bindtap="payEamPoint" class="classify-item">
+            <image src="http://yyb-oss.universal-space.cn/imgs/classify-3.png"></image>
+            <text class="c_99">e-am点</text>
+        </view>
+    </view>
+    <scroll-view class="type" scrollX="true">
+        <image class="type-1" src="{{item.imaUrl}}" wx:for="{{type}}" wx:key="key"></image>
+    </scroll-view>
+    <view class="match">
+        <view class="match-top">
+            <image class="match-top-left" src="http://yyb-oss.universal-space.cn/imgs/title_1.png"></image>
+            <text bindtap="moreMatch" class="f26 c_99">更多></text>
+        </view>
+        <view bindtap="matchDetail" class="match-banner {{item.status==2?'disabled':''}}" data-wpymatchdetail-a="{{item}}" wx:for="{{matchList}}" wx:key="index">
+            <image class="bg" src="{{item.eventImage}}"></image>
+            <image class="status" src="{{item.status==0?'http://yyb-oss.universal-space.cn/imgs/match/icon_status_blue.png':item.status==1?'http://yyb-oss.universal-space.cn/imgs/match/icon_status_yellow.png':'http://yyb-oss.universal-space.cn/imgs/match/icon_status_gray.png'}}"></image>
+            <view class="match-banner-title">
+                <text class="f30 c_ff title ellipsis-1">{{item.eventName}}</text>
+                <text class="f24 c_ff">{{item.beginTime}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="hot-game">
+        <view class="game-top">
+            <image class="game-top-left" src="http://yyb-oss.universal-space.cn/imgs/title_2.png"></image>
+            <text bindtap="moreGame" class="f26 c_99">更多></text>
+        </view>
+        <view class="game-content" wx:for="{{hotGame}}" wx:key="key">
+            <image class="game-avatar" src="{{item.productImage}}"></image>
+            <text class="f26 c_ff fwb game-name">{{item.productName}}</text>
+            <view class="game-count">
+                <image class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_flash.png"></image>
+                <text class="f32 c_ff">{{item.totalCount}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="tabbar_box {{$customTabbar$isIphoneX?'iphoneX-height':''}}" style="background-color:{{$customTabbar$tabbar.backgroundColor}}">
+        <block wx:for="{{$customTabbar$tabbar.list}}" wx:key="{{item.pagePath}}">
+            <view bindtap="$customTabbar$scan" class="tabbar_nav" style="color:{{$customTabbar$tabbar.selectedColor}}" wx:if="{{item.isSpecial}}">
+                <view class="special-wrapper">
+                    <image class="tabbar_icon" src="{{item.iconPath}}"></image>
+                </view>
+            </view>
+            <navigator class="tabbar_nav" hoverClass="none" openType="switchTab" style="color:{{item.selected?$customTabbar$tabbar.selectedColor:$customTabbar$tabbar.color}}" url="{{item.pagePath}}" wx:else>
+                <image class="tabbar_icon" src="{{item.selected?item.selectedIconPath:item.iconPath}}"></image>
+                <text>{{item.text}}</text>
+            </navigator>
+        </block>
+    </view>
+</view>

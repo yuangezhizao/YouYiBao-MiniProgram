@@ -1,0 +1,31 @@
+<view class="jackpot-wrap">
+    <view class="icon-group" style="margin-top:{{menuButtonTop}}px;">
+        <image bindtap="goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+        <view class="line"></view>
+        <image bindtap="goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+    </view>
+    <view class="my-rank">
+        <view class="rank f90 c_ff fwb">{{poolRank.rankInfo.rank}}</view>
+        <view class="user-info">
+            <image src="{{poolRank.rankInfo.avatarUrl}}"></image>
+            <text class="f28 c_ff ellipsis-1">{{poolRank.rankInfo.nickName}}</text>
+        </view>
+        <image bindtap="myPrize" class="my-prize" src="http://yyb-oss.universal-space.cn/imgs/match/jackpot_btn.png"></image>
+        <text class="f60 c_ff number fwb">{{poolRank.rankInfo.ticketQty}}</text>
+    </view>
+    <scroll-view bindscrolltolower="loadMore" class="scroll" scrollY="true" style="height:{{windowHeight-247}}px;">
+        <view class="jackpot-list">
+            <view class="list-item f34 fwb" wx:for="{{rankList}}" wx:key="key">
+                <view class="c_ff rank f55">{{item.rank}}</view>
+                <view class="user-info">
+                    <image src="{{item.avatarUrl}}"></image>
+                    <text class="ellipsis-1">{{item.nickName}}</text>
+                </view>
+                <view class="ticke-num">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/match/jackpot_icon_1.png"></image>
+                    <text>{{item.ticketQty}}</text>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>

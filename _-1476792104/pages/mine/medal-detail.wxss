@@ -1,0 +1,274 @@
+.match-status-bar {
+    position: relative;
+    z-index: 99;
+}
+
+.match-status-bar .statusBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 64rpx;
+}
+
+.match-status-bar .statusBar .icon-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    width: 174rpx;
+    height: 64rpx;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 35rpx;
+    margin-left: 30rpx;
+    border: 1rpx solid rgba(250,250,250,0.3);
+    z-index: 9999;
+}
+
+.match-status-bar .statusBar .icon-group .line {
+    width: 3rpx;
+    height: 32rpx;
+    background: rgba(250,250,250,0.3);
+}
+
+.match-status-bar .statusBar .icon-group .left {
+    width: 38rpx;
+    height: 38rpx;
+    padding: 10rpx 20rpx;
+}
+
+.btn {
+    position: relative;
+    display: inline-block;
+    height: 88rpx;
+    padding: 0;
+    font-size: 32rpx;
+    line-height: 84rpx;
+    text-align: center;
+    vertical-align: middle;
+    box-sizing: border-box;
+    border-radius: 10rpx;
+    -webkit-appearance: none;
+    -webkit-text-size-adjust: 100%;
+    transition: all 500ms;
+}
+
+.btn::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    border: inherit;
+    border-color: #000;
+    border-radius: inherit;
+    content: ' ';
+    opacity: 0;
+    transform: translate(-50%,-50%);
+}
+
+.btn::after {
+    border-width: 0;
+}
+
+.btn:active {
+    transform: translateY(.1em);
+}
+
+.btn-active::before {
+    opacity: .15;
+}
+
+.btn-unclickable::after {
+    display: none;
+}
+
+.btn-default {
+    color: #bbb;
+    background-color: #fff;
+    border: 1rpx solid #fff;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #2660E7;
+    border: 1rpx solid #2660E7;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #E13434;
+    border: 1rpx solid #E13434;
+}
+
+.btn-warning {
+    color: #fff;
+    background-color: #F6C96A;
+    border: 1rpx solid #F6C96A;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #5BE89B;
+    border: 1rpx solid #5BE89B;
+}
+
+.btn-plain {
+    background-color: #fff;
+}
+
+.btn-plain.btn-primary {
+    color: #2660E7;
+}
+
+.btn-plain.btn-black {
+    border: 1rpx solid #999;
+}
+
+.btn-plain.btn-danger {
+    color: #E13434;
+}
+
+.btn-plain.btn-warning {
+    color: #F6C96A;
+}
+
+.btn-large {
+    width: 100%;
+    height: 100rpx;
+    line-height: 96rpx;
+}
+
+.btn-normal {
+    padding: 0 30rpx;
+    font-size: 28rpx;
+}
+
+.btn-small {
+    height: 66rpx;
+    min-width: 120rpx;
+    padding: 0 20rpx;
+    font-size: 26rpx;
+    line-height: 66rpx;
+}
+
+.btn-mini {
+    display: inline-block;
+    width: 100rpx;
+    height: 44rpx;
+    font-size: 20rpx;
+    line-height: 40rpx;
+}
+
+.btn-mini+.btn-mini {
+    margin-left: 10rpx;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.btn-round {
+    border-radius: 2em;
+}
+
+.btn-square {
+    border-radius: 0;
+}
+
+.btn-disabled {
+    color: #fff;
+    background-color: #bbb;
+}
+
+page {
+    background: #FFF;
+}
+
+.blue-bg {
+    width: 100%;
+    height: 250rpx;
+    background: #F2F9FF;
+}
+
+.medal-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 40rpx;
+}
+
+.medal-info .medal {
+    width: 300rpx;
+    height: 300rpx;
+    margin-top: -175rpx;
+}
+
+.medal-info .line {
+    width: 64rpx;
+    height: 2rpx;
+    background: #D8D8D8;
+    margin: 30rpx 0;
+}
+
+.medal-info .c_99 {
+    margin-bottom: 22rpx;
+}
+
+.medal-info .medal-btn {
+    width: 570rpx;
+    height: 110rpx;
+    text-align: center;
+    line-height: 110rpx;
+    background: #EEEEEE;
+    border-radius: 60rpx;
+    margin: 42rpx 0;
+}
+
+.medal-grade {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.medal-grade .line {
+    width: 100%;
+    height: 2rpx;
+    background: #D8D8D8;
+    position: absolute;
+    top: 70rpx;
+}
+
+.medal-grade .medal-row {
+    display: flex;
+}
+
+.medal-grade .medal-row .grade-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 12rpx 53rpx;
+    background: #FFF;
+    z-index: 999;
+}
+
+.medal-grade .medal-row .grade-item image {
+    width: 80rpx;
+    height: 80rpx;
+    border: 3rpx solid #D8D8D8;
+    border-radius: 50%;
+    padding: 5rpx;
+    margin-bottom: 12rpx;
+}
+
+.medal-grade .medal-row .grade-item:nth-child(2) image {
+    border: 3rpx solid #8D92A7;
+}
+
+.medal-grade .medal-row .grade-item:nth-child(3) image {
+    border: 3rpx solid #FDB308;
+}

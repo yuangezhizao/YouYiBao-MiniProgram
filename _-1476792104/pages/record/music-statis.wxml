@@ -1,0 +1,70 @@
+<view class="page-wrapper">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="match-banner">
+        <image mode="aspectFit" src="{{recordList!=''?recordList.productImage:productImage}}"></image>
+    </view>
+    <view class="match-title">
+        <text class="f34 c_4a">{{recordList!=''?recordList.productName:productName}}</text>
+        <view bindtap="nearbyShopMachine" class="title-right">
+            <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_6.png"></image>
+            <text class="f26 c_99">附近门店</text>
+        </view>
+    </view>
+    <view class="vip-intro">
+        <view class="text">
+            <text>我的当前会员等级：{{memberState.memberType==0?'游客':memberState.memberType==1?'试用会员':memberState.memberType==2?'基本会员':memberState.memberType==4?'VIP会员':''}}</text>                  <text wx:if="{{memberState.memberType>0}}"> 有效期：{{memberState.validDate}}天</text>
+        </view>
+        <view class="text">
+            <text>我的e-am点余额：{{memberState.remainPoint}}</text>
+        </view>
+        <view class="vip-list">
+            <view class="item">
+                <image src="{{memberState.memberType==1?'http://yyb-oss.universal-space.cn/imgs/record/icon_record_grade3.png':'http://yyb-oss.universal-space.cn/imgs/record/icon_record_grade4.png'}}"></image>
+                <view class="desc">
+            试用会员 <view bindtap="exchangeMember" class="btn {{memberState.memberType==1?'vip-1':''}}">试用</view>
+                </view>
+            </view>
+            <view class="item">
+                <image src="{{memberState.memberType==2?'http://yyb-oss.universal-space.cn/imgs/record/icon_record_grade2.png':'http://yyb-oss.universal-space.cn/imgs/record/icon_record_grade4.png'}}"></image>
+                <view class="desc">
+            基本会员 <view bindtap="exchangeMember" class="btn {{memberState.memberType==2?'vip-2':''}}">兑换</view>
+                </view>
+            </view>
+            <view class="item">
+                <image src="{{memberState.memberType==4?'http://yyb-oss.universal-space.cn/imgs/record/icon_record_grade1.png':'http://yyb-oss.universal-space.cn/imgs/record/icon_record_grade5.png'}}"></image>
+                <view class="desc">
+            VIP会员 <view bindtap="exchangeMember" class="btn {{memberState.memberType==4?'vip-3':''}}">兑换</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="my-match">
+        <view class="match-item-2">
+            <view class="item-content">
+                <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_yin.png"></image>
+                <text class="f26 c_99">游玩过歌曲总数</text>
+                <text class="c_4a f46 Merriweather">{{recordList!=''?recordList.musicCount:'-'}}</text>
+            </view>
+            <view class="item-content">
+                <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_total.png"></image>
+                <text class="f26 c_99">总游戏次数</text>
+                <text class="c_4a f46 Merriweather">{{recordList!=''?recordList.playCount:'-'}}</text>
+            </view>
+        </view>
+        <view class="btn-group">
+            <view bindtap="musicRecord" class="btn c_ff">战绩记录</view>
+            <view bindtap="musicLib" class="btn c_ff">曲目大全</view>
+        </view>
+    </view>
+</view>

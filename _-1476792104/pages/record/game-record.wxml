@@ -1,0 +1,48 @@
+<view class="my-prize-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="white-bg">
+        <view class="coin">
+            <view class="f80 c_ff">{{totalCount}}</view>
+            <view class="f34 c_ff">总游戏局数</view>
+        </view>
+    </view>
+    <view class="game_record">
+        <view class="f28 c_99 title">游戏记录</view>
+        <block wx:for="{{resultList}}" wx:key="index">
+            <view class="record_item" wx:if="{{recordList!=''}}">
+                <view class="date">
+            {{item.date}}
+          </view>
+                <view class="detail bg_w">
+                    <view bindtap="gameDetail" class="row" data-wpygamedetail-a="{{ele}}" wx:for="{{item.data}}" wx:for-item="ele" wx:key="index">
+                        <view class="c_33">
+                            <text class="f36">{{ele.productName}}</text>
+                            <text class="fr f36">{{ele.score}}</text>
+                        </view>
+                        <view class="c_99 r">
+                            <text class="f24">{{ele.gameDate}}</text>
+                            <text class="fr f24 mr0">分数</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="btm-tips both_center" wx:else>
+                <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 暂无记录
+        </view>
+        </block>
+        <view class="btm-tips" wx:if="{{canLoadMore==false}}">
+            <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 已经到底啦
+      </view>
+    </view>
+</view>

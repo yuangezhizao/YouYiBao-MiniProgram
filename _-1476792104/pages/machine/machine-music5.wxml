@@ -1,0 +1,203 @@
+<view>
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="music5-wrap">
+        <view class="match-detail-top" hidden="{{machineDetail==''}}">
+            <view class="banner">
+                <image src="{{machineDetail.image}}"></image>
+            </view>
+            <view class="title">{{machineDetail.name}}</view>
+            <text class="desc">{{machineDetail.storeAddress}}</text>
+        </view>
+        <view class="user-info">
+            <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+            <view class="user-content">
+                <view class="row">
+                    <view class="f28 c_33 user-name ellipsis-1">{{userInfo.nickname}}</view>
+                    <image class="label" src="{{'http://yyb-oss.universal-space.cn/imgs/record/member_status'+memberState.memberType+'.png'}}"></image>
+                </view>
+                <text class="f24 c_99" wx:if="{{memberState.memberType>0}}">会员有效期：{{memberState.validDate}}天</text>
+                <text class="f24 c_99">e-am点余额: {{memberState.remainPoint}}</text>
+                <text class="f24 c_99" wx:if="{{memberState.memberType==0}}">成为正式会员获得更多权益</text>
+            </view>
+            <view bindtap="rechargeEamPoint" class="coin-recharge c_ff f30">充值e-am点</view>
+        </view>
+        <view class="medal-grade">
+            <view class="line"></view>
+            <view class="medal-row">
+                <view bindtap="swiperChange" class="grade-item" data-wpyswiperchange-a="0">
+                    <image class="{{cardCur==0?'active':''}}" src="{{cardCur==0?'http://yyb-oss.universal-space.cn/imgs/record/icon_grade_3.png':'http://yyb-oss.universal-space.cn/imgs/record/icon_grade_1.png'}}"></image>
+                    <text class="f26 c_99">试用会员</text>
+                </view>
+                <view bindtap="swiperChange" class="grade-item" data-wpyswiperchange-a="1">
+                    <image class="{{cardCur==1?'active1':''}}" src="{{cardCur==1?'http://yyb-oss.universal-space.cn/imgs/record/icon_grade_4.png':'http://yyb-oss.universal-space.cn/imgs/record/icon_grade_1.png'}}"></image>
+                    <text class="f26 c_99">基本会员</text>
+                </view>
+                <view bindtap="swiperChange" class="grade-item" data-wpyswiperchange-a="2">
+                    <image class="{{cardCur==2?'active2':''}}" src="{{cardCur==2?'http://yyb-oss.universal-space.cn/imgs/record/icon_grade_5.png':'http://yyb-oss.universal-space.cn/imgs/record/icon_grade_2.png'}}"></image>
+                    <text class="f26 c_99">VIP会员</text>
+                </view>
+            </view>
+        </view>
+        <swiper bindchange="cardSwiper" circular="true" class="activity-swiper" current="{{cardCur}}">
+            <swiper-item class="swiper {{cardCur==0?'cur':''}}">
+                <view class="swiper-item">
+                    <image class="label" src="http://yyb-oss.universal-space.cn/imgs/record/icon_label_current.png" wx:if="{{memberState.memberType==1}}"></image>
+                    <text class="f34 c_99">试用会员权限</text>
+                    <view class="f28 c_26 tips">
+                        <text>• 可免费体验基本模式【无限制】、好友联机【无限制】、特殊模式【计量条模式】、段位考核模式</text>
+                        <text>• 可付费体验混曲模式、特殊模式</text>
+                    </view>
+                    <view class="line"></view>
+                    <view class="item-bottom" wx:if="{{memberState.memberType==0}}">
+                        <view class="row">
+                            <text class="f24 c_99">只需扫码注册游艺宝会员
+                      即可享受7天试用会员权益！</text>
+                            <view bindtap="freeMember" class="exchange-btn f28 c_ff">免费试用</view>
+                        </view>
+                    </view>
+                    <text class="f26 c_99" wx:else>成为正式会员获得更多权益</text>
+                </view>
+            </swiper-item>
+            <swiper-item class="swiper {{cardCur==1?'cur':''}}">
+                <view class="swiper-item">
+                    <image class="label" src="http://yyb-oss.universal-space.cn/imgs/record/icon_label_current.png" wx:if="{{memberState.memberType==2}}"></image>
+                    <text class="f34 c_99">基本会员权限</text>
+                    <view class="f28 c_26 tips">
+                        <text>• 可免费体验基本模式【限制选曲】、好友联机【限制选曲】</text>
+                        <text>• 可付体验基本模式【无限制】、好友联机【无限制】、段位考核模式、混曲模式、特殊模式</text>
+                    </view>
+                    <view class="line"></view>
+                    <view class="item-bottom">
+                        <view class="row">
+                            <text class="f30 c_99">{{memberTypeList[2].price}}e-am点/{{memberTypeList[2].days}}天</text>
+                            <view bindtap="exchange" class="exchange-btn f28 c_ff" data-wpyexchange-a="2" data-wpyexchange-b="1">{{memberState.memberType==2&&memberState.validDate>0?'续费':'兑换'}}会员</view>
+                        </view>
+                    </view>
+                </view>
+            </swiper-item>
+            <swiper-item class="swiper {{cardCur==2?'cur':''}}">
+                <view class="swiper-item">
+                    <image class="label" src="http://yyb-oss.universal-space.cn/imgs/record/icon_label_current.png" wx:if="{{memberState.memberType==4}}"></image>
+                    <text class="f34 c_99">VIP会员权限</text>
+                    <view class="f28 c_26 tips">
+                        <text>• 可免费体验基本模式【无限制】、好友联机【无限制】、特殊模式【计量条模式】、段位考核模式</text>
+                        <text>• 可付费体验混曲模式、特殊模式</text>
+                    </view>
+                    <view class="line"></view>
+                    <view class="item-bottom">
+                        <view class="row">
+                            <text class="f30 c_99">{{memberTypeList[4].price}}e-am点/{{memberTypeList[4].days}}天</text>
+                            <view bindtap="exchange" class="exchange-btn f28 c_ff" data-wpyexchange-a="4" data-wpyexchange-b="1">{{memberState.memberType==4&&memberState.validDate>0?'续费':'兑换'}}会员</view>
+                        </view>
+                        <view class="row">
+                            <text class="f30 c_99">{{memberTypeList[4].halfYearPrice}}e-am点/180天</text>
+                            <view bindtap="exchange" class="exchange-btn f28 c_ff" data-wpyexchange-a="4" data-wpyexchange-b="2" hidden="{{memberState.memberType==2}}">{{memberState.memberType==4&&memberState.validDate>0?'续费':'兑换'}}会员</view>
+                        </view>
+                    </view>
+                </view>
+            </swiper-item>
+        </swiper>
+        <block wx:if="{{showPlayGame&&machineDetail.isOnline==1&&machineDetail.useStatus==0}}">
+            <view class="start-game-wrap">
+                <view bindtap="start" class="start-game c_ff f36">开始游戏</view>
+            </view>
+            <view class="machine-placeholder"></view>
+        </block>
+        <view class="machine-status" wx:if="{{machineDetail.isOnline==1&&machineDetail.useStatus==1}}">
+            <image src="http://yyb-oss.universal-space.cn/imgs/icon_using.png"></image>
+            <text class="f42 c_99">已加入游戏</text>
+        </view>
+        <view class="machine-status" wx:if="{{machineDetail.isOnline==0}}">
+            <image src="http://yyb-oss.universal-space.cn/imgs/icon_offline.png"></image>
+            <text class="f42 c_99">机台离线，请联系管理员</text>
+        </view>
+        <view class="machine-status" wx:if="{{machineDetail.isOnline==1&&machineDetail.usable!=1}}">
+            <image src="http://yyb-oss.universal-space.cn/imgs/scan/icon_disable.png"></image>
+            <text class="f42 c_99">机台已禁用，请联系管理员</text>
+        </view>
+    </view>
+    <view class="{{showExc?'back_warp':'back_warp hide'}}">
+        <view class="exc_container both_center">
+            <image bindtap="close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+            <view class="top">
+                <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
+                <text class="title f34 c_ff r">{{memberState.memberType==selectType?'续费':'升级'}}会员</text>
+            </view>
+            <view class="f32 content c_99">您当前属于{{memberTypeList[memberState.memberType].name}}权限，是否{{memberState.memberType==selectType?'续费':'升级'}}为{{memberTypeList[selectType].name}}？</view>
+            <view class="c_37">
+                <text class="f34">
+                    <text class="f60">{{consumePoint}}</text> e-am点</text>
+                <text class="f28">{{memberState.memberType==selectType?'续费':'升级'}}后有效期：{{exchangeDays}}天</text>
+            </view>
+            <view class="f24 c_99">注：兑换续期成为当前会员，会员有效期是可叠加到下月</view>
+            <view class="btn-group">
+                <view bindtap="close" class="btn f34 c_ff">否</view>
+                <view bindtap="exchangeMusic5" class="btn f34 c_ff">是</view>
+            </view>
+        </view>
+    </view>
+    <view class="{{isConfirm?'back_warp':'back_warp hide'}}">
+        <view class="confirm-box both_center">
+            <image bindtap="close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+            <view class="top">
+                <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
+                <text class="title f34 c_ff r">温馨提示</text>
+            </view>
+            <text class="f36 content c_26">您的e-am点余额不足，
+          是否充值？</text>
+            <view class="btn-group">
+                <view bindtap="close" class="btn f34 c_ff">否</view>
+                <view bindtap="rechargeEamPoint" class="btn f34 c_ff">是</view>
+            </view>
+        </view>
+    </view>
+    <view>
+        <view class="{{$customDialog$isShow?'back_warp':'back_warp hide'}}">
+            <view class="confirm-box both_center">
+                <image bindtap="$customDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+                <view class="top">
+                    <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
+                    <text class="title f34 c_ff r">{{$customDialog$title}}</text>
+                </view>
+                <view class="f34 content c_99">{{$customDialog$content}}</view>
+                <view class="button_group" wx:if="{{$customDialog$type=='confirm'}}">
+                    <view bindtap="$customDialog$confirm" class="button">
+                        <text class="f30 c_ff">确定</text>
+                    </view>
+                </view>
+                <button bindgetuserinfo="$customDialog$getAuthHandle" class="f34 btn_group_cus bg_blue c_ff" openType="getUserInfo" wx:if="{{$customDialog$type=='getAuth'}}">点击授权</button>
+                <button bindgetphonenumber="$customDialog$getPhoneNumber" class="f34 btn_group_cus bg_blue c_ff" openType="getPhoneNumber" wx:if="{{$customDialog$type=='phoneAuth'}}">点击授权</button>
+            </view>
+        </view>
+    </view>
+    <view>
+        <view class="{{$tipsDialog$isShow?'back_warp':'back_warp hide'}}">
+            <view class="confirm-box both_center">
+                <image bindtap="$tipsDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+                <view class="top">
+                    <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
+                    <text class="title f34 c_ff r">{{$tipsDialog$title}}</text>
+                </view>
+                <view class="f34 content c_99">{{$tipsDialog$content}}</view>
+                <view class="button_group" wx:if="{{$tipsDialog$type=='confirm'}}">
+                    <view bindtap="$tipsDialog$confirm" class="button">
+                        <text class="f30 c_ff">确定</text>
+                    </view>
+                </view>
+                <button bindgetuserinfo="$tipsDialog$getAuthHandle" class="f34 btn_group_cus bg_blue c_ff" openType="getUserInfo" wx:if="{{$tipsDialog$type=='getAuth'}}">点击授权</button>
+                <button bindgetphonenumber="$tipsDialog$getPhoneNumber" class="f34 btn_group_cus bg_blue c_ff" openType="getPhoneNumber" wx:if="{{$tipsDialog$type=='phoneAuth'}}">点击授权</button>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,41 @@
+<view>
+    <view>
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$customStatusbar$menuButtonTop+60}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$customStatusbar$menuButtonTop}}px;">
+            <image bindtap="$customStatusbar$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$customStatusbar$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$customStatusbar$menuButtonTop}}px;">
+            <text class="title">{{$customStatusbar$title}}</text>
+        </view>
+    </view>
+    <view class="login">
+        <image class="logo" src="http://yyb-oss.universal-space.cn/imgs/login-logo.png"></image>
+        <view class="phoneNumber">
+            <image class="icon" mode="aspectFit" src="http://yyb-oss.universal-space.cn/imgs/login-icon_1.png"></image>
+            <input bindinput="getPhone" class="f30" maxlength="11" placeholder="请输入手机号" placeholderStyle="font-size:30rpx;" value="{{phone}}"></input>
+        </view>
+        <view class="password" wx:if="{{passwordLogin==true}}">
+            <image class="icon" mode="aspectFit" src="http://yyb-oss.universal-space.cn/imgs/login-icon_2.png"></image>
+            <input bindinput="getPassword" class="f30" maxlength="16" password="true" placeholder="请输入密码" placeholderStyle="font-size:30rpx;" value="{{password}}"></input>
+        </view>
+        <view class="captcha" wx:if="{{passwordLogin==false}}">
+            <image class="icon" mode="aspectFit" src="http://yyb-oss.universal-space.cn/imgs/login-icon_3.png"></image>
+            <input bindinput="getCode" class="f30" maxlength="4" placeholder="请输入验证码" placeholderStyle="font-size:30rpx;" value="{{code}}"></input>
+            <button bindtap="getCaptcha" class="button f22 {{isCaptcha==true?'active':''}}" disabled="{{!isCaptcha}}">{{codeText}}</button>
+        </view>
+        <view class="f24 txt c_bb">登录代表您同意<text bindtap="goAgreement" class="c_37">《游艺宝用户协议》</text>
+        </view>
+        <view class="txt_group">
+            <text bindtap="forgetPassword" class="f28 c_33 forget_password">忘记密码</text>
+            <text bindtap="loginType" class="f28 c_33 login_type">{{passwordLogin==true?'短信登录':'密码登录'}}</text>
+        </view>
+        <button bindtap="passwordLogin" class="btn f30 c_ff {{nextStep==true?'bg_blue':'disabled'}}" disabled="{{!nextStep}}" wx:if="{{passwordLogin==true}}">确定</button>
+        <button bindtap="smsLogin" class="btn f30 c_ff {{smsNextStep==true?'bg_blue':'disabled'}}" disabled="{{!smsNextStep}}" wx:if="{{passwordLogin==false}}">确定</button>
+        <view bindtap="goBack" class="go_back">
+            <text class="f28 c_50 c_37">微信一键登录 ></text>
+            <image class="icon" src="/assets/imgs/right.png"></image>
+        </view>
+    </view>
+</view>

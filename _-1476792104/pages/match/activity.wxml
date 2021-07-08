@@ -1,0 +1,100 @@
+<view class="activity-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="activity-detail">
+        <view class="activity-detail-status">
+            <view class="activity-detail-title">
+                <image src="http://yyb-oss.universal-space.cn/imgs/match/super_prize_pool.png"></image>
+            </view>
+            <image bindtap="update" class="update" src="http://yyb-oss.universal-space.cn/imgs/match/icon_update.png"></image>
+            <view class="prize-box pb1">
+                <view class="count">
+                    <text class="fwb">{{prizeList[2].poolPercent}}%</text>
+                    <image src="http://yyb-oss.universal-space.cn/imgs/match/third_prize.png"></image>
+                    <view class="num Merriweather">{{prizeList[2].poolValue}}</view>
+                </view>
+                <view class="box"></view>
+                <view class="pillars" style="height: {{prizeList[2].poolPercent}}%;"></view>
+            </view>
+            <view class="prize-box pb2">
+                <view class="count">
+                    <text class="fwb">{{prizeList[1].poolPercent}}%</text>
+                    <image src="http://yyb-oss.universal-space.cn/imgs/match/second_prize.png"></image>
+                    <view class="num Merriweather">{{prizeList[1].poolValue}}</view>
+                </view>
+                <view class="box"></view>
+                <view class="pillars" style="height: {{prizeList[1].poolPercent}}%;"></view>
+            </view>
+            <view class="prize-box pb3">
+                <view class="count">
+                    <text class="fwb">{{prizeList[0].poolPercent}}%</text>
+                    <image src="http://yyb-oss.universal-space.cn/imgs/match/first_prize.png"></image>
+                    <view class="num Merriweather">{{prizeList[0].poolValue}}</view>
+                </view>
+                <view class="box"></view>
+                <view class="pillars" style="height: {{prizeList[0].poolPercent}}%;"></view>
+            </view>
+        </view>
+        <view class="activity-detail-cont">
+            <image class="label" src="http://yyb-oss.universal-space.cn/imgs/match/icon_status_purple.png" wx:if="{{eventInfo.isPartake==1}}"></image>
+            <view class="txt1">
+                <text wx:if="{{eventInfo.isPartake==1}}">（数字为当前奖池数值）</text>
+                <text class="c_26" wx:else>您暂未参与该活动，快去解锁活动机台吧！</text>
+                <text>最近加入的玩家</text>
+            </view>
+            <view class="user-list">
+                <view class="avatar" wx:for="{{userList}}">
+                    <image src="{{item.avatarUrl}}"></image>
+                </view>
+            </view>
+            <view class="btn-group">
+                <view bindtap="eventTips" class="btn c_ff btn-round">活动说明</view>
+                <view bindtap="rank" class="btn c_ff btn-round">排行榜</view>
+            </view>
+            <view class="machines">
+                <view class="title">参与活动的机台</view>
+                <scroll-view class="machine-list" scrollX="true">
+                    <image class="item" src="http://yyb-oss.universal-space.cn/imgs/match/machine_image_{{index+1}}.png" wx:for="{{5}}"></image>
+                </scroll-view>
+            </view>
+            <view class="intro">
+                <text>活动地点：{{eventInfo.eventAddress}}
+            活动时间：{{eventInfo.beginTime}} 至 {{eventInfo.endTime}}</text>
+            </view>
+        </view>
+    </view>
+    <view class="{{showTips?'back_warp':'back_warp hide'}}">
+        <view class="confirm-box both_center">
+            <image bindtap="close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+            <view class="top">
+                <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
+                <text class="f34 c_ff r">奖池说明</text>
+            </view>
+            <text class="f24 c_99 txt-content" decode="true">
+                <text class="c_26 f28 tilte">参与方式</text>
+          活动期间，在活动指定门店中扫码活动机台游戏，
+          每次游戏都会增加奖池游戏数。
+          <text class="c_26 f28 tilte">抽奖规则</text>
+          • 活动期间，可重复抽奖，达到抽奖阀值时，立即
+            开奖。开奖后抽奖阀值再次归零，进行重新一轮抽奖。
+          • 活动期结束，游戏次数任未达到抽奖阀值，立即开奖。
+          • 抽奖从参与游戏的玩家中随机抽取中奖者。
+          <text class="c_26 f28 tilte">奖池奖品</text>
+          黄金奖上奖：{{prizeList[0].prizeName}}*{{prizeList[0].prizeNumber}}份
+          超级大奖：{{prizeList[1].prizeName}}*{{prizeList[1].prizeNumber}}份
+          幸运奖：{{prizeList[2].prizeName}}*{{prizeList[2].prizeNumber}}份
+        </text>
+            <view bindtap="eventResult" class="btn c_ff">中奖结果</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,196 @@
+<view>
+    <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png"></image>
+    <view class="statusBar ">
+        <text class="title font-loaded" style="padding-top:{{statusBarHeight+10}}px;">活动赛事</text>
+    </view>
+    <view class="activity">
+        <view class="activity-top">
+            <text class="f32 c_ff">奖池活动</text>
+            <text bindtap="redirectTo" class="f24 c_ff" data-wpyredirectto-a="/pages/match/activities">更多 ></text>
+        </view>
+        <swiper bindchange="cardSwiper" circular="true" class="activity-swiper">
+            <swiper-item class="swiper {{cardCur==index?'cur':''}}" wx:for="{{eventList}}" wx:key="wx:key">
+                <view bindtap="eventDetail" class="swiper-item" data-wpyeventdetail-a="{{item}}">
+                    <image src="{{item.eventImage}}"></image>
+                </view>
+            </swiper-item>
+        </swiper>
+    </view>
+    <view class="arena-match">
+        <view class="match-top">
+            <image class="title" src="http://yyb-oss.universal-space.cn/imgs/match/icon_match_arena_title.png"></image>
+            <text bindtap="redirectTo" class="f24 c_99" data-wpyredirectto-a="/pages/match/arena">更多 ></text>
+        </view>
+        <view wx:for="{{arenaList}}" wx:key="index">
+            <view bindtap="$arenaCard$eventHandle" class="match-card {{$arenaCard$eventStatus==2?'disabled':''}}" data-com-index="{{index}}" data-wpyeventhandle-a="{{item}}" wx:if="{{$arenaCard$type=='jackpot'}}">
+                <view class="list-top">
+                    <view class="status" wx:if="{{$arenaCard$status==='going'}}">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/match/icon_status_yellow.png"></image>
+                    </view>
+                    <view class="status" wx:if="{{$arenaCard$eventStatus==2}}">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/match/icon_status_gray.png"></image>
+                    </view>
+                    <view class="status" wx:if="{{item.isPartake===1&&$arenaCard$eventStatus!=2}}">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/match/icon_status_purple.png"></image>
+                    </view>
+                    <image src="{{item.eventImage}}"></image>
+                    <view class="hot" wx:if="{{$arenaCard$hot}}">
+                        <view class="icon">
+                            <image src="http://yyb-oss.universal-space.cn/imgs/match/icon_fire.png"></image>
+                        </view>
+          {{$arenaCard$hot}}
+        </view>
+                    <view class="tags" wx:if="{{$arenaCard$tags.length}}">
+                        <view class="tag {{tag.type}}" wx:for="{{$arenaCard$tags}}" wx:for-item="tag" wx:key="{{index}}">{{tag.name}}</view>
+                    </view>
+                    <view class="tags" wx:else>
+                        <view class="tag primary">{{item.eventTypeName}}</view>
+                    </view>
+                </view>
+                <view class="list-bottom">
+                    <text class="f30 c_33">{{item.eventName}}</text>
+                    <text class="f24 c_99 desc">活动地址: {{item.eventAddress}}</text>
+                    <text class="f24 c_99 desc2">活动时间：{{item.beginTime}} 至 {{item.endTime}}</text>
+                    <view bindtap="$arenaCard$btnTapHandle" class="btn match-btn {{$arenaCard$btnType}}" data-com-index="{{index}}" wx:if="{{$arenaCard$btnTxt}}">{{$arenaCard$btnTxt}}</view>
+                </view>
+            </view>
+            <view bindtap="$arenaCard$eventHandle" class="match-card {{item.status==2?'disabled':''}}" data-com-index="{{index}}" data-wpyeventhandle-a="{{item}}" wx:if="{{$arenaCard$type=='match'}}">
+                <view class="list-top">
+                    <image src="{{item.eventImage}}"></image>
+                    <view class="hot">
+                        <view class="icon">
+                            <image src="http://yyb-oss.universal-space.cn/imgs/match/icon_fire.png"></image>
+                        </view>
+          {{item.entryCount}}人参与
+        </view>
+                    <image class="status" src="{{item.status==0?'http://yyb-oss.universal-space.cn/imgs/match/icon_status_blue.png':item.status==1?'http://yyb-oss.universal-space.cn/imgs/match/icon_status_yellow.png':'http://yyb-oss.universal-space.cn/imgs/match/icon_status_gray.png'}}"></image>
+                    <view class="tags">
+                        <view class="tag primary">{{item.eventTypeName}}</view>
+                        <view class="tag success">{{item.productName}}</view>
+                    </view>
+                </view>
+                <view class="list-bottom">
+                    <text class="f30 c_37 title">{{item.eventName}}</text>
+                    <text class="f24 c_99 desc2">{{item.beginTime}} 至 {{item.endTime}}</text>
+                    <view bindtap="$arenaCard$btnTapHandle" class="btn match-btn {{item.isFree==1?'success':'primary'}}" data-com-index="{{index}}">{{item.isFree==1?'免费报名':'报名参赛'}}</view>
+                </view>
+            </view>
+            <view bindtap="$arenaCard$eventHandle" class="match-card {{item.status==2?'disabled':''}}" data-com-index="{{index}}" data-wpyeventhandle-a="{{item}}" wx:if="{{$arenaCard$type=='arena'}}">
+                <view class="list-top">
+                    <image src="{{item.eventImage}}"></image>
+                    <view class="hot">
+                        <view class="icon">
+                            <image src="http://yyb-oss.universal-space.cn/imgs/match/icon_fire.png"></image>
+                        </view>
+          {{item.entryCount}}人参与
+        </view>
+                    <image class="status" src="{{item.status==0?'http://yyb-oss.universal-space.cn/imgs/match/icon_status_blue.png':item.status==1?'http://yyb-oss.universal-space.cn/imgs/match/icon_status_yellow.png':'http://yyb-oss.universal-space.cn/imgs/match/icon_status_gray.png'}}"></image>
+                    <view class="tags">
+                        <view class="tag primary">{{item.eventTypeName}}</view>
+                        <view class="tag success">{{item.productName}}</view>
+                    </view>
+                </view>
+                <view class="list-bottom">
+                    <text class="f30 c_37 title">{{item.eventName}}</text>
+                    <text class="f24 c_99 desc2">{{item.beginTime}} 至 {{item.endTime}}</text>
+                    <view bindtap="$arenaCard$btnTapHandle" class="btn match-btn primary" data-com-index="{{index}}">赛事详情</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="arena-match">
+        <view class="match-top">
+            <image class="title" src="http://yyb-oss.universal-space.cn/imgs/match/icon_match_title.png"></image>
+            <text bindtap="redirectTo" class="f24 c_99" data-wpyredirectto-a="/pages/match/match-list">更多 ></text>
+        </view>
+        <view wx:for="{{matchList}}" wx:key="index">
+            <view bindtap="$matchCard$eventHandle" class="match-card {{$matchCard$eventStatus==2?'disabled':''}}" data-com-index="{{index}}" data-wpyeventhandle-a="{{item}}" wx:if="{{$matchCard$type=='jackpot'}}">
+                <view class="list-top">
+                    <view class="status" wx:if="{{$matchCard$status==='going'}}">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/match/icon_status_yellow.png"></image>
+                    </view>
+                    <view class="status" wx:if="{{$matchCard$eventStatus==2}}">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/match/icon_status_gray.png"></image>
+                    </view>
+                    <view class="status" wx:if="{{item.isPartake===1&&$matchCard$eventStatus!=2}}">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/match/icon_status_purple.png"></image>
+                    </view>
+                    <image src="{{item.eventImage}}"></image>
+                    <view class="hot" wx:if="{{$matchCard$hot}}">
+                        <view class="icon">
+                            <image src="http://yyb-oss.universal-space.cn/imgs/match/icon_fire.png"></image>
+                        </view>
+          {{$matchCard$hot}}
+        </view>
+                    <view class="tags" wx:if="{{$matchCard$tags.length}}">
+                        <view class="tag {{tag.type}}" wx:for="{{$matchCard$tags}}" wx:for-item="tag" wx:key="{{index}}">{{tag.name}}</view>
+                    </view>
+                    <view class="tags" wx:else>
+                        <view class="tag primary">{{item.eventTypeName}}</view>
+                    </view>
+                </view>
+                <view class="list-bottom">
+                    <text class="f30 c_33">{{item.eventName}}</text>
+                    <text class="f24 c_99 desc">活动地址: {{item.eventAddress}}</text>
+                    <text class="f24 c_99 desc2">活动时间：{{item.beginTime}} 至 {{item.endTime}}</text>
+                    <view bindtap="$matchCard$btnTapHandle" class="btn match-btn {{$matchCard$btnType}}" data-com-index="{{index}}" wx:if="{{$matchCard$btnTxt}}">{{$matchCard$btnTxt}}</view>
+                </view>
+            </view>
+            <view bindtap="$matchCard$eventHandle" class="match-card {{item.status==2?'disabled':''}}" data-com-index="{{index}}" data-wpyeventhandle-a="{{item}}" wx:if="{{$matchCard$type=='match'}}">
+                <view class="list-top">
+                    <image src="{{item.eventImage}}"></image>
+                    <view class="hot">
+                        <view class="icon">
+                            <image src="http://yyb-oss.universal-space.cn/imgs/match/icon_fire.png"></image>
+                        </view>
+          {{item.entryCount}}人参与
+        </view>
+                    <image class="status" src="{{item.status==0?'http://yyb-oss.universal-space.cn/imgs/match/icon_status_blue.png':item.status==1?'http://yyb-oss.universal-space.cn/imgs/match/icon_status_yellow.png':'http://yyb-oss.universal-space.cn/imgs/match/icon_status_gray.png'}}"></image>
+                    <view class="tags">
+                        <view class="tag primary">{{item.eventTypeName}}</view>
+                        <view class="tag success">{{item.productName}}</view>
+                    </view>
+                </view>
+                <view class="list-bottom">
+                    <text class="f30 c_37 title">{{item.eventName}}</text>
+                    <text class="f24 c_99 desc2">{{item.beginTime}} 至 {{item.endTime}}</text>
+                    <view bindtap="$matchCard$btnTapHandle" class="btn match-btn {{item.isFree==1?'success':'primary'}}" data-com-index="{{index}}">{{item.isFree==1?'免费报名':'报名参赛'}}</view>
+                </view>
+            </view>
+            <view bindtap="$matchCard$eventHandle" class="match-card {{item.status==2?'disabled':''}}" data-com-index="{{index}}" data-wpyeventhandle-a="{{item}}" wx:if="{{$matchCard$type=='arena'}}">
+                <view class="list-top">
+                    <image src="{{item.eventImage}}"></image>
+                    <view class="hot">
+                        <view class="icon">
+                            <image src="http://yyb-oss.universal-space.cn/imgs/match/icon_fire.png"></image>
+                        </view>
+          {{item.entryCount}}人参与
+        </view>
+                    <image class="status" src="{{item.status==0?'http://yyb-oss.universal-space.cn/imgs/match/icon_status_blue.png':item.status==1?'http://yyb-oss.universal-space.cn/imgs/match/icon_status_yellow.png':'http://yyb-oss.universal-space.cn/imgs/match/icon_status_gray.png'}}"></image>
+                    <view class="tags">
+                        <view class="tag primary">{{item.eventTypeName}}</view>
+                        <view class="tag success">{{item.productName}}</view>
+                    </view>
+                </view>
+                <view class="list-bottom">
+                    <text class="f30 c_37 title">{{item.eventName}}</text>
+                    <text class="f24 c_99 desc2">{{item.beginTime}} 至 {{item.endTime}}</text>
+                    <view bindtap="$matchCard$btnTapHandle" class="btn match-btn primary" data-com-index="{{index}}">赛事详情</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="tabbar_box {{$customTabbar$isIphoneX?'iphoneX-height':''}}" style="background-color:{{$customTabbar$tabbar.backgroundColor}}">
+        <block wx:for="{{$customTabbar$tabbar.list}}" wx:key="{{item.pagePath}}">
+            <view bindtap="$customTabbar$scan" class="tabbar_nav" style="color:{{$customTabbar$tabbar.selectedColor}}" wx:if="{{item.isSpecial}}">
+                <view class="special-wrapper">
+                    <image class="tabbar_icon" src="{{item.iconPath}}"></image>
+                </view>
+            </view>
+            <navigator class="tabbar_nav" hoverClass="none" openType="switchTab" style="color:{{item.selected?$customTabbar$tabbar.selectedColor:$customTabbar$tabbar.color}}" url="{{item.pagePath}}" wx:else>
+                <image class="tabbar_icon" src="{{item.selected?item.selectedIconPath:item.iconPath}}"></image>
+                <text>{{item.text}}</text>
+            </navigator>
+        </block>
+    </view>
+</view>

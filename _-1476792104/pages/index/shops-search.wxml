@@ -1,0 +1,33 @@
+<view class="page-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="shops-wrap">
+        <view class="search-box">
+            <input bindinput="getStoreName" focus="{{true}}" placeholder="输入门店" type="text" value="{{storeName}}"></input>
+            <view bindtap="seek" class="icon"></view>
+        </view>
+        <view class="search-title f30 c_99">
+        搜索结果
+      </view>
+        <view bindtap="storeDetail" class="block" data-wpystoredetail-a="{{item}}" wx:for="{{storeList}}" wx:key="key">
+            <view class="field">
+                <view class="f30 c_49">{{item.store_name}}</view>
+            </view>
+            <view class="f26 c_99">{{item.store_mobile}}</view>
+            <view class="f26 c_99">{{item.store_address}}</view>
+        </view>
+        <view class="btm-tips">
+            <image src="http://yyb-oss.universal-space.cn/imgs/index/icon_no_game2.png"></image>
+        </view>
+    </view>
+</view>

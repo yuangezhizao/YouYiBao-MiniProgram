@@ -1,0 +1,65 @@
+<view class="page-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="navbar">
+        <text bindtap="tabChange" class="item {{tabIndex==1?'active':''}}" data-wpytabchange-a="1">可使用</text>
+        <text bindtap="tabChange" class="item {{tabIndex==0?'active':''}}" data-wpytabchange-a="0">待付款</text>
+        <text bindtap="tabChange" class="item {{tabIndex==2?'active':''}}" data-wpytabchange-a="2">已使用</text>
+        <text bindtap="tabChange" class="item {{tabIndex==3?'active':''}}" data-wpytabchange-a="3">已过期</text>
+        <text bindtap="tabChange" class="item {{tabIndex==4?'active':''}}" data-wpytabchange-a="4">已退款</text>
+    </view>
+    <view class="ce-wrap">
+        <view bindtap="mealDetail" class="set-meal-item" data-wpymealdetail-a="{{item}}" wx:for="{{packageList}}" wx:key="index">
+            <view class="f30 c_99 name">{{item.store_name}}</view>
+            <view class="field">
+                <view class="ticket">
+                    <text class="Merriweather f90">{{item.payPrice}}</text>
+                    <text class="f26">元</text>
+                </view>
+                <view class="cont">
+                    <view class="field">
+                        <text class="f30 c_26">¥{{item.payPrice}}</text>
+                        <text class="f24 c_99">数量：{{item.qty}}</text>
+                    </view>
+                    <view class="f30 c_26">优惠套餐</view>
+                    <view class="f24 c_99">有效期至：{{item.valid_time}}</view>
+                    <view class="f24 c_99">购买时间：{{item.order_time}}</view>
+                </view>
+            </view>
+            <view class="btns">
+                <view class="btn btn-round btn-plain btn-expire" wx:if="{{tabIndex==3}}">已过期</view>
+                <view class="btn btn-round btn-plain btn-used" wx:if="{{tabIndex==4}}">已退款</view>
+                <view catchtap="cancel" class="btn btn-round btn-plain btn-default" data-wpycancel-a="{{item}}" wx:if="{{tabIndex==0}}">取消</view>
+                <view class="btn btn-round btn-plain btn-primary" wx:if="{{tabIndex==0}}">付款</view>
+                <view catchtap="convert" class="btn btn-round btn-plain btn-primary" data-wpyconvert-a="{{item}}" wx:if="{{tabIndex==1}}">兑换</view>
+                <view class="btn btn-round btn-plain btn-primary" wx:if="{{tabIndex==2}}">已使用</view>
+            </view>
+        </view>
+        <view class="btm-tips both_center" wx:if="{{packageList.length==0}}">
+            <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 暂无记录
+      </view>
+        <view class="match-dialog {{$dialog1$size}}" wx:if="{{$dialog1$isShowDialog}}">
+            <view class="match-dialog-inner">
+                <image bindtap="$dialog1$handleClick" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+                <view class="title">{{$dialog1$title}}</view>
+                <view class="match-dialog-body tc">
+                    <view class="f34 ">确定取消该订单吗？</view>
+                    <view class="btn-group">
+                        <view bindtap="closeDialog" class="btn btn-disabled btn-round">取消</view>
+                        <view bindtap="cancelOrder" class="btn btn-primary btn-round">是</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

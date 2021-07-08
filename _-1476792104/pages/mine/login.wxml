@@ -1,0 +1,60 @@
+<view>
+    <view>
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$customStatusbar$menuButtonTop+60}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$customStatusbar$menuButtonTop}}px;">
+            <image bindtap="$customStatusbar$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$customStatusbar$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$customStatusbar$menuButtonTop}}px;">
+            <text class="title">{{$customStatusbar$title}}</text>
+        </view>
+    </view>
+    <view class="login">
+        <image class="login-logo" src="http://yyb-oss.universal-space.cn/imgs/login-logo.png"></image>
+        <view bindtap="quickLogin" class="quick-login bg_blue">
+            <view class="f34 c_ff txt" slot="content">微信一键登录</view>
+        </view>
+        <view class="login-agreement f28 c_bb">登录代表您同意<text bindtap="goAgreement" class="c_37">《游艺宝用户协议》</text>
+        </view>
+        <view bindtap="mobileLogin" class="f28 c_37">手机账号登录 ></view>
+    </view>
+    <view>
+        <view class="{{$userDialog$isShow?'back_warp':'back_warp hide'}}">
+            <view class="confirm-box both_center">
+                <image bindtap="$userDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+                <view class="top">
+                    <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
+                    <text class="title f34 c_ff r">{{$userDialog$title}}</text>
+                </view>
+                <view class="f34 content c_99">{{$userDialog$content}}</view>
+                <view class="button_group" wx:if="{{$userDialog$type=='confirm'}}">
+                    <view bindtap="$userDialog$confirm" class="button">
+                        <text class="f30 c_ff">确定</text>
+                    </view>
+                </view>
+                <button bindgetuserinfo="$userDialog$getAuthHandle" class="f34 btn_group_cus bg_blue c_ff" openType="getUserInfo" wx:if="{{$userDialog$type=='getAuth'}}">点击授权</button>
+                <button bindgetphonenumber="$userDialog$getPhoneNumber" class="f34 btn_group_cus bg_blue c_ff" openType="getPhoneNumber" wx:if="{{$userDialog$type=='phoneAuth'}}">点击授权</button>
+            </view>
+        </view>
+    </view>
+    <view>
+        <view class="{{$phoneDialog$isShow?'back_warp':'back_warp hide'}}">
+            <view class="confirm-box both_center">
+                <image bindtap="$phoneDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+                <view class="top">
+                    <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
+                    <text class="title f34 c_ff r">{{$phoneDialog$title}}</text>
+                </view>
+                <view class="f34 content c_99">{{$phoneDialog$content}}</view>
+                <view class="button_group" wx:if="{{$phoneDialog$type=='confirm'}}">
+                    <view bindtap="$phoneDialog$confirm" class="button">
+                        <text class="f30 c_ff">确定</text>
+                    </view>
+                </view>
+                <button bindgetuserinfo="$phoneDialog$getAuthHandle" class="f34 btn_group_cus bg_blue c_ff" openType="getUserInfo" wx:if="{{$phoneDialog$type=='getAuth'}}">点击授权</button>
+                <button bindgetphonenumber="$phoneDialog$getPhoneNumber" class="f34 btn_group_cus bg_blue c_ff" openType="getPhoneNumber" wx:if="{{$phoneDialog$type=='phoneAuth'}}">点击授权</button>
+            </view>
+        </view>
+    </view>
+</view>

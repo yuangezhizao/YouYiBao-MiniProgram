@@ -1,0 +1,60 @@
+.bg-183 {
+    z-index: 9;
+}
+
+.statusBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 64rpx;
+    z-index: 99;
+}
+
+.icon-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    width: 174rpx;
+    height: 64rpx;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 35rpx;
+    margin-left: 30rpx;
+    border: 1rpx solid rgba(250,250,250,0.3);
+    z-index: 9999!important;
+}
+
+.icon-group .line {
+    width: 3rpx;
+    height: 32rpx;
+    background: rgba(250,250,250,0.3);
+}
+
+.icon-group .icon {
+    width: 38rpx;
+    height: 38rpx;
+    padding: 10rpx 20rpx;
+}
+
+page {
+    background: #fff;
+}
+
+.activity-title {
+    margin-top: 90rpx;
+}
+
+.time {
+    margin-top: 20rpx;
+}
+
+.content {
+    padding: 30rpx;
+}
+
+.content rich-text {
+    max-width: 100%;
+    width: 100%;
+}

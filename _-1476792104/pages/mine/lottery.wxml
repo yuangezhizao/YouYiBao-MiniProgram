@@ -1,0 +1,74 @@
+<view class="page-wrapper">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="lottery-box">
+        <view class="blocks-wrap">
+            <view class="count">
+                <text>还剩 {{lotteryCount}} 次抽奖机会</text>
+            </view>
+            <view class="lights top {{rolling?'rolling':'flash'}}">
+                <view class="light {{lightCount%26===index||lightCount%26===index+1||lightCount%26===index+2?'active':''}}" wx:for="{{8}}" wx:key="{{index}}"></view>
+            </view>
+            <view class="lights right {{rolling?'rolling':'flash'}}">
+                <view class="light {{lightCount%26===index+9||lightCount%26===index+10||lightCount%26===index+8?'active':''}}" wx:for="{{5}}" wx:key="{{index}}"></view>
+            </view>
+            <view class="lights bottom {{rolling?'rolling':'flash'}}">
+                <view class="light {{lightCount%26===index+14||lightCount%26===index+15||lightCount%26===index+13?'active':''}}" wx:for="{{8}}" wx:key="{{index}}"></view>
+            </view>
+            <view class="lights left {{rolling?'rolling':'flash'}}">
+                <view class="light {{lightCount%26===index+22||lightCount%26===index+23||lightCount%26===index+21?'active':''}}" wx:for="{{5}}" wx:key="{{index}}"></view>
+            </view>
+            <view bindtap="start" class="block btn-start {{!rolling||'rolling'}}">
+                <image src="http://yyb-oss.universal-space.cn/imgs/lottery/3.png"></image>
+            </view>
+            <view class="block block_{{item.sortNo}} {{item.sortNo===currentIndex?'active':''}}" wx:for="{{prizeMapping}}" wx:key="index">
+                <image src="{{item.prizeImage}}"></image>
+            </view>
+        </view>
+    </view>
+    <view class="lottery-content">
+        <view class="title f30 c_99">
+        活动说明
+      </view>
+        <view class="f26">
+            <text class="c_26">• 参与方式</text>
+            <text class="c_99">每次在线支付完成游戏后，均可获得一次抽奖机会。</text>
+            <text class="c_26">• 抽奖规则</text>
+            <text class="c_99">每次点击抽奖，随机抽取一个奖品。获得的奖品将在“我的奖品”中查看或输入收件人领取。</text>
+        </view>
+        <view bindtap="myPrize" class="btn btn-primary btn-round">我的奖品</view>
+    </view>
+    <view class="match-dialog {{$prizeDialog$size}}" wx:if="{{$prizeDialog$isShowDialog}}">
+        <view class="match-dialog-inner">
+            <image bindtap="$prizeDialog$handleClick" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+            <view class="title">{{$prizeDialog$title}}</view>
+            <view class="match-dialog-body tc">
+                <view class="prize-dialog-bd" wx:if="{{prize}}">
+                    <image mode="widthFix" src="{{prize.prizeImage}}"></image>
+                    <block wx:if="{{prize.isWin=='1'}}">
+                        <view class="tc">
+                            <text class="f34 c_26">恭喜您，获得{{prize.prizeName}}</text>
+                        </view>
+                        <view bindtap="getPrize" class="btn btn-primary btn-round">领取奖品</view>
+                    </block>
+                    <block wx:else>
+                        <view class="tc">
+                            <text class="f34 c_26">{{prize.prizeName}}</text>
+                        </view>
+                        <view bindtap="getPrize" class="btn btn-primary btn-round">再来一次</view>
+                    </block>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

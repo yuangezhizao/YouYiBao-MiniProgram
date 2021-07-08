@@ -1,0 +1,71 @@
+<view class="page-wrapper">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="match-banner">
+        <image mode="aspectFit" src="{{recordList!=''?recordList.productImage:productImage}}"></image>
+    </view>
+    <view class="match-title">
+        <text class="f34 c_4a">{{recordList!=''?recordList.productName:productName}}</text>
+        <view bindtap="nearbyShopMachine" class="title-right">
+            <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_6.png"></image>
+            <text class="f26 c_99">附近门店</text>
+        </view>
+    </view>
+    <view class="my-match">
+        <text class="f30 c_99 title">我的综合战绩</text>
+        <view class="match-item-1">
+            <view class="item-content">
+                <image src="http://yyb-oss.universal-space.cn/imgs/match-icon_1.png"></image>
+                <text class="c_ff f60 Merriweather">{{recordList!=''?recordList.highestScore:'-'}}</text>
+                <text class="c_cc f28">最高游戏得分</text>
+            </view>
+            <view class="line"></view>
+            <view class="item-content">
+                <image src="http://yyb-oss.universal-space.cn/imgs/match-icon_2.png"></image>
+                <text class="c_cc f34">第<text class="c_ff f60 Merriweather"> {{recordList!=''?recordList.userRank:'-'}} </text>名</text>
+                <text class="c_cc f28">历史最高排名</text>
+            </view>
+        </view>
+        <view class="match-item-2">
+            <view class="item-content">
+                <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_total time.png"></image>
+                <text class="f26 c_99">最高连胜数</text>
+                <text class="c_4a f46 Merriweather">{{recordList!=''?recordList.highestWinningCount:'-'}}</text>
+            </view>
+            <view class="item-content">
+                <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_total victory.png"></image>
+                <text class="f26 c_99">总胜场数</text>
+                <text class="c_4a f46 Merriweather">{{recordList!=''?recordList.winningCount:'-'}}</text>
+            </view>
+            <view class="item-content">
+                <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_average.png"></image>
+                <text class="f26 c_99">场均总分</text>
+                <text class="c_4a f46 Merriweather">{{recordList!=''?recordList.averageScore:'-'}}</text>
+            </view>
+            <view class="item-content">
+                <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_winrate.png"></image>
+                <text class="f26 c_99">平均胜率</text>
+                <text class="c_4a f46 Merriweather">{{recordList!=''?recordList.winRate:'-'}}%</text>
+            </view>
+            <view class="item-content">
+                <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_total.png"></image>
+                <text class="f26 c_99">总游戏次数</text>
+                <text class="c_4a f46 Merriweather">{{recordList!=''?recordList.totalCount:'-'}}</text>
+            </view>
+        </view>
+        <view class="btn-group">
+            <view bindtap="historyRecord" class="btn c_ff">战绩记录</view>
+            <view bindtap="rank" class="btn c_ff">全国排行</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,309 @@
+.confirm-box {
+    width: 540rpx;
+    height: 469rpx;
+    background: #fff;
+    border-radius: 10rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40rpx;
+    box-sizing: border-box;
+}
+
+.confirm-box .close {
+    width: 42rpx;
+    height: 70rpx;
+    position: absolute;
+    right: 10rpx;
+    top: -70rpx;
+}
+
+.confirm-box .top {
+    width: 100%;
+    height: 136rpx;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    line-height: 136rpx;
+}
+
+.confirm-box .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 130rpx 0 40rpx 0;
+    text-align: center;
+}
+
+.confirm-box .btn_group_cus {
+    width: 290rpx;
+    height: 96rpx;
+    border-radius: 55rpx;
+    text-align: center;
+    line-height: 96rpx;
+    box-shadow: 0 8rpx 16rpx 0 rgba(53,131,254,0.22);
+}
+
+.confirm-box .button_group {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.confirm-box .button_group .button {
+    width: 210rpx;
+    height: 90rpx;
+    border-radius: 55rpx;
+    background: linear-gradient(45deg,#9A9A9A,#575757);
+    text-align: center;
+    line-height: 90rpx;
+    box-shadow: 0 8rpx 16rpx 0 rgba(161,161,161,0.22);
+    margin: 0 15rpx;
+}
+
+.confirm-box .button_group .button:last-child {
+    background: linear-gradient(45deg,#3CA6FD,#2F5FFF);
+    box-shadow: 0 8rpx 16rpx 0 rgba(53,131,254,0.22);
+}
+
+.bg-183 {
+    z-index: 9;
+}
+
+.statusBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 64rpx;
+    z-index: 99;
+}
+
+.icon-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    width: 174rpx;
+    height: 64rpx;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 35rpx;
+    margin-left: 30rpx;
+    border: 1rpx solid rgba(250,250,250,0.3);
+    z-index: 9999!important;
+}
+
+.icon-group .line {
+    width: 3rpx;
+    height: 32rpx;
+    background: rgba(250,250,250,0.3);
+}
+
+.icon-group .icon {
+    width: 38rpx;
+    height: 38rpx;
+    padding: 10rpx 20rpx;
+}
+
+page {
+    background: #F2F9FF;
+}
+
+.match-banner {
+    width: 100%;
+    height: 520rpx;
+    background: #fff;
+    border-radius: 20rpx;
+    overflow: hidden;
+    box-shadow: 0 16rpx 16rpx 0 rgba(85,145,252,0.08);
+}
+
+.match-banner image {
+    width: 100%;
+    height: 100%;
+}
+
+.best-record-wrap {
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    margin-top: 40rpx;
+}
+
+.best-record-wrap .best-record {
+    width: 690rpx;
+    height: 210rpx;
+    border-radius: 20rpx;
+    background: linear-gradient(45deg,#DA9AFB,#987EFB);
+    box-shadow: 0 5rpx 12rpx 0 rgba(179,137,251,0.36),inset 0 -1rpx 3rpx 0 rgba(214,152,251,0.8);
+    margin-top: 20rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.best-record-wrap .best-record .record-item-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 30rpx;
+    max-width: 110rpx;
+}
+
+.best-record-wrap .best-record .record-item-1 .nickname {
+    max-width: 110rpx;
+}
+
+.best-record-wrap .best-record .record-item-1 image {
+    width: 100rpx;
+    height: 100rpx;
+    border: 4rpx solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 8rpx 10rpx 0 #b389fb;
+    margin-bottom: 10rpx;
+}
+
+.best-record-wrap .best-record .record-item-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -30rpx;
+}
+
+.best-record-wrap .best-record .record-item-2 .font-style {
+    text-shadow: 1rpx 3rpx 10rpx rgba(0,0,0,0.3);
+}
+
+.best-record-wrap .best-record .line {
+    width: 4rpx;
+    height: 30rpx;
+    border-radius: 2rpx;
+    background-color: rgba(255,255,255,0.7);
+}
+
+.record-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 43rpx;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+}
+
+.record-list .list-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.record-list .list-top .switch-btn {
+    display: flex;
+    width: 220rpx;
+    height: 56rpx;
+    border-radius: 40rpx;
+    border: 1rpx solid #bbbbbb;
+}
+
+.record-list .list-top .switch-btn .switch-item {
+    position: relative;
+    flex: auto;
+    text-align: center;
+    line-height: 56rpx;
+}
+
+.record-list .list-top .switch-btn .active {
+    color: #FFFFFF;
+    background: #2660E7;
+    border-radius: 40rpx;
+}
+
+.record-list .list-item {
+    width: 100%;
+    height: 342rpx;
+    background: #fff;
+    border-radius: 20rpx;
+    box-shadow: 0 8rpx 20rpx 0 rgba(17,85,233,0.22);
+    margin-top: 30rpx;
+    position: relative;
+}
+
+.record-list .list-item .item-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.record-list .list-item .item-top .item-top-left {
+    position: relative;
+    width: 178rpx;
+    height: 58rpx;
+    padding-left: 20rpx;
+}
+
+.record-list .list-item .item-top .item-top-right {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 30rpx;
+    top: 16rpx;
+}
+
+.record-list .list-item .item-top .item-top-right image {
+    width: 20rpx;
+    height: 26rpx;
+    margin-right: 8rpx;
+}
+
+.record-list .list-item .item-middle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rpx;
+}
+
+.record-list .list-item .item-middle .item-middle-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.record-list .list-item .item-middle .item-middle-info .Merriweather-Book {
+    text-shadow: 1rpx 2rpx 5rpx rgba(0,0,0,0.2);
+}
+
+.record-list .list-item .item-middle .item-middle-info view {
+    display: flex;
+    align-items: center;
+    margin-top: 10rpx;
+}
+
+.record-list .list-item .item-middle .item-middle-info view image {
+    width: 38rpx;
+    height: 38rpx;
+}
+
+.record-list .list-item .item-middle .line {
+    width: 2rpx;
+    height: 30rpx;
+    border-radius: 2rpx;
+    background-color: rgba(153,153,153,0.7);
+    margin: 0 25rpx;
+}
+
+.record-list .list-item .item-bottom {
+    width: 100%;
+    height: 110rpx;
+    border-radius: 20rpx;
+    background: linear-gradient(45deg,#3CA6FD,#2F5FFF);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 39rpx 0 30rpx;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+}
+
+.record-list .list-item .item-bottom .score {
+    margin-top: -20rpx;
+    text-shadow: 1rpx 3rpx 10rpx rgba(0,0,0,0.3);
+}

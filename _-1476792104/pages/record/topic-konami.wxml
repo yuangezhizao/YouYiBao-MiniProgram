@@ -1,0 +1,106 @@
+<view class="page-wrapper">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="match-banner">
+        <image mode="aspectFit" src="http://yyb-oss.universal-space.cn/imgs/record/yl.jpg"></image>
+    </view>
+    <view class="match-title">
+        <text class="f34 c_4a">音律炫动</text>
+        <view bindtap="nearbyStores" class="title-right">
+            <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_6.png"></image>
+            <text class="f26 c_99">附近机台</text>
+        </view>
+    </view>
+    <view class="vip-intro">
+        <view class="text">
+            <text>我的当前会员等级：试用会员</text>                  <text> 有效期：7天</text>
+        </view>
+        <view class="text">
+            <text>我的E-AM点余额：1200</text>
+        </view>
+        <view class="vip-list">
+            <view class="item">
+                <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_grade3.png"></image>
+                <view class="desc">
+            试用会员 <view class="btn btn-grade3">升级</view>
+                </view>
+            </view>
+            <view class="item">
+                <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_grade2.png"></image>
+                <view class="desc">
+            基本会员 <view class="btn btn-grade2">兑换</view>
+                </view>
+            </view>
+            <view class="item">
+                <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_grade1.png"></image>
+                <view class="desc">
+            VIP会员 <view class="btn btn-grade1">兑换</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="cz">
+        <text>会员等级越高，可选择的曲目越多!
+        点击会员勋章，了解详情。
+      </text>
+        <view class="btn-cz">
+        充值e-am点
+      </view>
+    </view>
+    <view class="block">
+        <text>您还未参与过“Konami机台”游戏，暂无记录
+        请前往附近门店参与游戏</text>
+    </view>
+    <view class="btn-group">
+        <view class="btn c_ff">全国排行榜</view>
+    </view>
+    <view class="match-dialog {{$matchDialog$size}}" wx:if="{{$matchDialog$isShowDialog}}">
+        <view class="match-dialog-inner">
+            <image bindtap="$matchDialog$handleClick" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+            <view class="title">{{$matchDialog$title}}</view>
+            <view class="match-dialog-body tc">
+                <view class="dialog-cont">
+                    <text class="f30 c_26">抽奖规则</text>
+                    <text class="f28 c_99 tl">·可体验曲目：16首
+          ·可付费开启难度
+          ·可保存游戏进度、等级、成绩推送
+        </text>
+                    <view class="btn btn-success btn-round">新用户免费试用一次</view>
+                    <view class="btn btn-primary btn-round">升级基本会员</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="match-dialog {{$matchDialog2$size}}" wx:if="{{$matchDialog2$isShowDialog}}">
+        <view class="match-dialog-inner">
+            <image bindtap="$matchDialog2$handleClick" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+            <view class="title">{{$matchDialog2$title}}</view>
+            <view class="match-dialog-body tc">
+                <view class="dialog-cont p0">
+                    <text class="f30 c_26">抽奖规则</text>
+                    <text class="f28 c_99 tl">·可体验曲目：16首
+          ·可付费开启难度
+          ·可保存游戏进度、等级、成绩推送
+        </text>
+                    <view class="eam f32 c_26">
+                        <text>15</text>e-am点/30天
+        </view>
+                    <view class="btn-group">
+                        <view class="btn btn-success btn-round">充值e-am点</view>
+                        <view class="btn btn-primary btn-round">兑换该会员</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

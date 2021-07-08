@@ -1,0 +1,26 @@
+<view class="my-prize-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="acbs-wrap">
+        <view class="qr-code-wrap tc">
+            <text class="c_26 f34">请店员扫描下方二维码</text>
+            <view class="qr">
+                <canvas bindtap="preview" canvasId="qrcode" class="qr_code"></canvas>
+            </view>
+        </view>
+        <view class="code-num">
+            <view class="f28 c_99">兑换码</view>
+            <view class="f60 c_26">{{exchangeCode}}</view>
+        </view>
+    </view>
+</view>

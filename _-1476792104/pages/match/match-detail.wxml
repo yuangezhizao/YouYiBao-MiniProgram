@@ -1,0 +1,82 @@
+<view class="match-detail-wrap">
+    <view class="match-status-bar">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$statusbar$menuButtonTop+60}}px;" wx:if="{{$statusbar$size==='sm'}}"></image>
+        <image class="bg-446" src="http://yyb-oss.universal-space.cn/imgs/bg.png" wx:if="{{$statusbar$size==='lg'}}"></image>
+        <view class="statusBar" style="padding-top:{{$statusbar$menuButtonTop}}px;">
+            <view class="icon-group" wx:if="{{$statusbar$leftIcon}}">
+                <image bindtap="$statusbar$goBack" class="left" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+                <view class="line"></view>
+                <image bindtap="$statusbar$goHome" class="left" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+            </view>
+            <text class="title">{{$statusbar$title}}</text>
+        </view>
+    </view>
+    <view class="match-detail">
+        <view class="match-detail-top">
+            <view class="banner {{eventDetail.status==2?'disabled':''}}">
+                <image src="{{eventDetail.eventImage}}"></image>
+            </view>
+            <view class="title">{{eventDetail.eventName}}</view>
+        </view>
+        <view class="match-detail-content">
+            <view class="field">
+                <label>报名倒计时</label>
+                <view class="countDown" wx:if="{{eventDetail.status!=2&&eventDetail.isEntry==0}}">
+                    <text class="f48 c_ff count">{{day1==''?0:day1}}</text>
+                    <text class="f48 c_ff count">{{day2==''?0:day2}}</text>
+                    <text class="f30 count1">天</text>
+                    <text class="f48 c_ff count">{{hou1==''?0:hou1}}</text>
+                    <text class="f48 c_ff count">{{hou2==''?0:hou2}}</text>
+                    <text class="f30 count1">时</text>
+                    <text class="f48 c_ff count">{{min1==''?0:min1}}</text>
+                    <text class="f48 c_ff count">{{min2==''?0:min2}}</text>
+                    <text class="f30 count1">分</text>
+                </view>
+                <view class="label" wx:if="{{eventDetail.status!=2&&eventDetail.isEntry==1}}">
+                    <text class="c_ff">已报名参赛</text>
+                </view>
+                <view class="label {{eventDetail.status==2?'disabled':''}}" wx:if="{{eventDetail.status==2}}">
+                    <text>赛事已结束</text>
+                </view>
+            </view>
+            <view class="field">
+                <label>大赛地点</label>
+                <text>{{eventDetail.eventAddress}}</text>
+            </view>
+            <view class="field">
+                <label>报名费用</label>
+                <text wx:if="{{eventDetail.isFree==0}}">{{eventDetail.entryFee}} 元/位 报名参赛</text>
+                <text wx:else>免费报名</text>
+            </view>
+            <view class="field">
+                <label>大赛时间</label>
+                <text>{{eventDetail.beginTime}} 至 {{eventDetail.endTime}}</text>
+            </view>
+            <view class="field">
+                <label>大赛说明</label>
+                <text>{{eventDetail.eventRule}}</text>
+            </view>
+            <view bindtap="eventRank" class="btn btn-join" wx:if="{{eventDetail.isEntry==1||eventDetail.status==2}}">全国排行榜</view>
+            <view bindtap="entryMatch" class="btn btn-join {{eventDetail.isFree==1?'btn-green':''}}" wx:else>{{eventDetail.isEntry==0&&eventDetail.status!=2&&eventDetail.isFree==1?'免费报名':'报名参赛'}}</view>
+        </view>
+    </view>
+    <view>
+        <view class="{{$customDialog$isShow?'back_warp':'back_warp hide'}}">
+            <view class="confirm-box both_center">
+                <image bindtap="$customDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+                <view class="top">
+                    <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
+                    <text class="title f34 c_ff r">{{$customDialog$title}}</text>
+                </view>
+                <view class="f34 content c_99">{{$customDialog$content}}</view>
+                <view class="button_group" wx:if="{{$customDialog$type=='confirm'}}">
+                    <view bindtap="$customDialog$confirm" class="button">
+                        <text class="f30 c_ff">确定</text>
+                    </view>
+                </view>
+                <button bindgetuserinfo="$customDialog$getAuthHandle" class="f34 btn_group_cus bg_blue c_ff" openType="getUserInfo" wx:if="{{$customDialog$type=='getAuth'}}">点击授权</button>
+                <button bindgetphonenumber="$customDialog$getPhoneNumber" class="f34 btn_group_cus bg_blue c_ff" openType="getPhoneNumber" wx:if="{{$customDialog$type=='phoneAuth'}}">点击授权</button>
+            </view>
+        </view>
+    </view>
+</view>
