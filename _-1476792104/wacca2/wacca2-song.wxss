@@ -1,1 +1,266 @@
-/* wacca2/wacca2-song.wxss */
+.bg-183 {
+    z-index: 9;
+}
+
+.statusBar {
+    position: relative;
+    z-index: 99;
+}
+
+.icon-group,.statusBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64rpx;
+}
+
+.icon-group {
+    position: fixed;
+    left: 0;
+    width: 174rpx;
+    background-color: rgba(0,0,0,.2);
+    border-radius: 35rpx;
+    margin-left: 30rpx;
+    border: 1rpx solid hsla(0,0%,98%,.3);
+    z-index: 9999!important;
+}
+
+.icon-group .line {
+    width: 3rpx;
+    height: 32rpx;
+    background: hsla(0,0%,98%,.3);
+}
+
+.icon-group .icon {
+    width: 38rpx;
+    height: 38rpx;
+    padding: 10rpx 20rpx;
+}
+
+.btn {
+    position: relative;
+    display: inline-block;
+    height: 88rpx;
+    padding: 0;
+    font-size: 32rpx;
+    line-height: 84rpx;
+    text-align: center;
+    vertical-align: middle;
+    box-sizing: border-box;
+    border-radius: 10rpx;
+    -webkit-appearance: none;
+    -webkit-text-size-adjust: 100%;
+    transition: all .5s;
+}
+
+.btn::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    border: inherit;
+    border-color: #000;
+    border-radius: inherit;
+    content: " ";
+    opacity: 0;
+    transform: translate(-50%,-50%);
+}
+
+.btn::after {
+    border-width: 0;
+}
+
+.btn:active {
+    transform: translateY(.1em);
+}
+
+.btn-active::before {
+    opacity: .15;
+}
+
+.btn-unclickable::after {
+    display: none;
+}
+
+.btn-default {
+    color: #bbb;
+    background-color: #fff;
+    border: 1rpx solid #fff;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #2660e7;
+    border: 1rpx solid #2660e7;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #e13434;
+    border: 1rpx solid #e13434;
+}
+
+.btn-warning {
+    color: #fff;
+    background-color: #f6c96a;
+    border: 1rpx solid #f6c96a;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #5be89b;
+    border: 1rpx solid #5be89b;
+}
+
+.btn-plain {
+    background-color: #fff;
+}
+
+.btn-plain.btn-primary {
+    color: #2660e7;
+}
+
+.btn-plain.btn-black {
+    border: 1rpx solid #999;
+}
+
+.btn-plain.btn-danger {
+    color: #e13434;
+}
+
+.btn-plain.btn-warning {
+    color: #f6c96a;
+}
+
+.btn-large {
+    width: 100%;
+    height: 100rpx;
+    line-height: 96rpx;
+}
+
+.btn-normal {
+    padding: 0 30rpx;
+    font-size: 28rpx;
+}
+
+.btn-small {
+    height: 66rpx;
+    min-width: 120rpx;
+    padding: 0 20rpx;
+    font-size: 26rpx;
+    line-height: 66rpx;
+}
+
+.btn-mini {
+    display: inline-block;
+    width: 100rpx;
+    height: 44rpx;
+    font-size: 20rpx;
+    line-height: 40rpx;
+}
+
+.btn-mini+.btn-mini {
+    margin-left: 10rpx;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.btn-round {
+    border-radius: 2em;
+}
+
+.btn-square {
+    border-radius: 0;
+}
+
+.btn-disabled {
+    color: #fff;
+    background-color: #bbb;
+}
+
+page {
+    background: #f2f9ff;
+}
+
+.item {
+    height: 220rpx;
+    margin-top: 30rpx;
+    border-radius: 20rpx;
+    padding: 20rpx;
+    background-color: #fff;
+    margin-left: 30rpx;
+    box-sizing: border-box;
+}
+
+.item-level {
+    width: 192rpx;
+    height: 33rpx;
+    position: relative;
+}
+
+.item-level-title {
+    position: absolute;
+    width: 192rpx;
+    height: 33rpx;
+    background-color: transparent;
+    justify-content: center;
+}
+
+.item-score {
+    height: 100rpx;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    width: 690rpx;
+    height: 80rpx;
+    border-radius: 40rpx;
+    background-color: #e9eff9;
+    margin: 41rpx auto 28rpx;
+}
+
+.search-box .icon {
+    width: 48rpx;
+    height: 48rpx;
+    background: url("http://yyb-oss.universal-space.cn/imgs/wacca2/common/icon_search.png");
+    background-size: 100% 100%;
+    margin-right: 24rpx;
+    margin-left: 30rpx;
+}
+
+.search-box input {
+    width: 550rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    color: #abb3ba;
+    font-size: 28rpx;
+    margin-left: 30rpx;
+}
+
+.switch-btn {
+    display: flex;
+    height: 72rpx;
+    border-radius: 40rpx;
+    border: 1rpx solid #bbb;
+    margin: 40rpx;
+    box-sizing: border-box;
+}
+
+.switch-btn .switch-item {
+    position: relative;
+    text-align: center;
+    line-height: 72rpx;
+    flex: 1;
+}
+
+.switch-btn .active {
+    color: #fff;
+    background: #14bb69;
+    border-radius: 40rpx;
+}

@@ -1,1 +1,54 @@
-<!--wacca2/wacca2-gate-detail.wxml--><text>wacca2/wacca2-gate-detail.wxml</text>
+<view>
+    <view style="height:{{$wacca2Navigation$menuButtonTop+44}}px;">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/wacca2_navigation.png" style="height:{{$wacca2Navigation$menuButtonTop+44}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <image bindtap="$wacca2Navigation$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$wacca2Navigation$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <text class="title">{{$wacca2Navigation$title}}</text>
+        </view>
+    </view>
+    <view style="padding: 15px 15px">
+        <view class="singleItem flex-row">
+            <image src="{{sugorokuInfo.img}}" style="width: 60px;height: 60px"></image>
+            <view class="flex-column flex-between" style="margin-left:10px;align-items:start">
+                <view class="flex-column f32 c_33" style="align-items:start">
+                    <text>{{sugorokuInfo.sugorokuName}}</text>
+                </view>
+                <text class="c_66 f22" style="margin-top: 15px">{{'活动期限: '+sugorokuInfo.endDate}}</text>
+            </view>
+        </view>
+        <view class="center-item flex-column">
+            <view class="flex-row" style="margin-top: 15px;position: relative;width:100%">
+                <view class="circle flex-column">
+                    <text class="f44 c_wacca2">{{currentLevel}}</text>
+                    <text class="f20 c_66">闸门</text>
+                </view>
+                <view class="progress flex-column flex-center c_33 f24" style="width: {{progressWidth}}px;"></view>
+                <view class="progress " style="width: {{progressWidth*current/total}}px;height:15px;background-color: #FECD1F"></view>
+                <view class="progress flex-column flex-center c_33 f24" style="background-color: transparent;width: {{progressWidth}}px;">
+                    <text>{{current+'/'+total}}</text>
+                </view>
+                <view class="progress-icon" style="margin-left: {{progressWidth*current/total+27}}px">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/gate/progress_current.png" style="width: 37px;height: 48px"></image>
+                </view>
+                <view class="progress-icon" style="margin-left: {{progressWidth+15}}px">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/gate/progress_total.png" style="width: 37px;height: 48px"></image>
+                </view>
+            </view>
+        </view>
+        <view style="margin-top: 15px">
+            <text class="f32 c_66">礼品详情</text>
+        </view>
+        <view class="flex-row gift">
+            <view class="flex-row" style="margin-top:10px;position: relative;margin-left: {{index%5==0?0:10}}px" wx:for="{{giftList}}" wx:key="key">
+                <image src="{{'http://yyb-oss.universal-space.cn/imgs/wacca2/gate/'+(item.isOpen==true?'gift_open':'gift_unopen')+'.png'}}" style="width: {{giftWidth}}px;height: {{giftWidth}}px;"></image>
+                <view class="title-view flex-column flex-center" style="width: {{giftWidth}}px;height: {{giftWidth}}px;">
+                    <text class="  f30 c_FF1" style="text-align: center">{{index>=currentLevel?'':item.itemType}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

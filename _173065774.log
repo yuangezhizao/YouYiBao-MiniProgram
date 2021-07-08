@@ -1,0 +1,123 @@
+yuangezhizao@MacMini tool % node wuWxapkg.js -s=/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 _173065774_92.wxapkg
+Unpack file _173065774_92.wxapkg...
+
+Header info:
+  firstMark: 0xbe
+  unknownInfo:  0
+  infoListLength:  1197
+  dataLength:  706654
+  lastMark: 0xed
+
+File list info:
+  fileCount:  29
+Saving files...
+Unpack done.
+now dir: /Applications/mp-unpack.app/Contents/Resources/tool/_173065774_92
+param of mainDir: /Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104
+sub package word dir: /Applications/mp-unpack.app/Contents/Resources/tool/_173065774_92/wacca2
+real mainDir: /Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104
+Split app-service.js and make up configs & wxss & wxml & wxs...
+deal js ok
+deal sub html ok
+splitJs: /Applications/mp-unpack.app/Contents/Resources/tool/_173065774_92/wacca2/app-service.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/components/custom-dialog.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/components/custom-progress.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/components/custom-statusbar.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/components/custom-tabbar.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/components/form-container.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/components/match-card.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/components/match-dialog.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/components/match-statusbar.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/components/scan.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/components/star.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/components/wacca2-dialog.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/components/wacca2-navigation.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-navigation.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2.0-statis.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-detail.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-statis.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-rating.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-logo.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-guide.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-rank.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-rank-detail.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-rank-ranking.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-ranking-list.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-song.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-song-ranking.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-gate.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-gate-detail.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-result.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-lilybox.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-lilybox-records.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-setting.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-setting-detail.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-setting-chose.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-machine.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-zhoubian.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-zhoubian-detail.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-zhoubian-confirm.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-zhoubian-success.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 wacca2/wacca2-zhoubian-online-confirm.js
+Splitting "/Applications/mp-unpack.app/Contents/Resources/tool/_173065774_92/wacca2/app-service.js" done.
+Decompile ./wacca2/wacca2-detail.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-gate-detail.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-gate.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-guide.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-lilybox-records.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-lilybox.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-logo.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-machine.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-navigation.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-rank-detail.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-rank-ranking.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-rank.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-ranking-list.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-rating.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-result.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-setting-chose.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-setting-detail.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-setting.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-song-ranking.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-song.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-statis.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-zhoubian-confirm.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-zhoubian-detail.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-zhoubian-online-confirm.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-zhoubian-success.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2-zhoubian.wxml...
+Decompile success!
+Decompile ./wacca2/wacca2.0-statis.wxml...
+Decompile success!
+Guess wxss(first turn)...
+Import count info: {"./components/wacca2-navigation.wxss":25,"./components/custom-dialog.wxss":6,"./components/custom-progress.wxss":3,"./components/match-dialog.wxss":3,"./components/wacca2-rank-list-item.wxss":3,"./components/wacca2-rank-assembly.wxss":3}
+Guess wxss(first turn) done.
+Generate wxss(second turn)...
+Generate wxss(second turn) done.
+Save wxss...
+saveDir: /Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104

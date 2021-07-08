@@ -1,1 +1,80 @@
-<!--wacca2/wacca2-zhoubian-detail.wxml--><text>wacca2/wacca2-zhoubian-detail.wxml</text>
+<view>
+    <view style="height:{{$wacca2Navigation$menuButtonTop+44}}px;">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/wacca2_navigation.png" style="height:{{$wacca2Navigation$menuButtonTop+44}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <image bindtap="$wacca2Navigation$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$wacca2Navigation$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <text class="title">{{$wacca2Navigation$title}}</text>
+        </view>
+    </view>
+    <view class="contain">
+        <view class="top flex-column">
+            <view class="flex-row" style="width: 100%">
+                <image src="{{model.path}}" style="width: 50px;height: 50px"></image>
+                <view class="flex-column flex-between" style="margin-left: 20px;height: 45px;align-items:start">
+                    <text class="c_wacca2 f30">{{model.storeName}}</text>
+                    <text class="c99 f24">{{model.address}}</text>
+                </view>
+            </view>
+            <view class="gray-view" style="margin-top: 5px"></view>
+            <view class=" flex-column" style="width: 100%;align-items: flex-start;margin-top: 15px">
+                <view class="c_wacca2 f30 flex-column" style="width: 100%">
+                   注意事项
+                </view>
+                <text class="f26 c_99">
+                   {{exlainStr}}
+                </text>
+            </view>
+        </view>
+        <view class="circle_b flex-column" style="margin-top: 20px">
+            <view class="main-top flex-row">
+                <text class="f24 c_ff">当前的积分</text>
+                <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/jifen.png" style="margin-left: 25px;width: 12px;height: 13px"></image>
+                <text class="f24 c_ff" style="margin-left: 10px">{{model.userPoint}}</text>
+            </view>
+            <view style="padding: 15px 15px;width: 100%;box-sizing: border-box;">
+                <view class="c_33 f28 flex-column" style="align-items: start">
+                    积分专享
+                </view>
+                <view class="gray-view" style="margin-top: 5px"></view>
+                <view bindtap="itemClick" data-wpyitemclick-a="{{item}}" wx:for="{{arr}}" wx:key="key">
+                    <view class="item-style flex-row">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/jifen_bg.png" style="width:100%;height:100%"></image>
+                        <view class="mask flex-row flex-between">
+                            <view class="flex-row">
+                                <image src="{{item.img}}" style="width: 60px;height: 60px"></image>
+                                <view class="flex-column flex-between" style="margin-left: 15px;height: 50px;align-items: start">
+                                    <text class="c_33 f28">{{item.name}}</text>
+                                    <view class="flex-row">
+                                        <text class="c_wacca2 f24">{{item.point+'积分兑换'}}</text>
+                                        <text class="c_ff0 f24" style="margin-left: 20rpx" wx:if="{{model.storeId==null&&item.stock==0}}">库存不足</text>
+                                    </view>
+                                </view>
+                            </view>
+                            <image src="{{'http://yyb-oss.universal-space.cn/imgs/wacca2/common/'+(model.userPoint<item.point||item.stock==0&&model.storeId==null?'uncharge':'charge')+'.png'}}" style="width: 36px;height: 36px"></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="lineChange flex-column" wx:if="{{lineID!=''&&model.id==null}}">
+            <text class="f30 c_33 ">转换为线上兑换积分</text>
+            <view class="flex-row flex-between " style="margin-top: 55rpx;width: 100%">
+                <text class="f28  c_3a">转换积分</text>
+                <view class="flex-row">
+                    <image bindtap="decreaseClick" src="http://yyb-oss.universal-space.cn/imgs/wacca2/exchange/decrease.png" style="width: 24rpx;height: 5rpx"></image>
+                    <input bindinput="inputChange" class="flex-column flex-center element" value="{{chargePoint}}"></input>
+                    <image bindtap="addClick" src="http://yyb-oss.universal-space.cn/imgs/wacca2/exchange/add.png" style="width: 22rpx;height: 22rpx;margin-left: 25rpx"></image>
+                </view>
+                <view bindtap="allClick" class="flex-column flex-center all-jifen">
+                    <text class="f24 c_ff">所有积分</text>
+                </view>
+            </view>
+            <text class="f24" style="color: #F11A7D;margin-top: 38rpx;align-items: flex-start;width: 100%">*转换为线上积分后，不可再转回</text>
+            <image bindtap="beginCharge" src="http://yyb-oss.universal-space.cn/imgs/wacca2/exchange/exchange_btn.png" style="width:206rpx;height:76rpx;margin-top:30rpx;"></image>
+        </view>
+    </view>
+</view>

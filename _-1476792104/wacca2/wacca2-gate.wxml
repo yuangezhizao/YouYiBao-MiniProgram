@@ -1,1 +1,24 @@
-<!--wacca2/wacca2-gate.wxml--><text>wacca2/wacca2-gate.wxml</text>
+<view>
+    <view style="height:{{$wacca2Navigation$menuButtonTop+44}}px;">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/wacca2_navigation.png" style="height:{{$wacca2Navigation$menuButtonTop+44}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <image bindtap="$wacca2Navigation$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$wacca2Navigation$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <text class="title">{{$wacca2Navigation$title}}</text>
+        </view>
+    </view>
+    <view style="padding: 15px 15px">
+        <view bindtap="itemClick" class="singleItem flex-row" data-wpyitemclick-a="{{item}}" wx:for="{{gateArr}}" wx:key="key">
+            <image src="{{item.img}}" style="width: 60px;height: 60px"></image>
+            <view class="flex-column flex-between" style="margin-left:10px;align-items:start">
+                <view class="flex-column f32 c_33" style="align-items:start">
+                    <text>{{item.sugorokuName}}</text>
+                </view>
+                <text class="c_66 f22" style="margin-top: 10px">{{'活动期限: '+item.endDate}}</text>
+            </view>
+        </view>
+    </view>
+</view>

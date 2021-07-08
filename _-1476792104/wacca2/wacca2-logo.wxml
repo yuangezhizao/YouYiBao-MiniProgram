@@ -1,1 +1,63 @@
-<!--wacca2/wacca2-logo.wxml--><text>wacca2/wacca2-logo.wxml</text>
+<view>
+    <view style="height:{{$wacca2Navigation$menuButtonTop+44}}px;">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/wacca2_navigation.png" style="height:{{$wacca2Navigation$menuButtonTop+44}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <image bindtap="$wacca2Navigation$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$wacca2Navigation$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <text class="title">{{$wacca2Navigation$title}}</text>
+        </view>
+    </view>
+    <view class="flex-row " style="background-color:#fff;height: 100px;width:100%;justify-content:center">
+        <image mode="aspectFit" src="{{memberInfo.namePlateUrl}}" style="width: 150px;height: 55px;margin-right:20px"></image>
+        <view class="flex-row f28">
+            <text class="c_66">当前铭牌: </text>
+            <text class="c_33">{{memberInfo.namePlateName}}</text>
+        </view>
+    </view>
+    <view bindtap="changeClick" class="item flex-row" data-wpychangeclick-a="{{item}}" style="width:{{screenWidth-30}}px;align-items:start" wx:if="{{arr.length>0}}" wx:for="{{arr}}" wx:key="key">
+        <text class="f30 c_66">{{item.nameplateName}}</text>
+        <image mode="aspectFit" src="{{item.img}}" style="width:216px;height:72.5px;margin-left: 20px"></image>
+    </view>
+    <view class="flex-row flex-center" style="margin-top: 50px" wx:if="{{arr.length==0}}">暂无铭牌</view>
+    <view>
+        <view class="{{$customDialog$isShow?'back_warp':'back_warp hide'}}">
+            <view class="confirm-box both_center" wx:if="{{$customDialog$type!='lilybox'}}">
+                <image bindtap="$customDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+                <view class="top">
+                    <image class="bg" src="{{$customDialog$isWacca2==$customDialog$false?'http://yyb-oss.universal-space.cn/imgs/bg_3.png':'http://yyb-oss.universal-space.cn/imgs/wacca2/common/dialog_bg.png'}}" wx:if="{{$customDialog$type!='wacca2-charge'}}"></image>
+                    <text class="title f34 {{$customDialog$type!='wacca2-charge'?'c_ff':'c_66'}} r">{{$customDialog$title}}</text>
+                </view>
+                <view class="f34 content c_99">
+                    <text class="f36 {{$customDialog$type=='wacca2-charge'?'c_FF1':'c_33'}}" wx:if="{{$customDialog$subTitle!=''}}">{{$customDialog$subTitle}}</text>
+                    <image src="{{$customDialog$image}}" style="width:140px;height:38.5px" wx:if="{{$customDialog$image!=''}}"></image>
+                    <text class="f26 c_66" wx:if="{{$customDialog$desc!=''}}">{{$customDialog$desc}}</text>
+                    <text>{{$customDialog$content}}</text>
+                </view>
+                <view class="button_group" wx:if="{{$customDialog$type=='confirm'}}">
+                    <view bindtap="$customDialog$confirm" class="button">
+                        <text class="f30 c_ff">确定</text>
+                    </view>
+                </view>
+                <button bindgetuserinfo="$customDialog$getAuthHandle" class="f34 btn_group_cus bg_blue c_ff" openType="getUserInfo" wx:if="{{$customDialog$type=='getAuth'}}">点击授权</button>
+                <button bindgetphonenumber="$customDialog$getPhoneNumber" class="f34 btn_group_cus bg_blue c_ff" openType="getPhoneNumber" wx:if="{{$customDialog$type=='phoneAuth'}}">点击授权</button>
+                <image bindtap="$customDialog$confirm" src="{{$customDialog$sureImage}}" style="width:{{$customDialog$type=='wacca2'?$customDialog$screenWidth*0.61:150}}px;height:{{$customDialog$type=='wacca2'?$customDialog$screenWidth*0.144:38}}px" wx:if="{{$customDialog$type=='wacca2'||$customDialog$type=='wacca2-charge'}}"></image>
+            </view>
+            <view class="confirm-box both_center" style="padding: 20px 15px;justify-content: start" wx:else>
+                <image bindtap="$customDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+                <view style="margin-top:10px;width: 100%">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/luck_draw.png" style="width: 100%;height: 46.5px"></image>
+                </view>
+                <view class="flex-column flex-between" style="margin-top:8px;height: 30px;">
+                    <text class="f26 c_66">{{$customDialog$title}}</text>
+                    <text class="f26" style="color: #F11A7D">{{$customDialog$subTitle}}</text>
+                </view>
+                <view style="margin-top:20px;">
+                    <image bindtap="$customDialog$confirm" src="http://yyb-oss.universal-space.cn/imgs/wacca2/lilybox/open.png" style="width: 124px;height: 45px"></image>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

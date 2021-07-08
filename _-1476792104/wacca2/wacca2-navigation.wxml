@@ -1,0 +1,11 @@
+<view>
+    <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/wacca2_navigation.png" style="height:{{menuButtonTop+40}}px;"></image>
+    <view class="icon-group" style="margin-top:{{menuButtonTop}}px;">
+        <image bindtap="goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+        <view class="line"></view>
+        <image bindtap="goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+    </view>
+    <view class="statusBar" style="padding-top:{{menuButtonTop}}px;">
+        <text class="title">{{title}}</text>
+    </view>
+</view>

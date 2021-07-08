@@ -1,1 +1,42 @@
-<!--wacca2/wacca2-rank-detail.wxml--><text>wacca2/wacca2-rank-detail.wxml</text>
+<view>
+    <view style="height:{{$wacca2Navigation$menuButtonTop+44}}px;">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/wacca2_navigation.png" style="height:{{$wacca2Navigation$menuButtonTop+44}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <image bindtap="$wacca2Navigation$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$wacca2Navigation$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <text class="title">{{$wacca2Navigation$title}}</text>
+        </view>
+    </view>
+    <view class="item flex-row" style="width:{{screenWidth-30}}px">
+        <text class="f34 c_33" style="font-weight: 600;width: 60px">{{model.trialClassName}}</text>
+        <text class="f24 c_66" style="margin-left: {{screenWidth*0.109}}px;">总分</text>
+        <view class="flex-row flex-between" style="width: {{screenWidth*0.338}}px;margin-left: {{screenWidth*0.07}}px;">
+            <text class="f40 c_wacca2" style="font-weight: 600;">{{model.totalScore}}</text>
+            <image src="{{'http://yyb-oss.universal-space.cn/imgs/wacca2/rank/'+model.trialClass+'_'+model.trialClassPassType+'.png'}}" style="width: 30px;height:30px;" vShow="item.isRank == true"></image>
+        </view>
+    </view>
+    <view class="main-item" style="width:{{screenWidth-30}}px">
+        <view class=" flex-column" style="margin-top:5px" wx:for="{{arr}}" wx:key="key">
+            <view class="flex-row main-item-single">
+                <image src="{{item.image}}" style="width: 75px;height: 75px"></image>
+                <view class="flex-column flex-between main-item-single-right">
+                    <text class="f22 c_66">{{item.title}}</text>
+                    <text class="f34 c_33">{{item.subTitle}}</text>
+                    <view class="flex-row">
+                        <text class="f24 c_66">总分  </text>
+                        <text class="f42 c_wacca2">{{item.score}}</text>
+                    </view>
+                </view>
+            </view>
+            <view style="height:1px;width:100%;background-color:#ececec;margin-top:5px"></view>
+        </view>
+        <view class="flex-row flex-center" style="height:60px;width:100%">
+            <view bindtap="rankRankingBtnClick" class="sure-btn-wacca2 flex-row flex-center c_ff f28" style="width: 138px">
+                   该关卡排行榜
+               </view>
+        </view>
+    </view>
+</view>

@@ -1,1 +1,77 @@
-<!--wacca2/wacca2-result.wxml--><text>wacca2/wacca2-result.wxml</text>
+<view>
+    <view style="height:{{$wacca2Navigation$menuButtonTop+44}}px;">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/wacca2_navigation.png" style="height:{{$wacca2Navigation$menuButtonTop+44}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <image bindtap="$wacca2Navigation$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$wacca2Navigation$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <text class="title">{{$wacca2Navigation$title}}</text>
+        </view>
+    </view>
+    <view class="p15" style="padding-bottom: 30px">
+        <text class="f30 c_99">
+                播放歌曲获得的评价
+            </text>
+        <view class="switch-btn" style="width: {{screenWidth-40}}px">
+            <text bindtap="navbarTap" class="switch-item f24 c_wacca2 {{currentTab==index?'active':''}}" data-index="{{index}}" wx:for="{{navbar}}" wx:key="index">{{item}}</text>
+        </view>
+        <view class="grade-preview flex-rolumn flex-between">
+            <view class="row-item flex-row flex-between" wx:for="{{gradeList}}" wx:key="key1">
+                <view class="row-single-item" style="width: {{gradeWidth}}px" wx:for="{{item}}" wx:for-index="idx" wx:for-item="item2" wx:key="key2">
+                    <image mode="aspectFit" src="{{item2.icon}}" style="width:{{screenWidth*0.25}}px;height: 16px"></image>
+                    <text class="f32 c_wacca2" style="width: 20px;">{{item2.score}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="flex-row flex-between" style="height: 35px;width: 100%;margin-top: 10px">
+            <text class="f30 c_99">我的全部记录</text>
+            <view class="switch-btn" style="width: 100px;height: 100%;margin-top: 0px;">
+                <text bindtap="navbar2Tap" class="switch-item f24 c_wacca2 {{currentTab2==index?'active':''}}" data-index="{{index}}" style="height: 100%" wx:for="{{navbar2}}" wx:key="index">{{item}}</text>
+            </view>
+        </view>
+        <view bindtap="gradeClick" class="record-item flex-column" data-wpygradeclick-a="{{item}}" wx:for="{{recordList}}" wx:key="key">
+            <view class="flex-column" style="padding: 10px 15px;box-sizing: border-box;">
+                <view class="flex-row" style="justify-content: flex-end; height: 20px;width: 100%">
+                    <view class="flex-row">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/grade/location.png" style="width: 10px;height: 13px"></image>
+                        <text class="c_99 f26" style="margin-left: 5px">{{item.storeName}}</text>
+                    </view>
+                </view>
+                <view class="flex-row" style="margin-top: 10px">
+                    <image src="{{item.musicImageUrl}}" style="width: 80px;height: 80px;  border-radius: 5px;"></image>
+                    <view class="flex-column" style="margin-left: 10px;width: {{screenWidth-150}}px;align-items: flex-start;">
+                        <text class="fwb f34 c_33">{{item.musicName}}</text>
+                        <view class="flex-between flex-row" style="margin-top:20px;width: 100%;height: 40px;">
+                            <view class="f20 item-level c_ff flex-row">
+                                <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/rating/{{item.type}}.png" style="width:96px;height:16.5px"></image>
+                                <view class="item-level-title flex-column">
+                                      {{item.typeDesc}}
+                                   </view>
+                            </view>
+                            <view class="flex-row">
+                                <image src="{{item.image1}}" style="width: 30px;height:30px"></image>
+                                <image src="{{item.image2}}" style="width: 30px;height:30px;margin-left: 8px"></image>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view style="width: 100%;height: 1px;background-color: #ececec;margin-top: 10px"></view>
+                <view class="score flex-row flex-between">
+                    <view class="flex-row " style="margin-top: {{idx==0||idx==1?0:15}}px;height: 20px;width:{{idx==item.gradeList.length-1?200:screenWidth*0.32}}px" wx:for="{{item.gradeList}}" wx:for-index="idx" wx:for-item="item2" wx:key="key2">
+                        <image src="{{item2.image}}" style="width: 80px; height: 20px"></image>
+                        <text class="fwb f30 c_337" style="margin-left: 15px">{{item2.score}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="game-grade flex-row flex-between">
+                <text class="f28 c_ff">{{item.updateDate}}</text>
+                <view class="flex-row">
+                    <text class="f28 c_ff">游戏得分</text>
+                    <text class="fwb f60 c_ff" style="margin-left: {{screenWidth*0.04}}px">{{item.score}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,1 +1,22 @@
-<!--wacca2/wacca2-setting-detail.wxml--><text>wacca2/wacca2-setting-detail.wxml</text>
+<view>
+    <view style="height:{{$wacca2Navigation$menuButtonTop+44}}px;">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/wacca2_navigation.png" style="height:{{$wacca2Navigation$menuButtonTop+44}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <image bindtap="$wacca2Navigation$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$wacca2Navigation$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <text class="title">{{$wacca2Navigation$title}}</text>
+        </view>
+    </view>
+    <view style="padding: 15px 15px">
+        <view class="flex-column item flex-between" style="align-items:start" wx:for="{{dataList}}" wx:key="key">
+            <view bindtap="buttonClick" class="single-item flex-row flex-between" data-wpybuttonclick-a="{{item}}">
+                <text class="f30 c_66">{{item.display}}</text>
+                <text class="f30 c_wacca2">{{item.displayValue}}</text>
+            </view>
+            <text class="f26 c_99" style="margin-left: 20px">{{item.displayDescription}}</text>
+        </view>
+    </view>
+</view>

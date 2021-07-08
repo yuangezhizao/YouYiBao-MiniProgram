@@ -1,1 +1,41 @@
-<!--wacca2/wacca2-song.wxml--><text>wacca2/wacca2-song.wxml</text>
+<view>
+    <view style="height:{{$wacca2Navigation$menuButtonTop+44}}px;">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/wacca2_navigation.png" style="height:{{$wacca2Navigation$menuButtonTop+44}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <image bindtap="$wacca2Navigation$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$wacca2Navigation$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <text class="title">{{$wacca2Navigation$title}}</text>
+        </view>
+    </view>
+    <view class="search-box">
+        <input bindinput="getTrackName" placeholder="请输入曲目" type="text" value="{{trackName}}"></input>
+        <view bindtap="searchTrack" class="icon"></view>
+    </view>
+    <view class="switch-btn" style="width: {{screenWidth-40}}px">
+        <text bindtap="navbarTap" class="switch-item f24 c_wacca2 {{currentTab==index?'active':''}}" data-index="{{index}}" wx:for="{{navbar}}" wx:key="index">{{item}}</text>
+    </view>
+    <view bindtap="songClick" class="item flex-row flex-between" data-wpysongclick-a="{{item}}" style="width:{{screenWidth-30}}px" wx:for="{{arr}}" wx:key="key">
+        <view class="flex-row" style="">
+            <image src="{{item.image_url}}" style="border-radius: 5px;width:{{screenWidth*0.21}}px;height:{{screenWidth*0.21}}px"></image>
+            <view class="flex-column flex-between" style="height:60px;margin-left:5px;align-items:flex-start">
+                <view class="flex-column flex-between" style="height:30px;align-items:flex-start;max-width: 150px">
+                    <text class="f30 ellipsis-1" style="white-space: nowarp;max-width: 150px">{{item.music_name}}</text>
+                    <text class="f24">{{item.subTitle}}</text>
+                </view>
+                <view class="f20 item-level c_ff flex-row">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/rating/{{item.type}}.png" style="width:96px;height:16.5px"></image>
+                    <view class="item-level-title flex-column">
+                 {{item.typeDesc}}
+              </view>
+                </view>
+            </view>
+        </view>
+        <view class="item-score flex-column flex-between">
+            <text class="f55 c_37">{{item.max_score}}</text>
+            <text class="f24 c_66">最高分</text>
+        </view>
+    </view>
+</view>

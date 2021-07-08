@@ -1,1 +1,47 @@
-<!--wacca2/wacca2-rating.wxml--><text>wacca2/wacca2-rating.wxml</text>
+<view>
+    <view style="height:{{$wacca2Navigation$menuButtonTop+44}}px;">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/wacca2_navigation.png" style="height:{{$wacca2Navigation$menuButtonTop+44}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <image bindtap="$wacca2Navigation$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$wacca2Navigation$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <text class="title">{{$wacca2Navigation$title}}</text>
+        </view>
+    </view>
+    <view class="flex-row flex-between selection" style="align-items:flex-end">
+        <view bindtap="topMenuDidSelect" class="flex-column flex-between c_wacca2 f24" data-wpytopmenudidselect-a="{{index}}" style="width:80px; height:24px;" wx:for="{{menuList}}" wx:key="key">
+            <text>{{item.title}}</text>
+            <view style="width:20px; height:3px;background-color:#14BB69" wx:if="{{selectIndex==index}}"></view>
+        </view>
+    </view>
+    <view class="title-view flex-row flex-between" style="width:{{screenWidth-30}}px">
+        <view class="flex-row flex-between" style="height: 40px;width:120px">
+            <image src="{{userIcon}}" style="width:40px;height:40px;border-radius:20px"></image>
+            <text class="f28 c_33">{{userName}}</text>
+        </view>
+        <text class="f38 c_37">{{'Rate:'+(selectIndex==0?totalCount:sumRate)}}</text>
+    </view>
+    <view class="item flex-row flex-between" style="width:{{screenWidth-30}}px" wx:for="{{arr}}" wx:key="key">
+        <view class="flex-row" style="">
+            <image src="{{item.imageUrl}}" style="border-radius: 5px;width:{{screenWidth*0.21}}px;height:{{screenWidth*0.21}}px"></image>
+            <view class="flex-column flex-between" style="height:75px;margin-left:5px;align-items:flex-start">
+                <view class="flex-column flex-between" style="height:50px;align-items:flex-start;width:180px;">
+                    <text class="f30 ellipsis-1" style="white-space: nowarp;max-width: 180px">{{item.musicName}}</text>
+                    <text class="f24 ellipsis-1" style="white-space: nowarp;max-width: 180px">{{item.artistName}}</text>
+                </view>
+                <view class="f20 item-level c_ff flex-row">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/rating/{{item.type}}.png" style="width:96px;height:16.5px"></image>
+                    <view class="item-level-title flex-column">
+                 {{item.typeDesc}}
+              </view>
+                </view>
+            </view>
+        </view>
+        <view class="item-score flex-column flex-between">
+            <text class="f55 c_37">{{item.musicRating}}</text>
+            <text class="f24 c_66">Rate</text>
+        </view>
+    </view>
+</view>

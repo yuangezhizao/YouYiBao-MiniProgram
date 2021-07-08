@@ -1,1 +1,53 @@
-<!--wacca2/wacca2-lilybox-records.wxml--><text>wacca2/wacca2-lilybox-records.wxml</text>
+<view>
+    <view style="height:{{$wacca2Navigation$menuButtonTop+44}}px;">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/wacca2_navigation.png" style="height:{{$wacca2Navigation$menuButtonTop+44}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <image bindtap="$wacca2Navigation$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$wacca2Navigation$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <text class="title">{{$wacca2Navigation$title}}</text>
+        </view>
+    </view>
+    <view style="padding: 15px 15px">
+        <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/luck_draw.png" style="width:100%;height: 60.5px;margin-top: 15px"></image>
+        <view class="circle_b total-result flex-between flex-row">
+            <view class="flex-column flex-center" style=";width: {{(screenWidth-30)/2-1}}px;height:80px">
+                <text class="c_wacca2" style="font-size:37px">{{getRate+'%'}}</text>
+                <text class="c_99 f28">获得率</text>
+            </view>
+            <view style="background-color: #f2f2f2;width: 1px;height:80px"></view>
+            <view class="flex-column flex-center" style="width: {{(screenWidth-30)/2-1}}px;;height:80px">
+                <text class="c_wacca2" style="font-size:37px">{{getNum}}</text>
+                <text class="c_99 f28">获得个数</text>
+            </view>
+        </view>
+        <view class="circle_b total-list flex-between flex-column">
+            <view class="total-list-item flex-column flex-between" wx:if="{{totalList[index].total!=0}}" wx:for="{{totalList}}" wx:key="index">
+                <view class="flex-row flex-between" style="width: 100%;height: 59px">
+                    <image src="{{item.image}}" style="width: 35px;height:38px"></image>
+                    <view class="flex-row" style="height:50px;">
+                        <text class="c_wacca2 f40">{{item.score}}</text>
+                        <text class="c_66 f40">/{{item.total}}</text>
+                        <text class="c_66 f20" style="margin-left:5px">个</text>
+                    </view>
+                </view>
+                <view style="width: 100%;height: 1px;background-color: #f2f2f2"></view>
+            </view>
+        </view>
+        <view class="flex-column" style="align-items: flex-start;width:100%;height:{{item.data.length*70+35}}px;margin-top : 10px" wx:if="{{totalList[index].score!=0}}" wx:for="{{totalList}}" wx:key="index">
+            <view class="flex-row">
+                <image src="{{item.image}}" style="width: 35px;height: 38px"></image>
+                <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/lilybox/star.png" style="width: 15px;height: 15px;margin-left: {{idx==0?10:5}}px" wx:for="{{item.star}}" wx:for-index="idx" wx:key="index2"></image>
+            </view>
+            <view class="circle_b main-list-item flex-row flex-between" wx:for="{{item.data}}" wx:for-index="index2" wx:for-item="item2" wx:key="index2">
+                <view class="flex-column flex-between" style="align-items: flex-start">
+                    <text class="c_wacca2 f28">{{item2.categoryName}}</text>
+                    <text class="c_33 f28">{{item2.itemName}}</text>
+                </view>
+                <text class="f36 {{item2.count!=0?'c_d5':'c_66'}}" style="background-color: ">{{item2.itemNum==0?'未获得':item2.itemNum+'个'}}</text>
+            </view>
+        </view>
+    </view>
+</view>

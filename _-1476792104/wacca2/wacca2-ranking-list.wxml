@@ -1,1 +1,331 @@
-<!--wacca2/wacca2-ranking-list.wxml--><text>wacca2/wacca2-ranking-list.wxml</text>
+<view>
+    <view style="height:{{$wacca2Navigation$menuButtonTop+44}}px;">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/wacca2_navigation.png" style="height:{{$wacca2Navigation$menuButtonTop+44}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <image bindtap="$wacca2Navigation$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$wacca2Navigation$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <text class="title">{{$wacca2Navigation$title}}</text>
+        </view>
+    </view>
+    <view class="flex-row flex-between selection" style="align-items:flex-end">
+        <view bindtap="topMenuDidSelect" class="flex-column flex-between c_wacca2 f24" data-wpytopmenudidselect-a="{{index}}" style="width:80px; height:24px;" wx:for="{{menuList}}" wx:key="key">
+            <text>{{item.title}}</text>
+            <view style="width:20px; height:3px;background-color:#14BB69" wx:if="{{selectIndex==index}}"></view>
+        </view>
+    </view>
+    <block wx:if="{{selectIndex==0}}">
+        <view class="switch-btn" style="width: {{screenWidth-40}}px">
+            <text bindtap="navbarTap" class="switch-item f24 c_wacca2 {{currentTab==index?'active':''}}" data-index="{{index}}" wx:for="{{navbar}}" wx:key="index">{{item}}</text>
+        </view>
+        <view style="padding: 10px 15px">
+            <view>
+                <view style="margin-top:15px;width:100%">
+                    <text class="f30 c_99">我的排名</text>
+                </view>
+                <view class="my-rank flex-row" wx:if="{{$wacca2RankAssembly$rankInfo.rank}}">
+                    <view class="rank-left">
+                        <text class="f60 c_ff Merriweather">{{$wacca2RankAssembly$rankInfo.rank}}</text>
+                        <text class="c_FFE f28">排名</text>
+                    </view>
+                    <view class="flex-column flex-center" style="width:{{$wacca2RankAssembly$screenWidth*0.346}}px;height:100%;margin-left:10px" wx:if="{{$wacca2RankAssembly$type=='Ranking'}}">
+                        <view class="flex-row">
+                            <image src="{{$wacca2RankAssembly$rankInfo.avatarUrl!=''?$wacca2RankAssembly$rankInfo.avatarUrl:'http://yyb-oss.universal-space.cn/imgs/default_avatar.png'}}" style="width:{{$wacca2RankAssembly$screenWidth*0.104}}px;height:{{$wacca2RankAssembly$screenWidth*0.104}}px;border-radius: 50%;"></image>
+                            <text class="f24 c_ff" style="margin-left:5px;width:{{$wacca2RankAssembly$screenWidth*0.17}}px">{{$wacca2RankAssembly$rankInfo.nickName}}</text>
+                        </view>
+                        <view style="width:100%;height:1px;background-color:#D8D8D8;margin-top:5px"></view>
+                    </view>
+                    <view class="flex-column flex-center" wx:if="{{$wacca2RankAssembly$type=='Ranking'}}">
+                        <text class="f60 c_ff">{{$wacca2RankAssembly$rankInfo.maxScore}}</text>
+                        <text class="f24 c_ff" style="margin-top:5px">总分</text>
+                    </view>
+                    <view class="flex-column flex-center" style="width:{{$wacca2RankAssembly$screenWidth*0.65}}px;height:100%;margin-left:10px" wx:if="{{$wacca2RankAssembly$type=='All-ranking'||$wacca2RankAssembly$type=='Single-song'}}">
+                        <view class="flex-row flex-between">
+                            <image src="{{$wacca2RankAssembly$rankInfo.avatarUrl}}" style="width:{{$wacca2RankAssembly$screenWidth*0.104}}px;height:{{$wacca2RankAssembly$screenWidth*0.104}}px;border-radius: 50%;"></image>
+                            <text class="f24 c_ff" style="margin-left:5px;width:{{$wacca2RankAssembly$screenWidth*0.17}}px">{{$wacca2RankAssembly$rankInfo.nickName}}</text>
+                            <view class="flex-column">
+                                <text class="f60 c_ff">{{$wacca2RankAssembly$type=='All-ranking'?$wacca2RankAssembly$rankInfo.totalScore:$wacca2RankAssembly$rankInfo.maxScore}}</text>
+                                <text class="f24 c_ff">最高分</text>
+                            </view>
+                        </view>
+                        <view style="width:100%;height:1px;background-color:#D8D8D8;margin-top:5px"></view>
+                        <view class="flex-row flex-between " style="width:100%;margin-top:5px" wx:if="{{$wacca2RankAssembly$type=='Single-song'}}">
+                            <view class="flex-row f24 c_ff">
+                                <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/rank_location.png" style="width:15px;height:15px"></image>
+                                <text style="margin-left: 5px">{{$wacca2RankAssembly$rankInfo.storeName}}</text>
+                            </view>
+                            <view class="flex-row f24 c_ff">
+                                <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/rank_time.png" style="width:15px;height:15px"></image>
+                                <text style="margin-left: 5px">{{$wacca2RankAssembly$rankInfo.gameDate}}</text>
+                            </view>
+                        </view>
+                        <view class="rank-right-bottom" wx:else>
+                            <view class="icon-item">
+                                <image src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_music_blue.png"></image>
+                                <text class="f22 c_ff">{{'曲目数'+$wacca2RankAssembly$rankInfo.musicCount}}</text>
+                            </view>
+                            <view class="icon-item">
+                                <image src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_trophy_blue.png"></image>
+                                <text class="f22 c_ff">{{'奖杯数'+$wacca2RankAssembly$rankInfo.trophyCount}}</text>
+                            </view>
+                            <view class="icon-item">
+                                <image src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_portrait_blue.png"></image>
+                                <text class="f22 c_ff">{{'称号数'+$wacca2RankAssembly$rankInfo.titleCount}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="flex-row flex-between" style="width:{{$wacca2RankAssembly$screenWidth*0.65}}px;height:100%;margin-left:10px" wx:if="{{$wacca2RankAssembly$type=='Rate-ranking'}}">
+                        <view class="flex-row">
+                            <image src="{{$wacca2RankAssembly$rankInfo.avatarUrl}}" style="width:{{$wacca2RankAssembly$screenWidth*0.104}}px;height:{{$wacca2RankAssembly$screenWidth*0.104}}px;border-radius: 50%;"></image>
+                            <text class="f24 c_ff" style="margin-left:5px;width:{{$wacca2RankAssembly$screenWidth*0.17}}px">{{$wacca2RankAssembly$rankInfo.nickName}}</text>
+                        </view>
+                        <view class="flex-column">
+                            <text class="f60 c_ff">{{$wacca2RankAssembly$rankInfo.userRating}}</text>
+                            <text class="f24 c_ff">Rating</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="btm-tips" wx:else>
+                    <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 暂无排名
+          </view>
+                <view style="margin-top:15px;width:100%">
+                    <text class="f30 c_99">全国排名</text>
+                </view>
+                <view class="top3-user">
+                    <view class="user" wx:for="{{$wacca2RankAssembly$arr}}" wx:for-index="$wacca2RankAssembly$index" wx:for-item="$wacca2RankAssembly$item" wx:key="$wacca2RankAssembly$key">
+                        <view class="avatar">
+                            <image src="{{$wacca2RankAssembly$item.avatarUrl!=''?$wacca2RankAssembly$item.avatarUrl:'http://yyb-oss.universal-space.cn/imgs/default_avatar.png'}}"></image>
+                        </view>
+                        <view class="nickname">{{$wacca2RankAssembly$item.nickName}}</view>
+                        <view class="score">
+                            <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_flash.png"></image> {{$wacca2RankAssembly$type=='Rate-ranking'?$wacca2RankAssembly$item.userRating:$wacca2RankAssembly$item.totalScore}}
+              </view>
+                    </view>
+                </view>
+            </view>
+            <view>
+                <view class="my-size flex-row" wx:for="{{$wacca2RankListItem$arr}}" wx:for-index="$wacca2RankListItem$index" wx:for-item="$wacca2RankListItem$item" wx:key="$wacca2RankListItem$key">
+                    <view class="rank-left">
+                        <text class="f60 c_99 Merriweather" style="border-color:{{$wacca2RankListItem$index==0?'#DBBB81':'#999999'}};color:{{$wacca2RankListItem$index==0?'#DBBB81':'#999999'}};">{{$wacca2RankListItem$item.rank}}</text>
+                        <text class="c_99 f30">排名</text>
+                    </view>
+                    <view class="{{$wacca2RankListItem$type}}" style="width:{{$wacca2RankListItem$screenWidth*0.48}}px;height:100%;margin-left:10px" wx:if="{{$wacca2RankListItem$type=='RankRanking'}}">
+                        <view class="flex-row">
+                            <image src="{{$wacca2RankListItem$item.avatarUrl}}" style="width:{{$wacca2RankListItem$screenWidth*0.104}}px;height:{{$wacca2RankListItem$screenWidth*0.104}}px;border-radius: 50%;"></image>
+                            <text class="f24 c_66" style="margin-left:5px;width:{{$wacca2RankListItem$screenWidth*0.17}}px">{{$wacca2RankListItem$item.nickName}}</text>
+                        </view>
+                        <view style="width:100%;height:1px;background-color:#D8D8D8;margin-top:5px"></view>
+                        <view class="flex-row" style="width:100%">
+                            <text class="f24 c_66" style="margin-top:5px">总分</text>
+                            <text class="f60 c_337" style="margin-top:5px;margin-left:10px">{{$wacca2RankListItem$item.maxScore}}</text>
+                        </view>
+                    </view>
+                    <image src="{{'http://yyb-oss.universal-space.cn/imgs/wacca2/rank/'+$wacca2RankListItem$item.trialClass+'_'+$wacca2RankListItem$item.trialClassPassType+'.png'}}" style="margin-left:10px;width:45px;height:45px" wx:if="{{$wacca2RankListItem$type=='RankRanking'}}"></image>
+                    <view class="flex-column flex-between" style="align-items:start;width:{{$wacca2RankListItem$screenWidth*0.65}}px;height:100%;margin-left:10px" wx:if="{{$wacca2RankListItem$type=='All-ranking'||$wacca2RankListItem$type=='Single-song'}}">
+                        <view class="flex-row">
+                            <image src="{{$wacca2RankListItem$item.avatarUrl}}" style="width:{{$wacca2RankListItem$screenWidth*0.104}}px;height:{{$wacca2RankListItem$screenWidth*0.104}}px;border-radius: 50%;"></image>
+                            <text class="f24 c_66 ellipsis-1" style="white-space: nowarp;max-width: 150px;margin-left:5px;width:{{$wacca2RankListItem$screenWidth*0.17}}px">{{$wacca2RankListItem$item.nickName}}</text>
+                            <view class="flex-column" style="align-items: end">
+                                <text class="f24 c_66">最高分</text>
+                                <text class="f50 c_337">{{$wacca2RankListItem$type=='All-ranking'?$wacca2RankListItem$item.totalScore:$wacca2RankListItem$item.maxScore}}</text>
+                            </view>
+                        </view>
+                        <view style="width:100%;height:1px;background-color:#D8D8D8;"></view>
+                        <view class="flex-row flex-between " style="width:100%;margin-top:5px" wx:if="{{$wacca2RankListItem$type=='Single-song'}}">
+                            <view class="flex-row f24 c_66" style="height: 25px;width:100px">
+                                <image class="c_337" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/rank_location_b.png" style="width:15px;height:15px"></image>
+                                <text class="ellipsis-1" style="margin-left: 5px,white-space: nowarp;max-width: 100px">{{$wacca2RankListItem$item.storeName}}</text>
+                            </view>
+                            <view class="flex-row f24 c_66" style="height: 25px;width: 100px">
+                                <image class="c_337" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/rank_time_b.png" style="width:15px;height:15px"></image>
+                                <text class="ellipsis-1" style="margin-left: 5px,white-space: nowarp;max-width: 150px">{{$wacca2RankListItem$item.gameDate}}</text>
+                            </view>
+                        </view>
+                        <view class="rank-right-bottom" wx:else>
+                            <view class="icon-item">
+                                <image src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_music_blue.png"></image>
+                                <text class="f22 c_99">曲目数{{$wacca2RankListItem$item.musicCount}}</text>
+                            </view>
+                            <view class="icon-item">
+                                <image src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_trophy_blue.png"></image>
+                                <text class="f22 c_99">奖杯数{{$wacca2RankListItem$item.trophyCount}}</text>
+                            </view>
+                            <view class="icon-item">
+                                <image src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_portrait_blue.png"></image>
+                                <text class="f22 c_99">称号数{{$wacca2RankListItem$item.titleCount}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="flex-row flex-between" style="width:{{$wacca2RankListItem$screenWidth*0.6}}px;height:100%;margin-left:10px" wx:if="{{$wacca2RankListItem$type=='Rate-ranking'}}">
+                        <view class="flex-row">
+                            <image src="{{$wacca2RankListItem$item.avatarUrl}}" style="width:{{$wacca2RankListItem$screenWidth*0.104}}px;height:{{$wacca2RankListItem$screenWidth*0.104}}px;border-radius: 50%;"></image>
+                            <text class="f24 c_66" style="margin-left:5px;width:{{$wacca2RankListItem$screenWidth*0.17}}px">{{$wacca2RankListItem$item.nickName}}</text>
+                        </view>
+                        <view class="flex-column">
+                            <text class="f60 c_337">{{$wacca2RankListItem$item.userRating}}</text>
+                            <text class="f24 c_66">Rating</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </block>
+    <view style="padding:10px 15px" wx:elif="{{selectIndex==1}}">
+        <view bindtap="rankRankingClick" class="rank-name-list-item flex-column flex-center" data-wpyrankrankingclick-a="{{item}}" wx:for="{{rank_name_list}}" wx:key="key">
+        {{item.trialClassName}}
+      </view>
+    </view>
+    <view style="padding:10px 15px" wx:else>
+        <view>
+            <view style="margin-top:15px;width:100%">
+                <text class="f30 c_99">我的排名</text>
+            </view>
+            <view class="my-rank flex-row" wx:if="{{$wacca2RankAssembly2$rankInfo.rank}}">
+                <view class="rank-left">
+                    <text class="f60 c_ff Merriweather">{{$wacca2RankAssembly2$rankInfo.rank}}</text>
+                    <text class="c_FFE f28">排名</text>
+                </view>
+                <view class="flex-column flex-center" style="width:{{$wacca2RankAssembly2$screenWidth*0.346}}px;height:100%;margin-left:10px" wx:if="{{$wacca2RankAssembly2$type=='Ranking'}}">
+                    <view class="flex-row">
+                        <image src="{{$wacca2RankAssembly2$rankInfo.avatarUrl!=''?$wacca2RankAssembly2$rankInfo.avatarUrl:'http://yyb-oss.universal-space.cn/imgs/default_avatar.png'}}" style="width:{{$wacca2RankAssembly2$screenWidth*0.104}}px;height:{{$wacca2RankAssembly2$screenWidth*0.104}}px;border-radius: 50%;"></image>
+                        <text class="f24 c_ff" style="margin-left:5px;width:{{$wacca2RankAssembly2$screenWidth*0.17}}px">{{$wacca2RankAssembly2$rankInfo.nickName}}</text>
+                    </view>
+                    <view style="width:100%;height:1px;background-color:#D8D8D8;margin-top:5px"></view>
+                </view>
+                <view class="flex-column flex-center" wx:if="{{$wacca2RankAssembly2$type=='Ranking'}}">
+                    <text class="f60 c_ff">{{$wacca2RankAssembly2$rankInfo.maxScore}}</text>
+                    <text class="f24 c_ff" style="margin-top:5px">总分</text>
+                </view>
+                <view class="flex-column flex-center" style="width:{{$wacca2RankAssembly2$screenWidth*0.65}}px;height:100%;margin-left:10px" wx:if="{{$wacca2RankAssembly2$type=='All-ranking'||$wacca2RankAssembly2$type=='Single-song'}}">
+                    <view class="flex-row flex-between">
+                        <image src="{{$wacca2RankAssembly2$rankInfo.avatarUrl}}" style="width:{{$wacca2RankAssembly2$screenWidth*0.104}}px;height:{{$wacca2RankAssembly2$screenWidth*0.104}}px;border-radius: 50%;"></image>
+                        <text class="f24 c_ff" style="margin-left:5px;width:{{$wacca2RankAssembly2$screenWidth*0.17}}px">{{$wacca2RankAssembly2$rankInfo.nickName}}</text>
+                        <view class="flex-column">
+                            <text class="f60 c_ff">{{$wacca2RankAssembly2$type=='All-ranking'?$wacca2RankAssembly2$rankInfo.totalScore:$wacca2RankAssembly2$rankInfo.maxScore}}</text>
+                            <text class="f24 c_ff">最高分</text>
+                        </view>
+                    </view>
+                    <view style="width:100%;height:1px;background-color:#D8D8D8;margin-top:5px"></view>
+                    <view class="flex-row flex-between " style="width:100%;margin-top:5px" wx:if="{{$wacca2RankAssembly2$type=='Single-song'}}">
+                        <view class="flex-row f24 c_ff">
+                            <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/rank_location.png" style="width:15px;height:15px"></image>
+                            <text style="margin-left: 5px">{{$wacca2RankAssembly2$rankInfo.storeName}}</text>
+                        </view>
+                        <view class="flex-row f24 c_ff">
+                            <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/rank_time.png" style="width:15px;height:15px"></image>
+                            <text style="margin-left: 5px">{{$wacca2RankAssembly2$rankInfo.gameDate}}</text>
+                        </view>
+                    </view>
+                    <view class="rank-right-bottom" wx:else>
+                        <view class="icon-item">
+                            <image src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_music_blue.png"></image>
+                            <text class="f22 c_ff">{{'曲目数'+$wacca2RankAssembly2$rankInfo.musicCount}}</text>
+                        </view>
+                        <view class="icon-item">
+                            <image src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_trophy_blue.png"></image>
+                            <text class="f22 c_ff">{{'奖杯数'+$wacca2RankAssembly2$rankInfo.trophyCount}}</text>
+                        </view>
+                        <view class="icon-item">
+                            <image src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_portrait_blue.png"></image>
+                            <text class="f22 c_ff">{{'称号数'+$wacca2RankAssembly2$rankInfo.titleCount}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="flex-row flex-between" style="width:{{$wacca2RankAssembly2$screenWidth*0.65}}px;height:100%;margin-left:10px" wx:if="{{$wacca2RankAssembly2$type=='Rate-ranking'}}">
+                    <view class="flex-row">
+                        <image src="{{$wacca2RankAssembly2$rankInfo.avatarUrl}}" style="width:{{$wacca2RankAssembly2$screenWidth*0.104}}px;height:{{$wacca2RankAssembly2$screenWidth*0.104}}px;border-radius: 50%;"></image>
+                        <text class="f24 c_ff" style="margin-left:5px;width:{{$wacca2RankAssembly2$screenWidth*0.17}}px">{{$wacca2RankAssembly2$rankInfo.nickName}}</text>
+                    </view>
+                    <view class="flex-column">
+                        <text class="f60 c_ff">{{$wacca2RankAssembly2$rankInfo.userRating}}</text>
+                        <text class="f24 c_ff">Rating</text>
+                    </view>
+                </view>
+            </view>
+            <view class="btm-tips" wx:else>
+                <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 暂无排名
+          </view>
+            <view style="margin-top:15px;width:100%">
+                <text class="f30 c_99">全国排名</text>
+            </view>
+            <view class="top3-user">
+                <view class="user" wx:for="{{$wacca2RankAssembly2$arr}}" wx:for-index="$wacca2RankAssembly2$index" wx:for-item="$wacca2RankAssembly2$item" wx:key="$wacca2RankAssembly2$key">
+                    <view class="avatar">
+                        <image src="{{$wacca2RankAssembly2$item.avatarUrl!=''?$wacca2RankAssembly2$item.avatarUrl:'http://yyb-oss.universal-space.cn/imgs/default_avatar.png'}}"></image>
+                    </view>
+                    <view class="nickname">{{$wacca2RankAssembly2$item.nickName}}</view>
+                    <view class="score">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_flash.png"></image> {{$wacca2RankAssembly2$type=='Rate-ranking'?$wacca2RankAssembly2$item.userRating:$wacca2RankAssembly2$item.totalScore}}
+              </view>
+                </view>
+            </view>
+        </view>
+        <view>
+            <view class="my-size flex-row" wx:for="{{$wacca2RankListItem2$arr}}" wx:for-index="$wacca2RankListItem2$index" wx:for-item="$wacca2RankListItem2$item" wx:key="$wacca2RankListItem2$key">
+                <view class="rank-left">
+                    <text class="f60 c_99 Merriweather" style="border-color:{{$wacca2RankListItem2$index==0?'#DBBB81':'#999999'}};color:{{$wacca2RankListItem2$index==0?'#DBBB81':'#999999'}};">{{$wacca2RankListItem2$item.rank}}</text>
+                    <text class="c_99 f30">排名</text>
+                </view>
+                <view class="{{$wacca2RankListItem2$type}}" style="width:{{$wacca2RankListItem2$screenWidth*0.48}}px;height:100%;margin-left:10px" wx:if="{{$wacca2RankListItem2$type=='RankRanking'}}">
+                    <view class="flex-row">
+                        <image src="{{$wacca2RankListItem2$item.avatarUrl}}" style="width:{{$wacca2RankListItem2$screenWidth*0.104}}px;height:{{$wacca2RankListItem2$screenWidth*0.104}}px;border-radius: 50%;"></image>
+                        <text class="f24 c_66" style="margin-left:5px;width:{{$wacca2RankListItem2$screenWidth*0.17}}px">{{$wacca2RankListItem2$item.nickName}}</text>
+                    </view>
+                    <view style="width:100%;height:1px;background-color:#D8D8D8;margin-top:5px"></view>
+                    <view class="flex-row" style="width:100%">
+                        <text class="f24 c_66" style="margin-top:5px">总分</text>
+                        <text class="f60 c_337" style="margin-top:5px;margin-left:10px">{{$wacca2RankListItem2$item.maxScore}}</text>
+                    </view>
+                </view>
+                <image src="{{'http://yyb-oss.universal-space.cn/imgs/wacca2/rank/'+$wacca2RankListItem2$item.trialClass+'_'+$wacca2RankListItem2$item.trialClassPassType+'.png'}}" style="margin-left:10px;width:45px;height:45px" wx:if="{{$wacca2RankListItem2$type=='RankRanking'}}"></image>
+                <view class="flex-column flex-between" style="align-items:start;width:{{$wacca2RankListItem2$screenWidth*0.65}}px;height:100%;margin-left:10px" wx:if="{{$wacca2RankListItem2$type=='All-ranking'||$wacca2RankListItem2$type=='Single-song'}}">
+                    <view class="flex-row">
+                        <image src="{{$wacca2RankListItem2$item.avatarUrl}}" style="width:{{$wacca2RankListItem2$screenWidth*0.104}}px;height:{{$wacca2RankListItem2$screenWidth*0.104}}px;border-radius: 50%;"></image>
+                        <text class="f24 c_66 ellipsis-1" style="white-space: nowarp;max-width: 150px;margin-left:5px;width:{{$wacca2RankListItem2$screenWidth*0.17}}px">{{$wacca2RankListItem2$item.nickName}}</text>
+                        <view class="flex-column" style="align-items: end">
+                            <text class="f24 c_66">最高分</text>
+                            <text class="f50 c_337">{{$wacca2RankListItem2$type=='All-ranking'?$wacca2RankListItem2$item.totalScore:$wacca2RankListItem2$item.maxScore}}</text>
+                        </view>
+                    </view>
+                    <view style="width:100%;height:1px;background-color:#D8D8D8;"></view>
+                    <view class="flex-row flex-between " style="width:100%;margin-top:5px" wx:if="{{$wacca2RankListItem2$type=='Single-song'}}">
+                        <view class="flex-row f24 c_66" style="height: 25px;width:100px">
+                            <image class="c_337" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/rank_location_b.png" style="width:15px;height:15px"></image>
+                            <text class="ellipsis-1" style="margin-left: 5px,white-space: nowarp;max-width: 100px">{{$wacca2RankListItem2$item.storeName}}</text>
+                        </view>
+                        <view class="flex-row f24 c_66" style="height: 25px;width: 100px">
+                            <image class="c_337" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/rank_time_b.png" style="width:15px;height:15px"></image>
+                            <text class="ellipsis-1" style="margin-left: 5px,white-space: nowarp;max-width: 150px">{{$wacca2RankListItem2$item.gameDate}}</text>
+                        </view>
+                    </view>
+                    <view class="rank-right-bottom" wx:else>
+                        <view class="icon-item">
+                            <image src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_music_blue.png"></image>
+                            <text class="f22 c_99">曲目数{{$wacca2RankListItem2$item.musicCount}}</text>
+                        </view>
+                        <view class="icon-item">
+                            <image src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_trophy_blue.png"></image>
+                            <text class="f22 c_99">奖杯数{{$wacca2RankListItem2$item.trophyCount}}</text>
+                        </view>
+                        <view class="icon-item">
+                            <image src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_portrait_blue.png"></image>
+                            <text class="f22 c_99">称号数{{$wacca2RankListItem2$item.titleCount}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="flex-row flex-between" style="width:{{$wacca2RankListItem2$screenWidth*0.6}}px;height:100%;margin-left:10px" wx:if="{{$wacca2RankListItem2$type=='Rate-ranking'}}">
+                    <view class="flex-row">
+                        <image src="{{$wacca2RankListItem2$item.avatarUrl}}" style="width:{{$wacca2RankListItem2$screenWidth*0.104}}px;height:{{$wacca2RankListItem2$screenWidth*0.104}}px;border-radius: 50%;"></image>
+                        <text class="f24 c_66" style="margin-left:5px;width:{{$wacca2RankListItem2$screenWidth*0.17}}px">{{$wacca2RankListItem2$item.nickName}}</text>
+                    </view>
+                    <view class="flex-column">
+                        <text class="f60 c_337">{{$wacca2RankListItem2$item.userRating}}</text>
+                        <text class="f24 c_66">Rating</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

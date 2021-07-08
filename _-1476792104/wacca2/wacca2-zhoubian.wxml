@@ -1,1 +1,34 @@
-<!--wacca2/wacca2-zhoubian.wxml--><text>wacca2/wacca2-zhoubian.wxml</text>
+<view>
+    <view style="height:{{$wacca2Navigation$menuButtonTop+44}}px;">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/wacca2_navigation.png" style="height:{{$wacca2Navigation$menuButtonTop+44}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <image bindtap="$wacca2Navigation$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$wacca2Navigation$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <text class="title">{{$wacca2Navigation$title}}</text>
+        </view>
+    </view>
+    <view class="contain">
+        <view style="background-color: #DDDDDD;width: {{screenWidth-30}}px;height: {{screenWidth-30}}px;border-radius: 5px;">
+            <image src="{{topImage}}" style="width: 100%;height: 100%"></image>
+        </view>
+        <view class="explain flex-column" style="align-items: flex-start;">
+            <view class="c_wacca2 f30 flex-column" style="width: 100%">活动说明</view>
+            <text class="f26 c_99">
+             {{exlainStr}}
+        </text>
+        </view>
+        <view style="margin-top: 15px">
+            <text class="f30 c_33">参与店铺</text>
+        </view>
+        <view bindtap="itemClick" class="single-item flex-row flex-between" data-wpyitemclick-a="{{item}}" wx:for="{{arr}}" wx:key="key">
+            <view class="flex-row">
+                <image src="{{item.path}}" style="width: 50px;height:50px"></image>
+                <text class="c_wacca2 f28" style="margin-left: 20px">{{item.storeName}}</text>
+            </view>
+            <text class="f24 c_66">{{'持有积分: '+item.userPoint}}</text>
+        </view>
+    </view>
+</view>

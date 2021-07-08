@@ -1,1 +1,191 @@
-<!--wacca2/wacca2-statis.wxml--><text>wacca2/wacca2-statis.wxml</text>
+<view>
+    <view style="height:{{$wacca2Navigation$menuButtonTop+44}}px;">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/wacca2_navigation.png" style="height:{{$wacca2Navigation$menuButtonTop+44}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <image bindtap="$wacca2Navigation$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$wacca2Navigation$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <text class="title">{{$wacca2Navigation$title}}</text>
+        </view>
+    </view>
+    <swiper autoplay="true" circular="true" class="swiper square-dot" indicatorColor="#ccc" indicatorDots="true">
+        <swiper-item class="swiper-item" wx:for="{{list}}" wx:key="key">
+            <image bindtap="banner" class="swiper-img" data-wpybanner-a="{{item}}" src="{{item.image}}"></image>
+        </swiper-item>
+    </swiper>
+    <view class="user-info" style="width:{{screenWidth-40}}px">
+        <view class="user-info-top">
+            <image bindtap="avatarClick" src="{{memberInfo.iconUrl?memberInfo.iconUrl:'http://yyb-oss.universal-space.cn/imgs/default_avatar.png'}}" style="width:{{screenWidth*0.2}}px;height:{{screenWidth*0.2}}px;border-radius:{{screenWidth*0.2*0.5}}px;"></image>
+            <view class="rank-icon">
+                <image src="{{'http://yyb-oss.universal-space.cn/imgs/wacca2/rank/'+memberInfo.trialClass+'_'+memberInfo.trialClassPassType+'.png'}}" style="width:30px;height:30px "></image>
+            </view>
+            <view class="user-info-top-right ;position: relative;" style="width:{{screenWidth*0.56}}px">
+                <image mode="aspectFill" src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/experience.png" style="width: 100%; height: 44rpx;">
+
+           
+         </image>
+                <view class="ml10 user-info-top-right-exprience-image">
+                    <text>{{'LV.'+memberInfo.userLevel}}</text>
+                    <view class="flex-column flex-center" style="margin-left: {{0.1*screenWidth}}px;width: {{screenWidth*0.35}}px">
+                        <text>{{memberInfo.userName}}</text>
+                    </view>
+                </view>
+                <view class="user-info-top-right-diamon" style="width:{{screenWidth*0.55}}px">
+                    <view class="user-info-top-right-diamon-single">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/WP.png" style="width: 100%;height: 50rpx"></image>
+                        <text class="user-info-top-right-diamon-single-title" style="margin-left: {{screenWidth*0.12}}px;">{{memberInfo.waccaPoint}}</text>
+                    </view>
+                    <view class="user-info-top-right-diamon-single">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/ex.png" style="width: 100%;height: 50rpx"></image>
+                        <text class="user-info-top-right-diamon-single-title" style="margin-left: {{screenWidth*0.12}}px;">{{memberInfo.ticketCount}}</text>
+                    </view>
+                </view>
+                <view class="user-info-top-right-nickname" wx:if="{{memberInfo.memberType!=1}}">
+                    <image mode="aspectFill" src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/nickname.png" style="width: 100%; height: 45rpx;"></image>
+                    <view class="user-info-top-right-nickname-single">{{memberInfo.userTitle?memberInfo.userTitle:'暂无称谓'}}</view>
+                </view>
+                <view class="user-info-top-right-nickname">
+                    <image mode="aspectFill" src="{{rateImage}}" style="width: 100%; height: 45rpx;"></image>
+                    <view bindtap="ratingClick" class="user-info-top-right-rate-single">
+                        <text style="margin-left:{{0.056*screenWidth}}px"></text>
+                        <text style="margin-left:{{0.1*screenWidth+50}}px">{{memberInfo.rating}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="gray-view" style=" margin-top: 10px"></view>
+        <view class="flex-row flex-between vip" wx:if="{{memberInfo.memberType>1}}">
+            <view class="vip-left flex-column flex-between">
+                <image src="{{memberInfo.memberType==2?'http://yyb-oss.universal-space.cn/imgs/wacca/icon_grade_4.png':'http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/vip.png'}}" style="width:37.5px;height:37.5px;"></image>
+                <text style="font-size: 12px; color:#666">{{memberInfo.memberType==2?'基本会员':'VIP会员'}}</text>
+            </view>
+            <view class="vip-right flex-column flex-between" style="width:{{screenWidth*0.58}}px;align-items:start">
+                <text class="f24 c_66">会员有效期：</text>
+                <view class="vip-validity flex-row flex-between">
+                    <text class="f24 c_66">0天</text>
+                    <view class="flex-column flex-between vip-validity-groove" style="align-items:start">
+                        <view class="vip-validity-groove-title c_ff f22" style="margin-left:{{screenWidth*0.58*validRate/100*0.7-15}}px">
+                {{memberInfo.validDays>=90?'永久':memberInfo.validDays+'天'}}
+             </view>
+                        <view class="vip-validity-groove-progress">
+                            <view class="vip-validity-groove-real-progress bg_wacca2" style="width:{{validRate}}%"></view>
+                        </view>
+                    </view>
+                    <text class="f24 c_66">永久</text>
+                </view>
+            </view>
+        </view>
+        <view class="vip-operation flex-column flex-between" wx:if="{{memberInfo.memberType>1}}">
+            <view class="vip-operation-top flex-row flex-between">
+                <view class="vip-operation-top-left flex-row" style="width:{{screenWidth*0.226}}px;">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/vip_times.png" style="height:100%;width:100%;"></image>
+                    <text class="vip-operation-top-left-title">{{'VIP次数:'+memberInfo.vipCount}}</text>
+                </view>
+                <view class="vip-operation-top-right flex-row flex-between" style="width:{{screenWidth*0.426}}px;">
+                    <image bindtap="toPrivilege" src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/vip_interests.png" style="height:100%;width:{{(screenWidth*0.426-15)/2}}px;"></image>
+                    <image bindtap="toCodePage" src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/vip_use_duihuanma.png" style="height:100%;width:{{(screenWidth*0.426-15)/2}}px;"></image>
+                </view>
+            </view>
+            <view class="vip-operation-bottom flex-row flex-between">
+                <image bindtap="rechargeVip" src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/recharge_times.png" style="height:100%;width:{{screenWidth*0.366}}px;"></image>
+                <image bindtap="shopButtonClick" src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/buy_game_item.png" style="height:100%;width:{{screenWidth*0.366}}px;"></image>
+            </view>
+        </view>
+        <view class="flex-column" wx:else>
+            <view class="flex-row flex-between" style="margin-top: 10px;width: 100%">
+                <view class="vip-left flex-column flex-between">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/no_vip.png" style="width:37.5px;height:37.5px;"></image>
+                    <text style="font-size: 12px; color:#666">非会员</text>
+                </view>
+                <view class="flex-row">
+                    <view class="vip-operation-top-left flex-row" style="width:{{screenWidth*0.226}}px;">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/vip_times.png" style="height:100%;width:100%;"></image>
+                        <text class="vip-operation-top-left-title">{{'VIP次数:'+memberInfo.vipCount}}</text>
+                    </view>
+                    <view class="gray-view-ver" style="height: 40px;margin-left: 15px"></view>
+                    <view class="flex-column">
+                        <image bindtap="toPrivilege" src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/vip_interests.png" style="margin-left: 15px;height:25px;width:{{(screenWidth*0.426-15)/2}}px;"></image>
+                        <image bindtap="toCodePage" src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/vip_use_duihuanma.png" style="margin-left: 15px;margin-top: 8px;height:25px;width:{{(screenWidth*0.426-15)/2}}px;"></image>
+                    </view>
+                </view>
+            </view>
+            <view class="flex-column flex-center">
+                <view bindtap="upMember" class=" sure-btn-wacca2 flex-column flex-center c_ff f30" style="margin-top:20px;width: 200px">升级基本会员</view>
+            </view>
+        </view>
+    </view>
+    <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/unlock.png" style="width:{{screenWidth-40}}px;height: 60.5px;margin-left: 20px;margin-top: 15px" wx:if="{{memberInfo.userLoginTimes==0}}"></image>
+    <image bindtap="luckDraw" src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/luck_draw.png" style="width:{{screenWidth-40}}px;height: 60.5px;margin-left: 20px;margin-top: 15px" wx:if="{{memberInfo.userLoginTimes>0}}"></image>
+    <image bindtap="zhoubianClick" src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/zhoubian.png" style="width:{{screenWidth-40}}px;height: 60.5px;margin-left: 20px;margin-top: 15px" wx:if="{{memberInfo.userLoginTimes>0&&zhoubianSize!=null}}"></image>
+    <view class="user-info-bottom flex-column" style="width:{{screenWidth-40}}px;align-items:start" wx:if="{{memberInfo.userLoginTimes>0}}">
+        <text class="c_33 f30">我的游戏综合</text>
+        <view class="user-info-bottom-show flex-row flex-between">
+            <view bindtap="trophyClick" class="flex-column flex-between" style="height: width:{{(screenWidth-80-90)/2}}px;width:{{(screenWidth-80-90)/4}}px;">
+                <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/cup.png" style="width:100%;height:{{(screenWidth-80-90)/4}}px"></image>
+                <text class="f22 c_66">获得奖杯</text>
+                <text class="f38" style="color:#3270fe;">{{memberInfo.trophyCount}}</text>
+            </view>
+            <view bindtap="guideClick" class="flex-column flex-between" style="height: width:{{(screenWidth-80-90)/2}}px;width:{{(screenWidth-80-90)/4}}px;">
+                <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/guide.png" style="width:100%;height:{{(screenWidth-80-90)/4}}px"></image>
+                <text class="f22 c_66">领航员</text>
+                <text class="f38" style="color:#3270fe;">{{memberInfo.navicharacterCount}}</text>
+            </view>
+            <view bindtap="achievementDidClick" class="flex-column flex-between" style="height: width:{{(screenWidth-80-90)/2}}px;width:{{(screenWidth-80-90)/4}}px;">
+                <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/achievement.png" style="width:100%;height:{{(screenWidth-80-90)/4}}px"></image>
+                <text class="f22 c_66">我的成就</text>
+                <text class="f38" style="color:#3270fe;">{{memberInfo.titleCount}}</text>
+            </view>
+            <view bindtap="logoClick" class="flex-column flex-between" style="height: width:{{(screenWidth-80-90)/2}}px;width:{{(screenWidth-80-90)/4}}px;">
+                <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/logo.png" style="width:100%;height:{{(screenWidth-80-90)/4}}px"></image>
+                <text class="f22 c_66">我的铭牌</text>
+                <text class="f38" style="color:#3270fe;">{{memberInfo.nameplateCount}}</text>
+            </view>
+        </view>
+        <text class="c_33 f30" style="margin-top: 20px" wx:if="{{memberInfo.userLoginTimes>0}}">其他</text>
+        <view class="user-info-bottom-else" wx:if="{{memberInfo.userLoginTimes>0}}">
+            <view bindtap="resultClick" class="flex-column flex-between" style="width:50px;height:70px;">
+                <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/record.png" style="width:50px;height:50px;"></image>
+                <text class="f22 c_66">成绩记录</text>
+            </view>
+            <view bindtap="songClick" class="flex-column flex-between" style="width:50px;height:70px;">
+                <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/music_list.png" style="width:50px;height:50px;"></image>
+                <text class="f22 c_66">歌曲大全</text>
+            </view>
+            <view bindtap="rankListClick" class="flex-column flex-between" style="width:50px;height:70px;">
+                <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/rank.png" style="width:50px;height:50px;"></image>
+                <text class="f22 c_66">排行榜</text>
+            </view>
+        </view>
+        <view class="user-info-bottom-else" wx:if="{{memberInfo.userLoginTimes>0}}">
+            <view bindtap="gateClick" class="flex-column flex-between" style="width:50px;height:70px;">
+                <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/gate.png" style="width:50px;height:50px;"></image>
+                <text class="f22 c_66">闸门进度</text>
+            </view>
+            <view bindtap="rankClick" class="flex-column flex-between" style="width:50px;height:70px;">
+                <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/upgrade.png" style="width:50px;height:50px;"></image>
+                <text class="f22 c_66">升级关卡</text>
+            </view>
+            <view bindtap="settingDidClick" class="flex-column flex-between" style="width:50px;height:70px;">
+                <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/setting.png" style="width:50px;height:50px;"></image>
+                <text class="f22 c_66">设置</text>
+            </view>
+        </view>
+    </view>
+    <view class="match-dialog {{$memberDialog$size}}" wx:if="{{$memberDialog$isShowDialog}}">
+        <view class="match-dialog-inner">
+            <image bindtap="$memberDialog$handleClick" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+            <view class="title">{{$memberDialog$title}}</view>
+            <view class="match-dialog-body tc">
+                <view class="member-dialog">
+                    <view class="member-price">
+                        <text class="f80">{{memberInfo.memberFee/100}}</text>元/永久</view>
+                    <text class="f28 c_99">注意：基本会员需保持游戏状态，
+          若超90天无游戏记录的基本会员将失效。</text>
+                    <view bindtap="buyMember" class="btn btn-primary btn-round">立即支付</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

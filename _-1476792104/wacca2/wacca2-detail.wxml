@@ -1,1 +1,98 @@
-<!--wacca2/wacca2-detail.wxml--><text>wacca2/wacca2-detail.wxml</text>
+<view>
+    <view style="height:{{$wacca2Navigation$menuButtonTop+44}}px;">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/wacca2_navigation.png" style="height:{{$wacca2Navigation$menuButtonTop+44}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <image bindtap="$wacca2Navigation$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$wacca2Navigation$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <text class="title">{{$wacca2Navigation$title}}</text>
+        </view>
+    </view>
+    <view class="wacca-wrap">
+        <swiper autoplay="true" circular="true" class="swiper square-dot" indicatorColor="#ccc" indicatorDots="true">
+            <swiper-item class="swiper-item" wx:for="{{list}}" wx:key="key">
+                <image bindtap="banner" class="swiper-img" data-wpybanner-a="{{item}}" src="{{item.image}}"></image>
+            </swiper-item>
+        </swiper>
+        <view class="user-info flex-column" style="width:{{screenWidth-40}}px">
+            <view class="user-info-top">
+                <image bindtap="avatarClick" src="{{memberInfo.iconUrl?memberInfo.iconUrl:'http://yyb-oss.universal-space.cn/imgs/default_avatar.png'}}" style="width:{{screenWidth*0.15}}px;height:{{screenWidth*0.15}}px;border-radius:{{screenWidth*0.2*0.5}}px;"></image>
+                <view class="rank-icon">
+                    <image src="{{'http://yyb-oss.universal-space.cn/imgs/wacca2/rank/'+memberInfo.trialClass+'_'+memberInfo.trialClassPassType+'.png'}}" style="width:30px;height:30px "></image>
+                </view>
+                <view class="user-info-top-right ;position: relative;" style="width:{{screenWidth*0.56}}px">
+                    <image mode="aspectFill" src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/experience.png" style="width: 100%; height: 44rpx;"></image>
+                    <view class="ml10 user-info-top-right-exprience-image">
+                        <text>{{'LV.'+memberInfo.userLevel}}</text>
+                        <view class="flex-column flex-center" style="margin-left: {{0.1*screenWidth}}px;width: {{screenWidth*0.35}}px">
+                            <text>{{memberInfo.userName}}</text>
+                        </view>
+                    </view>
+                    <view class="user-info-top-right-nickname" wx:if="{{memberInfo.memberType!=1}}">
+                        <image mode="aspectFill" src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/nickname.png" style="width: 100%; height: 45rpx;"></image>
+                        <view class="user-info-top-right-nickname-single">{{memberInfo.userTitle?memberInfo.userTitle:'暂无称谓'}}</view>
+                    </view>
+                    <view class="user-info-top-right-nickname">
+                        <image mode="aspectFill" src="{{rateImage}}" style="width: 100%; height: 45rpx;"></image>
+                        <view bindtap="ratingClick" class="user-info-top-right-rate-single">
+                            <text style="margin-left:{{0.056*screenWidth}}px"></text>
+                            <text style="margin-left:{{0.1*screenWidth+50}}px">{{memberInfo.rating}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view style="padding: 20px">
+            <view class="f30 c99">我的游戏战绩</view>
+            <view class="record-item flex-column">
+                <view class="flex-column" style="padding: 10px 15px;box-sizing: border-box;">
+                    <view class="flex-row" style="justify-content: flex-end; height: 20px;width: 100%">
+                        <view class="flex-row">
+                            <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/grade/location.png" style="width: 10px;height: 13px"></image>
+                            <text class="c_99 f26" style="margin-left: 5px">{{record.storeName}}</text>
+                        </view>
+                    </view>
+                    <view class="flex-row" style="margin-top: 10px">
+                        <image src="{{record.musicImageUrl}}" style="width: 80px;height: 80px;  border-radius: 5px;"></image>
+                        <view class="flex-column" style="margin-left: 10px;width: {{screenWidth-150}}px;align-items: flex-start;">
+                            <text class="fwb f34 c_33">{{record.musicName}}</text>
+                            <view class="flex-between flex-row" style="margin-top:20px;width: 100%;height: 40px;">
+                                <view class="f20 item-level c_ff flex-row">
+                                    <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/rating/{{record.type}}.png" style="width:96px;height:16.5px"></image>
+                                    <view class="item-level-title flex-column">
+                                      {{record.typeDesc}}
+                                   </view>
+                                </view>
+                                <view class="flex-row">
+                                    <image src="{{record.image1}}" style="width: 30px;height:30px"></image>
+                                    <image src="{{record.image2}}" style="width: 30px;height:30px;margin-left: 8px"></image>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <view style="width: 100%;height: 1px;background-color: #ececec;margin-top: 10px"></view>
+                    <view class="score flex-row flex-between">
+                        <view class="flex-row " style="margin-top: {{idx==0||idx==1?0:15}}px;height: 20px;width:{{idx==item.gradeList.length-1?200:screenWidth*0.32}}px" wx:for="{{record.gradeList}}" wx:for-index="idx" wx:for-item="item2" wx:key="key2">
+                            <image src="{{item2.image}}" style="width: 80px; height: 20px"></image>
+                            <text class="fwb f30 c_337" style="margin-left: 15px">{{item2.score}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="game-grade flex-row flex-between">
+                    <text class="f28 c_ff">{{record.updateDate}}</text>
+                    <view class="flex-row">
+                        <text class="f28 c_ff">游戏得分</text>
+                        <text class="fwb f60 c_ff" style="margin-left: {{screenWidth*0.04}}px">{{record.score}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="flex-row flex-between" style="margin-top:20px">
+                <image bindtap="allResultClick" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/all_result.png" style="width: 100px;height: 40px"></image>
+                <image bindtap="rankListClick" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/rank_list.png" style="width: 100px;height: 40px"></image>
+                <image bindtap="songClick" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/single_song_rank_list.png" style="width: 100px;height: 40px"></image>
+            </view>
+        </view>
+    </view>
+</view>

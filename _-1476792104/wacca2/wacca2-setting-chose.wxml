@@ -1,1 +1,47 @@
-<!--wacca2/wacca2-setting-chose.wxml--><text>wacca2/wacca2-setting-chose.wxml</text>
+<view style="position: relative;">
+    <view class="pick-view flex-column" style="width: {{screenWidth}}px;height: {{screenHeight}}px" wx:if="{{isShowPicker}}">
+        <view class="bottom-view flex-column">
+            <view class="top-view flex-row flex-between">
+                <text bindtap="cancleClick" class="c_33 f28">取消</text>
+                <text bindtap="pickerSure" class="c_32 f28 ">完成</text>
+            </view>
+            <view style="height: 1px; width: 100%;background-color: #f6f6f6"></view>
+            <picker-view bindchange="bindChange" indicatorStyle="height: 50px;" style="width: 100%; height: 180px;" value="{{value}}">
+                <picker-view-column>
+                    <view class="flex-column flex-between" style="line-height: 50px" wx:for="{{model.data}}" wx:key="key">{{item.display}}</view>
+                </picker-view-column>
+            </picker-view>
+        </view>
+    </view>
+    <view style="height:{{$wacca2Navigation$menuButtonTop+44}}px;">
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/wacca2_navigation.png" style="height:{{$wacca2Navigation$menuButtonTop+44}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <image bindtap="$wacca2Navigation$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$wacca2Navigation$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$wacca2Navigation$menuButtonTop}}px;">
+            <text class="title">{{$wacca2Navigation$title}}</text>
+        </view>
+    </view>
+    <view style="padding: 15px 15px">
+        <view class="main-item1 flex-column" wx:if="{{type==0}}">
+            <text class="c_66 f30">{{model.displayDescription}}</text>
+            <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/setting/setting_open_animate.png" style="margin-top: 20px;width: {{screenWidth-80}}px;height: 100px" wx:if="{{type==1}}"></image>
+            <view bindtap="selectButtonDidClick" class="selection flex-row ">
+                <text class="c_33 f28">{{selectItem!=''?selectItem.display:model.displayValue}}</text>
+                <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/common/down.png" style="margin-left: 5px;width:7px;height: 7px"></image>
+            </view>
+            <view bindtap="sureButton" class="sure-button sure-btn-wacca2 flex-column flex-center c_ff f30">立即更改</view>
+        </view>
+        <view class="main-item2 flex-column" wx:else>
+            <text class="c_66 f30">{{model.displayDescription}}</text>
+            <view class="flex-row flex-between single-item">
+                <view class="circle" style="border-color: {{item.value==selectItem.value?'#14BB69':'#bfbfbf'}};width: {{circleWidth}}px;height:{{circleWidth}}px" wx:for="{{showingList}}" wx:key="key">
+                    <image bindtap="clickImg" data-wpyclickimg-a="{{item}}" src="{{item.img}}" style="width: {{circleWidth-30}}px;height: {{circleWidth-30}}px;"></image>
+                </view>
+            </view>
+            <view bindtap="sureButton" class="sure-button sure-btn-wacca2 flex-column flex-center c_ff f30">立即更改</view>
+        </view>
+    </view>
+</view>
