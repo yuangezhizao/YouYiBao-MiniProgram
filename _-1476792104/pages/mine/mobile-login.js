@@ -1,227 +1,245 @@
-function _interopRequireDefault(e) {
-    return e && e.__esModule ? e : {
-        default: e
-    };
-}
-
-function _asyncToGenerator(e) {
-    return function() {
-        var t = e.apply(this, arguments);
-        return new Promise(function(e, n) {
-            function r(a, o) {
-                try {
-                    var i = t[a](o), s = i.value;
-                } catch (e) {
-                    return void n(e);
-                }
-                if (!i.done) return Promise.resolve(s).then(function(e) {
-                    r("next", e);
-                }, function(e) {
-                    r("throw", e);
-                });
-                e(s);
+!function() {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+        value: !0
+    });
+    var e = function() {
+        function e(e, t) {
+            for (var n = 0; n < t.length; n++) {
+                var r = t[n];
+                r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), 
+                Object.defineProperty(e, r.key, r);
             }
-            return r("next");
-        });
-    };
-}
-
-function _classCallCheck(e, t) {
-    if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-}
-
-function _possibleConstructorReturn(e, t) {
-    if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    return !t || "object" != typeof t && "function" != typeof t ? e : t;
-}
-
-function _inherits(e, t) {
-    if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
-    e.prototype = Object.create(t && t.prototype, {
-        constructor: {
-            value: e,
-            enumerable: !1,
-            writable: !0,
-            configurable: !0
         }
-    }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
-}
-
-Object.defineProperty(exports, "__esModule", {
-    value: !0
-});
-
-var _createClass = function() {
-    function e(e, t) {
-        for (var n = 0; n < t.length; n++) {
-            var r = t[n];
-            r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), 
-            Object.defineProperty(e, r.key, r);
-        }
+        return function(t, n, r) {
+            return n && e(t.prototype, n), r && e(t, r), t;
+        };
+    }(), t = s(require("./../../npm/wepy/lib/wepy.js")), n = s(require("./../../utils/api.js")), r = s(require("./../../utils/environment.js")), a = s(require("./../../utils/md5.js")), o = s(require("./../../utils/wechat.js")), i = s(require("./../../components/custom-statusbar.js"));
+    function s(e) {
+        return e && e.__esModule ? e : {
+            default: e
+        };
     }
-    return function(t, n, r) {
-        return n && e(t.prototype, n), r && e(t, r), t;
-    };
-}(), _wepy = require("./../../npm/wepy/lib/wepy.js"), _wepy2 = _interopRequireDefault(_wepy), _api = require("./../../utils/api.js"), _api2 = _interopRequireDefault(_api), _environment = require("./../../utils/environment.js"), _environment2 = _interopRequireDefault(_environment), _md = require("./../../utils/md5.js"), _md2 = _interopRequireDefault(_md), _wechat = require("./../../utils/wechat.js"), _wechat2 = _interopRequireDefault(_wechat), _customStatusbar = require("./../../components/custom-statusbar.js"), _customStatusbar2 = _interopRequireDefault(_customStatusbar), mobileLogin = function(e) {
-    function t() {
-        var e, n, r, a;
-        _classCallCheck(this, t);
-        for (var o = arguments.length, i = Array(o), s = 0; s < o; s++) i[s] = arguments[s];
-        return n = r = _possibleConstructorReturn(this, (e = t.__proto__ || Object.getPrototypeOf(t)).call.apply(e, [ this ].concat(i))), 
-        r.config = {
-            navigationStyle: "custom"
-        }, r.$repeat = {}, r.$props = {
-            customStatusbar: {
-                title: "账号登录"
-            }
-        }, r.$events = {}, r.components = {
-            customStatusbar: _customStatusbar2.default
-        }, r.mixins = [], r.data = {
-            passwordLogin: !0,
-            codeText: "获取验证码",
-            isCaptcha: !1,
-            phone: "",
-            phoneLen: "",
-            password: "",
-            code: "",
-            passwordLen: 0,
-            codeLen: 0,
-            nextStep: !1,
-            smsNextStep: !1,
-            isShow: !1,
-            encryptedData: "",
-            iv: ""
-        }, r.computed = {}, r.methods = {
-            loginType: function() {
-                this.passwordLogin ? this.passwordLogin = !1 : this.passwordLogin = !0, this.nextStep = !1, 
-                this.agree();
-            },
-            goBack: function() {
-                wx.navigateBack({
-                    delta: 1
-                });
-            },
-            goAgreement: function() {
-                wx.navigateTo({
-                    url: "/pages/mine/agreement"
-                });
-            },
-            getCaptcha: function() {
-                var e = this, t = 60;
-                if (!this.data.codeText.includes("s")) {
-                    this.getCaptcha();
-                    var n = function() {
-                        e.codeText = t + "s", t--, e.$apply(), t < -1 && (clearInterval(e.timer), e.codeText = "重获验证码", 
-                        e.$apply());
-                    };
-                    n(), this.timer = setInterval(n, 1e3);
+    function u(e) {
+        return function() {
+            var t = e.apply(this, arguments);
+            return new Promise(function(e, n) {
+                return function r(a, o) {
+                    try {
+                        var i = t[a](o), s = i.value;
+                    } catch (e) {
+                        return void n(e);
+                    }
+                    if (!i.done) return Promise.resolve(s).then(function(e) {
+                        r("next", e);
+                    }, function(e) {
+                        r("throw", e);
+                    });
+                    e(s);
+                }("next");
+            });
+        };
+    }
+    function c(e, t) {
+        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+    }
+    function p(e, t) {
+        if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return !t || "object" != typeof t && "function" != typeof t ? e : t;
+    }
+    var l = function(t) {
+        function s() {
+            var e, t, n;
+            c(this, s);
+            for (var r = arguments.length, a = Array(r), o = 0; o < r; o++) a[o] = arguments[o];
+            return t = n = p(this, (e = s.__proto__ || Object.getPrototypeOf(s)).call.apply(e, [ this ].concat(a))), 
+            n.config = {
+                navigationStyle: "custom"
+            }, n.$repeat = {}, n.$props = {
+                customStatusbar: {
+                    title: "账号登录"
                 }
-            },
-            getPhone: function(e) {
-                if (this.phone = e.detail.value, this.phoneLen = e.detail.cursor, !/^1(?:3|4|5|7|8|9)\d{9}$/.test(e.detail.value)) return this.isCaptcha = !1, 
-                this.nextStep = !1, void (this.smsNextStep = !1);
-                this.isCaptcha = !0, this.agree(), this.smsAgree();
-            },
-            getPassword: function(e) {
-                this.password = e.detail.value, this.passwordLen = e.detail.value.length, this.agree();
-            },
-            getCode: function(e) {
-                this.code = e.detail.value, this.codeLen = e.detail.value.length, this.smsAgree();
-            },
-            passwordLogin: function() {
-                this.getMemberLogin();
-            },
-            smsLogin: function() {
-                this.smsLogin();
-            },
-            forgetPassword: function() {
-                wx.navigateTo({
-                    url: "/pages/mine/forget-password"
-                });
-            },
-            userLogin: function() {
-                this.wxLogin();
-            }
-        }, r.events = {}, a = n, _possibleConstructorReturn(r, a);
-    }
-    return _inherits(t, e), _createClass(t, [ {
-        key: "onLoad",
-        value: function(e) {}
-    }, {
-        key: "onShow",
-        value: function() {}
-    }, {
-        key: "onShareAppMessage",
-        value: function(e) {
-            return {
-                title: "关注游艺宝，发现更多精彩",
-                path: "/pages/index/index",
-                imageUrl: "/assets/imgs/share.png",
-                success: function(e) {
-                    console.log("转发成功！");
+            }, n.$events = {}, n.components = {
+                customStatusbar: i.default
+            }, n.mixins = [], n.data = {
+                passwordLogin: !0,
+                codeText: "获取验证码",
+                isCaptcha: !1,
+                phone: "",
+                phoneLen: "",
+                password: "",
+                code: "",
+                passwordLen: 0,
+                codeLen: 0,
+                nextStep: !1,
+                smsNextStep: !1,
+                isShow: !1,
+                encryptedData: "",
+                iv: ""
+            }, n.computed = {}, n.methods = {
+                loginType: function() {
+                    this.passwordLogin ? this.passwordLogin = !1 : this.passwordLogin = !0, this.nextStep = !1, 
+                    this.agree();
                 },
-                fail: function(e) {
-                    return console.log(e.errMsg);
+                goBack: function() {
+                    wx.navigateBack({
+                        delta: 1
+                    });
+                },
+                goAgreement: function() {
+                    wx.navigateTo({
+                        url: "/pages/mine/agreement"
+                    });
+                },
+                getCaptcha: function() {
+                    var e = this, t = 60;
+                    if (!this.data.codeText.includes("s")) {
+                        this.getCaptcha();
+                        var n = function() {
+                            e.codeText = t + "s", t--, e.$apply(), t < -1 && (clearInterval(e.timer), e.codeText = "重获验证码", 
+                            e.$apply());
+                        };
+                        n(), this.timer = setInterval(n, 1e3);
+                    }
+                },
+                getPhone: function(e) {
+                    if (this.phone = e.detail.value, this.phoneLen = e.detail.cursor, !/^1(?:3|4|5|7|8|9)\d{9}$/.test(e.detail.value)) return this.isCaptcha = !1, 
+                    this.nextStep = !1, void (this.smsNextStep = !1);
+                    this.isCaptcha = !0, this.agree(), this.smsAgree();
+                },
+                getPassword: function(e) {
+                    this.password = e.detail.value, this.passwordLen = e.detail.value.length, this.agree();
+                },
+                getCode: function(e) {
+                    this.code = e.detail.value, this.codeLen = e.detail.value.length, this.smsAgree();
+                },
+                passwordLogin: function() {
+                    this.getMemberLogin();
+                },
+                smsLogin: function() {
+                    this.smsLogin();
+                },
+                forgetPassword: function() {
+                    wx.navigateTo({
+                        url: "/pages/mine/forget-password"
+                    });
+                },
+                userLogin: function() {
+                    this.wxLogin();
                 }
-            };
+            }, n.events = {}, p(n, t);
         }
-    }, {
-        key: "agree",
-        value: function() {
-            if (1 == this.passwordLogin && 11 == this.phoneLen) {
-                if (this.passwordLen <= 0) return void (this.nextStep = !1);
-                this.nextStep = !0;
+        var l, h, d, f, g, w;
+        return function(e, t) {
+            if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
+            e.prototype = Object.create(t && t.prototype, {
+                constructor: {
+                    value: e,
+                    enumerable: !1,
+                    writable: !0,
+                    configurable: !0
+                }
+            }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+        }(s, t), e(s, [ {
+            key: "onLoad",
+            value: function(e) {}
+        }, {
+            key: "onShow",
+            value: function() {}
+        }, {
+            key: "onShareAppMessage",
+            value: function(e) {
+                return {
+                    title: "关注游艺宝，发现更多精彩",
+                    path: "/pages/index/index",
+                    imageUrl: "/assets/imgs/share.png",
+                    success: function(e) {
+                        console.log("转发成功！");
+                    },
+                    fail: function(e) {
+                        return console.log(e.errMsg);
+                    }
+                };
             }
-        }
-    }, {
-        key: "smsAgree",
-        value: function() {
-            if (!this.isCaptcha || this.codeLen < 4) return void (this.smsNextStep = !1);
-            this.smsNextStep = !0;
-        }
-    }, {
-        key: "getCaptcha",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
+        }, {
+            key: "agree",
+            value: function() {
+                if (1 == this.passwordLogin && 11 == this.phoneLen) {
+                    if (this.passwordLen <= 0) return void (this.nextStep = !1);
+                    this.nextStep = !0;
+                }
             }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
-                var t, n;
+        }, {
+            key: "smsAgree",
+            value: function() {
+                !this.isCaptcha || this.codeLen < 4 ? this.smsNextStep = !1 : this.smsNextStep = !0;
+            }
+        }, {
+            key: "getCaptcha",
+            value: (w = u(regeneratorRuntime.mark(function e() {
+                var t;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
                       case 0:
-                        return t = {
-                            mobile: this.phone
-                        }, e.next = 3, _api2.default.getCaptcha(this.phone);
+                        return this.phone, e.next = 3, n.default.getCaptcha(this.phone);
 
                       case 3:
-                        n = e.sent, console.log(n);
+                        t = e.sent, console.log(t);
 
                       case 5:
                       case "end":
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    }, {
-        key: "getMemberLogin",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
-            }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
-                var t, n, r;
+            })), function() {
+                return w.apply(this, arguments);
+            })
+        }, {
+            key: "getMemberLogin",
+            value: (g = u(regeneratorRuntime.mark(function e() {
+                var t, r, o;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
                       case 0:
-                        return t = _md2.default.hexMD5(this.password), n = {
+                        return t = a.default.hexMD5(this.password), r = {
                             mobile: this.phone,
                             password: t
-                        }, e.next = 4, _api2.default.loginPassword(n);
+                        }, e.next = 4, n.default.loginPassword(r);
 
                       case 4:
+                        o = e.sent;
+                        try {
+                            wx.setStorageSync("token", o.data.token), wx.setStorageSync("userInfo", o.data), 
+                            this.weappLoginBind(), this.$apply();
+                        } catch (e) {
+                            wx.showToast({
+                                title: o.retMsg,
+                                icon: "none",
+                                duration: 3e3
+                            });
+                        }
+
+                      case 6:
+                      case "end":
+                        return e.stop();
+                    }
+                }, e, this);
+            })), function() {
+                return g.apply(this, arguments);
+            })
+        }, {
+            key: "smsLogin",
+            value: (f = u(regeneratorRuntime.mark(function e() {
+                var t, r;
+                return regeneratorRuntime.wrap(function(e) {
+                    for (;;) switch (e.prev = e.next) {
+                      case 0:
+                        return t = {
+                            mobile: this.phone,
+                            captcha: this.code
+                        }, e.next = 3, n.default.loginUser(t);
+
+                      case 3:
                         r = e.sent;
                         try {
                             wx.setStorageSync("token", r.data.token), wx.setStorageSync("userInfo", r.data), 
@@ -234,69 +252,28 @@ var _createClass = function() {
                             });
                         }
 
-                      case 6:
-                      case "end":
-                        return e.stop();
-                    }
-                }, e, this);
-            }));
-            return e;
-        }()
-    }, {
-        key: "smsLogin",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
-            }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
-                var t, n;
-                return regeneratorRuntime.wrap(function(e) {
-                    for (;;) switch (e.prev = e.next) {
-                      case 0:
-                        return t = {
-                            mobile: this.phone,
-                            captcha: this.code
-                        }, e.next = 3, _api2.default.loginUser(t);
-
-                      case 3:
-                        n = e.sent;
-                        try {
-                            wx.setStorageSync("token", n.data.token), wx.setStorageSync("userInfo", n.data), 
-                            this.weappLoginBind(), this.$apply();
-                        } catch (e) {
-                            wx.showToast({
-                                title: n.retMsg,
-                                icon: "none",
-                                duration: 3e3
-                            });
-                        }
-
                       case 5:
                       case "end":
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    }, {
-        key: "getCardDetail",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
-            }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
-                var t, n;
+            })), function() {
+                return f.apply(this, arguments);
+            })
+        }, {
+            key: "getCardDetail",
+            value: (d = u(regeneratorRuntime.mark(function e() {
+                var t, r;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
                       case 0:
                         return t = {
                             vipstore: 11111,
                             membernumber: 22222
-                        }, e.next = 3, _api2.default.vipCardInfo(t);
+                        }, e.next = 3, n.default.vipCardInfo(t);
 
                       case 3:
-                        n = e.sent, console.log(n), 1 == n.code && (console.log("执行了这里"), wx.setStorageSync("memberInfo", n.data), 
+                        r = e.sent, console.log(r), 1 == r.code && (console.log("执行了这里"), wx.setStorageSync("memberInfo", r.data), 
                         this.$apply()), this.$apply();
 
                       case 7:
@@ -304,62 +281,54 @@ var _createClass = function() {
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    }, {
-        key: "weappLoginBind",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
-            }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
-                var t, n, r, a, o;
+            })), function() {
+                return d.apply(this, arguments);
+            })
+        }, {
+            key: "weappLoginBind",
+            value: (h = u(regeneratorRuntime.mark(function e() {
+                var t, a, i, s, u;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
                       case 0:
-                        return t = _environment2.default.production ? _environment2.default.prod.appid : _environment2.default.dev.appid, 
-                        e.next = 3, _wechat2.default.login();
+                        return t = r.default.production ? r.default.prod.appid : r.default.dev.appid, e.next = 3, 
+                        o.default.login();
 
                       case 3:
-                        return n = e.sent, r = n.code, a = {
+                        return a = e.sent, i = a.code, s = {
                             appid: t,
-                            code: r
-                        }, e.next = 8, _api2.default.weappLoginBind(a);
+                            code: i
+                        }, e.next = 8, n.default.weappLoginBind(s);
 
                       case 8:
-                        o = e.sent, 1 == o.code ? wx.navigateBack({
+                        1 == (u = e.sent).code ? wx.navigateBack({
                             delta: 2
-                        }) : this.wxLogin(), console.log(o);
+                        }) : this.wxLogin(), console.log(u);
 
                       case 11:
                       case "end":
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    }, {
-        key: "wxLogin",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
-            }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
-                var t, n, r, a, o, i;
+            })), function() {
+                return h.apply(this, arguments);
+            })
+        }, {
+            key: "wxLogin",
+            value: (l = u(regeneratorRuntime.mark(function e() {
+                var t, a, i, s, u, c;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
                       case 0:
-                        return t = _environment2.default.production ? _environment2.default.prod.appid : _environment2.default.dev.appid, 
-                        e.next = 3, _wechat2.default.login();
+                        return t = r.default.production ? r.default.prod.appid : r.default.dev.appid, e.next = 3, 
+                        o.default.login();
 
                       case 3:
-                        return n = e.sent, r = n.code, console.log("重新调用login获取code", r), e.prev = 6, e.next = 9, 
-                        _wechat2.default.getUserInfo();
+                        return a = e.sent, i = a.code, console.log("重新调用login获取code", i), e.prev = 6, e.next = 9, 
+                        o.default.getUserInfo();
 
                       case 9:
-                        a = e.sent, this.encryptedData = a.encryptedData, this.iv = a.iv, this.isShow = !1, 
+                        s = e.sent, this.encryptedData = s.encryptedData, this.iv = s.iv, this.isShow = !1, 
                         this.$apply(), e.next = 22;
                         break;
 
@@ -368,15 +337,15 @@ var _createClass = function() {
                         this.$apply();
 
                       case 22:
-                        return o = {
+                        return u = {
                             appid: t,
-                            code: r,
+                            code: i,
                             encryptedData: this.encryptedData,
                             iv: this.iv
-                        }, e.next = 25, _api2.default.wxLogin(o);
+                        }, e.next = 25, n.default.wxLogin(u);
 
                       case 25:
-                        i = e.sent, console.log("wxLogin", i), 1 == i.code && wx.navigateBack({
+                        c = e.sent, console.log("wxLogin", c), 1 == c.code && wx.navigateBack({
                             delta: 2
                         });
 
@@ -385,10 +354,10 @@ var _createClass = function() {
                         return e.stop();
                     }
                 }, e, this, [ [ 6, 16 ] ]);
-            }));
-            return e;
-        }()
-    } ]), t;
-}(_wepy2.default.page);
-
-Page(require("./../../npm/wepy/lib/wepy.js").default.$createPage(mobileLogin, "pages/mine/mobile-login"));
+            })), function() {
+                return l.apply(this, arguments);
+            })
+        } ]), s;
+    }(t.default.page);
+    Page(require("./../../npm/wepy/lib/wepy.js").default.$createPage(l, "pages/mine/mobile-login"));
+}();

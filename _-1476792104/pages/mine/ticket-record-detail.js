@@ -1,89 +1,86 @@
-function _interopRequireDefault(e) {
-    return e && e.__esModule ? e : {
-        default: e
-    };
-}
-
-function _classCallCheck(e, t) {
-    if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-}
-
-function _possibleConstructorReturn(e, t) {
-    if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    return !t || "object" != typeof t && "function" != typeof t ? e : t;
-}
-
-function _inherits(e, t) {
-    if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
-    e.prototype = Object.create(t && t.prototype, {
-        constructor: {
-            value: e,
-            enumerable: !1,
-            writable: !0,
-            configurable: !0
-        }
-    }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
-}
-
-Object.defineProperty(exports, "__esModule", {
-    value: !0
-});
-
-var _createClass = function() {
-    function e(e, t) {
-        for (var n = 0; n < t.length; n++) {
-            var r = t[n];
-            r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), 
-            Object.defineProperty(e, r.key, r);
-        }
-    }
-    return function(t, n, r) {
-        return n && e(t.prototype, n), r && e(t, r), t;
-    };
-}(), _wepy = require("./../../npm/wepy/lib/wepy.js"), _wepy2 = _interopRequireDefault(_wepy), _customStatusbar = require("./../../components/custom-statusbar.js"), _customStatusbar2 = _interopRequireDefault(_customStatusbar), Scan = function(e) {
-    function t() {
-        var e, n, r, o;
-        _classCallCheck(this, t);
-        for (var a = arguments.length, s = Array(a), u = 0; u < a; u++) s[u] = arguments[u];
-        return n = r = _possibleConstructorReturn(this, (e = t.__proto__ || Object.getPrototypeOf(t)).call.apply(e, [ this ].concat(s))), 
-        r.config = {
-            navigationStyle: "custom"
-        }, r.$repeat = {}, r.$props = {
-            customStatusbar: {
-                title: "奖票记录"
+!function() {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+        value: !0
+    });
+    var e = function() {
+        function e(e, t) {
+            for (var n = 0; n < t.length; n++) {
+                var o = t[n];
+                o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), 
+                Object.defineProperty(e, o.key, o);
             }
-        }, r.$events = {}, r.components = {
-            customStatusbar: _customStatusbar2.default
-        }, r.mixins = [], r.data = {}, r.computed = {}, r.methods = {
-            goBack: function() {
-                wx.navigateBack({
-                    delta: 1
-                });
-            }
-        }, r.events = {}, o = n, _possibleConstructorReturn(r, o);
+        }
+        return function(t, n, o) {
+            return n && e(t.prototype, n), o && e(t, o), t;
+        };
+    }(), t = o(require("./../../npm/wepy/lib/wepy.js")), n = o(require("./../../components/custom-statusbar.js"));
+    function o(e) {
+        return e && e.__esModule ? e : {
+            default: e
+        };
     }
-    return _inherits(t, e), _createClass(t, [ {
-        key: "onLoad",
-        value: function() {}
-    }, {
-        key: "onShow",
-        value: function() {}
-    }, {
-        key: "onShareAppMessage",
-        value: function(e) {
-            return {
-                title: "关注游艺宝，发现更多精彩",
-                path: "/pages/index/index",
-                imageUrl: "/assets/imgs/share.png",
-                success: function(e) {
-                    console.log("转发成功！");
-                },
-                fail: function(e) {
-                    return console.log(e.errMsg);
+    function r(e, t) {
+        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+    }
+    function a(e, t) {
+        if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return !t || "object" != typeof t && "function" != typeof t ? e : t;
+    }
+    var u = function(t) {
+        function o() {
+            var e, t, u;
+            r(this, o);
+            for (var i = arguments.length, c = Array(i), s = 0; s < i; s++) c[s] = arguments[s];
+            return t = u = a(this, (e = o.__proto__ || Object.getPrototypeOf(o)).call.apply(e, [ this ].concat(c))), 
+            u.config = {
+                navigationStyle: "custom"
+            }, u.$repeat = {}, u.$props = {
+                customStatusbar: {
+                    title: "奖票记录"
                 }
-            };
+            }, u.$events = {}, u.components = {
+                customStatusbar: n.default
+            }, u.mixins = [], u.data = {}, u.computed = {}, u.methods = {
+                goBack: function() {
+                    wx.navigateBack({
+                        delta: 1
+                    });
+                }
+            }, u.events = {}, a(u, t);
         }
-    } ]), t;
-}(_wepy2.default.page);
-
-Page(require("./../../npm/wepy/lib/wepy.js").default.$createPage(Scan, "pages/mine/ticket-record-detail"));
+        return function(e, t) {
+            if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
+            e.prototype = Object.create(t && t.prototype, {
+                constructor: {
+                    value: e,
+                    enumerable: !1,
+                    writable: !0,
+                    configurable: !0
+                }
+            }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+        }(o, t), e(o, [ {
+            key: "onLoad",
+            value: function() {}
+        }, {
+            key: "onShow",
+            value: function() {}
+        }, {
+            key: "onShareAppMessage",
+            value: function(e) {
+                return {
+                    title: "关注游艺宝，发现更多精彩",
+                    path: "/pages/index/index",
+                    imageUrl: "/assets/imgs/share.png",
+                    success: function(e) {
+                        console.log("转发成功！");
+                    },
+                    fail: function(e) {
+                        return console.log(e.errMsg);
+                    }
+                };
+            }
+        } ]), o;
+    }(t.default.page);
+    Page(require("./../../npm/wepy/lib/wepy.js").default.$createPage(u, "pages/mine/ticket-record-detail"));
+}();

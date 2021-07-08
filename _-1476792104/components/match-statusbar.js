@@ -1,87 +1,81 @@
-function _interopRequireDefault(e) {
-    return e && e.__esModule ? e : {
-        default: e
-    };
-}
-
-function _classCallCheck(e, t) {
-    if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-}
-
-function _possibleConstructorReturn(e, t) {
-    if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    return !t || "object" != typeof t && "function" != typeof t ? e : t;
-}
-
-function _inherits(e, t) {
-    if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
-    e.prototype = Object.create(t && t.prototype, {
-        constructor: {
-            value: e,
-            enumerable: !1,
-            writable: !0,
-            configurable: !0
-        }
-    }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
-}
-
-Object.defineProperty(exports, "__esModule", {
-    value: !0
-}), exports.default = void 0;
-
-var _createClass = function() {
-    function e(e, t) {
-        for (var n = 0; n < t.length; n++) {
-            var o = t[n];
-            o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), 
-            Object.defineProperty(e, o.key, o);
-        }
-    }
-    return function(t, n, o) {
-        return n && e(t.prototype, n), o && e(t, o), t;
-    };
-}(), _wepy = require("./../npm/wepy/lib/wepy.js"), _wepy2 = _interopRequireDefault(_wepy), MatchStatusbar = function(e) {
-    function t() {
-        var e, n, o, r;
-        _classCallCheck(this, t);
-        for (var a = arguments.length, u = Array(a), i = 0; i < a; i++) u[i] = arguments[i];
-        return n = o = _possibleConstructorReturn(this, (e = t.__proto__ || Object.getPrototypeOf(t)).call.apply(e, [ this ].concat(u))), 
-        o.props = {
-            title: String,
-            backUrl: String,
-            size: {
-                type: String,
-                default: "sm"
-            },
-            leftIcon: {
-                type: String,
-                default: !1
+!function() {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+        value: !0
+    }), exports.default = void 0;
+    var t, e = function() {
+        function t(t, e) {
+            for (var n = 0; n < e.length; n++) {
+                var o = e[n];
+                o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), 
+                Object.defineProperty(t, o.key, o);
             }
-        }, o.data = {
-            menuButtonTop: ""
-        }, o.methods = {
-            goBack: function() {
-                this.$emit("back"), this.backUrl ? wx.navigateTo({
-                    url: this.backUrl
-                }) : wx.navigateBack();
-            },
-            goHome: function() {
-                wx.reLaunch({
-                    url: "/pages/index/index"
-                });
-            }
-        }, r = n, _possibleConstructorReturn(o, r);
-    }
-    return _inherits(t, e), _createClass(t, [ {
-        key: "onLoad",
-        value: function() {
-            var e = this;
-            setTimeout(function() {
-                e.menuButtonTop = wx.getMenuButtonBoundingClientRect().top, console.log("页面statusbar高度", e.menuButtonTop), 
-                e.$apply();
-            }, 100);
         }
-    } ]), t;
-}(_wepy2.default.component);
-
-exports.default = MatchStatusbar;
+        return function(e, n, o) {
+            return n && t(e.prototype, n), o && t(e, o), e;
+        };
+    }(), n = require("./../npm/wepy/lib/wepy.js");
+    function o(t, e) {
+        if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
+    }
+    function r(t, e) {
+        if (!t) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return !e || "object" != typeof e && "function" != typeof e ? t : e;
+    }
+    var u = function(t) {
+        function n() {
+            var t, e, u;
+            o(this, n);
+            for (var i = arguments.length, a = Array(i), c = 0; c < i; c++) a[c] = arguments[c];
+            return e = u = r(this, (t = n.__proto__ || Object.getPrototypeOf(n)).call.apply(t, [ this ].concat(a))), 
+            u.props = {
+                title: String,
+                backUrl: String,
+                size: {
+                    type: String,
+                    default: "sm"
+                },
+                leftIcon: {
+                    type: String,
+                    default: !1
+                }
+            }, u.data = {
+                menuButtonTop: ""
+            }, u.methods = {
+                goBack: function() {
+                    this.$emit("back"), this.backUrl ? wx.navigateTo({
+                        url: this.backUrl
+                    }) : wx.navigateBack();
+                },
+                goHome: function() {
+                    wx.reLaunch({
+                        url: "/pages/index/index"
+                    });
+                }
+            }, r(u, e);
+        }
+        return function(t, e) {
+            if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function, not " + typeof e);
+            t.prototype = Object.create(e && e.prototype, {
+                constructor: {
+                    value: t,
+                    enumerable: !1,
+                    writable: !0,
+                    configurable: !0
+                }
+            }), e && (Object.setPrototypeOf ? Object.setPrototypeOf(t, e) : t.__proto__ = e);
+        }(n, t), e(n, [ {
+            key: "onLoad",
+            value: function() {
+                var t = this;
+                setTimeout(function() {
+                    t.menuButtonTop = wx.getMenuButtonBoundingClientRect().top, console.log("页面statusbar高度", t.menuButtonTop), 
+                    t.$apply();
+                }, 100);
+            }
+        } ]), n;
+    }(((t = n) && t.__esModule ? t : {
+        default: t
+    }).default.component);
+    exports.default = u;
+}();

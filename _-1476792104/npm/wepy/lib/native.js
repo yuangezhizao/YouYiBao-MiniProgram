@@ -1,3 +1,6 @@
-Object.defineProperty(exports, "__esModule", {
-    value: !0
-}), exports.default = {};
+!function() {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+        value: !0
+    }), exports.default = {};
+}();

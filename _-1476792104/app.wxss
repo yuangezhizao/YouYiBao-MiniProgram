@@ -8,7 +8,7 @@
 }
 
 .disabled {
-    background: #BBBBBB;
+    background: #bbb;
     color: #fff;
 }
 
@@ -59,44 +59,34 @@ page {
     overflow-x: hidden;
 }
 
-.bg {
-    position: absolute;
-    width: 100%;
+.bg,.bg_content {
     height: 100%;
-    top: 0;
-    left: 0;
 }
 
-.bg_content {
+.bg,.bg-446,.bg_content {
     position: absolute;
     width: 100%;
-    height: 100%;
     top: 0;
     left: 0;
 }
 
 .bg-446 {
-    position: absolute;
-    width: 100%;
     height: 446rpx;
-    top: 0;
-    left: 0;
 }
 
 .bg-364 {
+    height: 364rpx;
+}
+
+.bg-183,.bg-364 {
     position: absolute;
     width: 100%;
-    height: 364rpx;
     top: 0;
     left: 0;
 }
 
 .bg-183 {
-    position: absolute;
-    width: 100%;
     height: 183rpx;
-    top: 0;
-    left: 0;
 }
 
 .r {
@@ -133,12 +123,12 @@ page {
 
 .cl:after {
     clear: both;
-    content: '';
+    content: "";
     display: block;
 }
 
 .bg_w {
-    background: #ffffff;
+    background: #fff;
 }
 
 .dpf {
@@ -185,8 +175,21 @@ page {
     padding-left: 0;
 }
 
+.p15 {
+    padding: 0rpx 30rpx;
+    box-sizing: border-box;
+}
+
+.ml10 {
+    margin-left: 10rpx;
+}
+
+.ml30 {
+    margin-left: 30rpx;
+}
+
 .fwb {
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .f20 {
@@ -306,35 +309,35 @@ page {
 }
 
 .c_ff {
-    color: #ffffff;
+    color: #fff;
 }
 
 .c_66 {
-    color: #666666;
+    color: #666;
 }
 
 .c_77 {
-    color: #777777;
+    color: #777;
 }
 
 .c_37 {
-    color: #3788FE;
+    color: #3788fe;
 }
 
 .c_49 {
-    color: #4984FE;
+    color: #4984fe;
 }
 
 .c_4a {
-    color: #4A6AF4;
+    color: #4a6af4;
 }
 
 .c_33 {
-    color: #333333;
+    color: #333;
 }
 
 .c_32 {
-    color: #3270FF;
+    color: #3270ff;
 }
 
 .c_79 {
@@ -342,19 +345,19 @@ page {
 }
 
 .c_d5 {
-    color: #D53B3B;
+    color: #d53b3b;
 }
 
 .c_51 {
-    color: #519FFF;
+    color: #519fff;
 }
 
 .c_99 {
-    color: #999999;
+    color: #999;
 }
 
 .c_f6 {
-    color: #F6F9FE;
+    color: #f6f9fe;
 }
 
 .c_d8 {
@@ -362,55 +365,63 @@ page {
 }
 
 .c_cc {
-    color: #CCE9FF;
+    color: #cce9ff;
 }
 
 .c_f5 {
-    color: #F5F1FF;
+    color: #f5f1ff;
 }
 
 .c_26 {
-    color: #2660E7;
+    color: #2660e7;
 }
 
 .c_00 {
-    color: #004AFF;
+    color: #004aff;
 }
 
 .c_bb {
-    color: #bbbbbb;
+    color: #bbb;
 }
 
 .c_FFE {
-    color: #FFE4DA;
+    color: #ffe4da;
 }
 
 .c_ff0 {
-    color: #FF0000;
+    color: red;
 }
 
 .c_337 {
-    color: #3376FE;
+    color: #3376fe;
 }
 
 .c_FF1 {
-    color: #FF1C33;
+    color: #ff1c33;
 }
 
 .c_7D {
-    color: #7D7D7D;
+    color: #7d7d7d;
+}
+
+.c_wacca2 {
+    color: #14bb69;
 }
 
 .bg_blue {
-    background: linear-gradient(45deg,#3CA6FD,#2F5FFF);
+    background: linear-gradient(45deg,#3ca6fd,#2f5fff);
 }
 
 .bg_green {
-    background: linear-gradient(to right,#5BE89B,#2ECCBD);
+    background: linear-gradient(90deg,#5be89b,#2eccbd);
 }
 
 .bg_gray {
     background: #878787;
+}
+
+.bg_wacca2 {
+    background-color: #14bb69;
 }
 
 .hor_center {
@@ -420,16 +431,34 @@ page {
 }
 
 .var_center {
-    position: absolute;
-    top: 50%;
     transform: translateY(-50%);
 }
 
-.both_center {
+.both_center,.var_center {
     position: absolute;
     top: 50%;
+}
+
+.both_center {
     left: 50%;
     transform: translate(-50%,-50%);
+}
+
+.sure-btn-wacca2 {
+    background-image: linear-gradient(90deg,#60e486,#0db28a);
+    height: 72rpx;
+    border-radius: 36rpx;
+}
+
+.gray-view {
+    background-color: #ececec;
+    height: 2rpx;
+    width: 100%;
+}
+
+.gray-view-ver {
+    background-color: #ececec;
+    width: 2rpx;
 }
 
 .back_warp {
@@ -438,7 +467,7 @@ page {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,.5);
     z-index: 999;
     transition: all .3s ease;
 }
@@ -448,16 +477,44 @@ page {
 }
 
 .ellipsis-1 {
-    overflow: hidden;
     white-space: nowrap;
+}
+
+.ellipsis-1,.ellipsis-2 {
+    overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .ellipsis-2 {
-    overflow: hidden;
-    text-overflow: ellipsis;
     display: -webkit-box;
+    -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.flex-column,.flex-row {
+    display: flex;
+    align-items: center;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-between {
+    justify-content: space-between;
+}
+
+.flex-center {
+    justify-content: center;
+}
+
+.circle_b {
+    border-radius: 20rpx;
+    background-color: #fff;
 }
 
 .statusBar {
@@ -473,7 +530,7 @@ page {
 }
 
 .Merriweather {
-    font-family: 'Merriweather';
+    font-family: Merriweather;
 }
 
 .btm-tips {

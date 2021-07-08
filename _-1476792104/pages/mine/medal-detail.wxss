@@ -19,17 +19,17 @@
     left: 0;
     width: 174rpx;
     height: 64rpx;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,.2);
     border-radius: 35rpx;
     margin-left: 30rpx;
-    border: 1rpx solid rgba(250,250,250,0.3);
+    border: 1rpx solid hsla(0,0%,98%,.3);
     z-index: 9999;
 }
 
 .match-status-bar .statusBar .icon-group .line {
     width: 3rpx;
     height: 32rpx;
-    background: rgba(250,250,250,0.3);
+    background: hsla(0,0%,98%,.3);
 }
 
 .match-status-bar .statusBar .icon-group .left {
@@ -51,7 +51,7 @@
     border-radius: 10rpx;
     -webkit-appearance: none;
     -webkit-text-size-adjust: 100%;
-    transition: all 500ms;
+    transition: all .5s;
 }
 
 .btn::before {
@@ -64,7 +64,7 @@
     border: inherit;
     border-color: #000;
     border-radius: inherit;
-    content: ' ';
+    content: " ";
     opacity: 0;
     transform: translate(-50%,-50%);
 }
@@ -93,26 +93,26 @@
 
 .btn-primary {
     color: #fff;
-    background-color: #2660E7;
-    border: 1rpx solid #2660E7;
+    background-color: #2660e7;
+    border: 1rpx solid #2660e7;
 }
 
 .btn-danger {
     color: #fff;
-    background-color: #E13434;
-    border: 1rpx solid #E13434;
+    background-color: #e13434;
+    border: 1rpx solid #e13434;
 }
 
 .btn-warning {
     color: #fff;
-    background-color: #F6C96A;
-    border: 1rpx solid #F6C96A;
+    background-color: #f6c96a;
+    border: 1rpx solid #f6c96a;
 }
 
 .btn-success {
     color: #fff;
-    background-color: #5BE89B;
-    border: 1rpx solid #5BE89B;
+    background-color: #5be89b;
+    border: 1rpx solid #5be89b;
 }
 
 .btn-plain {
@@ -120,7 +120,7 @@
 }
 
 .btn-plain.btn-primary {
-    color: #2660E7;
+    color: #2660e7;
 }
 
 .btn-plain.btn-black {
@@ -128,11 +128,11 @@
 }
 
 .btn-plain.btn-danger {
-    color: #E13434;
+    color: #e13434;
 }
 
 .btn-plain.btn-warning {
-    color: #F6C96A;
+    color: #f6c96a;
 }
 
 .btn-large {
@@ -185,13 +185,13 @@
 }
 
 page {
-    background: #FFF;
+    background: #fff;
 }
 
 .blue-bg {
     width: 100%;
     height: 250rpx;
-    background: #F2F9FF;
+    background: #f2f9ff;
 }
 
 .medal-info {
@@ -210,7 +210,7 @@ page {
 .medal-info .line {
     width: 64rpx;
     height: 2rpx;
-    background: #D8D8D8;
+    background: #d8d8d8;
     margin: 30rpx 0;
 }
 
@@ -223,7 +223,7 @@ page {
     height: 110rpx;
     text-align: center;
     line-height: 110rpx;
-    background: #EEEEEE;
+    background: #eee;
     border-radius: 60rpx;
     margin: 42rpx 0;
 }
@@ -238,7 +238,7 @@ page {
 .medal-grade .line {
     width: 100%;
     height: 2rpx;
-    background: #D8D8D8;
+    background: #d8d8d8;
     position: absolute;
     top: 70rpx;
 }
@@ -252,23 +252,23 @@ page {
     flex-direction: column;
     align-items: center;
     margin: 12rpx 53rpx;
-    background: #FFF;
+    background: #fff;
     z-index: 999;
 }
 
 .medal-grade .medal-row .grade-item image {
     width: 80rpx;
     height: 80rpx;
-    border: 3rpx solid #D8D8D8;
+    border: 3rpx solid #d8d8d8;
     border-radius: 50%;
     padding: 5rpx;
     margin-bottom: 12rpx;
 }
 
 .medal-grade .medal-row .grade-item:nth-child(2) image {
-    border: 3rpx solid #8D92A7;
+    border: 3rpx solid #8d92a7;
 }
 
 .medal-grade .medal-row .grade-item:nth-child(3) image {
-    border: 3rpx solid #FDB308;
+    border: 3rpx solid #fdb308;
 }

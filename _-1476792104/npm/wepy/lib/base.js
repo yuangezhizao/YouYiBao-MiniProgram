@@ -1,103 +1,100 @@
-function _interopRequireDefault(e) {
-    return e && e.__esModule ? e : {
-        default: e
-    };
-}
-
-Object.defineProperty(exports, "__esModule", {
-    value: !0
-});
-
-var _event = require("./event.js"), _event2 = _interopRequireDefault(_event), _util = require("./util.js"), _util2 = _interopRequireDefault(_util), PAGE_EVENT = [ "onLoad", "onReady", "onShow", "onHide", "onUnload", "onPullDownRefresh", "onReachBottom", "onShareAppMessage", "onPageScroll", "onTabItemTap" ], APP_EVENT = [ "onLaunch", "onShow", "onHide", "onError", "onPageNotFound" ], $bindEvt = function e(n, t, o) {
-    t.$prefix = _util2.default.camelize(o || ""), Object.getOwnPropertyNames(t.components || {}).forEach(function(a) {
-        var r = t.components[a], i = new r();
-        i.$initMixins(), i.$name = a;
-        var p = o ? o + i.$name + "$" : "$" + i.$name + "$";
-        t.$com[a] = i, e(n, i, p);
-    }), Object.getOwnPropertyNames(t.constructor.prototype || []).forEach(function(e) {
-        "constructor" !== e && -1 === PAGE_EVENT.indexOf(e) && (n[e] = function() {
-            t.constructor.prototype[e].apply(t, arguments), t.$apply();
-        });
+!function() {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+        value: !0
     });
-    var a = Object.getOwnPropertyNames(t.methods || []);
-    return t.$mixins.forEach(function(e) {
-        a = a.concat(Object.getOwnPropertyNames(e.methods || []));
-    }), a.forEach(function(e, o) {
-        n[t.$prefix + e] = function(n) {
-            for (var o = arguments.length, a = Array(o > 1 ? o - 1 : 0), r = 1; r < o; r++) a[r - 1] = arguments[r];
-            var i = new _event2.default("system", this, n.type);
-            i.$transfor(n);
-            var p = [], c = 0, s = void 0, u = void 0, f = void 0;
-            if (n.currentTarget && n.currentTarget.dataset) {
-                for (s = n.currentTarget.dataset; void 0 !== s["wpy" + e.toLowerCase() + (u = String.fromCharCode(65 + c++))]; ) p.push(s["wpy" + e.toLowerCase() + u]);
-                void 0 !== s.comIndex && (f = s.comIndex);
-            }
-            if (void 0 !== f) {
-                f = ("" + f).split("-");
-                for (var l = f.length, h = l; l-- > 0; ) {
-                    h = l;
-                    for (var d = t; h-- > 0; ) d = d.$parent;
-                    d.$setIndex(f.shift());
-                }
-            }
-            a = a.concat(p);
-            var $ = void 0, _ = void 0, v = t.methods[e];
-            return v && ($ = v.apply(t, a.concat(i))), t.$mixins.forEach(function(n) {
-                n.methods[e] && (_ = n.methods[e].apply(t, a.concat(i)));
-            }), t.$apply(), v ? $ : _;
+    var n = o(require("./event.js")), e = o(require("./util.js"));
+    function o(n) {
+        return n && n.__esModule ? n : {
+            default: n
         };
-    }), n;
-};
-
-exports.default = {
-    $createApp: function(e, n) {
-        var t = {}, o = new e();
-        return this.$instance || (o.$init(this, n), this.$instance = o, this.$appConfig = n), 
-        2 === arguments.length && !0 === arguments[1] && (t.$app = o), o.$wxapp = getApp(), 
-        APP_EVENT = APP_EVENT.concat(n.appEvents || []), PAGE_EVENT = PAGE_EVENT.concat(n.pageEvents || []), 
-        APP_EVENT.forEach(function(e) {
-            t[e] = function() {
-                for (var n = arguments.length, t = Array(n), a = 0; a < n; a++) t[a] = arguments[a];
-                var r = void 0;
-                return !o.$wxapp && (o.$wxapp = getApp()), o[e] && (r = o[e].apply(o, t)), r;
-            };
-        }), t;
-    },
-    $createPage: function(e, n) {
-        var t = this, o = {}, a = new e();
-        return "string" == typeof n && (this.$instance.$pages["/" + n] = a), a.$initMixins(), 
-        ("boolean" == typeof n && n || 3 === arguments.length && !0 === arguments[2]) && (o.$page = a), 
-        o.onLoad = function() {
-            for (var n = arguments.length, o = Array(n), r = 0; r < n; r++) o[r] = arguments[r];
-            !("options" in this) && (this.options = o.length ? o[0] : {}), a.$name = e.name || "unnamed", 
-            a.$init(this, t.$instance, t.$instance);
-            var i = t.$instance.__prevPage__, p = {};
-            p.from = i || void 0, i && i.$preloadData && (p.preload = i.$preloadData, i.$preloadData = void 0), 
-            a.$prefetchData && (p.prefetch = a.$prefetchData, a.$prefetchData = void 0), o.push(p), 
-            a.$onLoad.apply(a, o), a.$apply();
-        }, o.onUnload = function() {
-            for (var e = arguments.length, n = Array(e), t = 0; t < e; t++) n[t] = arguments[t];
-            a.$onUnload.apply(a, n);
-        }, o.onShow = function() {
-            for (var e = arguments.length, n = Array(e), o = 0; o < e; o++) n[o] = arguments[o];
-            t.$instance.__prevPage__ = a, [].concat(a.$mixins, a).forEach(function(e) {
-                e.onShow && e.onShow.apply(a, n);
-            });
-            var r = getCurrentPages(), i = r[r.length - 1].__route__, p = r[r.length - 1].__wxWebviewId__;
-            t.$instance.__wxWebviewId__ !== p && (a.$wxpage = this, t.$instance.__route__ = i, 
-            t.$instance.__wxWebviewId__ = p, [].concat(a.$mixins, a).forEach(function(e) {
-                e.onRoute && e.onRoute.apply(a, n);
-            })), a.$apply();
-        }, PAGE_EVENT.forEach(function(e) {
-            "onLoad" !== e && "onUnload" !== e && "onShow" !== e && (o[e] = function() {
-                for (var n = arguments.length, t = Array(n), o = 0; o < n; o++) t[o] = arguments[o];
-                var r = void 0;
-                return "onShareAppMessage" === e ? (a[e] && (r = a[e].apply(a, t)), r) : ([].concat(a.$mixins, a).forEach(function(n) {
-                    n[e] && n[e].apply(a, t);
-                }), "onPageScroll" !== e && a.$apply(), r);
-            });
-        }), a.onShareAppMessage || delete o.onShareAppMessage, -1 === [].concat(a.$mixins, a).findIndex(function(e) {
-            return e.onPageScroll;
-        }) && delete o.onPageScroll, $bindEvt(o, a, "");
     }
-};
+    var t = [ "onLoad", "onReady", "onShow", "onHide", "onUnload", "onPullDownRefresh", "onReachBottom", "onShareAppMessage", "onPageScroll", "onTabItemTap" ], a = [ "onLaunch", "onShow", "onHide", "onError", "onPageNotFound" ], r = function o(a, r, i) {
+        r.$prefix = e.default.camelize(i || ""), Object.getOwnPropertyNames(r.components || {}).forEach(function(n) {
+            var e = new (0, r.components[n])();
+            e.$initMixins(), e.$name = n;
+            var t = i ? i + e.$name + "$" : "$" + e.$name + "$";
+            r.$com[n] = e, o(a, e, t);
+        }), Object.getOwnPropertyNames(r.constructor.prototype || []).forEach(function(n) {
+            "constructor" !== n && -1 === t.indexOf(n) && (a[n] = function() {
+                r.constructor.prototype[n].apply(r, arguments), r.$apply();
+            });
+        });
+        var p = Object.getOwnPropertyNames(r.methods || []);
+        return r.$mixins.forEach(function(n) {
+            p = p.concat(Object.getOwnPropertyNames(n.methods || []));
+        }), p.forEach(function(e, o) {
+            a[r.$prefix + e] = function(o) {
+                for (var t = arguments.length, a = Array(t > 1 ? t - 1 : 0), i = 1; i < t; i++) a[i - 1] = arguments[i];
+                var p = new n.default("system", this, o.type);
+                p.$transfor(o);
+                var c = [], s = 0, f = void 0, h = void 0, u = void 0;
+                if (o.currentTarget && o.currentTarget.dataset) {
+                    for (f = o.currentTarget.dataset; void 0 !== f["wpy" + e.toLowerCase() + (h = String.fromCharCode(65 + s++))]; ) c.push(f["wpy" + e.toLowerCase() + h]);
+                    void 0 !== f.comIndex && (u = f.comIndex);
+                }
+                if (void 0 !== u) for (var l = (u = ("" + u).split("-")).length, d = l; l-- > 0; ) {
+                    d = l;
+                    for (var $ = r; d-- > 0; ) $ = $.$parent;
+                    $.$setIndex(u.shift());
+                }
+                a = a.concat(c);
+                var v = void 0, g = void 0, y = r.methods[e];
+                return y && (v = y.apply(r, a.concat(p))), r.$mixins.forEach(function(n) {
+                    n.methods[e] && (g = n.methods[e].apply(r, a.concat(p)));
+                }), r.$apply(), y ? v : g;
+            };
+        }), a;
+    };
+    exports.default = {
+        $createApp: function(n, e) {
+            var o = {}, r = new n();
+            return this.$instance || (r.$init(this, e), this.$instance = r, this.$appConfig = e), 
+            2 === arguments.length && !0 === arguments[1] && (o.$app = r), r.$wxapp = getApp(), 
+            a = a.concat(e.appEvents || []), t = t.concat(e.pageEvents || []), a.forEach(function(n) {
+                o[n] = function() {
+                    for (var e = arguments.length, o = Array(e), t = 0; t < e; t++) o[t] = arguments[t];
+                    var a = void 0;
+                    return !r.$wxapp && (r.$wxapp = getApp()), r[n] && (a = r[n].apply(r, o)), a;
+                };
+            }), o;
+        },
+        $createPage: function(n, e) {
+            var o = this, a = {}, i = new n();
+            return "string" == typeof e && (this.$instance.$pages["/" + e] = i), i.$initMixins(), 
+            ("boolean" == typeof e && e || 3 === arguments.length && !0 === arguments[2]) && (a.$page = i), 
+            a.onLoad = function() {
+                for (var e = arguments.length, t = Array(e), a = 0; a < e; a++) t[a] = arguments[a];
+                !("options" in this) && (this.options = t.length ? t[0] : {}), i.$name = n.name || "unnamed", 
+                i.$init(this, o.$instance, o.$instance);
+                var r = o.$instance.__prevPage__, p = {};
+                p.from = r || void 0, r && r.$preloadData && (p.preload = r.$preloadData, r.$preloadData = void 0), 
+                i.$prefetchData && (p.prefetch = i.$prefetchData, i.$prefetchData = void 0), t.push(p), 
+                i.$onLoad.apply(i, t), i.$apply();
+            }, a.onUnload = function() {
+                for (var n = arguments.length, e = Array(n), o = 0; o < n; o++) e[o] = arguments[o];
+                i.$onUnload.apply(i, e);
+            }, a.onShow = function() {
+                for (var n = arguments.length, e = Array(n), t = 0; t < n; t++) e[t] = arguments[t];
+                o.$instance.__prevPage__ = i, [].concat(i.$mixins, i).forEach(function(n) {
+                    n.onShow && n.onShow.apply(i, e);
+                });
+                var a = getCurrentPages(), r = a[a.length - 1].__route__, p = a[a.length - 1].__wxWebviewId__;
+                o.$instance.__wxWebviewId__ !== p && (i.$wxpage = this, o.$instance.__route__ = r, 
+                o.$instance.__wxWebviewId__ = p, [].concat(i.$mixins, i).forEach(function(n) {
+                    n.onRoute && n.onRoute.apply(i, e);
+                })), i.$apply();
+            }, t.forEach(function(n) {
+                "onLoad" !== n && "onUnload" !== n && "onShow" !== n && (a[n] = function() {
+                    for (var e = arguments.length, o = Array(e), t = 0; t < e; t++) o[t] = arguments[t];
+                    var a = void 0;
+                    return "onShareAppMessage" === n ? (i[n] && (a = i[n].apply(i, o)), a) : ([].concat(i.$mixins, i).forEach(function(e) {
+                        e[n] && e[n].apply(i, o);
+                    }), "onPageScroll" !== n && i.$apply(), a);
+                });
+            }), i.onShareAppMessage || delete a.onShareAppMessage, -1 === [].concat(i.$mixins, i).findIndex(function(n) {
+                return n.onPageScroll;
+            }) && delete a.onPageScroll, r(a, i, "");
+        }
+    };
+}();

@@ -1,0 +1,142 @@
+<view>
+    <view>
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$customStatusbar$menuButtonTop+60}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$customStatusbar$menuButtonTop}}px;">
+            <image bindtap="$customStatusbar$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$customStatusbar$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$customStatusbar$menuButtonTop}}px;">
+            <text class="title">{{$customStatusbar$title}}</text>
+        </view>
+    </view>
+    <view class="wacca-banner">
+        <image src="{{recordList!=''?recordList.productImage:productImage}}"></image>
+    </view>
+    <view class="wacca-title">
+        <text class="f34 c_4a">华卡音舞</text>
+        <view bindtap="nearbyShopMachine" class="title-right">
+            <image src="http://yyb-oss.universal-space.cn/imgs/record-icon_6.png"></image>
+            <text class="f26 c_99">附近门店</text>
+        </view>
+    </view>
+    <view class="user-info-container">
+        <view class="user-info">
+            <view class="user-info-left">
+                <view bindtap="changeAvatar" class="avatar">
+                    <image binderror="handleError" src="{{memberInfo.iconUrl?memberInfo.iconUrl:'http://yyb-oss.universal-space.cn/imgs/default_avatar.png'}}"></image>
+                </view>
+                <image class="label" src="{{'http://yyb-oss.universal-space.cn/imgs/wacca/icon_member_type'+memberInfo.memberType+'.png'}}"></image>
+            </view>
+            <view class="user-info-right">
+                <view class="nickname-wrap">
+                    <view class="ellipsis-1 f34 c_33 nickname">{{memberInfo.userName}}</view>
+                    <view bindtap="changeAchievement" class="user-title f24 c_ff ellipsis-1" wx:if="{{memberInfo.memberType>1&&memberInfo.userTitle}}">{{memberInfo.userTitle}}</view>
+                    <view bindtap="toPrivilege" class="member-privilege tc c_4a f24" wx:if="{{!isHideVip&&memberInfo.memberType<2}}">会员权益</view>
+                </view>
+                <view class="user-property" wx:if="{{memberInfo.memberType<2}}">
+                    <view class="user-property-item">
+                        <text class="f28 c_26 fwb">{{memberInfo.vipCount}}</text>
+                        <text class="f24 c_99">VIP次数</text>
+                    </view>
+                    <view class="user-property-item">
+                        <text class="f28 c_26 fwb">{{memberInfo.waccaPoint}}</text>
+                        <text class="f24 c_99">WP</text>
+                    </view>
+                    <view class="user-property-item">
+                        <text class="f28 c_26 fwb">{{memberInfo.ticketCount}}</text>
+                        <text class="f24 c_99">EX ticket</text>
+                    </view>
+                </view>
+                <view class="progress-container" wx:if="{{memberInfo.memberType>1}}">
+                    <text class="f26 c_77">{{memberInfo.memberType==2?'基本':'VIP'}}会员有效：</text>
+                    <view>
+                        <view class="custom-progress-warp f22 c_99">
+                            <view>0天</view>
+                            <view class="progress-out">
+                                <view class="days c_ff tc f22" style="left:{{$customProgress$progressWidth-17}}%" wx:if="{{$customProgress$days>=15&&$customProgress$days!=0&&$customProgress$days<90}}">{{$customProgress$days}}天</view>
+                                <view class="days c_ff tc f22" style="left:{{$customProgress$progressWidth+1}}%" wx:if="{{$customProgress$days<15&&$customProgress$days!=0}}">{{$customProgress$days}}天</view>
+                                <view class="progress-in" style="width:{{$customProgress$progressWidth}}%"></view>
+                            </view>
+                            <view>永久</view>
+                        </view>
+                    </view>
+                </view>
+                <view bindtap="toPrivilege" class="member-privilege-1 tc c_4a f24" wx:if="{{!isHideVip&&memberInfo.memberType>1}}">会员权益</view>
+            </view>
+        </view>
+        <view class="user-property" style="margin: 0 36rpx; width: 90%;" wx:if="{{memberInfo.memberType>1}}">
+            <view class="user-property-item">
+                <text class="f40 c_26 fwb">{{memberInfo.vipCount}}</text>
+                <text class="f28 c_99">VIP次数</text>
+            </view>
+            <view class="user-property-item">
+                <text class="f40 c_26 fwb">{{memberInfo.waccaPoint}}</text>
+                <text class="f28 c_99">WP</text>
+            </view>
+            <view class="user-property-item">
+                <text class="f40 c_26 fwb">{{memberInfo.ticketCount}}</text>
+                <text class="f28 c_99">EX ticket</text>
+            </view>
+        </view>
+        <view class="btn-row c_ff tc f30" wx:if="{{memberInfo.memberType>1}}">
+            <view bindtap="rechargeVip" class="btn bg_blue">充值VIP次数</view>
+            <view bindtap="buyGoods" class="btn bg_blue">购买游戏商品</view>
+        </view>
+        <view bindtap="upMember" class="up-member c_ff f30 tc" wx:if="{{memberInfo.memberType<2}}">升级基本会员</view>
+    </view>
+    <view class="wacca-record">
+        <text class="f30 c_99">我的综合战绩</text>
+        <view class="record-container">
+            <view class="record-top">
+                <view class="record-grade">
+                    <view class="record-row">
+                        <text class="f26 c_66">玩家等级</text>
+                        <text class="c_4a f28">Lv{{memberInfo.userLevel}}</text>
+                    </view>
+                    <view class="record-row">
+                        <text class="f26 c_66">玩家经验值</text>
+                        <text class="c_4a f28">{{memberInfo.userExp}}</text>
+                    </view>
+                </view>
+                <viwe bindtap="gradeRecord" class="record-btn c_ff f30 tc {{memberInfo.memberType>1?'bg_green':'bg_gray'}}">成绩记录</viwe>
+            </view>
+            <view class="record-icon-row">
+                <view bindtap="toTrophy" class="icon-item">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_trophy.png"></image>
+                    <text class="f26 c_99">获得奖杯</text>
+                    <text class="f46 c_4a Merriweather">{{memberInfo.trophyCount}}</text>
+                </view>
+                <view bindtap="musicLib" class="icon-item">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_unlock.png"></image>
+                    <text class="f26 c_99">歌曲解锁</text>
+                    <text class="f46 c_4a Merriweather">{{memberInfo.unlockCount}}</text>
+                </view>
+                <view bindtap="changeAchievement" class="icon-item">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_achievement.png"></image>
+                    <text class="f26 c_99">我的成就</text>
+                    <text class="f46 c_4a Merriweather">{{memberInfo.titleCount}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="btn-group">
+        <view bindtap="musicLib" class="btn c_ff">曲目大全</view>
+        <view bindtap="rank" class="btn c_ff">全国排行</view>
+    </view>
+    <view class="match-dialog {{$memberDialog$size}}" wx:if="{{$memberDialog$isShowDialog}}">
+        <view class="match-dialog-inner">
+            <image bindtap="$memberDialog$handleClick" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+            <view class="title">{{$memberDialog$title}}</view>
+            <view class="match-dialog-body tc">
+                <view class="member-dialog">
+                    <view class="member-price">
+                        <text class="f80">{{memberInfo.memberFee/100}}</text>元/永久</view>
+                    <text class="f28 c_99">注意：基本会员需保持游戏状态，
+          若超90天无游戏记录的基本会员将失效。</text>
+                    <view bindtap="buyMember" class="btn btn-primary btn-round">立即支付</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

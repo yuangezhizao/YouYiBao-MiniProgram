@@ -8,7 +8,7 @@
     z-index: 999;
     width: 100%;
     height: 98rpx;
-    box-shadow: 0 -4rpx 25rpx 0 rgba(0,0,0,0.08);
+    box-shadow: 0rpx -4rpx 25rpx 0rpx rgba(0,0,0,.08);
 }
 
 .tabbar_box.iphoneX-height {
@@ -50,8 +50,6 @@
 .special-wrapper {
     position: absolute;
     top: -50rpx;
-    width: 120rpx;
-    height: 120rpx;
     border-radius: 50%;
     border-top: 2rpx solid #f2f2f3;
     background-color: #fff;
@@ -59,7 +57,7 @@
     box-sizing: border-box;
 }
 
-.special-wrapper .tabbar_icon {
+.special-wrapper,.special-wrapper .tabbar_icon {
     width: 120rpx;
     height: 120rpx;
 }
@@ -79,19 +77,18 @@ page {
     height: 260rpx;
     background: #fff;
     border-radius: 10rpx;
-    margin: 0 auto;
-    margin-top: 70rpx;
+    margin: 70rpx auto 0;
     display: flex;
-    box-shadow: 0 4rpx 30rpx 0 rgba(85,145,252,0.4);
+    box-shadow: 0rpx 4rpx 30rpx 0rpx rgba(85,145,252,.4);
 }
 
 .user-info .user-avatar {
     width: 130rpx;
     height: 130rpx;
-    border: 4rpx solid #3379FE;
+    border: 4rpx solid #3379fe;
     border-radius: 50%;
     margin: 32rpx;
-    box-shadow: 0 8rpx 10rpx 0 rgba(53,131,254,0.2);
+    box-shadow: 0rpx 8rpx 10rpx 0rpx rgba(53,131,254,.2);
 }
 
 .user-info .active {
@@ -109,19 +106,20 @@ page {
 }
 
 .btn-group {
+    position: relative;
+}
+
+.btn-group,.btn-group .btn {
     display: flex;
     justify-content: center;
-    position: relative;
 }
 
 .btn-group .btn {
     width: 282rpx;
     height: 110rpx;
-    background: linear-gradient(to right,#3CA6FD,#2F5FFF);
+    background: linear-gradient(90deg,#3ca6fd,#2f5fff);
     border-radius: 55rpx;
     margin-top: -55rpx;
-    display: flex;
-    justify-content: center;
     align-items: center;
 }
 
@@ -138,7 +136,7 @@ page {
 }
 
 .btn-group .btn:last-child {
-    background: linear-gradient(to right,#5BE89B,#2ECCBD);
+    background: linear-gradient(90deg,#5be89b,#2eccbd);
     margin-left: 26rpx;
 }
 
@@ -182,7 +180,7 @@ page {
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 8rpx 20rpx 0 rgba(85,145,252,0.2);
+    box-shadow: 0rpx 8rpx 20rpx 0rpx rgba(85,145,252,.2);
     line-height: 48rpx;
 }
 
@@ -213,7 +211,7 @@ page {
     height: 269rpx;
     background: #fff;
     border-radius: 20rpx;
-    box-shadow: 0 8rpx 10rpx 0 rgba(85,145,252,0.1);
+    box-shadow: 0rpx 8rpx 10rpx 0rpx rgba(85,145,252,.1);
     margin: 27rpx 0 40rpx 30rpx;
     position: relative;
 }
@@ -245,12 +243,10 @@ page {
 }
 
 .hot-game .hot-game-title {
-    display: flex;
-    align-items: center;
     justify-content: space-between;
 }
 
-.hot-game .hot-game-title .hot-game-left {
+.hot-game .hot-game-title,.hot-game .hot-game-title .hot-game-left {
     display: flex;
     align-items: center;
 }
@@ -271,7 +267,7 @@ page {
     margin-top: 30rpx;
     left: 30rpx;
     overflow: hidden;
-    box-shadow: 0 8rpx 10rpx 0 rgba(85,145,252,0.1);
+    box-shadow: 0rpx 8rpx 10rpx 0rpx rgba(85,145,252,.1);
 }
 
 .hot-game .hot-game-list .list-top {
@@ -283,7 +279,7 @@ page {
 .hot-game .hot-game-list .list-top .tag {
     height: 53rpx;
     line-height: 53rpx;
-    background: url("http://yyb-oss.universal-space.cn/imgs/record/lebel_ blue.png") right no-repeat;
+    background: url("http://yyb-oss.universal-space.cn/imgs/record/lebel_ blue.png") 100% no-repeat;
     background-size: auto 100%;
     font-size: 26rpx;
     display: inline-flex;
@@ -342,7 +338,7 @@ page {
     height: 90rpx;
     border-radius: 50%;
     border: 5rpx solid #fff;
-    box-shadow: 0 6rpx 8rpx 0 rgba(136,172,255,0.43);
+    box-shadow: 0rpx 6rpx 8rpx 0rpx rgba(136,172,255,.43);
     margin-bottom: 13rpx;
 }
 

@@ -1,148 +1,120 @@
-function _interopRequireDefault(e) {
-    return e && e.__esModule ? e : {
-        default: e
-    };
-}
-
-function _asyncToGenerator(e) {
-    return function() {
-        var t = e.apply(this, arguments);
-        return new Promise(function(e, n) {
-            function a(r, o) {
-                try {
-                    var i = t[r](o), s = i.value;
-                } catch (e) {
-                    return void n(e);
-                }
-                if (!i.done) return Promise.resolve(s).then(function(e) {
-                    a("next", e);
-                }, function(e) {
-                    a("throw", e);
-                });
-                e(s);
+!function() {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+        value: !0
+    });
+    var e = function() {
+        function e(e, t) {
+            for (var n = 0; n < t.length; n++) {
+                var a = t[n];
+                a.enumerable = a.enumerable || !1, a.configurable = !0, "value" in a && (a.writable = !0), 
+                Object.defineProperty(e, a.key, a);
             }
-            return a("next");
-        });
-    };
-}
-
-function _classCallCheck(e, t) {
-    if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-}
-
-function _possibleConstructorReturn(e, t) {
-    if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    return !t || "object" != typeof t && "function" != typeof t ? e : t;
-}
-
-function _inherits(e, t) {
-    if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
-    e.prototype = Object.create(t && t.prototype, {
-        constructor: {
-            value: e,
-            enumerable: !1,
-            writable: !0,
-            configurable: !0
         }
-    }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
-}
-
-Object.defineProperty(exports, "__esModule", {
-    value: !0
-});
-
-var _createClass = function() {
-    function e(e, t) {
-        for (var n = 0; n < t.length; n++) {
-            var a = t[n];
-            a.enumerable = a.enumerable || !1, a.configurable = !0, "value" in a && (a.writable = !0), 
-            Object.defineProperty(e, a.key, a);
-        }
+        return function(t, n, a) {
+            return n && e(t.prototype, n), a && e(t, a), t;
+        };
+    }(), t = i(require("./../../npm/wepy/lib/wepy.js")), n = i(require("./../../components/match-statusbar.js")), a = i(require("./../../utils/api.js")), r = i(require("./../../components/custom-dialog.js")), o = i(require("./../../mixins/user-mixin.js"));
+    function i(e) {
+        return e && e.__esModule ? e : {
+            default: e
+        };
     }
-    return function(t, n, a) {
-        return n && e(t.prototype, n), a && e(t, a), t;
-    };
-}(), _wepy = require("./../../npm/wepy/lib/wepy.js"), _wepy2 = _interopRequireDefault(_wepy), _matchStatusbar = require("./../../components/match-statusbar.js"), _matchStatusbar2 = _interopRequireDefault(_matchStatusbar), _api = require("./../../utils/api.js"), _api2 = _interopRequireDefault(_api), _customDialog = require("./../../components/custom-dialog.js"), _customDialog2 = _interopRequireDefault(_customDialog), _userMixin = require("./../../mixins/user-mixin.js"), _userMixin2 = _interopRequireDefault(_userMixin), arenaRank = function(e) {
-    function t() {
-        var e, n, a, r;
-        _classCallCheck(this, t);
-        for (var o = arguments.length, i = Array(o), s = 0; s < o; s++) i[s] = arguments[s];
-        return n = a = _possibleConstructorReturn(this, (e = t.__proto__ || Object.getPrototypeOf(t)).call.apply(e, [ this ].concat(i))), 
-        a.config = {
-            navigationStyle: "custom"
-        }, a.$repeat = {}, a.$props = {
-            statusbar: {
-                title: "赛事排行榜",
-                leftIcon: "true"
-            },
-            customDialog: {
-                "xmlns:v-bind": "",
-                "v-bind:isShow.sync": "showAlert",
-                title: "温馨提示",
-                "v-bind:content.sync": "alertTxt",
-                "xmlns:v-on": ""
-            }
-        }, a.$events = {
-            customDialog: {
-                "v-on:confirm": "confirm"
-            }
-        }, a.components = {
-            statusbar: _matchStatusbar2.default,
-            customDialog: _customDialog2.default
-        }, a.mixins = [ _userMixin2.default ], a.data = {
-            showAlert: !1,
-            alertTxt: "",
-            eventId: "",
-            rankList: [],
-            rankInfo: null,
-            eventDetail: "",
-            top3: [],
-            canLoadMore: !0,
-            pageNo: 1,
-            pageSize: 10
-        }, a.methods = {
-            confirm: function() {
-                this.showAlert = !1;
-            }
-        }, r = n, _possibleConstructorReturn(a, r);
+    function s(e, t) {
+        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
     }
-    return _inherits(t, e), _createClass(t, [ {
-        key: "onLoad",
-        value: function(e) {
-            this.eventId = e.eventId;
-        }
-    }, {
-        key: "onShow",
-        value: function() {
-            this.getEventRank();
-        }
-    }, {
-        key: "onShareAppMessage",
-        value: function(e) {
-            return {
-                title: "关注游艺宝，发现更多精彩",
-                path: "/pages/index/index",
-                imageUrl: "/assets/imgs/share.png",
-                success: function(e) {
-                    console.log("转发成功！");
+    function u(e, t) {
+        if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return !t || "object" != typeof t && "function" != typeof t ? e : t;
+    }
+    var c = function(t) {
+        function i() {
+            var e, t, a;
+            s(this, i);
+            for (var c = arguments.length, l = Array(c), f = 0; f < c; f++) l[f] = arguments[f];
+            return t = a = u(this, (e = i.__proto__ || Object.getPrototypeOf(i)).call.apply(e, [ this ].concat(l))), 
+            a.config = {
+                navigationStyle: "custom"
+            }, a.$repeat = {}, a.$props = {
+                statusbar: {
+                    title: "赛事排行榜",
+                    leftIcon: "true"
                 },
-                fail: function(e) {
-                    return console.log(e.errMsg);
+                customDialog: {
+                    "xmlns:v-bind": "",
+                    "v-bind:isShow.sync": "showAlert",
+                    title: "温馨提示",
+                    "v-bind:content.sync": "alertTxt",
+                    "xmlns:v-on": ""
                 }
-            };
+            }, a.$events = {
+                customDialog: {
+                    "v-on:confirm": "confirm"
+                }
+            }, a.components = {
+                statusbar: n.default,
+                customDialog: r.default
+            }, a.mixins = [ o.default ], a.data = {
+                showAlert: !1,
+                alertTxt: "",
+                eventId: "",
+                rankList: [],
+                rankInfo: null,
+                eventDetail: "",
+                top3: [],
+                canLoadMore: !0,
+                pageNo: 1,
+                pageSize: 10
+            }, a.methods = {
+                confirm: function() {
+                    this.showAlert = !1;
+                }
+            }, u(a, t);
         }
-    }, {
-        key: "onReachBottom",
-        value: function() {
-            this.canLoadMore && (this.pageNo++, this.getEventRank());
-        }
-    }, {
-        key: "getEventRank",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
+        var c, l;
+        return function(e, t) {
+            if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
+            e.prototype = Object.create(t && t.prototype, {
+                constructor: {
+                    value: e,
+                    enumerable: !1,
+                    writable: !0,
+                    configurable: !0
+                }
+            }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+        }(i, t), e(i, [ {
+            key: "onLoad",
+            value: function(e) {
+                this.eventId = e.eventId;
             }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
+        }, {
+            key: "onShow",
+            value: function() {
+                this.getEventRank();
+            }
+        }, {
+            key: "onShareAppMessage",
+            value: function(e) {
+                return {
+                    title: "关注游艺宝，发现更多精彩",
+                    path: "/pages/index/index",
+                    imageUrl: "/assets/imgs/share.png",
+                    success: function(e) {
+                        console.log("转发成功！");
+                    },
+                    fail: function(e) {
+                        return console.log(e.errMsg);
+                    }
+                };
+            }
+        }, {
+            key: "onReachBottom",
+            value: function() {
+                this.canLoadMore && (this.pageNo++, this.getEventRank());
+            }
+        }, {
+            key: "getEventRank",
+            value: (c = regeneratorRuntime.mark(function e() {
                 var t, n;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
@@ -151,10 +123,10 @@ var _createClass = function() {
                             pageNo: this.pageNo,
                             pageSize: this.pageSize,
                             eventId: this.eventId
-                        }, e.next = 3, _api2.default.eventRank(t);
+                        }, e.next = 3, a.default.eventRank(t);
 
                       case 3:
-                        n = e.sent, 1 != n.code ? (this.showAlert = !0, this.alertTxt = n.message, this.$apply()) : (this.eventDetail = n.data.eventDetail, 
+                        1 != (n = e.sent).code ? (this.showAlert = !0, this.alertTxt = n.message, this.$apply()) : (this.eventDetail = n.data.eventDetail, 
                         0 === Object.keys(n.data.rankInfo).length ? this.rankInfo = null : this.rankInfo = n.data.rankInfo, 
                         this.top3 = n.data.rankList.slice(0, 3), (!n.data.rankList || n.data.rankList.length < this.pageSize) && (this.canLoadMore = !1), 
                         1 == this.pageNo ? this.rankList = n.data.rankList : this.rankList = this.rankList.concat(n.data.rankList), 
@@ -165,10 +137,27 @@ var _createClass = function() {
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    } ]), t;
-}(_wepy2.default.page);
-
-Page(require("./../../npm/wepy/lib/wepy.js").default.$createPage(arenaRank, "pages/match/match-rank"));
+            }), l = function() {
+                var e = c.apply(this, arguments);
+                return new Promise(function(t, n) {
+                    return function a(r, o) {
+                        try {
+                            var i = e[r](o), s = i.value;
+                        } catch (e) {
+                            return void n(e);
+                        }
+                        if (!i.done) return Promise.resolve(s).then(function(e) {
+                            a("next", e);
+                        }, function(e) {
+                            a("throw", e);
+                        });
+                        t(s);
+                    }("next");
+                });
+            }, function() {
+                return l.apply(this, arguments);
+            })
+        } ]), i;
+    }(t.default.page);
+    Page(require("./../../npm/wepy/lib/wepy.js").default.$createPage(c, "pages/match/match-rank"));
+}();

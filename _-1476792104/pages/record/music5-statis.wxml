@@ -23,24 +23,12 @@
     </view>
     <view class="vip-intro">
         <view class="text">
-            <text>我的当前会员等级：{{memberState.memberType==0?'游客':memberState.memberType==1?'试用会员':memberState.memberType==2?'基本会员':memberState.memberType==4?'VIP会员':''}}</text>                  <text wx:if="{{memberState.memberType>0}}"> 有效期：{{memberState.validDate}}天</text>
+            <text>我的当前会员等级：{{memberState.memberType==3?'基本会员':memberState.memberType==4?'特别会员':'VIP会员'}}</text>                  <text wx:if="{{memberState.memberType>0}}"> 有效期：{{memberState.validDate}}天</text>
         </view>
         <view class="text">
             <text>我的e-am点余额：{{memberState.remainPoint}}</text>
         </view>
-        <view class="vip-list">
-            <view class="item">
-                <image src="{{memberState.memberType==1?'http://yyb-oss.universal-space.cn/imgs/record/icon_record_grade3.png':'http://yyb-oss.universal-space.cn/imgs/record/icon_record_grade4.png'}}"></image>
-                <view class="desc">
-            试用会员 <view bindtap="exchangeMember" class="btn {{memberState.memberType==1?'vip-1':''}}">试用</view>
-                </view>
-            </view>
-            <view class="item">
-                <image src="{{memberState.memberType==2?'http://yyb-oss.universal-space.cn/imgs/record/icon_record_grade2.png':'http://yyb-oss.universal-space.cn/imgs/record/icon_record_grade4.png'}}"></image>
-                <view class="desc">
-            基本会员 <view bindtap="exchangeMember" class="btn {{memberState.memberType==2?'vip-2':''}}">兑换</view>
-                </view>
-            </view>
+        <view class="vip-list" wx:if="{{!isHideVip}}">
             <view class="item">
                 <image src="{{memberState.memberType==4?'http://yyb-oss.universal-space.cn/imgs/record/icon_record_grade1.png':'http://yyb-oss.universal-space.cn/imgs/record/icon_record_grade5.png'}}"></image>
                 <view class="desc">
@@ -59,13 +47,13 @@
         <view class="match-item-2">
             <view class="item-content">
                 <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_block.png"></image>
-                <text class="f26 c_99">持有block数</text>
+                <text class="f26 c_99">持有PCB数</text>
                 <text class="c_4a f46 Merriweather">{{recordList!=''?recordList.gamecoinBlock:'-'}}</text>
             </view>
             <view class="item-content">
                 <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_blaster_energy.png"></image>
                 <text class="f26 c_99">持有blaster energy</text>
-                <text class="c_4a f46 Merriweather">{{recordList!=''?recordList.blasterEnergy:'-'}}</text>
+                <text class="c_4a f46 Merriweather">{{recordList!=''?recordList.blasterEnergy/100+'%':'-'}}</text>
             </view>
             <view class="item-content">
                 <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_game.png"></image>

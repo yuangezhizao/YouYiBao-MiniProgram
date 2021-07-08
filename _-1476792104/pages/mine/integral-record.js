@@ -1,131 +1,105 @@
-function _interopRequireDefault(e) {
-    return e && e.__esModule ? e : {
-        default: e
-    };
-}
-
-function _asyncToGenerator(e) {
-    return function() {
-        var t = e.apply(this, arguments);
-        return new Promise(function(e, n) {
-            function r(a, i) {
-                try {
-                    var o = t[a](i), s = o.value;
-                } catch (e) {
-                    return void n(e);
-                }
-                if (!o.done) return Promise.resolve(s).then(function(e) {
-                    r("next", e);
-                }, function(e) {
-                    r("throw", e);
-                });
-                e(s);
+!function() {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+        value: !0
+    });
+    var e = function() {
+        function e(e, t) {
+            for (var n = 0; n < t.length; n++) {
+                var r = t[n];
+                r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), 
+                Object.defineProperty(e, r.key, r);
             }
-            return r("next");
-        });
-    };
-}
-
-function _classCallCheck(e, t) {
-    if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-}
-
-function _possibleConstructorReturn(e, t) {
-    if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    return !t || "object" != typeof t && "function" != typeof t ? e : t;
-}
-
-function _inherits(e, t) {
-    if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
-    e.prototype = Object.create(t && t.prototype, {
-        constructor: {
-            value: e,
-            enumerable: !1,
-            writable: !0,
-            configurable: !0
         }
-    }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
-}
-
-Object.defineProperty(exports, "__esModule", {
-    value: !0
-});
-
-var _createClass = function() {
-    function e(e, t) {
-        for (var n = 0; n < t.length; n++) {
-            var r = t[n];
-            r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), 
-            Object.defineProperty(e, r.key, r);
-        }
+        return function(t, n, r) {
+            return n && e(t.prototype, n), r && e(t, r), t;
+        };
+    }(), t = i(require("./../../npm/wepy/lib/wepy.js")), n = i(require("./../../utils/api.js")), r = (i(require("./../../utils/environment.js")), 
+    i(require("./../../utils/units.js"))), a = i(require("./../../components/custom-statusbar.js"));
+    i(require("./../../utils/wechat.js"));
+    function i(e) {
+        return e && e.__esModule ? e : {
+            default: e
+        };
     }
-    return function(t, n, r) {
-        return n && e(t.prototype, n), r && e(t, r), t;
-    };
-}(), _wepy = require("./../../npm/wepy/lib/wepy.js"), _wepy2 = _interopRequireDefault(_wepy), _api = require("./../../utils/api.js"), _api2 = _interopRequireDefault(_api), _environment = require("./../../utils/environment.js"), _environment2 = _interopRequireDefault(_environment), _units = require("./../../utils/units.js"), _units2 = _interopRequireDefault(_units), _customStatusbar = require("./../../components/custom-statusbar.js"), _customStatusbar2 = _interopRequireDefault(_customStatusbar), _wechat = require("./../../utils/wechat.js"), _wechat2 = _interopRequireDefault(_wechat), Scan = function(e) {
-    function t() {
-        var e, n, r, a;
-        _classCallCheck(this, t);
-        for (var i = arguments.length, o = Array(i), s = 0; s < i; s++) o[s] = arguments[s];
-        return n = r = _possibleConstructorReturn(this, (e = t.__proto__ || Object.getPrototypeOf(t)).call.apply(e, [ this ].concat(o))), 
-        r.config = {
-            navigationStyle: "custom"
-        }, r.$repeat = {}, r.$props = {
-            customStatusbar: {
-                title: "我的积分"
-            }
-        }, r.$events = {}, r.components = {
-            customStatusbar: _customStatusbar2.default
-        }, r.mixins = [], r.data = {
-            integralList: [],
-            myIntegral: 0,
-            canLoadMore: !0,
-            pageNo: 1,
-            pageSize: 10
-        }, r.computed = {}, r.methods = {
-            getIntegral: function() {
-                wx.navigateTo({
-                    url: "/pages/mine/ticket-record"
-                });
-            }
-        }, r.events = {}, a = n, _possibleConstructorReturn(r, a);
+    function o(e, t) {
+        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
     }
-    return _inherits(t, e), _createClass(t, [ {
-        key: "onLoad",
-        value: function() {}
-    }, {
-        key: "onShow",
-        value: function() {
-            this.getIntegralList();
-        }
-    }, {
-        key: "onReachBottom",
-        value: function() {
-            this.canLoadMore && (this.pageNo++, this.getIntegralList());
-        }
-    }, {
-        key: "onShareAppMessage",
-        value: function(e) {
-            return {
-                title: "关注游艺宝，发现更多精彩",
-                path: "/pages/index/index",
-                imageUrl: "/assets/imgs/share.png",
-                success: function(e) {
-                    console.log("转发成功！");
-                },
-                fail: function(e) {
-                    return console.log(e.errMsg);
+    function s(e, t) {
+        if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return !t || "object" != typeof t && "function" != typeof t ? e : t;
+    }
+    var u = function(t) {
+        function i() {
+            var e, t, n;
+            o(this, i);
+            for (var r = arguments.length, u = Array(r), c = 0; c < r; c++) u[c] = arguments[c];
+            return t = n = s(this, (e = i.__proto__ || Object.getPrototypeOf(i)).call.apply(e, [ this ].concat(u))), 
+            n.config = {
+                navigationStyle: "custom"
+            }, n.$repeat = {}, n.$props = {
+                customStatusbar: {
+                    title: "我的积分"
                 }
-            };
+            }, n.$events = {}, n.components = {
+                customStatusbar: a.default
+            }, n.mixins = [], n.data = {
+                integralList: [],
+                myIntegral: 0,
+                canLoadMore: !0,
+                pageNo: 1,
+                pageSize: 10
+            }, n.computed = {}, n.methods = {
+                getIntegral: function() {
+                    wx.navigateTo({
+                        url: "/pages/mine/ticket-record"
+                    });
+                }
+            }, n.events = {}, s(n, t);
         }
-    }, {
-        key: "getIntegralList",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
+        var u, c;
+        return function(e, t) {
+            if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
+            e.prototype = Object.create(t && t.prototype, {
+                constructor: {
+                    value: e,
+                    enumerable: !1,
+                    writable: !0,
+                    configurable: !0
+                }
+            }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+        }(i, t), e(i, [ {
+            key: "onLoad",
+            value: function() {}
+        }, {
+            key: "onShow",
+            value: function() {
+                this.getIntegralList();
             }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
-                var t, n, r, a, i;
+        }, {
+            key: "onReachBottom",
+            value: function() {
+                this.canLoadMore && (this.pageNo++, this.getIntegralList());
+            }
+        }, {
+            key: "onShareAppMessage",
+            value: function(e) {
+                return {
+                    title: "关注游艺宝，发现更多精彩",
+                    path: "/pages/index/index",
+                    imageUrl: "/assets/imgs/share.png",
+                    success: function(e) {
+                        console.log("转发成功！");
+                    },
+                    fail: function(e) {
+                        return console.log(e.errMsg);
+                    }
+                };
+            }
+        }, {
+            key: "getIntegralList",
+            value: (u = regeneratorRuntime.mark(function e() {
+                var t, a, i, o, s;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
                       case 0:
@@ -133,15 +107,15 @@ var _createClass = function() {
                             type: 1,
                             pageNo: this.pageNo,
                             pageSize: this.pageSize
-                        }, e.next = 3, _api2.default.scroeList(t);
+                        }, e.next = 3, n.default.scroeList(t);
 
                       case 3:
-                        if (n = e.sent, 0 != n.retCode) {
+                        if (0 != (a = e.sent).retCode) {
                             e.next = 11;
                             break;
                         }
-                        if (this.myIntegral = n.score, (!n.data || n.data.length < this.pageSize) && (this.canLoadMore = !1), 
-                        n.data) {
+                        if (this.myIntegral = a.score, (!a.data || a.data.length < this.pageSize) && (this.canLoadMore = !1), 
+                        a.data) {
                             e.next = 9;
                             break;
                         }
@@ -149,11 +123,11 @@ var _createClass = function() {
 
                       case 9:
                         if (1 == this.pageNo) {
-                            for (r = n.data, a = 0; a < r.length; a++) r[a].add_time = _units2.default.formatTime(new Date(1e3 * r[a].add_time));
-                            this.integralList = r;
+                            for (i = a.data, o = 0; o < i.length; o++) i[o].add_time = r.default.formatTime(new Date(1e3 * i[o].add_time));
+                            this.integralList = i;
                         } else {
-                            for (r = n.data, i = 0; i < r.length; i++) r[i].add_time = _units2.default.formatTime(new Date(1e3 * r[i].add_time));
-                            this.integralList = this.integralList.concat(n.data);
+                            for (i = a.data, s = 0; s < i.length; s++) i[s].add_time = r.default.formatTime(new Date(1e3 * i[s].add_time));
+                            this.integralList = this.integralList.concat(a.data);
                         }
                         this.$apply();
 
@@ -162,10 +136,27 @@ var _createClass = function() {
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    } ]), t;
-}(_wepy2.default.page);
-
-Page(require("./../../npm/wepy/lib/wepy.js").default.$createPage(Scan, "pages/mine/integral-record"));
+            }), c = function() {
+                var e = u.apply(this, arguments);
+                return new Promise(function(t, n) {
+                    return function r(a, i) {
+                        try {
+                            var o = e[a](i), s = o.value;
+                        } catch (e) {
+                            return void n(e);
+                        }
+                        if (!o.done) return Promise.resolve(s).then(function(e) {
+                            r("next", e);
+                        }, function(e) {
+                            r("throw", e);
+                        });
+                        t(s);
+                    }("next");
+                });
+            }, function() {
+                return c.apply(this, arguments);
+            })
+        } ]), i;
+    }(t.default.page);
+    Page(require("./../../npm/wepy/lib/wepy.js").default.$createPage(u, "pages/mine/integral-record"));
+}();

@@ -1,0 +1,40 @@
+<view class="flex-column">
+    <view>
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$customStatusbar$menuButtonTop+60}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$customStatusbar$menuButtonTop}}px;">
+            <image bindtap="$customStatusbar$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$customStatusbar$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$customStatusbar$menuButtonTop}}px;">
+            <text class="title">{{$customStatusbar$title}}</text>
+        </view>
+    </view>
+    <view class="container1 flex-column">
+        <view class="flex-column" style="height: 103rpx;width: 100%">
+            <view class="flex-row flex-between" style="width:100%;height: 100rpx">
+                <text class="f28 c_33">收货人</text>
+                <input bindinput="getName" class="f28 c_33" confirmType="next" placeholder="请输入收货人" style="width: 400rpx" value="{{name}}"></input>
+            </view>
+            <view style="width: 100%;height: 1px;background-color: #e7e7e7"></view>
+        </view>
+        <view class="flex-column" style="height: 103rpx;width: 100%">
+            <view class="flex-row flex-between" style="width:100%;height: 100rpx">
+                <text class="f28 c_33">手机号码</text>
+                <input bindinput="getPhone" class="f28 c_33" confirmType="next" placeholder="请输入手机号码" style="width: 400rpx" type="number" value="{{phone}}"></input>
+            </view>
+            <view style="width: 100%;height: 1px;background-color: #e7e7e7"></view>
+        </view>
+        <view class="flex-column" style="height: 103rpx;width: 100%">
+            <view class="flex-row flex-between" style="width:100%;height: 100rpx">
+                <text class="f28 c_33">详细地址</text>
+                <input bindinput="getDetail" class="f28 c_33" confirmType="done" placeholder="请输入详细地址" style="width: 400rpx" value="{{detail}}"></input>
+            </view>
+        </view>
+    </view>
+    <view bindtap="setDefaultAdress" class="container2 flex-row">
+        <image src="{{default==true?'http://yyb-oss.universal-space.cn/imgs/mine/default_address.png':'http://yyb-oss.universal-space.cn/imgs/mine/endefault_address.png'}}" style="width:30rpx;height:30rpx"></image>
+        <text class="f28 c_33" style="margin-left: 25rpx">设为默认地址</text>
+    </view>
+    <image bindtap="sure" mode="aspectFill" src="http://yyb-oss.universal-space.cn/imgs/mine/save_address.png" style="margin-top: 50rpx;width:583rpx;height: 115rpx "></image>
+</view>

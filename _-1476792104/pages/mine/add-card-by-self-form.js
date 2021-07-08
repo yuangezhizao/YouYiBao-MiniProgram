@@ -1,180 +1,171 @@
-function _interopRequireDefault(e) {
-    return e && e.__esModule ? e : {
-        default: e
-    };
-}
-
-function _asyncToGenerator(e) {
-    return function() {
-        var t = e.apply(this, arguments);
-        return new Promise(function(e, r) {
-            function a(n, o) {
-                try {
-                    var i = t[n](o), s = i.value;
-                } catch (e) {
-                    return void r(e);
-                }
-                if (!i.done) return Promise.resolve(s).then(function(e) {
-                    a("next", e);
-                }, function(e) {
-                    a("throw", e);
-                });
-                e(s);
+!function() {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+        value: !0
+    });
+    var e = function() {
+        function e(e, t) {
+            for (var r = 0; r < t.length; r++) {
+                var n = t[r];
+                n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), 
+                Object.defineProperty(e, n.key, n);
             }
-            return a("next");
-        });
-    };
-}
-
-function _classCallCheck(e, t) {
-    if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-}
-
-function _possibleConstructorReturn(e, t) {
-    if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    return !t || "object" != typeof t && "function" != typeof t ? e : t;
-}
-
-function _inherits(e, t) {
-    if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
-    e.prototype = Object.create(t && t.prototype, {
-        constructor: {
-            value: e,
-            enumerable: !1,
-            writable: !0,
-            configurable: !0
         }
-    }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
-}
-
-Object.defineProperty(exports, "__esModule", {
-    value: !0
-});
-
-var _createClass = function() {
-    function e(e, t) {
-        for (var r = 0; r < t.length; r++) {
-            var a = t[r];
-            a.enumerable = a.enumerable || !1, a.configurable = !0, "value" in a && (a.writable = !0), 
-            Object.defineProperty(e, a.key, a);
-        }
+        return function(t, r, n) {
+            return r && e(t.prototype, r), n && e(t, n), t;
+        };
+    }(), t = s(require("./../../npm/wepy/lib/wepy.js")), r = s(require("./../../components/match-statusbar.js")), n = s(require("./../../mixins/user-mixin.js")), a = s(require("./../../utils/api.js")), o = s(require("./../../utils/wechat.js")), i = s(require("./../../components/match-dialog.js"));
+    function s(e) {
+        return e && e.__esModule ? e : {
+            default: e
+        };
     }
-    return function(t, r, a) {
-        return r && e(t.prototype, r), a && e(t, a), t;
-    };
-}(), _wepy = require("./../../npm/wepy/lib/wepy.js"), _wepy2 = _interopRequireDefault(_wepy), _matchStatusbar = require("./../../components/match-statusbar.js"), _matchStatusbar2 = _interopRequireDefault(_matchStatusbar), _userMixin = require("./../../mixins/user-mixin.js"), _userMixin2 = _interopRequireDefault(_userMixin), _api = require("./../../utils/api.js"), _api2 = _interopRequireDefault(_api), _wechat = require("./../../utils/wechat.js"), _wechat2 = _interopRequireDefault(_wechat), _matchDialog = require("./../../components/match-dialog.js"), _matchDialog2 = _interopRequireDefault(_matchDialog), addCardBySelfForm = function(e) {
-    function t() {
-        var e, r, a, n;
-        _classCallCheck(this, t);
-        for (var o = arguments.length, i = Array(o), s = 0; s < o; s++) i[s] = arguments[s];
-        return r = a = _possibleConstructorReturn(this, (e = t.__proto__ || Object.getPrototypeOf(t)).call.apply(e, [ this ].concat(i))), 
-        a.config = {
-            navigationStyle: "custom",
-            backgroundColor: "#F2F9FF"
-        }, a.$repeat = {}, a.$props = {
-            statusbar: {
-                leftIcon: "true",
-                title: "自助开卡"
-            },
-            addCardDialog: {
-                "xmlns:v-bind": "",
-                "v-bind:isShowDialog.sync": "isShowDialog"
-            }
-        }, a.$events = {}, a.components = {
-            statusbar: _matchStatusbar2.default,
-            addCardDialog: _matchDialog2.default
-        }, a.mixins = [ _userMixin2.default ], a.data = {
-            codeText: "获取验证码",
-            isShowDialog: !1,
-            aemsGoodsName: "",
-            isCaptcha: !1,
-            nextStep: !1,
-            aemsGoodsNo: "",
-            storeDetail: "",
-            totalPrice: "",
-            storeName: "",
-            storeId: "",
-            orderNo: "",
-            phone: "",
-            code: "",
-            name: ""
-        }, a.methods = {
-            pay: function() {
-                this.createOrder();
-            },
-            exchangeCard: function() {
-                this.getCardOrderDetail(), this.isShowDialog = !1;
-            },
-            getCaptcha: function() {
-                var e = this, t = 60;
-                if (!this.data.codeText.includes("s")) {
-                    this.getCaptcha();
-                    var r = function() {
-                        e.codeText = t + "s", t--, e.$apply(), t < -1 && (clearInterval(e.timer), e.codeText = "重获验证码", 
-                        e.$apply());
-                    };
-                    r(), this.timer = setInterval(r, 1e3);
-                }
-            },
-            getPhone: function(e) {
-                if (this.phone = e.detail.value, !/^1(?:3|4|5|7|8|9)\d{9}$/.test(e.detail.value)) return this.isCaptcha = !1, 
-                void (this.nextStep = !1);
-                this.isCaptcha = !0, this.smsAgree();
-            },
-            getCode: function(e) {
-                this.code = e.detail.value, this.smsAgree();
-            },
-            getUserPhone: function() {
-                if (this.phone = this.userInfo.mobile, !/^1(?:3|4|5|7|8|9)\d{9}$/.test(this.phone)) return void (this.isCaptcha = !1);
-                this.isCaptcha = !0, this.$apply();
-            }
-        }, n = r, _possibleConstructorReturn(a, n);
+    function u(e) {
+        return function() {
+            var t = e.apply(this, arguments);
+            return new Promise(function(e, r) {
+                return function n(a, o) {
+                    try {
+                        var i = t[a](o), s = i.value;
+                    } catch (e) {
+                        return void r(e);
+                    }
+                    if (!i.done) return Promise.resolve(s).then(function(e) {
+                        n("next", e);
+                    }, function(e) {
+                        n("throw", e);
+                    });
+                    e(s);
+                }("next");
+            });
+        };
     }
-    return _inherits(t, e), _createClass(t, [ {
-        key: "onLoad",
-        value: function(e) {
-            console.log(e), this.aemsGoodsName = e.aemsGoodsName, this.aemsGoodsNo = e.aemsGoodsNo, 
-            this.totalPrice = e.totalPrice, this.$apply();
-        }
-    }, {
-        key: "onShow",
-        value: function() {
-            this.storeDetail = wx.getStorageSync("storeDetail"), this.storeDetail && (this.storeName = this.storeDetail.store_name, 
-            this.storeId = this.storeDetail.store_id), this.$apply();
-        }
-    }, {
-        key: "onShareAppMessage",
-        value: function(e) {
-            return {
-                title: "关注游艺宝，发现更多精彩",
-                path: "/pages/index/index",
-                imageUrl: "/assets/imgs/share.png",
-                success: function(e) {
-                    console.log("转发成功！");
+    function c(e, t) {
+        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+    }
+    function l(e, t) {
+        if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return !t || "object" != typeof t && "function" != typeof t ? e : t;
+    }
+    var h = function(t) {
+        function s() {
+            var e, t, a;
+            c(this, s);
+            for (var o = arguments.length, u = Array(o), h = 0; h < o; h++) u[h] = arguments[h];
+            return t = a = l(this, (e = s.__proto__ || Object.getPrototypeOf(s)).call.apply(e, [ this ].concat(u))), 
+            a.config = {
+                navigationStyle: "custom",
+                backgroundColor: "#F2F9FF"
+            }, a.$repeat = {}, a.$props = {
+                statusbar: {
+                    leftIcon: "true",
+                    title: "自助开卡"
                 },
-                fail: function(e) {
-                    return console.log(e.errMsg);
+                addCardDialog: {
+                    "xmlns:v-bind": "",
+                    "v-bind:isShowDialog.sync": "isShowDialog"
                 }
-            };
+            }, a.$events = {}, a.components = {
+                statusbar: r.default,
+                addCardDialog: i.default
+            }, a.mixins = [ n.default ], a.data = {
+                codeText: "获取验证码",
+                isShowDialog: !1,
+                aemsGoodsName: "",
+                isCaptcha: !1,
+                nextStep: !1,
+                aemsGoodsNo: "",
+                storeDetail: "",
+                totalPrice: "",
+                storeName: "",
+                storeId: "",
+                orderNo: "",
+                phone: "",
+                code: "",
+                name: ""
+            }, a.methods = {
+                pay: function() {
+                    this.createOrder();
+                },
+                exchangeCard: function() {
+                    this.getCardOrderDetail(), this.isShowDialog = !1;
+                },
+                getCaptcha: function() {
+                    var e = this, t = 60;
+                    if (!this.data.codeText.includes("s")) {
+                        this.getCaptcha();
+                        var r = function() {
+                            e.codeText = t + "s", t--, e.$apply(), t < -1 && (clearInterval(e.timer), e.codeText = "重获验证码", 
+                            e.$apply());
+                        };
+                        r(), this.timer = setInterval(r, 1e3);
+                    }
+                },
+                getPhone: function(e) {
+                    if (this.phone = e.detail.value, !/^1(?:3|4|5|7|8|9)\d{9}$/.test(e.detail.value)) return this.isCaptcha = !1, 
+                    void (this.nextStep = !1);
+                    this.isCaptcha = !0, this.smsAgree();
+                },
+                getCode: function(e) {
+                    this.code = e.detail.value, this.smsAgree();
+                },
+                getUserPhone: function() {
+                    this.phone = this.userInfo.mobile, /^1(?:3|4|5|7|8|9)\d{9}$/.test(this.phone) ? (this.isCaptcha = !0, 
+                    this.$apply()) : this.isCaptcha = !1;
+                }
+            }, l(a, t);
         }
-    }, {
-        key: "smsAgree",
-        value: function() {
-            if (!this.isCaptcha || this.code.length < 4) return void (this.nextStep = !1);
-            this.nextStep = !0;
-        }
-    }, {
-        key: "getCaptcha",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
+        var h, p, d, f;
+        return function(e, t) {
+            if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
+            e.prototype = Object.create(t && t.prototype, {
+                constructor: {
+                    value: e,
+                    enumerable: !1,
+                    writable: !0,
+                    configurable: !0
+                }
+            }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+        }(s, t), e(s, [ {
+            key: "onLoad",
+            value: function(e) {
+                console.log(e), this.aemsGoodsName = e.aemsGoodsName, this.aemsGoodsNo = e.aemsGoodsNo, 
+                this.totalPrice = e.totalPrice, this.$apply();
             }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
+        }, {
+            key: "onShow",
+            value: function() {
+                this.storeDetail = wx.getStorageSync("storeDetail"), this.storeDetail && (this.storeName = this.storeDetail.store_name, 
+                this.storeId = this.storeDetail.store_id), this.$apply();
+            }
+        }, {
+            key: "onShareAppMessage",
+            value: function(e) {
+                return {
+                    title: "关注游艺宝，发现更多精彩",
+                    path: "/pages/index/index",
+                    imageUrl: "/assets/imgs/share.png",
+                    success: function(e) {
+                        console.log("转发成功！");
+                    },
+                    fail: function(e) {
+                        return console.log(e.errMsg);
+                    }
+                };
+            }
+        }, {
+            key: "smsAgree",
+            value: function() {
+                !this.isCaptcha || this.code.length < 4 ? this.nextStep = !1 : this.nextStep = !0;
+            }
+        }, {
+            key: "getCaptcha",
+            value: (f = u(regeneratorRuntime.mark(function e() {
                 var t;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
                       case 0:
-                        return e.next = 2, _api2.default.sendCaptcha({
+                        return e.next = 2, a.default.sendCaptcha({
                             mobile: this.phone
                         });
 
@@ -186,17 +177,13 @@ var _createClass = function() {
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    }, {
-        key: "createOrder",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
-            }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
-                var t, r, a = this;
+            })), function() {
+                return f.apply(this, arguments);
+            })
+        }, {
+            key: "createOrder",
+            value: (d = u(regeneratorRuntime.mark(function e() {
+                var t, r, n = this;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
                       case 0:
@@ -213,7 +200,7 @@ var _createClass = function() {
                             captcha: this.code,
                             storeId: this.storeId,
                             aemsGoodsNo: this.aemsGoodsNo
-                        }, e.next = 5, _api2.default.cardCreateOrder(t);
+                        }, e.next = 5, a.default.cardCreateOrder(t);
 
                       case 5:
                         if (r = e.sent, Object.keys(r.data).length && Object.keys(r.data.wxpay).length) {
@@ -223,8 +210,8 @@ var _createClass = function() {
                         return e.abrupt("return");
 
                       case 10:
-                        _wechat2.default.payment(r.data.wxpay).then(function(e) {
-                            a.orderNo = r.data.orderNo, a.isShowDialog = !0;
+                        o.default.payment(r.data.wxpay).then(function(e) {
+                            n.orderNo = r.data.orderNo, n.isShowDialog = !0;
                         });
 
                       case 11:
@@ -232,21 +219,17 @@ var _createClass = function() {
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    }, {
-        key: "getCardOrderDetail",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
-            }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
+            })), function() {
+                return d.apply(this, arguments);
+            })
+        }, {
+            key: "getCardOrderDetail",
+            value: (p = u(regeneratorRuntime.mark(function e() {
                 var t;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
                       case 0:
-                        return e.next = 2, _api2.default.orderDetail({
+                        return e.next = 2, a.default.orderDetail({
                             orderNo: this.orderNo
                         });
 
@@ -258,26 +241,22 @@ var _createClass = function() {
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    }, {
-        key: "getCode",
-        value: function() {
-            function e(e) {
-                return t.apply(this, arguments);
-            }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e(t) {
+            })), function() {
+                return p.apply(this, arguments);
+            })
+        }, {
+            key: "getCode",
+            value: (h = u(regeneratorRuntime.mark(function e(t) {
                 var r;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
                       case 0:
-                        return e.next = 2, _api2.default.getExchangeCode({
+                        return e.next = 2, a.default.getExchangeCode({
                             orderNo: t
                         });
 
                       case 2:
-                        r = e.sent, r && wx.navigateTo({
+                        (r = e.sent) && wx.navigateTo({
                             url: "/pages/mine/card-exchange-qr?exchangeCode=" + r.data.exchangeCode
                         });
 
@@ -286,10 +265,10 @@ var _createClass = function() {
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    } ]), t;
-}(_wepy2.default.page);
-
-Page(require("./../../npm/wepy/lib/wepy.js").default.$createPage(addCardBySelfForm, "pages/mine/add-card-by-self-form"));
+            })), function(e) {
+                return h.apply(this, arguments);
+            })
+        } ]), s;
+    }(t.default.page);
+    Page(require("./../../npm/wepy/lib/wepy.js").default.$createPage(h, "pages/mine/add-card-by-self-form"));
+}();

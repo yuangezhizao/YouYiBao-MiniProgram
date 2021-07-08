@@ -1,276 +1,283 @@
-function _interopRequireDefault(e) {
-    return e && e.__esModule ? e : {
-        default: e
-    };
-}
-
-function _asyncToGenerator(e) {
-    return function() {
-        var t = e.apply(this, arguments);
-        return new Promise(function(e, n) {
-            function r(a, i) {
-                try {
-                    var o = t[a](i), s = o.value;
-                } catch (e) {
-                    return void n(e);
-                }
-                if (!o.done) return Promise.resolve(s).then(function(e) {
-                    r("next", e);
-                }, function(e) {
-                    r("throw", e);
-                });
-                e(s);
+!function() {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+        value: !0
+    });
+    var e = function() {
+        function e(e, t) {
+            for (var n = 0; n < t.length; n++) {
+                var r = t[n];
+                r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), 
+                Object.defineProperty(e, r.key, r);
             }
-            return r("next");
-        });
-    };
-}
-
-function _classCallCheck(e, t) {
-    if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-}
-
-function _possibleConstructorReturn(e, t) {
-    if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    return !t || "object" != typeof t && "function" != typeof t ? e : t;
-}
-
-function _inherits(e, t) {
-    if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
-    e.prototype = Object.create(t && t.prototype, {
-        constructor: {
-            value: e,
-            enumerable: !1,
-            writable: !0,
-            configurable: !0
         }
-    }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
-}
-
-Object.defineProperty(exports, "__esModule", {
-    value: !0
-});
-
-var _createClass = function() {
-    function e(e, t) {
-        for (var n = 0; n < t.length; n++) {
-            var r = t[n];
-            r.enumerable = r.enumerable || !1, r.configurable = !0, "value" in r && (r.writable = !0), 
-            Object.defineProperty(e, r.key, r);
-        }
+        return function(t, n, r) {
+            return n && e(t.prototype, n), r && e(t, r), t;
+        };
+    }(), t = i(require("./../../npm/wepy/lib/wepy.js")), n = i(require("./../../utils/api.js")), r = i(require("./../../utils/environment.js")), a = i(require("./../../components/custom-tabbar.js"));
+    i(require("./../../utils/wechat.js"));
+    function i(e) {
+        return e && e.__esModule ? e : {
+            default: e
+        };
     }
-    return function(t, n, r) {
-        return n && e(t.prototype, n), r && e(t, r), t;
-    };
-}(), _wepy = require("./../../npm/wepy/lib/wepy.js"), _wepy2 = _interopRequireDefault(_wepy), _api = require("./../../utils/api.js"), _api2 = _interopRequireDefault(_api), _environment = require("./../../utils/environment.js"), _environment2 = _interopRequireDefault(_environment), _customTabbar = require("./../../components/custom-tabbar.js"), _customTabbar2 = _interopRequireDefault(_customTabbar), _wechat = require("./../../utils/wechat.js"), _wechat2 = _interopRequireDefault(_wechat), Index = function(e) {
-    function t() {
-        var e, n, r, a;
-        _classCallCheck(this, t);
-        for (var i = arguments.length, o = Array(i), s = 0; s < i; s++) o[s] = arguments[s];
-        return n = r = _possibleConstructorReturn(this, (e = t.__proto__ || Object.getPrototypeOf(t)).call.apply(e, [ this ].concat(o))), 
-        r.config = {
-            navigationStyle: "custom"
-        }, r.components = {
-            customTabbar: _customTabbar2.default
-        }, r.mixins = [], r.data = {
-            statusBarHeight: "",
-            list: [],
-            type: [ {
-                imaUrl: "https://oss.asit.me/imgs/type-1.png"
-            }, {
-                imaUrl: "https://oss.asit.me/imgs/type-2.png"
-            }, {
-                imaUrl: "https://oss.asit.me/imgs/type-3.png"
-            } ],
-            matchList: [],
-            hotGame: [],
-            latitude: "",
-            longitude: "",
-            storeDetail: "",
-            templateIdList: []
-        }, r.computed = {}, r.methods = {
-            selectAddress: function() {
-                wx.navigateTo({
-                    url: "/pages/index/shops"
-                });
-            },
-            banner: function(e) {
-                console.log(e), wx.navigateTo({
-                    url: "/pages/index/activity?title=" + e.title + "&url=" + encodeURIComponent(e.url)
-                });
-            },
-            moreMatch: function() {
-                wx.switchTab({
-                    url: "/pages/match/match"
-                });
-            },
-            moreGame: function() {
-                wx.navigateTo({
-                    url: "/pages/record/topic"
-                });
-            },
-            exchangeTicket: function() {
-                wx.navigateTo({
-                    url: "/pages/mine/ticket-record"
-                });
-            },
-            matchDetail: function(e) {
-                wx.navigateTo({
-                    url: "/pages/match/match-detail?eventId=" + e.eventId
-                });
-            },
-            payEamPoint: function() {
-                wx.navigateTo({
-                    url: "/pages/mine/my-eam"
-                });
-            },
-            mySetMeal: function() {
-                wx.navigateTo({
-                    url: "/pages/mine/my-set-meal"
-                });
-            },
-            storeSetMeal: function() {
-                if (this.storeDetail) return void wx.navigateTo({
-                    url: "/pages/store/store-detail?storeId=" + this.storeDetail.store_id
-                });
-                wx.navigateTo({
-                    url: "/pages/store/nearby-stores"
-                });
-            }
-        }, r.events = {}, a = n, _possibleConstructorReturn(r, a);
+    function s(e) {
+        return function() {
+            var t = e.apply(this, arguments);
+            return new Promise(function(e, n) {
+                return function r(a, i) {
+                    try {
+                        var s = t[a](i), o = s.value;
+                    } catch (e) {
+                        return void n(e);
+                    }
+                    if (!s.done) return Promise.resolve(o).then(function(e) {
+                        r("next", e);
+                    }, function(e) {
+                        r("throw", e);
+                    });
+                    e(o);
+                }("next");
+            });
+        };
     }
-    return _inherits(t, e), _createClass(t, [ {
-        key: "onLoad",
-        value: function() {
-            this.getLocation();
-        }
-    }, {
-        key: "onShow",
-        value: function() {
-            this.storeDetail = wx.getStorageSync("storeDetail"), this.$apply(), this.statusBarHeight = this.$parent.globalData.statusBarHeight, 
-            this.getAdData(), this.getEventList(), this.getHotGameList();
-        }
-    }, {
-        key: "onShareAppMessage",
-        value: function(e) {
-            return {
-                title: "关注游艺宝，发现更多精彩",
-                path: "/pages/index/index",
-                imageUrl: "/assets/imgs/share.png",
-                success: function(e) {
-                    console.log("转发成功！");
+    function o(e, t) {
+        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+    }
+    function u(e, t) {
+        if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return !t || "object" != typeof t && "function" != typeof t ? e : t;
+    }
+    var c = function(i) {
+        function c() {
+            var e, t, n;
+            o(this, c);
+            for (var r = arguments.length, i = Array(r), s = 0; s < r; s++) i[s] = arguments[s];
+            return t = n = u(this, (e = c.__proto__ || Object.getPrototypeOf(c)).call.apply(e, [ this ].concat(i))), 
+            n.config = {
+                navigationStyle: "custom"
+            }, n.components = {
+                customTabbar: a.default
+            }, n.mixins = [], n.data = {
+                statusBarHeight: "",
+                list: [],
+                type: [ {
+                    imaUrl: "http://yyb-oss.universal-space.cn/imgs/type-1.png"
+                }, {
+                    imaUrl: "http://yyb-oss.universal-space.cn/imgs/type-2.png"
+                }, {
+                    imaUrl: "http://yyb-oss.universal-space.cn/imgs/type-3.png"
+                } ],
+                matchList: [],
+                hotGame: [],
+                latitude: "",
+                longitude: "",
+                storeDetail: "",
+                templateIdList: []
+            }, n.computed = {}, n.methods = {
+                selectAddress: function() {
+                    wx.navigateTo({
+                        url: "/pages/index/shops"
+                    });
                 },
-                fail: function(e) {
-                    return console.log(e.errMsg);
+                banner: function(e) {
+                    if (console.log(e.url), -1 == e.url.indexOf("https://wacca.samnya.cn/report2020")) return 4 == e.type ? (console.log(e.url), 
+                    void wx.navigateTo({
+                        url: e.url
+                    })) : void wx.navigateTo({
+                        url: "/pages/index/activity?title=" + e.title + "&url=" + encodeURIComponent(e.url)
+                    });
+                    wx.navigateTo({
+                        url: "/pages/index/waccaReport"
+                    });
+                },
+                moreMatch: function() {
+                    wx.switchTab({
+                        url: "/pages/match/match"
+                    });
+                },
+                moreGame: function() {
+                    wx.navigateTo({
+                        url: "/pages/record/topic"
+                    });
+                },
+                exchangeTicket: function() {
+                    wx.navigateTo({
+                        url: "/pages/mine/ticket-record"
+                    });
+                },
+                matchDetail: function(e) {
+                    wx.navigateTo({
+                        url: "/pages/match/match-detail?eventId=" + e.eventId
+                    });
+                },
+                payEamPoint: function() {
+                    wx.navigateTo({
+                        url: "/pages/mine/my-eam"
+                    });
+                },
+                mySetMeal: function() {
+                    wx.navigateTo({
+                        url: "/pages/mine/my-set-meal"
+                    });
+                },
+                storeSetMeal: function() {
+                    this.storeDetail ? wx.navigateTo({
+                        url: "/pages/store/store-detail?storeId=" + this.storeDetail.store_id
+                    }) : wx.navigateTo({
+                        url: "/pages/store/nearby-stores"
+                    });
                 }
-            };
+            }, n.events = {}, u(n, t);
         }
-    }, {
-        key: "getAdData",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
+        var l, p, f, g, d, h;
+        return function(e, t) {
+            if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
+            e.prototype = Object.create(t && t.prototype, {
+                constructor: {
+                    value: e,
+                    enumerable: !1,
+                    writable: !0,
+                    configurable: !0
+                }
+            }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+        }(c, i), e(c, [ {
+            key: "onLoad",
+            value: function() {
+                this.getLocation();
             }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
-                var t, n;
+        }, {
+            key: "onShow",
+            value: function() {
+                this.storeDetail = wx.getStorageSync("storeDetail"), this.$apply(), this.statusBarHeight = this.$parent.globalData.statusBarHeight, 
+                this.getAdData(), this.getEventList(), this.getHotGameList(), this.getPubilcData();
+            }
+        }, {
+            key: "onShareAppMessage",
+            value: function(e) {
+                return {
+                    title: "关注游艺宝，发现更多精彩",
+                    path: "/pages/index/index",
+                    imageUrl: "/assets/imgs/share.png",
+                    success: function(e) {
+                        console.log("转发成功！");
+                    },
+                    fail: function(e) {
+                        return console.log(e.errMsg);
+                    }
+                };
+            }
+        }, {
+            key: "getPubilcData",
+            value: (h = s(regeneratorRuntime.mark(function e() {
+                var t, a;
+                return regeneratorRuntime.wrap(function(e) {
+                    for (;;) switch (e.prev = e.next) {
+                      case 0:
+                        return t = {
+                            appid: r.default.production ? r.default.prod.appid : r.default.dev.appid
+                        }, e.next = 3, n.default.publicRequest(t);
+
+                      case 3:
+                        a = e.sent, console.log(JSON.stringify(a) + "=============="), "1.0.0" == a.data.version && wx.setStorageSync("isHideVip", !0);
+
+                      case 6:
+                      case "end":
+                        return e.stop();
+                    }
+                }, e, this);
+            })), function() {
+                return h.apply(this, arguments);
+            })
+        }, {
+            key: "getAdData",
+            value: (d = s(regeneratorRuntime.mark(function e() {
+                var t, r;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
                       case 0:
                         return t = {
                             type: 1
-                        }, e.next = 3, _api2.default.adData(t);
+                        }, e.next = 3, n.default.adData(t);
 
                       case 3:
-                        n = e.sent, 0 == n.retCode && (console.log("首页banner", n), this.list = n.data, this.$apply());
+                        0 == (r = e.sent).retCode && (console.log("首页banner", r), this.list = r.data, this.$apply());
 
                       case 5:
                       case "end":
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    }, {
-        key: "getEventList",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
-            }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
-                var t, n, r, a;
+            })), function() {
+                return d.apply(this, arguments);
+            })
+        }, {
+            key: "getEventList",
+            value: (g = s(regeneratorRuntime.mark(function e() {
+                var t, r, a, i;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
                       case 0:
                         return t = {
                             pageNo: 1,
                             pageSize: 3
-                        }, e.next = 3, _api2.default.eventList(t);
+                        }, e.next = 3, n.default.eventList(t);
 
                       case 3:
-                        for (n = e.sent, r = n.data, a = 0; a < r.length; a++) r[a].beginTime = r[a].beginTime.substring(0, 10);
-                        this.matchList = r, this.$apply(), console.log("赛事列表", n);
+                        for (r = e.sent, a = r.data, i = 0; i < a.length; i++) a[i].beginTime = a[i].beginTime.substring(0, 10);
+                        this.matchList = a, this.$apply(), console.log("赛事列表", r);
 
                       case 9:
                       case "end":
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    }, {
-        key: "getHotGameList",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
-            }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
-                var t, n;
+            })), function() {
+                return g.apply(this, arguments);
+            })
+        }, {
+            key: "getHotGameList",
+            value: (f = s(regeneratorRuntime.mark(function e() {
+                var t, r;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
                       case 0:
                         return t = {
                             pageNo: 1,
                             pageSize: 3
-                        }, e.next = 3, _api2.default.hotGameList(t);
+                        }, e.next = 3, n.default.hotGameList(t);
 
                       case 3:
-                        n = e.sent, 1 == n.code && (console.log("热门游戏", n), this.hotGame = n.data, this.$apply());
+                        1 == (r = e.sent).code && (console.log("热门游戏", r), this.hotGame = r.data, this.$apply());
 
                       case 5:
                       case "end":
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    }, {
-        key: "getLocation",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
-            }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
-                var t, n, r, a, i, o;
+            })), function() {
+                return f.apply(this, arguments);
+            })
+        }, {
+            key: "getLocation",
+            value: (p = s(regeneratorRuntime.mark(function e() {
+                var r, a, i, s, o, u;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
                       case 0:
-                        return e.prev = 0, e.next = 3, _wepy2.default.getLocation();
+                        return e.prev = 0, e.next = 3, t.default.getLocation();
 
                       case 3:
-                        return t = e.sent, console.log("经纬度", t), n = {
+                        return r = e.sent, console.log("经纬度", r), a = {
                             key: "9f00a54f281d607356e1cc17830dde25",
-                            location: t.longitude + "," + t.latitude
-                        }, e.next = 8, _api2.default.getLocation(n);
+                            location: r.longitude + "," + r.latitude
+                        }, e.next = 8, n.default.getLocation(a);
 
                       case 8:
-                        return r = e.sent, this.$apply(), e.next = 12, this.getCityList();
+                        return i = e.sent, this.$apply(), e.next = 12, this.getCityList();
 
                       case 12:
-                        a = e.sent, r ? (i = r.regeocode.addressComponent.adcode.substr(0, 4) + "00", o = this.formatCity(i, a), 
-                        o ? wx.setStorageSync("selectedAddress", o) : this.setDefaultAddress()) : this.setDefaultAddress(), 
+                        s = e.sent, i ? (o = i.regeocode.addressComponent.adcode.substr(0, 4) + "00", (u = this.formatCity(o, s)) ? wx.setStorageSync("selectedAddress", u) : this.setDefaultAddress()) : this.setDefaultAddress(), 
                         e.next = 19;
                         break;
 
@@ -282,29 +289,25 @@ var _createClass = function() {
                         return e.stop();
                     }
                 }, e, this, [ [ 0, 16 ] ]);
-            }));
-            return e;
-        }()
-    }, {
-        key: "setDefaultAddress",
-        value: function() {
-            this.selectedAddress = {
-                code: "442000",
-                is_hot: 1,
-                region_id: 2124,
-                region_name: "中山市",
-                firstLetter: "ZSS",
-                full_pinyin: "zhongshanshi"
-            }, this.$apply(), wx.setStorageSync("selectedAddress", this.selectedAddress);
-        }
-    }, {
-        key: "getCityList",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
+            })), function() {
+                return p.apply(this, arguments);
+            })
+        }, {
+            key: "setDefaultAddress",
+            value: function() {
+                this.selectedAddress = {
+                    code: "442000",
+                    is_hot: 1,
+                    region_id: 2124,
+                    region_name: "中山市",
+                    firstLetter: "ZSS",
+                    full_pinyin: "zhongshanshi"
+                }, this.$apply(), wx.setStorageSync("selectedAddress", this.selectedAddress);
             }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
-                var t, n;
+        }, {
+            key: "getCityList",
+            value: (l = s(regeneratorRuntime.mark(function e() {
+                var t, r;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
                       case 0:
@@ -315,35 +318,35 @@ var _createClass = function() {
                         return e.abrupt("return", t);
 
                       case 5:
-                        return e.next = 7, _api2.default.regionListData({
+                        return e.next = 7, n.default.regionListData({
                             pageNo: 1,
                             pageSize: 1e3
                         });
 
                       case 7:
-                        if (!(n = e.sent)) {
+                        if (!(r = e.sent)) {
                             e.next = 11;
                             break;
                         }
-                        return wx.setStorageSync("cityList", n.data), e.abrupt("return", n.data);
+                        return wx.setStorageSync("cityList", r.data), e.abrupt("return", r.data);
 
                       case 11:
                       case "end":
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    }, {
-        key: "formatCity",
-        value: function(e, t) {
-            var n = t.filter(function(t) {
-                return t.code == e;
-            });
-            return console.log(n), n[0];
-        }
-    } ]), t;
-}(_wepy2.default.page);
-
-Page(require("./../../npm/wepy/lib/wepy.js").default.$createPage(Index, "pages/index/index"));
+            })), function() {
+                return l.apply(this, arguments);
+            })
+        }, {
+            key: "formatCity",
+            value: function(e, t) {
+                var n = t.filter(function(t) {
+                    return t.code == e;
+                });
+                return console.log(n), n[0];
+            }
+        } ]), c;
+    }(t.default.page);
+    Page(require("./../../npm/wepy/lib/wepy.js").default.$createPage(c, "pages/index/index"));
+}();

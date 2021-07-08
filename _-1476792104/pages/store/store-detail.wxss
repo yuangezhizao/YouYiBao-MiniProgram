@@ -3,33 +3,32 @@
 }
 
 .statusBar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
-    height: 64rpx;
     z-index: 99;
 }
 
-.icon-group {
+.icon-group,.statusBar {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    height: 64rpx;
+}
+
+.icon-group {
     position: fixed;
     left: 0;
     width: 174rpx;
-    height: 64rpx;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,.2);
     border-radius: 35rpx;
     margin-left: 30rpx;
-    border: 1rpx solid rgba(250,250,250,0.3);
+    border: 1rpx solid hsla(0,0%,98%,.3);
     z-index: 9999!important;
 }
 
 .icon-group .line {
     width: 3rpx;
     height: 32rpx;
-    background: rgba(250,250,250,0.3);
+    background: hsla(0,0%,98%,.3);
 }
 
 .icon-group .icon {
@@ -39,21 +38,21 @@
 }
 
 page {
-    background: #F2F9FF;
+    background: #f2f9ff;
 }
 
 .store-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding-top: 100rpx;
     background: #fff;
 }
 
-.store-info .select-store {
+.store-info,.store-info .select-store {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.store-info .select-store {
     position: absolute;
     right: 20rpx;
     top: 188rpx;
@@ -108,7 +107,7 @@ page {
     flex-direction: column;
     margin-top: -10rpx;
     border-radius: 20rpx;
-    background: linear-gradient(to top,rgba(255,255,255,0.1),#e3ecff);
+    background: linear-gradient(0deg,hsla(0,0%,100%,.1),#e3ecff);
     height: 510rpx;
     padding: 0 30rpx;
 }
@@ -137,7 +136,7 @@ page {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(to top,rgba(34,34,34,0.35),rgba(232,241,254,0));
+    background: linear-gradient(0deg,rgba(34,34,34,.35),rgba(232,241,254,0));
 }
 
 .member-package {
@@ -145,7 +144,7 @@ page {
     flex-direction: column;
     margin-top: -10rpx;
     border-radius: 20rpx;
-    background: linear-gradient(to top,rgba(255,255,255,0.1),#e3ecff);
+    background: linear-gradient(0deg,hsla(0,0%,100%,.1),#e3ecff);
     height: 427rpx;
 }
 
@@ -169,13 +168,13 @@ page {
     height: 190rpx;
     border-radius: 20rpx;
     margin-bottom: 22rpx;
-    box-shadow: 0 8rpx 16rpx 0 rgba(53,131,254,0.22);
+    box-shadow: 0rpx 8rpx 16rpx 0rpx rgba(53,131,254,.22);
 }
 
 .normal-package {
     display: flex;
     flex-direction: column;
-    background: linear-gradient(to top,rgba(255,255,255,0.1),#e3ecff);
+    background: linear-gradient(0deg,hsla(0,0%,100%,.1),#e3ecff);
     border-radius: 20rpx;
     margin-bottom: 50rpx;
 }
@@ -188,7 +187,7 @@ page {
     width: 690rpx;
     height: 170rpx;
     border-radius: 10rpx;
-    box-shadow: 0 6rpx 10rpx 4rpx #e9f1ff;
+    box-shadow: 0rpx 6rpx 10rpx 4rpx #e9f1ff;
     display: flex;
     margin: 15rpx 30rpx;
     background: #fff;
@@ -215,16 +214,15 @@ page {
     display: flex;
     flex-direction: column;
     width: 350rpx;
-    margin: 0 16rpx;
     line-height: 35rpx;
-    margin-top: 10rpx;
+    margin: 10rpx 16rpx 0;
 }
 
 .normal-package .package-item .item-btn {
     width: 120rpx;
     height: 60rpx;
     border-radius: 55rpx;
-    box-shadow: 0 4rpx 10rpx 0 rgba(0,67,173,0.22);
+    box-shadow: 0rpx 4rpx 10rpx 0rpx rgba(0,67,173,.22);
     text-align: center;
     line-height: 60rpx;
     position: absolute;

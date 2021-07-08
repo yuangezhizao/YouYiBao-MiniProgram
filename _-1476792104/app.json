@@ -3,6 +3,7 @@
         "pages/index/index",
         "pages/index/scan",
         "pages/index/activity",
+        "pages/index/waccaReport",
         "pages/index/shops",
         "pages/index/shops-search",
         "pages/record/my-record",
@@ -81,6 +82,9 @@
         "pages/mine/card-orders",
         "pages/mine/card",
         "pages/mine/add-card",
+        "pages/mine/gift-order",
+        "pages/mine/address",
+        "pages/mine/address-edict",
         "pages/mine/my-eam",
         "pages/mine/my-eam-ex-code",
         "pages/mine/my-eam-history",
@@ -166,6 +170,36 @@
                 "wacca-track",
                 "wacca-single-rank",
                 "wacca-rank"
+            ]
+        },
+        {
+            "root": "wacca2/",
+            "pages": [
+                "wacca2-detail",
+                "wacca2-statis",
+                "wacca2-rating",
+                "wacca2-logo",
+                "wacca2-guide",
+                "wacca2-rank",
+                "wacca2-rank-detail",
+                "wacca2-rank-ranking",
+                "wacca2-ranking-list",
+                "wacca2-song",
+                "wacca2-song-ranking",
+                "wacca2-gate",
+                "wacca2-gate-detail",
+                "wacca2-result",
+                "wacca2-lilybox",
+                "wacca2-lilybox-records",
+                "wacca2-setting",
+                "wacca2-setting-detail",
+                "wacca2-setting-chose",
+                "wacca2-machine",
+                "wacca2-zhoubian",
+                "wacca2-zhoubian-detail",
+                "wacca2-zhoubian-confirm",
+                "wacca2-zhoubian-success",
+                "wacca2-zhoubian-online-confirm"
             ]
         }
     ]

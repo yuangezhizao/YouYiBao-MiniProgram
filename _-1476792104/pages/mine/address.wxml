@@ -1,0 +1,44 @@
+<view class="flex-column bg">
+    <view>
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$customStatusbar$menuButtonTop+60}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$customStatusbar$menuButtonTop}}px;">
+            <image bindtap="$customStatusbar$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$customStatusbar$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$customStatusbar$menuButtonTop}}px;">
+            <text class="title">{{$customStatusbar$title}}</text>
+        </view>
+    </view>
+    <view class="btm-tips both_center" wx:if="{{list.length==0}}">
+        <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 您还没有收件地址
+
+        
+    </view>
+    <image bindtap="addNewAddress" mode="aspectFill" src="http://yyb-oss.universal-space.cn/imgs/mine/add_new_address.png" style="margin-top: {{screenHeight*0.8+'px'}};width:583rpx;height: 115rpx" wx:if="{{list.length==0}}"></image>
+    <view bindtap="itemClick" class="container1 flex-column" data-wpyitemclick-a="{{item}}" style="align-items: flex-start;margin-top: {{index==0?105+'rpx':30+'rpx'}};width:100%" wx:if="{{list.length!=0}}" wx:for="{{list}}" wx:key="key">
+        <view class="flex-row flex-between" style="width: 100%">
+            <text class="f30 c_33">{{item.name}}</text>
+            <text class="f30 c_33">{{item.phone}}</text>
+        </view>
+        <text class="f26 c_66" style="margin-top: 37rpx">{{item.address}}</text>
+        <view style="width: 100%;height: 1px;background-color: #e7e7e7;margin-top: 27rpx"></view>
+        <view class="flex-row flex-between" style="width: 100%;margin-top: 24rpx">
+            <view catchtap="setDefault" class="flex-row" data-wpysetdefault-a="{{item}}">
+                <image src="{{item.isdefault==1?'http://yyb-oss.universal-space.cn/imgs/mine/default_address.png':'http://yyb-oss.universal-space.cn/imgs/mine/endefault_address.png'}}" style="width: 30rpx;height:30rpx"></image>
+                <view class="f24 c_66" style="margin-left: 20rpx">默认地址</view>
+            </view>
+            <view class="flex-row">
+                <view catchtap="editClick" class="flex-row" data-wpyeditclick-a="{{item}}">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/mine/edict_address.png" style="width: 22rpx;height: 22rpx"></image>
+                    <text class="f24 c_66" style="margin-left: 13rpx">编辑</text>
+                </view>
+                <view catchtap="deleteClick" class="flex-row" data-wpydeleteclick-a="{{item}}" style="margin-left: 42rpx">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/mine/delete_address.png" style="width: 22rpx;height: 22rpx"></image>
+                    <text class="f24 c_66" style="margin-left: 13rpx">删除</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <image bindtap="addNewAddress" mode="aspectFill" src="http://yyb-oss.universal-space.cn/imgs/mine/add_new_address.png" style="margin-top: 50rpx;width:583rpx;height: 115rpx" wx:if="{{list.length!=0}}"></image>
+</view>

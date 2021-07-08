@@ -31,8 +31,9 @@
 .confirm-box .content {
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
-    margin: 130rpx 0 40rpx 0;
+    margin: 130rpx 0 40rpx;
     text-align: center;
 }
 
@@ -42,7 +43,7 @@
     border-radius: 55rpx;
     text-align: center;
     line-height: 96rpx;
-    box-shadow: 0 8rpx 16rpx 0 rgba(53,131,254,0.22);
+    box-shadow: 0rpx 8rpx 16rpx 0rpx rgba(53,131,254,.22);
 }
 
 .confirm-box .button_group {
@@ -55,16 +56,16 @@
     width: 210rpx;
     height: 90rpx;
     border-radius: 55rpx;
-    background: linear-gradient(45deg,#9A9A9A,#575757);
+    background: linear-gradient(45deg,#9a9a9a,#575757);
     text-align: center;
     line-height: 90rpx;
-    box-shadow: 0 8rpx 16rpx 0 rgba(161,161,161,0.22);
+    box-shadow: 0rpx 8rpx 16rpx 0rpx hsla(0,0%,63.1%,.22);
     margin: 0 15rpx;
 }
 
 .confirm-box .button_group .button:last-child {
-    background: linear-gradient(45deg,#3CA6FD,#2F5FFF);
-    box-shadow: 0 8rpx 16rpx 0 rgba(53,131,254,0.22);
+    background: linear-gradient(45deg,#3ca6fd,#2f5fff);
+    box-shadow: 0rpx 8rpx 16rpx 0rpx rgba(53,131,254,.22);
 }
 
 .bg-183 {
@@ -72,33 +73,32 @@
 }
 
 .statusBar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
-    height: 64rpx;
     z-index: 99;
 }
 
-.icon-group {
+.icon-group,.statusBar {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    height: 64rpx;
+}
+
+.icon-group {
     position: fixed;
     left: 0;
     width: 174rpx;
-    height: 64rpx;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,.2);
     border-radius: 35rpx;
     margin-left: 30rpx;
-    border: 1rpx solid rgba(250,250,250,0.3);
+    border: 1rpx solid hsla(0,0%,98%,.3);
     z-index: 9999!important;
 }
 
 .icon-group .line {
     width: 3rpx;
     height: 32rpx;
-    background: rgba(250,250,250,0.3);
+    background: hsla(0,0%,98%,.3);
 }
 
 .icon-group .icon {
@@ -108,7 +108,7 @@
 }
 
 page {
-    background: #F2F9FF;
+    background: #f2f9ff;
 }
 
 .match-banner {
@@ -117,7 +117,7 @@ page {
     background: #fff;
     border-radius: 20rpx;
     overflow: hidden;
-    box-shadow: 0 16rpx 16rpx 0 rgba(85,145,252,0.08);
+    box-shadow: 0rpx 16rpx 16rpx 0rpx rgba(85,145,252,.08);
 }
 
 .match-banner image {
@@ -135,8 +135,8 @@ page {
     width: 690rpx;
     height: 210rpx;
     border-radius: 20rpx;
-    background: linear-gradient(45deg,#DA9AFB,#987EFB);
-    box-shadow: 0 5rpx 12rpx 0 rgba(179,137,251,0.36),inset 0 -1rpx 3rpx 0 rgba(214,152,251,0.8);
+    background: linear-gradient(45deg,#da9afb,#987efb);
+    box-shadow: 0rpx 5rpx 12rpx 0rpx rgba(179,137,251,.36),inset 0rpx -1rpx 3rpx 0rpx rgba(214,152,251,.8);
     margin-top: 20rpx;
     display: flex;
     align-items: center;
@@ -160,7 +160,7 @@ page {
     height: 100rpx;
     border: 4rpx solid #fff;
     border-radius: 50%;
-    box-shadow: 0 8rpx 10rpx 0 #b389fb;
+    box-shadow: 0rpx 8rpx 10rpx 0rpx #b389fb;
     margin-bottom: 10rpx;
 }
 
@@ -172,14 +172,14 @@ page {
 }
 
 .best-record-wrap .best-record .record-item-2 .font-style {
-    text-shadow: 1rpx 3rpx 10rpx rgba(0,0,0,0.3);
+    text-shadow: 1rpx 3rpx 10rpx rgba(0,0,0,.3);
 }
 
 .best-record-wrap .best-record .line {
     width: 4rpx;
     height: 30rpx;
     border-radius: 2rpx;
-    background-color: rgba(255,255,255,0.7);
+    background-color: hsla(0,0%,100%,.7);
 }
 
 .record-list {
@@ -201,7 +201,7 @@ page {
     width: 220rpx;
     height: 56rpx;
     border-radius: 40rpx;
-    border: 1rpx solid #bbbbbb;
+    border: 1rpx solid #bbb;
 }
 
 .record-list .list-top .switch-btn .switch-item {
@@ -212,8 +212,8 @@ page {
 }
 
 .record-list .list-top .switch-btn .active {
-    color: #FFFFFF;
-    background: #2660E7;
+    color: #fff;
+    background: #2660e7;
     border-radius: 40rpx;
 }
 
@@ -222,7 +222,7 @@ page {
     height: 342rpx;
     background: #fff;
     border-radius: 20rpx;
-    box-shadow: 0 8rpx 20rpx 0 rgba(17,85,233,0.22);
+    box-shadow: 0rpx 8rpx 20rpx 0rpx rgba(17,85,233,.22);
     margin-top: 30rpx;
     position: relative;
 }
@@ -267,7 +267,7 @@ page {
 }
 
 .record-list .list-item .item-middle .item-middle-info .Merriweather-Book {
-    text-shadow: 1rpx 2rpx 5rpx rgba(0,0,0,0.2);
+    text-shadow: 1rpx 2rpx 5rpx rgba(0,0,0,.2);
 }
 
 .record-list .list-item .item-middle .item-middle-info view {
@@ -285,7 +285,7 @@ page {
     width: 2rpx;
     height: 30rpx;
     border-radius: 2rpx;
-    background-color: rgba(153,153,153,0.7);
+    background-color: hsla(0,0%,60%,.7);
     margin: 0 25rpx;
 }
 
@@ -293,7 +293,7 @@ page {
     width: 100%;
     height: 110rpx;
     border-radius: 20rpx;
-    background: linear-gradient(45deg,#3CA6FD,#2F5FFF);
+    background: linear-gradient(45deg,#3ca6fd,#2f5fff);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -305,5 +305,5 @@ page {
 
 .record-list .list-item .item-bottom .score {
     margin-top: -20rpx;
-    text-shadow: 1rpx 3rpx 10rpx rgba(0,0,0,0.3);
+    text-shadow: 1rpx 3rpx 10rpx rgba(0,0,0,.3);
 }

@@ -73,7 +73,7 @@
                 </view>
             </view>
             <view class="list-bottom">
-                <image class="game-img" mode="aspectFit" src="{{item.productImage}}"></image>
+                <image bindbinderror="binderror" class="game-img" data-wpybinderror-a="{{res}}" mode="aspectFit" src="{{item.productImage}}"></image>
                 <view class="list-bottom-info">
                     <text class="f28 c_33 fwb">{{item.productName}}</text>
                     <text class="f24 c_99">最强玩家得分</text>

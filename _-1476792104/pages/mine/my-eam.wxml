@@ -19,7 +19,7 @@
             </view>
             <view bindtap="eamPointRecord" class="btn btn-round">e-am点记录</view>
         </view>
-        <view class="block intro" hidden="{{check==0}}">
+        <view class="block intro" hidden="{{check==0}}" wx:if="{{!isHideVip}}">
             <view class="f30 c_26">e-am点说明</view>
             <view class="detail">
                 <text class="f24 c_99">购买须知：

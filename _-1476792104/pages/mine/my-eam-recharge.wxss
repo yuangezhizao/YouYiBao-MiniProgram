@@ -19,17 +19,17 @@
     left: 0;
     width: 174rpx;
     height: 64rpx;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,.2);
     border-radius: 35rpx;
     margin-left: 30rpx;
-    border: 1rpx solid rgba(250,250,250,0.3);
+    border: 1rpx solid hsla(0,0%,98%,.3);
     z-index: 9999;
 }
 
 .match-status-bar .statusBar .icon-group .line {
     width: 3rpx;
     height: 32rpx;
-    background: rgba(250,250,250,0.3);
+    background: hsla(0,0%,98%,.3);
 }
 
 .match-status-bar .statusBar .icon-group .left {
@@ -51,7 +51,7 @@
     border-radius: 10rpx;
     -webkit-appearance: none;
     -webkit-text-size-adjust: 100%;
-    transition: all 500ms;
+    transition: all .5s;
 }
 
 .btn::before {
@@ -64,7 +64,7 @@
     border: inherit;
     border-color: #000;
     border-radius: inherit;
-    content: ' ';
+    content: " ";
     opacity: 0;
     transform: translate(-50%,-50%);
 }
@@ -93,26 +93,26 @@
 
 .btn-primary {
     color: #fff;
-    background-color: #2660E7;
-    border: 1rpx solid #2660E7;
+    background-color: #2660e7;
+    border: 1rpx solid #2660e7;
 }
 
 .btn-danger {
     color: #fff;
-    background-color: #E13434;
-    border: 1rpx solid #E13434;
+    background-color: #e13434;
+    border: 1rpx solid #e13434;
 }
 
 .btn-warning {
     color: #fff;
-    background-color: #F6C96A;
-    border: 1rpx solid #F6C96A;
+    background-color: #f6c96a;
+    border: 1rpx solid #f6c96a;
 }
 
 .btn-success {
     color: #fff;
-    background-color: #5BE89B;
-    border: 1rpx solid #5BE89B;
+    background-color: #5be89b;
+    border: 1rpx solid #5be89b;
 }
 
 .btn-plain {
@@ -120,7 +120,7 @@
 }
 
 .btn-plain.btn-primary {
-    color: #2660E7;
+    color: #2660e7;
 }
 
 .btn-plain.btn-black {
@@ -128,11 +128,11 @@
 }
 
 .btn-plain.btn-danger {
-    color: #E13434;
+    color: #e13434;
 }
 
 .btn-plain.btn-warning {
-    color: #F6C96A;
+    color: #f6c96a;
 }
 
 .btn-large {
@@ -185,7 +185,7 @@
 }
 
 page {
-    background: #F2F9FF;
+    background: #f2f9ff;
 }
 
 .mb30 {
@@ -210,7 +210,7 @@ page {
     height: 140rpx;
     border-radius: 20rpx;
     background-color: #fff;
-    box-shadow: 0 6rpx 10rpx 0 #e9f1ff;
+    box-shadow: 0rpx 6rpx 10rpx 0rpx #e9f1ff;
 }
 
 .recharge-wrap .user-info .avatar {
@@ -219,7 +219,7 @@ page {
     border-radius: 50%;
     overflow: hidden;
     border: 4rpx solid #fff;
-    box-shadow: 0 6rpx 10rpx 0 #e9f1ff;
+    box-shadow: 0rpx 6rpx 10rpx 0rpx #e9f1ff;
     margin-right: 10rpx;
 }
 
@@ -278,7 +278,7 @@ page {
 }
 
 .select-list .option-item.active {
-    box-shadow: 0 6rpx 10rpx 0 rgba(96,138,255,0.28);
+    box-shadow: 0rpx 6rpx 10rpx 0rpx rgba(96,138,255,.28);
     border: 4rpx solid #2660e7;
 }
 
@@ -290,7 +290,7 @@ page {
 }
 
 .select-list .option-item .money .Merriweather {
-    text-shadow: 1rpx 3rpx 10rpx rgba(49,108,254,0.3);
+    text-shadow: 1rpx 3rpx 10rpx rgba(49,108,254,.3);
 }
 
 .select-list .option-item .money .f26 {
@@ -336,20 +336,19 @@ page {
     height: 110rpx;
     line-height: 110rpx;
     border-radius: 55rpx;
-    background: linear-gradient(to right,#3CA6FD,#2F5FFF);
+    background: linear-gradient(90deg,#3ca6fd,#2f5fff);
     border: 0;
-    box-shadow: 0 4rpx 10rpx 0 rgba(0,67,173,0.22);
+    box-shadow: 0rpx 4rpx 10rpx 0rpx rgba(0,67,173,.22);
     display: block;
 }
 
 .btn-group {
-    margin: auto;
     width: 557.14rpx;
     box-sizing: border-box;
     padding: 0 15rpx;
     display: flex;
     justify-content: space-between;
-    margin-top: 40rpx;
+    margin: 40rpx auto auto;
 }
 
 .btn-group .btn {

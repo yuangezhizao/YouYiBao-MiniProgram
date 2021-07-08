@@ -36,42 +36,17 @@
             <view class="line"></view>
             <view class="medal-row">
                 <view bindtap="swiperChange" class="grade-item" data-wpyswiperchange-a="0">
-                    <image class="{{cardCur==0?'active':''}}" src="{{cardCur==0?'http://yyb-oss.universal-space.cn/imgs/record/icon_grade_3.png':'http://yyb-oss.universal-space.cn/imgs/record/icon_grade_1.png'}}"></image>
-                    <text class="f26 c_99">试用会员</text>
-                </view>
-                <view bindtap="swiperChange" class="grade-item" data-wpyswiperchange-a="1">
-                    <image class="{{cardCur==1?'active1':''}}" src="{{cardCur==1?'http://yyb-oss.universal-space.cn/imgs/record/icon_grade_4.png':'http://yyb-oss.universal-space.cn/imgs/record/icon_grade_1.png'}}"></image>
+                    <image class="{{cardCur==0?'active1':''}}" src="{{cardCur==1?'http://yyb-oss.universal-space.cn/imgs/record/icon_grade_4.png':'http://yyb-oss.universal-space.cn/imgs/record/icon_grade_1.png'}}"></image>
                     <text class="f26 c_99">基本会员</text>
                 </view>
-                <view bindtap="swiperChange" class="grade-item" data-wpyswiperchange-a="2">
-                    <image class="{{cardCur==2?'active2':''}}" src="{{cardCur==2?'http://yyb-oss.universal-space.cn/imgs/record/icon_grade_5.png':'http://yyb-oss.universal-space.cn/imgs/record/icon_grade_2.png'}}"></image>
+                <view bindtap="swiperChange" class="grade-item" data-wpyswiperchange-a="1">
+                    <image class="{{cardCur==1?'active2':''}}" src="{{cardCur==2?'http://yyb-oss.universal-space.cn/imgs/record/icon_grade_5.png':'http://yyb-oss.universal-space.cn/imgs/record/icon_grade_2.png'}}"></image>
                     <text class="f26 c_99">VIP会员</text>
                 </view>
             </view>
         </view>
         <swiper bindchange="cardSwiper" circular="true" class="activity-swiper" current="{{cardCur}}">
             <swiper-item class="swiper {{cardCur==0?'cur':''}}">
-                <view class="swiper-item">
-                    <image class="label" src="http://yyb-oss.universal-space.cn/imgs/record/icon_label_current.png" wx:if="{{memberState.memberType==1}}"></image>
-                    <text class="f34 c_99">试用会员权限</text>
-                    <text class="f26 c_26 tips">
-              • 可体验曲目：{{memberTypeList[1].song}}首+丰富待解锁曲库
-              • 可付费开启新歌（10次80分以上成绩解锁）
-              • 可付费开启EXTRA STAGE（10次解锁）
-              • 可保存游戏进度、等级、成绩推送
-            </text>
-                    <view class="line"></view>
-                    <view class="item-bottom" wx:if="{{memberState.memberType==0}}">
-                        <view class="row">
-                            <text class="f24 c_99">只需扫码注册游艺宝会员
-                      即可享受7天试用会员权益！</text>
-                            <view bindtap="freeMember" class="exchange-btn f28 c_ff">免费试用</view>
-                        </view>
-                    </view>
-                    <text class="f26 c_99" wx:else>成为正式会员获得更多权益</text>
-                </view>
-            </swiper-item>
-            <swiper-item class="swiper {{cardCur==1?'cur':''}}">
                 <view class="swiper-item">
                     <image class="label" src="http://yyb-oss.universal-space.cn/imgs/record/icon_label_current.png" wx:if="{{memberState.memberType==2}}"></image>
                     <text class="f34 c_99">基本会员权限</text>
@@ -81,16 +56,9 @@
               • 可付费开启EXTRA STAGE（10次解锁）
               • 可保存游戏进度、等级、成绩推送
             </text>
-                    <view class="line"></view>
-                    <view class="item-bottom">
-                        <view class="row">
-                            <text class="f30 c_99">{{memberTypeList[2].price}}e-am点/{{memberTypeList[2].days}}天</text>
-                            <view bindtap="exchange" class="exchange-btn f28 c_ff" data-wpyexchange-a="2" data-wpyexchange-b="1">{{memberState.memberType==2&&memberState.validDate>0?'续费':'兑换'}}会员</view>
-                        </view>
-                    </view>
                 </view>
             </swiper-item>
-            <swiper-item class="swiper {{cardCur==2?'cur':''}}">
+            <swiper-item class="swiper {{cardCur==1?'cur':''}}">
                 <view class="swiper-item">
                     <image class="label" src="http://yyb-oss.universal-space.cn/imgs/record/icon_label_current.png" wx:if="{{memberState.memberType==4}}"></image>
                     <text class="f34 c_99">VIP会员权限</text>
@@ -107,9 +75,9 @@
                             <text class="f30 c_99">{{memberTypeList[4].price}}e-am点/{{memberTypeList[4].days}}天</text>
                             <view bindtap="exchange" class="exchange-btn f28 c_ff" data-wpyexchange-a="4" data-wpyexchange-b="1">{{memberState.memberType==4&&memberState.validDate>0?'续费':'兑换'}}会员</view>
                         </view>
-                        <view class="row">
-                            <text class="f30 c_99">{{memberTypeList[4].halfYearPrice}}e-am点/180天</text>
-                            <view bindtap="exchange" class="exchange-btn f28 c_ff" data-wpyexchange-a="4" data-wpyexchange-b="2" hidden="{{memberState.memberType==2}}">{{memberState.memberType==4&&memberState.validDate>0?'续费':'兑换'}}会员</view>
+                        <view class="row" style="margin-top: 16rpx">
+                            <text class="f30 c_99">{{memberTypeList[4].halfYearPrice}}e-am点/{{memberTypeList[4].halfDay}}天</text>
+                            <view bindtap="exchange" class="exchange-btn f28 c_ff" data-wpyexchange-a="4" data-wpyexchange-b="2">{{memberState.memberType==4&&memberState.validDate>0?'续费':'兑换'}}会员</view>
                         </view>
                     </view>
                 </view>
@@ -171,13 +139,18 @@
     </view>
     <view>
         <view class="{{$customDialog$isShow?'back_warp':'back_warp hide'}}">
-            <view class="confirm-box both_center">
+            <view class="confirm-box both_center" wx:if="{{$customDialog$type!='lilybox'}}">
                 <image bindtap="$customDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
                 <view class="top">
-                    <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
-                    <text class="title f34 c_ff r">{{$customDialog$title}}</text>
+                    <image class="bg" src="{{$customDialog$isWacca2==$customDialog$false?'http://yyb-oss.universal-space.cn/imgs/bg_3.png':'http://yyb-oss.universal-space.cn/imgs/wacca2/common/dialog_bg.png'}}" wx:if="{{$customDialog$type!='wacca2-charge'}}"></image>
+                    <text class="title f34 {{$customDialog$type!='wacca2-charge'?'c_ff':'c_66'}} r">{{$customDialog$title}}</text>
                 </view>
-                <view class="f34 content c_99">{{$customDialog$content}}</view>
+                <view class="f34 content c_99">
+                    <text class="f36 {{$customDialog$type=='wacca2-charge'?'c_FF1':'c_33'}}" wx:if="{{$customDialog$subTitle!=''}}">{{$customDialog$subTitle}}</text>
+                    <image src="{{$customDialog$image}}" style="width:140px;height:38.5px" wx:if="{{$customDialog$image!=''}}"></image>
+                    <text class="f26 c_66" wx:if="{{$customDialog$desc!=''}}">{{$customDialog$desc}}</text>
+                    <text>{{$customDialog$content}}</text>
+                </view>
                 <view class="button_group" wx:if="{{$customDialog$type=='confirm'}}">
                     <view bindtap="$customDialog$confirm" class="button">
                         <text class="f30 c_ff">确定</text>
@@ -185,18 +158,37 @@
                 </view>
                 <button bindgetuserinfo="$customDialog$getAuthHandle" class="f34 btn_group_cus bg_blue c_ff" openType="getUserInfo" wx:if="{{$customDialog$type=='getAuth'}}">点击授权</button>
                 <button bindgetphonenumber="$customDialog$getPhoneNumber" class="f34 btn_group_cus bg_blue c_ff" openType="getPhoneNumber" wx:if="{{$customDialog$type=='phoneAuth'}}">点击授权</button>
+                <image bindtap="$customDialog$confirm" src="{{$customDialog$sureImage}}" style="width:{{$customDialog$type=='wacca2'?$customDialog$screenWidth*0.61:150}}px;height:{{$customDialog$type=='wacca2'?$customDialog$screenWidth*0.144:38}}px" wx:if="{{$customDialog$type=='wacca2'||$customDialog$type=='wacca2-charge'}}"></image>
+            </view>
+            <view class="confirm-box both_center" style="padding: 20px 15px;justify-content: start" wx:else>
+                <image bindtap="$customDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+                <view style="margin-top:10px;width: 100%">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/luck_draw.png" style="width: 100%;height: 46.5px"></image>
+                </view>
+                <view class="flex-column flex-between" style="margin-top:8px;height: 30px;">
+                    <text class="f26 c_66">{{$customDialog$title}}</text>
+                    <text class="f26" style="color: #F11A7D">{{$customDialog$subTitle}}</text>
+                </view>
+                <view style="margin-top:20px;">
+                    <image bindtap="$customDialog$confirm" src="http://yyb-oss.universal-space.cn/imgs/wacca2/lilybox/open.png" style="width: 124px;height: 45px"></image>
+                </view>
             </view>
         </view>
     </view>
     <view>
         <view class="{{$tipsDialog$isShow?'back_warp':'back_warp hide'}}">
-            <view class="confirm-box both_center">
+            <view class="confirm-box both_center" wx:if="{{$tipsDialog$type!='lilybox'}}">
                 <image bindtap="$tipsDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
                 <view class="top">
-                    <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
-                    <text class="title f34 c_ff r">{{$tipsDialog$title}}</text>
+                    <image class="bg" src="{{$tipsDialog$isWacca2==$tipsDialog$false?'http://yyb-oss.universal-space.cn/imgs/bg_3.png':'http://yyb-oss.universal-space.cn/imgs/wacca2/common/dialog_bg.png'}}" wx:if="{{$tipsDialog$type!='wacca2-charge'}}"></image>
+                    <text class="title f34 {{$tipsDialog$type!='wacca2-charge'?'c_ff':'c_66'}} r">{{$tipsDialog$title}}</text>
                 </view>
-                <view class="f34 content c_99">{{$tipsDialog$content}}</view>
+                <view class="f34 content c_99">
+                    <text class="f36 {{$tipsDialog$type=='wacca2-charge'?'c_FF1':'c_33'}}" wx:if="{{$tipsDialog$subTitle!=''}}">{{$tipsDialog$subTitle}}</text>
+                    <image src="{{$tipsDialog$image}}" style="width:140px;height:38.5px" wx:if="{{$tipsDialog$image!=''}}"></image>
+                    <text class="f26 c_66" wx:if="{{$tipsDialog$desc!=''}}">{{$tipsDialog$desc}}</text>
+                    <text>{{$tipsDialog$content}}</text>
+                </view>
                 <view class="button_group" wx:if="{{$tipsDialog$type=='confirm'}}">
                     <view bindtap="$tipsDialog$confirm" class="button">
                         <text class="f30 c_ff">确定</text>
@@ -204,6 +196,20 @@
                 </view>
                 <button bindgetuserinfo="$tipsDialog$getAuthHandle" class="f34 btn_group_cus bg_blue c_ff" openType="getUserInfo" wx:if="{{$tipsDialog$type=='getAuth'}}">点击授权</button>
                 <button bindgetphonenumber="$tipsDialog$getPhoneNumber" class="f34 btn_group_cus bg_blue c_ff" openType="getPhoneNumber" wx:if="{{$tipsDialog$type=='phoneAuth'}}">点击授权</button>
+                <image bindtap="$tipsDialog$confirm" src="{{$tipsDialog$sureImage}}" style="width:{{$tipsDialog$type=='wacca2'?$tipsDialog$screenWidth*0.61:150}}px;height:{{$tipsDialog$type=='wacca2'?$tipsDialog$screenWidth*0.144:38}}px" wx:if="{{$tipsDialog$type=='wacca2'||$tipsDialog$type=='wacca2-charge'}}"></image>
+            </view>
+            <view class="confirm-box both_center" style="padding: 20px 15px;justify-content: start" wx:else>
+                <image bindtap="$tipsDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+                <view style="margin-top:10px;width: 100%">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/luck_draw.png" style="width: 100%;height: 46.5px"></image>
+                </view>
+                <view class="flex-column flex-between" style="margin-top:8px;height: 30px;">
+                    <text class="f26 c_66">{{$tipsDialog$title}}</text>
+                    <text class="f26" style="color: #F11A7D">{{$tipsDialog$subTitle}}</text>
+                </view>
+                <view style="margin-top:20px;">
+                    <image bindtap="$tipsDialog$confirm" src="http://yyb-oss.universal-space.cn/imgs/wacca2/lilybox/open.png" style="width: 124px;height: 45px"></image>
+                </view>
             </view>
         </view>
     </view>

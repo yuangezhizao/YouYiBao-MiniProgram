@@ -1,137 +1,129 @@
-function _interopRequireDefault(e) {
-    return e && e.__esModule ? e : {
-        default: e
-    };
-}
-
-function _asyncToGenerator(e) {
-    return function() {
-        var t = e.apply(this, arguments);
-        return new Promise(function(e, r) {
-            function n(a, i) {
-                try {
-                    var o = t[a](i), s = o.value;
-                } catch (e) {
-                    return void r(e);
+!function() {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+        value: !0
+    });
+    var e = function() {
+        function e(e, t) {
+            for (var r = 0; r < t.length; r++) {
+                var n = t[r];
+                n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), 
+                Object.defineProperty(e, n.key, n);
+            }
+        }
+        return function(t, r, n) {
+            return r && e(t.prototype, r), n && e(t, n), t;
+        };
+    }(), t = i(require("./../../npm/wepy/lib/wepy.js")), r = i(require("./../../components/match-statusbar.js")), n = i(require("./../../utils/api.js")), a = i(require("./../../utils/konami-api.js"));
+    function i(e) {
+        return e && e.__esModule ? e : {
+            default: e
+        };
+    }
+    function o(e) {
+        return function() {
+            var t = e.apply(this, arguments);
+            return new Promise(function(e, r) {
+                return function n(a, i) {
+                    try {
+                        var o = t[a](i), s = o.value;
+                    } catch (e) {
+                        return void r(e);
+                    }
+                    if (!o.done) return Promise.resolve(s).then(function(e) {
+                        n("next", e);
+                    }, function(e) {
+                        n("throw", e);
+                    });
+                    e(s);
+                }("next");
+            });
+        };
+    }
+    function s(e, t) {
+        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+    }
+    function c(e, t) {
+        if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return !t || "object" != typeof t && "function" != typeof t ? e : t;
+    }
+    var u = function(t) {
+        function i() {
+            var e, t, n;
+            s(this, i);
+            for (var a = arguments.length, o = Array(a), u = 0; u < a; u++) o[u] = arguments[u];
+            return t = n = c(this, (e = i.__proto__ || Object.getPrototypeOf(i)).call.apply(e, [ this ].concat(o))), 
+            n.config = {
+                navigationStyle: "custom"
+            }, n.$repeat = {}, n.$props = {
+                statusbar: {
+                    leftIcon: "true",
+                    title: "战绩详情"
                 }
-                if (!o.done) return Promise.resolve(s).then(function(e) {
-                    n("next", e);
-                }, function(e) {
-                    n("throw", e);
-                });
-                e(s);
-            }
-            return n("next");
-        });
-    };
-}
-
-function _classCallCheck(e, t) {
-    if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-}
-
-function _possibleConstructorReturn(e, t) {
-    if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    return !t || "object" != typeof t && "function" != typeof t ? e : t;
-}
-
-function _inherits(e, t) {
-    if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
-    e.prototype = Object.create(t && t.prototype, {
-        constructor: {
-            value: e,
-            enumerable: !1,
-            writable: !0,
-            configurable: !0
-        }
-    }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
-}
-
-Object.defineProperty(exports, "__esModule", {
-    value: !0
-});
-
-var _createClass = function() {
-    function e(e, t) {
-        for (var r = 0; r < t.length; r++) {
-            var n = t[r];
-            n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), 
-            Object.defineProperty(e, n.key, n);
-        }
-    }
-    return function(t, r, n) {
-        return r && e(t.prototype, r), n && e(t, n), t;
-    };
-}(), _wepy = require("./../../npm/wepy/lib/wepy.js"), _wepy2 = _interopRequireDefault(_wepy), _matchStatusbar = require("./../../components/match-statusbar.js"), _matchStatusbar2 = _interopRequireDefault(_matchStatusbar), _api = require("./../../utils/api.js"), _api2 = _interopRequireDefault(_api), _konamiApi = require("./../../utils/konami-api.js"), _konamiApi2 = _interopRequireDefault(_konamiApi), musicDetail = function(e) {
-    function t() {
-        var e, r, n, a;
-        _classCallCheck(this, t);
-        for (var i = arguments.length, o = Array(i), s = 0; s < i; s++) o[s] = arguments[s];
-        return r = n = _possibleConstructorReturn(this, (e = t.__proto__ || Object.getPrototypeOf(t)).call.apply(e, [ this ].concat(o))), 
-        n.config = {
-            navigationStyle: "custom"
-        }, n.$repeat = {}, n.$props = {
-            statusbar: {
-                leftIcon: "true",
-                title: "战绩详情"
-            }
-        }, n.$events = {}, n.components = {
-            statusbar: _matchStatusbar2.default
-        }, n.data = {
-            machineId: "",
-            scoreId: "",
-            scoreDetail: "",
-            trackRank: ""
-        }, n.methods = {
-            rank: function() {
-                wx.navigateTo({
-                    url: "/pages/record/music-rank?musicId=" + this.scoreDetail.musicId + "&musicGrade=" + this.scoreDetail.musicGrade
-                });
-            },
-            statisRecord: function() {
-                wx.navigateTo({
-                    url: "/pages/record/music-statis?productId=" + this.scoreDetail.productId
-                });
-            },
-            track: function() {
-                wx.navigateTo({
-                    url: "/pages/record/music-track"
-                });
-            }
-        }, a = r, _possibleConstructorReturn(n, a);
-    }
-    return _inherits(t, e), _createClass(t, [ {
-        key: "onLoad",
-        value: function(e) {
-            this.machineId = e.machineId, this.scoreId = e.scoreId;
-        }
-    }, {
-        key: "onShow",
-        value: function() {
-            this.getGameDetail();
-        }
-    }, {
-        key: "onShareAppMessage",
-        value: function(e) {
-            return {
-                title: "关注游艺宝，发现更多精彩",
-                path: "/pages/index/index",
-                imageUrl: "/assets/imgs/share.png",
-                success: function(e) {
-                    console.log("转发成功！");
+            }, n.$events = {}, n.components = {
+                statusbar: r.default
+            }, n.data = {
+                machineId: "",
+                scoreId: "",
+                scoreDetail: "",
+                trackRank: ""
+            }, n.methods = {
+                rank: function() {
+                    wx.navigateTo({
+                        url: "/pages/record/music-rank?musicId=" + this.scoreDetail.musicId + "&musicGrade=" + this.scoreDetail.musicGrade
+                    });
                 },
-                fail: function(e) {
-                    return console.log(e.errMsg);
+                statisRecord: function() {
+                    wx.navigateTo({
+                        url: "/pages/record/music-statis?productId=" + this.scoreDetail.productId
+                    });
+                },
+                track: function() {
+                    wx.navigateTo({
+                        url: "/pages/record/music-track"
+                    });
                 }
-            };
+            }, c(n, t);
         }
-    }, {
-        key: "getGameDetail",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
+        var u, l;
+        return function(e, t) {
+            if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
+            e.prototype = Object.create(t && t.prototype, {
+                constructor: {
+                    value: e,
+                    enumerable: !1,
+                    writable: !0,
+                    configurable: !0
+                }
+            }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+        }(i, t), e(i, [ {
+            key: "onLoad",
+            value: function(e) {
+                this.machineId = e.machineId, this.scoreId = e.scoreId;
             }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
+        }, {
+            key: "onShow",
+            value: function() {
+                this.getGameDetail();
+            }
+        }, {
+            key: "onShareAppMessage",
+            value: function(e) {
+                return {
+                    title: "关注游艺宝，发现更多精彩",
+                    path: "/pages/index/index",
+                    imageUrl: "/assets/imgs/share.png",
+                    success: function(e) {
+                        console.log("转发成功！");
+                    },
+                    fail: function(e) {
+                        return console.log(e.errMsg);
+                    }
+                };
+            }
+        }, {
+            key: "getGameDetail",
+            value: (l = o(regeneratorRuntime.mark(function e() {
                 var t, r;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
@@ -139,7 +131,7 @@ var _createClass = function() {
                         return t = {
                             machineId: this.machineId,
                             scoreId: this.scoreId
-                        }, e.next = 3, _api2.default.recordDetail(t);
+                        }, e.next = 3, n.default.recordDetail(t);
 
                       case 3:
                         r = e.sent, console.log(r), 1 == r.code && (this.scoreDetail = r.data, this.getMusicHiscore(r), 
@@ -150,16 +142,12 @@ var _createClass = function() {
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    }, {
-        key: "getMusicHiscore",
-        value: function() {
-            function e(e) {
-                return t.apply(this, arguments);
-            }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e(t) {
+            })), function() {
+                return l.apply(this, arguments);
+            })
+        }, {
+            key: "getMusicHiscore",
+            value: (u = o(regeneratorRuntime.mark(function e(t) {
                 var r, n;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
@@ -167,20 +155,20 @@ var _createClass = function() {
                         return r = {
                             musicId: t.data.musicId,
                             musicGrade: t.data.musicGrade
-                        }, e.next = 3, _konamiApi2.default.hiscoreMusic(r);
+                        }, e.next = 3, a.default.hiscoreMusic(r);
 
                       case 3:
-                        n = e.sent, 1 != n.code || (this.trackRank = n.data, this.$apply());
+                        1 != (n = e.sent).code || (this.trackRank = n.data, this.$apply());
 
                       case 5:
                       case "end":
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    } ]), t;
-}(_wepy2.default.page);
-
-Page(require("./../../npm/wepy/lib/wepy.js").default.$createPage(musicDetail, "pages/record/music-detail"));
+            })), function(e) {
+                return u.apply(this, arguments);
+            })
+        } ]), i;
+    }(t.default.page);
+    Page(require("./../../npm/wepy/lib/wepy.js").default.$createPage(u, "pages/record/music-detail"));
+}();

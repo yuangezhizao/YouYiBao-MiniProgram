@@ -31,8 +31,9 @@
 .confirm-box .content {
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
-    margin: 130rpx 0 40rpx 0;
+    margin: 130rpx 0 40rpx;
     text-align: center;
 }
 
@@ -42,7 +43,7 @@
     border-radius: 55rpx;
     text-align: center;
     line-height: 96rpx;
-    box-shadow: 0 8rpx 16rpx 0 rgba(53,131,254,0.22);
+    box-shadow: 0rpx 8rpx 16rpx 0rpx rgba(53,131,254,.22);
 }
 
 .confirm-box .button_group {
@@ -55,16 +56,16 @@
     width: 210rpx;
     height: 90rpx;
     border-radius: 55rpx;
-    background: linear-gradient(45deg,#9A9A9A,#575757);
+    background: linear-gradient(45deg,#9a9a9a,#575757);
     text-align: center;
     line-height: 90rpx;
-    box-shadow: 0 8rpx 16rpx 0 rgba(161,161,161,0.22);
+    box-shadow: 0rpx 8rpx 16rpx 0rpx hsla(0,0%,63.1%,.22);
     margin: 0 15rpx;
 }
 
 .confirm-box .button_group .button:last-child {
-    background: linear-gradient(45deg,#3CA6FD,#2F5FFF);
-    box-shadow: 0 8rpx 16rpx 0 rgba(53,131,254,0.22);
+    background: linear-gradient(45deg,#3ca6fd,#2f5fff);
+    box-shadow: 0rpx 8rpx 16rpx 0rpx rgba(53,131,254,.22);
 }
 
 .bg-183 {
@@ -72,33 +73,32 @@
 }
 
 .statusBar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
-    height: 64rpx;
     z-index: 99;
 }
 
-.icon-group {
+.icon-group,.statusBar {
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    height: 64rpx;
+}
+
+.icon-group {
     position: fixed;
     left: 0;
     width: 174rpx;
-    height: 64rpx;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,.2);
     border-radius: 35rpx;
     margin-left: 30rpx;
-    border: 1rpx solid rgba(250,250,250,0.3);
+    border: 1rpx solid hsla(0,0%,98%,.3);
     z-index: 9999!important;
 }
 
 .icon-group .line {
     width: 3rpx;
     height: 32rpx;
-    background: rgba(250,250,250,0.3);
+    background: hsla(0,0%,98%,.3);
 }
 
 .icon-group .icon {
@@ -108,7 +108,7 @@
 }
 
 page {
-    background: #F2F9FF;
+    background: #f2f9ff;
 }
 
 .machine-info {
@@ -122,7 +122,7 @@ page {
 .machine-info image {
     width: 690rpx;
     height: 360rpx;
-    box-shadow: 0 8rpx 16rpx 0 rgba(17,85,233,0.1);
+    box-shadow: 0rpx 8rpx 16rpx 0rpx rgba(17,85,233,.1);
     margin-bottom: 30rpx;
     border-radius: 15rpx;
 }
@@ -134,7 +134,7 @@ page {
     height: 140rpx;
     border-radius: 20rpx;
     background: #fff;
-    box-shadow: 0 6rpx 10rpx 4rpx #e9f1ff;
+    box-shadow: 0rpx 6rpx 10rpx 4rpx #e9f1ff;
     margin-top: 30rpx;
 }
 
@@ -142,8 +142,8 @@ page {
     width: 90rpx;
     height: 90rpx;
     border-radius: 50%;
-    box-shadow: 0 2rpx 3rpx 0 rgba(53,131,254,0.2);
-    margin: 0 20rpx 0 20rpx;
+    box-shadow: 0rpx 2rpx 3rpx 0rpx rgba(53,131,254,.2);
+    margin: 0 20rpx;
     border: 6rpx solid #fff;
 }
 
@@ -168,7 +168,7 @@ page {
     width: 198rpx;
     height: 84rpx;
     border-radius: 55rpx;
-    background: linear-gradient(45deg,#FF7575,#FF0000);
+    background: linear-gradient(45deg,#ff7575,red);
     line-height: 84rpx;
     text-align: center;
     margin-left: 43rpx;
@@ -200,6 +200,9 @@ page {
     height: 216rpx;
     background: #fff;
     border-radius: 20rpx;
+}
+
+.pay-type .pay-list,.pay-type .pay-list .pay-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -209,10 +212,7 @@ page {
     width: 280rpx;
     height: 96rpx;
     border-radius: 55rpx;
-    box-shadow: 0 8rpx 20rpx 0 rgba(53,131,254,0.22);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    box-shadow: 0rpx 8rpx 20rpx 0rpx rgba(53,131,254,.22);
     margin: 0 25rpx;
 }
 
@@ -222,8 +222,8 @@ page {
 }
 
 .pay-type .pay-list .pay-btn:last-child {
-    background: linear-gradient(45deg,#5BE89B,#2ECCBD);
-    box-shadow: 0 4rpx 10rpx 0 rgba(194,232,217,0.55);
+    background: linear-gradient(45deg,#5be89b,#2eccbd);
+    box-shadow: 0rpx 4rpx 10rpx 0rpx rgba(194,232,217,.55);
 }
 
 .pay-type .pay-list .pay-btn:last-child image {
@@ -241,7 +241,7 @@ page {
     margin-right: 10rpx;
 }
 
-.pay-box,.package-box {
+.package-box,.pay-box {
     width: 540rpx;
     height: 580rpx;
     background: #fff;
@@ -252,7 +252,7 @@ page {
     align-items: center;
 }
 
-.pay-box .close,.package-box .close {
+.package-box .close,.pay-box .close {
     width: 42rpx;
     height: 70rpx;
     position: absolute;
@@ -260,7 +260,7 @@ page {
     top: -70rpx;
 }
 
-.pay-box .top,.package-box .top {
+.package-box .top,.pay-box .top {
     width: 100%;
     height: 136rpx;
     position: absolute;
@@ -269,43 +269,43 @@ page {
     line-height: 136rpx;
 }
 
-.pay-box .middle,.package-box .middle {
+.package-box .middle,.pay-box .middle {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 80rpx 0 40rpx 0;
+    margin: 80rpx 0 40rpx;
 }
 
-.pay-box .middle .count,.package-box .middle .count {
+.package-box .middle .count,.pay-box .middle .count {
     display: flex;
-    margin: 18rpx 0 25rpx 0;
+    margin: 18rpx 0 25rpx;
 }
 
-.pay-box .middle .count .down,.package-box .middle .count .down {
+.package-box .middle .count .down,.pay-box .middle .count .down {
     width: 78rpx;
     height: 78rpx;
     border-radius: 10rpx;
-    background: #3376FE;
+    background: #3376fe;
     text-align: center;
     line-height: 78rpx;
 }
 
-.pay-box .middle .count input,.package-box .middle .count input {
+.package-box .middle .count input,.pay-box .middle .count input {
     width: 160rpx;
     height: 78rpx;
     border-radius: 10rpx;
-    border: 1rpx solid #3376FE;
+    border: 1rpx solid #3376fe;
     margin: 0 20rpx;
     text-align: center;
-    color: #3376FE;
+    color: #3376fe;
     line-height: 78rpx;
 }
 
-.pay-box .middle .count .active,.package-box .middle .count .active {
-    background: #BBBBBB;
+.package-box .middle .count .active,.pay-box .middle .count .active {
+    background: #bbb;
 }
 
-.pay-box .btn,.package-box .btn {
+.package-box .btn,.pay-box .btn {
     width: 290rpx;
     height: 96rpx;
     border-radius: 55rpx;
@@ -331,7 +331,7 @@ page {
 }
 
 .package-box .package-wrap scroll-view {
-    background: #F2F9FF;
+    background: #f2f9ff;
     margin-top: 22rpx;
     position: relative;
 }
@@ -348,7 +348,7 @@ page {
     right: 0;
     width: 120rpx;
     height: 250rpx;
-    background-image: linear-gradient(to right,rgba(242,249,255,0),#f2f9ff);
+    background-image: linear-gradient(90deg,rgba(242,249,255,0),#f2f9ff);
 }
 
 .package-box .package-wrap scroll-view .package-list .package-item {
@@ -357,7 +357,7 @@ page {
     height: 180rpx;
     border-radius: 20rpx;
     background: #fff;
-    border: 5rpx solid #2660E7;
+    border: 5rpx solid #2660e7;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -366,7 +366,7 @@ page {
 }
 
 .package-box .package-wrap scroll-view .package-list .test {
-    background: linear-gradient(135deg,#3CA6FD,#2F5FFF);
+    background: linear-gradient(135deg,#3ca6fd,#2f5fff);
     border: none;
 }
 
@@ -380,16 +380,16 @@ page {
     bottom: 0;
     left: 0;
     right: 0;
-    background: #EFFAFF;
+    background: #effaff;
 }
 
-.guide-wrap .guide-jackpot,.guide-wrap-1 .guide-jackpot {
+.guide-wrap-1 .guide-jackpot,.guide-wrap .guide-jackpot {
     width: 100%;
     height: 340rpx;
     position: absolute;
 }
 
-.guide-wrap .guide-close,.guide-wrap-1 .guide-close {
+.guide-wrap-1 .guide-close,.guide-wrap .guide-close {
     width: 60rpx;
     height: 60rpx;
     position: absolute;
@@ -397,7 +397,7 @@ page {
     right: 40rpx;
 }
 
-.guide-wrap .guide-img,.guide-wrap-1 .guide-img {
+.guide-wrap-1 .guide-img,.guide-wrap .guide-img {
     width: 100%;
     height: 1334rpx;
 }
@@ -456,11 +456,11 @@ page {
 .jackpot-box .btn {
     width: 342rpx;
     height: 96rpx;
-    background: linear-gradient(to right,#3CA6FD,#2F5FFF);
+    background: linear-gradient(90deg,#3ca6fd,#2f5fff);
     border-radius: 55rpx;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20rpx;
-    box-shadow: 0 8rpx 16rpx 0 rgba(53,131,254,0.22);
+    box-shadow: 0rpx 8rpx 16rpx 0rpx rgba(53,131,254,.22);
 }

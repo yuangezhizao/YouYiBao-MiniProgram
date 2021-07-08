@@ -1,81 +1,62 @@
-function _interopRequireDefault(e) {
-    return e && e.__esModule ? e : {
-        default: e
-    };
-}
-
-function _asyncToGenerator(e) {
-    return function() {
-        var t = e.apply(this, arguments);
-        return new Promise(function(e, n) {
-            function r(o, i) {
-                try {
-                    var u = t[o](i), a = u.value;
-                } catch (e) {
-                    return void n(e);
-                }
-                if (!u.done) return Promise.resolve(a).then(function(e) {
-                    r("next", e);
-                }, function(e) {
-                    r("throw", e);
-                });
-                e(a);
-            }
-            return r("next");
-        });
-    };
-}
-
-function _classCallCheck(e, t) {
-    if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-}
-
-function _possibleConstructorReturn(e, t) {
-    if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    return !t || "object" != typeof t && "function" != typeof t ? e : t;
-}
-
-function _inherits(e, t) {
-    if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
-    e.prototype = Object.create(t && t.prototype, {
-        constructor: {
-            value: e,
-            enumerable: !1,
-            writable: !0,
-            configurable: !0
-        }
-    }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
-}
-
-Object.defineProperty(exports, "__esModule", {
-    value: !0
-}), exports.default = void 0;
-
-var _wepy = require("./../npm/wepy/lib/wepy.js"), _wepy2 = _interopRequireDefault(_wepy), _api = require("./../utils/api.js"), _api2 = _interopRequireDefault(_api), _environment = require("./../utils/environment.js"), _environment2 = _interopRequireDefault(_environment), _wechat = require("./../utils/wechat.js"), _wechat2 = _interopRequireDefault(_wechat), FormContainer = function(e) {
-    function t() {
-        var e, n, r, o;
-        _classCallCheck(this, t);
-        for (var i = arguments.length, u = Array(i), a = 0; a < i; a++) u[a] = arguments[a];
-        return n = r = _possibleConstructorReturn(this, (e = t.__proto__ || Object.getPrototypeOf(t)).call.apply(e, [ this ].concat(u))), 
-        r.methods = {
-            tap: function() {
-                function e(e) {
-                    return t.apply(this, arguments);
-                }
-                var t = _asyncToGenerator(regeneratorRuntime.mark(function e(t) {
-                    var n, r, o;
+!function() {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+        value: !0
+    }), exports.default = void 0;
+    var e = o(require("./../npm/wepy/lib/wepy.js")), t = o(require("./../utils/api.js")), r = o(require("./../utils/environment.js")), n = o(require("./../utils/wechat.js"));
+    function o(e) {
+        return e && e.__esModule ? e : {
+            default: e
+        };
+    }
+    function u(e) {
+        return function() {
+            var t = e.apply(this, arguments);
+            return new Promise(function(e, r) {
+                return function n(o, u) {
+                    try {
+                        var i = t[o](u), a = i.value;
+                    } catch (e) {
+                        return void r(e);
+                    }
+                    if (!i.done) return Promise.resolve(a).then(function(e) {
+                        n("next", e);
+                    }, function(e) {
+                        n("throw", e);
+                    });
+                    e(a);
+                }("next");
+            });
+        };
+    }
+    function i(e, t) {
+        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+    }
+    function a(e, t) {
+        if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return !t || "object" != typeof t && "function" != typeof t ? e : t;
+    }
+    var c = function(e) {
+        function o() {
+            var e, c, s, f;
+            i(this, o);
+            for (var p = arguments.length, l = Array(p), d = 0; d < p; d++) l[d] = arguments[d];
+            return c = s = a(this, (e = o.__proto__ || Object.getPrototypeOf(o)).call.apply(e, [ this ].concat(l))), 
+            s.methods = {
+                tap: (f = u(regeneratorRuntime.mark(function e(o) {
+                    var u, i, a;
                     return regeneratorRuntime.wrap(function(e) {
                         for (;;) switch (e.prev = e.next) {
                           case 0:
-                            return e.next = 2, _wechat2.default.login();
+                            return e.next = 2, n.default.login();
 
                           case 2:
-                            n = e.sent, r = n.code, o = _environment2.default.production ? _environment2.default.prod.appid : _environment2.default.dev.appid, 
+                            u = e.sent, i = u.code, a = r.default.production ? r.default.prod.appid : r.default.dev.appid, 
                             setTimeout(function() {
-                                _api2.default.saveFormId({
-                                    formId: t.detail.formId,
-                                    appid: o,
-                                    code: r
+                                t.default.saveFormId({
+                                    formId: o.detail.formId,
+                                    appid: a,
+                                    code: i
                                 });
                             }, 0), this.$emit("submitFn");
 
@@ -84,16 +65,26 @@ var _wepy = require("./../npm/wepy/lib/wepy.js"), _wepy2 = _interopRequireDefaul
                             return e.stop();
                         }
                     }, e, this);
-                }));
-                return e;
-            }()
-        }, r.props = {
-            params: {
-                default: "null"
-            }
-        }, o = n, _possibleConstructorReturn(r, o);
-    }
-    return _inherits(t, e), t;
-}(_wepy2.default.component);
-
-exports.default = FormContainer;
+                })), function(e) {
+                    return f.apply(this, arguments);
+                })
+            }, s.props = {
+                params: {
+                    default: "null"
+                }
+            }, a(s, c);
+        }
+        return function(e, t) {
+            if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
+            e.prototype = Object.create(t && t.prototype, {
+                constructor: {
+                    value: e,
+                    enumerable: !1,
+                    writable: !0,
+                    configurable: !0
+                }
+            }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+        }(o, e), o;
+    }(e.default.component);
+    exports.default = c;
+}();

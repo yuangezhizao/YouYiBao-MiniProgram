@@ -1,0 +1,136 @@
+<view>
+    <view>
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$customStatusbar$menuButtonTop+60}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$customStatusbar$menuButtonTop}}px;">
+            <image bindtap="$customStatusbar$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$customStatusbar$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$customStatusbar$menuButtonTop}}px;">
+            <text class="title">{{$customStatusbar$title}}</text>
+        </view>
+    </view>
+    <view class="grade-wrap">
+        <view class="medal-grade">
+            <view class="line"></view>
+            <view class="medal-row">
+                <view bindtap="swiperChange" class="grade-item" data-wpyswiperchange-a="0">
+                    <image class="{{cardCur==0?'active':''}}" src="{{cardCur==0?'http://yyb-oss.universal-space.cn/imgs/wacca/icon_grade_2.png':'http://yyb-oss.universal-space.cn/imgs/wacca/icon_grade_1.png'}}"></image>
+                    <text class="f26 c_99">非会员</text>
+                </view>
+                <view bindtap="swiperChange" class="grade-item" data-wpyswiperchange-a="1">
+                    <image class="{{cardCur==1?'active':''}}" src="{{cardCur==1?'http://yyb-oss.universal-space.cn/imgs/wacca/icon_grade_4.png':'http://yyb-oss.universal-space.cn/imgs/wacca/icon_grade_3.png'}}"></image>
+                    <text class="f26 c_99">基本会员</text>
+                </view>
+                <view bindtap="swiperChange" class="grade-item" data-wpyswiperchange-a="2">
+                    <image class="{{cardCur==2?'active':''}}" src="{{cardCur==2?'http://yyb-oss.universal-space.cn/imgs/wacca/icon_grade_6.png':'http://yyb-oss.universal-space.cn/imgs/wacca/icon_grade_5.png'}}"></image>
+                    <text class="f26 c_99">VIP会员</text>
+                </view>
+            </view>
+        </view>
+        <swiper bindchange="cardSwiper" circular="true" class="activity-swiper" current="{{cardCur}}">
+            <swiper-item class="swiper {{cardCur==0?'cur':''}}">
+                <view class="swiper-item">
+                    <image class="label" src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_current.png" wx:if="{{memberInfo.memberType==0||memberInfo.memberType==1}}"></image>
+                    <text class="f34 c_33">非会员</text>
+                    <text class="f24 c_99 tc swiper-top-txt">升级基本会员，即可享受更多会员权益。
+点击下方“升级基本会员”哦。</text>
+                    <view class="swiper-row">
+                        <text class="f30 c_33">非会员说明</text>
+                    </view>
+                    <text class="f26 c_26 tips" decode="true">1、显示总曲目的30%-40%
+              2、不可解锁歌曲以及难度
+              3、只能游玩 NORMAL / HARD
+              4、不保存玩家游戏数据，不能参与全国排名
+              5、非会员状态下不可使用VIP次数
+            </text>
+                    <view bindtap="upMember" class="swiper-btn f28 c_ff">升级基本会员</view>
+                </view>
+            </swiper-item>
+            <swiper-item class="swiper {{cardCur==1?'cur':''}}">
+                <view class="swiper-item">
+                    <image class="label" src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_current_member.png" wx:if="{{memberInfo.memberType==2}}"></image>
+                    <text class="f34 c_33">基本会员权限</text>
+                    <text class="f24 c_99 tc swiper-top-txt">基本会员需保持游戏状态，
+若超90天无游戏记录，基本会员权限将失效，
+需重新激活。</text>
+                    <view class="swiper-row">
+                        <text class="f30 c_33">会员权益</text>
+                        <view class="swiper-row-right">
+                            <image src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_medal.png"></image>
+                            <text bindtap="showPrivilege" class="c_32 f24">更多权益</text>
+                        </view>
+                    </view>
+                    <text class="f26 c_26 tips" decode="true">1、显示总曲目的70%-80%（不含VIP专用曲）
+              2、消费WP可解锁曲目（不含VIP专用曲）
+              3、可游玩 NORMAL / HARD / EXPERT
+              4、保存玩家游戏数据，可参与全国排名
+            </text>
+                    <view class="btn-group f28 c_ff">
+                        <view bindtap="rechargeVip">充值VIP次数</view>
+                        <view bindtap="buyGoods">购买游戏商品</view>
+                    </view>
+                </view>
+            </swiper-item>
+            <swiper-item class="swiper {{cardCur==2?'cur':''}}">
+                <view class="swiper-item">
+                    <image class="label" src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_current_member.png" wx:if="{{memberInfo.memberType==3}}"></image>
+                    <text class="f34 c_33">VIP会员权限</text>
+                    <text class="f24 c_99 tc swiper-top-txt">（必须在基本会员有效的前提下）
+有VIP次数的基本会员，即为VIP会员。</text>
+                    <view class="swiper-row">
+                        <text class="f30 c_33">会员权益</text>
+                        <view class="swiper-row-right">
+                            <image src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_medal.png"></image>
+                            <text bindtap="showPrivilege" class="c_32 f24">更多权益</text>
+                        </view>
+                    </view>
+                    <text class="f26 c_26 tips" decode="true">1、显示全部曲目
+              2、消费WP可解锁全部曲目
+              3、歌曲的全部难易度均可游玩：
+NORMAL / HARD / EXPERT
+              4、保存玩家游戏数据，可参与全国排名
+            </text>
+                    <view class="btn-group f28 c_ff">
+                        <view bindtap="rechargeVip">充值VIP次数</view>
+                        <view bindtap="buyGoods">购买游戏商品</view>
+                    </view>
+                </view>
+            </swiper-item>
+        </swiper>
+        <view bindtap="goBack" class="start-game c_ff f36">返回</view>
+    </view>
+    <view class="match-dialog {{$memberDialog$size}}" wx:if="{{$memberDialog$isShowDialog}}">
+        <view class="match-dialog-inner">
+            <image bindtap="$memberDialog$handleClick" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+            <view class="title">{{$memberDialog$title}}</view>
+            <view class="match-dialog-body tc">
+                <view class="member-dialog">
+                    <view class="member-price">
+                        <text class="f80">{{memberInfo.memberFee/100}}</text>元/永久</view>
+                    <text class="f28 c_99">注意：基本会员需保持游戏状态，
+          若超90天无游戏记录的基本会员将失效。</text>
+                    <view bindtap="buyMember" class="btn btn-primary btn-round">立即支付</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="match-dialog {{$privilegeDialog$size}}" wx:if="{{$privilegeDialog$isShowDialog}}">
+        <view class="match-dialog-inner">
+            <image bindtap="$privilegeDialog$handleClick" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+            <view class="title">{{$privilegeDialog$title}}</view>
+            <view class="match-dialog-body tc">
+                <text class="f28 c_99 privilegeTxt">{{cardCur==1?'基本会员':'VIP会员'}}连续每天连续游戏将有以下权益：</text>
+                <view class="f28 c_99 privilegeTxt1" wx:if="{{cardCur==1}}">
+                    <text>1、WP获得量増加</text>
+                    <text>2、闸门点数获得量增加</text>
+                </view>
+                <view class="f28 c_99 privilegeTxt1" wx:else>
+                    <text>1、WP获得量增加</text>
+                    <text>2、闸门点数获得量增加</text>
+                </view>
+                <view bindtap="closePrivilegeDialog" class="btn btn-primary btn-round">返回</view>
+            </view>
+        </view>
+    </view>
+</view>

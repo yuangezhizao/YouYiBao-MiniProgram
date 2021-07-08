@@ -19,17 +19,17 @@
     left: 0;
     width: 174rpx;
     height: 64rpx;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,.2);
     border-radius: 35rpx;
     margin-left: 30rpx;
-    border: 1rpx solid rgba(250,250,250,0.3);
+    border: 1rpx solid hsla(0,0%,98%,.3);
     z-index: 9999;
 }
 
 .match-status-bar .statusBar .icon-group .line {
     width: 3rpx;
     height: 32rpx;
-    background: rgba(250,250,250,0.3);
+    background: hsla(0,0%,98%,.3);
 }
 
 .match-status-bar .statusBar .icon-group .left {
@@ -51,7 +51,7 @@
     border-radius: 10rpx;
     -webkit-appearance: none;
     -webkit-text-size-adjust: 100%;
-    transition: all 500ms;
+    transition: all .5s;
 }
 
 .btn::before {
@@ -64,7 +64,7 @@
     border: inherit;
     border-color: #000;
     border-radius: inherit;
-    content: ' ';
+    content: " ";
     opacity: 0;
     transform: translate(-50%,-50%);
 }
@@ -93,26 +93,26 @@
 
 .btn-primary {
     color: #fff;
-    background-color: #2660E7;
-    border: 1rpx solid #2660E7;
+    background-color: #2660e7;
+    border: 1rpx solid #2660e7;
 }
 
 .btn-danger {
     color: #fff;
-    background-color: #E13434;
-    border: 1rpx solid #E13434;
+    background-color: #e13434;
+    border: 1rpx solid #e13434;
 }
 
 .btn-warning {
     color: #fff;
-    background-color: #F6C96A;
-    border: 1rpx solid #F6C96A;
+    background-color: #f6c96a;
+    border: 1rpx solid #f6c96a;
 }
 
 .btn-success {
     color: #fff;
-    background-color: #5BE89B;
-    border: 1rpx solid #5BE89B;
+    background-color: #5be89b;
+    border: 1rpx solid #5be89b;
 }
 
 .btn-plain {
@@ -120,7 +120,7 @@
 }
 
 .btn-plain.btn-primary {
-    color: #2660E7;
+    color: #2660e7;
 }
 
 .btn-plain.btn-black {
@@ -128,11 +128,11 @@
 }
 
 .btn-plain.btn-danger {
-    color: #E13434;
+    color: #e13434;
 }
 
 .btn-plain.btn-warning {
-    color: #F6C96A;
+    color: #f6c96a;
 }
 
 .btn-large {
@@ -185,7 +185,7 @@
 }
 
 page {
-    background: #F2F9FF;
+    background: #f2f9ff;
 }
 
 .match-banner {
@@ -193,7 +193,7 @@ page {
     height: 500rpx;
     background: #fff;
     border-radius: 20rpx;
-    box-shadow: 0 16rpx 16rpx 0 rgba(85,145,252,0.08);
+    box-shadow: 0rpx 16rpx 16rpx 0rpx rgba(85,145,252,.08);
     padding-top: 100rpx;
     padding-bottom: 40rpx;
 }
@@ -208,16 +208,14 @@ page {
     height: 120rpx;
     background: #fff;
     border-radius: 20rpx;
-    box-shadow: 0 16rpx 16rpx 0 rgba(85,145,252,0.08);
-    margin: 25rpx 0 20rpx 0;
+    box-shadow: 0rpx 16rpx 16rpx 0rpx rgba(85,145,252,.08);
+    margin: 25rpx 0 20rpx;
     padding: 0 30rpx;
     box-sizing: border-box;
-    display: flex;
-    align-items: center;
     justify-content: space-between;
 }
 
-.match-title .title-right {
+.match-title,.match-title .title-right {
     display: flex;
     align-items: center;
 }
@@ -255,37 +253,37 @@ page {
 .my-match .btn-group .btn {
     width: 200rpx;
     height: 80rpx;
-    background: linear-gradient(to right,#3CA6FD,#2F5FFF);
+    background: linear-gradient(90deg,#3ca6fd,#2f5fff);
     border-radius: 55rpx;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 8rpx 16rpx 0 rgba(53,131,254,0.22);
+    box-shadow: 0rpx 8rpx 16rpx 0rpx rgba(53,131,254,.22);
 }
 
 .my-match .btn-group .btn:nth-child(2) {
-    background: linear-gradient(to right,#5BE89B,#2ECCBD);
-    box-shadow: 0 8rpx 16rpx 0 rgba(18,179,159,0.2);
+    background: linear-gradient(90deg,#5be89b,#2eccbd);
+    box-shadow: 0rpx 8rpx 16rpx 0rpx rgba(18,179,159,.2);
 }
 
 .icon_music_white {
     width: 38rpx;
     height: 38rpx;
-    background: url("http://yyb-oss.universal-space.cn/imgs/match/icon_music_white.png") no-repeat center;
+    background: url("http://yyb-oss.universal-space.cn/imgs/match/icon_music_white.png") no-repeat 50%;
     background-size: 100% 100%;
 }
 
 .icon_record_white {
     width: 38rpx;
     height: 38rpx;
-    background: url("http://yyb-oss.universal-space.cn/imgs/match/icon_record_white.png") no-repeat center;
+    background: url("http://yyb-oss.universal-space.cn/imgs/match/icon_record_white.png") no-repeat 50%;
     background-size: 100% 100%;
 }
 
 .best-record {
     border-radius: 20rpx;
-    background: linear-gradient(to left,#F91A50,#FFB199);
-    box-shadow: 0 8rpx 12rpx 0 rgba(255,10,69,0.2);
+    background: linear-gradient(270deg,#f91a50,#ffb199);
+    box-shadow: 0rpx 8rpx 12rpx 0rpx rgba(255,10,69,.2);
     display: flex;
     align-items: center;
     margin-bottom: 20rpx;
@@ -305,7 +303,7 @@ page {
     width: 100rpx;
     height: 100rpx;
     margin-bottom: 10rpx;
-    box-shadow: 0 8rpx 10rpx 0 #FFB199;
+    box-shadow: 0rpx 8rpx 10rpx 0rpx #ffb199;
 }
 
 .best-record .record-item-1 .avatar image {
@@ -339,7 +337,7 @@ page {
 
 .best-record .left .col .record-item-2 .font-style {
     left: 257.5rpx;
-    text-shadow: 0 9rpx 10rpx 0 rgba(255,23,75,0.68);
+    text-shadow: 0rpx 9rpx 10rpx 0rpx rgba(255,23,75,.68);
     height: 90rpx;
     line-height: 90rpx;
     white-space: nowrap;
@@ -349,7 +347,7 @@ page {
     width: 4rpx;
     height: 30rpx;
     border-radius: 2rpx;
-    background-color: rgba(255,255,255,0.7);
+    background-color: hsla(0,0%,100%,.7);
 }
 
 .best-record .left .col.song {
@@ -359,7 +357,7 @@ page {
     justify-content: space-between;
     font-size: 26rpx;
     color: #fff;
-    border-top: 1rpx solid rgba(255,255,255,0.5);
+    border-top: 1rpx solid hsla(0,0%,100%,.5);
     width: 485rpx;
 }
 
@@ -371,12 +369,12 @@ page {
 }
 
 .best-record .left .col.song .song-name:before {
-    content: '';
+    content: "";
     display: inline-block;
     min-width: 40rpx;
     width: 38rpx;
     height: 38rpx;
-    background: url("http://yyb-oss.universal-space.cn/imgs/match/icon_music_white.png") no-repeat center;
+    background: url("http://yyb-oss.universal-space.cn/imgs/match/icon_music_white.png") no-repeat 50%;
     background-size: 100% 100%;
 }
 
@@ -389,12 +387,12 @@ page {
 }
 
 .best-record .left .col.song .level:before {
-    content: '';
+    content: "";
     display: inline-block;
     min-width: 40rpx;
     width: 38rpx;
     height: 38rpx;
-    background: url("http://yyb-oss.universal-space.cn/imgs/match/icon_record_white.png") no-repeat center;
+    background: url("http://yyb-oss.universal-space.cn/imgs/match/icon_record_white.png") no-repeat 50%;
     background-size: 100% 100%;
 }
 
@@ -402,8 +400,8 @@ page {
     width: 690rpx;
     border-radius: 20rpx;
     overflow: hidden;
-    background: linear-gradient(to left,#2F5FFF,#3CA6FD);
-    box-shadow: 0 8rpx 20rpx 0 rgba(53,131,254,0.22);
+    background: linear-gradient(270deg,#2f5fff,#3ca6fd);
+    box-shadow: 0rpx 8rpx 20rpx 0rpx rgba(53,131,254,.22);
     margin-bottom: 30rpx;
 }
 
@@ -417,11 +415,11 @@ page {
 }
 
 .latest-record .top .tag {
-    background: url("http://yyb-oss.universal-space.cn/imgs/record/record_tag.png") no-repeat right;
+    background: url("http://yyb-oss.universal-space.cn/imgs/record/record_tag.png") no-repeat 100%;
     background-size: auto 100%;
     height: 58rpx;
     line-height: 58rpx;
-    color: #004AFF;
+    color: #004aff;
     font-size: 24rpx;
     padding-left: 20rpx;
     padding-right: 70rpx;
@@ -497,6 +495,6 @@ page {
 
 .latest-record .score .Merriweather {
     font-size: 80rpx;
-    color: #316CFE;
-    text-shadow: 1rpx 3rpx 10rpx rgba(49,108,254,0.3);
+    color: #316cfe;
+    text-shadow: 1rpx 3rpx 10rpx rgba(49,108,254,.3);
 }

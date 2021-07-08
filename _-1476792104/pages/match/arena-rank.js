@@ -1,131 +1,104 @@
-function _interopRequireDefault(e) {
-    return e && e.__esModule ? e : {
-        default: e
-    };
-}
-
-function _asyncToGenerator(e) {
-    return function() {
-        var t = e.apply(this, arguments);
-        return new Promise(function(e, n) {
-            function a(r, o) {
-                try {
-                    var i = t[r](o), s = i.value;
-                } catch (e) {
-                    return void n(e);
-                }
-                if (!i.done) return Promise.resolve(s).then(function(e) {
-                    a("next", e);
-                }, function(e) {
-                    a("throw", e);
-                });
-                e(s);
+!function() {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+        value: !0
+    });
+    var e = function() {
+        function e(e, t) {
+            for (var n = 0; n < t.length; n++) {
+                var a = t[n];
+                a.enumerable = a.enumerable || !1, a.configurable = !0, "value" in a && (a.writable = !0), 
+                Object.defineProperty(e, a.key, a);
             }
-            return a("next");
-        });
-    };
-}
-
-function _classCallCheck(e, t) {
-    if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-}
-
-function _possibleConstructorReturn(e, t) {
-    if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    return !t || "object" != typeof t && "function" != typeof t ? e : t;
-}
-
-function _inherits(e, t) {
-    if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
-    e.prototype = Object.create(t && t.prototype, {
-        constructor: {
-            value: e,
-            enumerable: !1,
-            writable: !0,
-            configurable: !0
         }
-    }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
-}
-
-Object.defineProperty(exports, "__esModule", {
-    value: !0
-});
-
-var _createClass = function() {
-    function e(e, t) {
-        for (var n = 0; n < t.length; n++) {
-            var a = t[n];
-            a.enumerable = a.enumerable || !1, a.configurable = !0, "value" in a && (a.writable = !0), 
-            Object.defineProperty(e, a.key, a);
-        }
+        return function(t, n, a) {
+            return n && e(t.prototype, n), a && e(t, a), t;
+        };
+    }(), t = o(require("./../../npm/wepy/lib/wepy.js")), n = o(require("./../../components/match-statusbar.js")), a = o(require("./../../utils/konami-api.js")), r = (o(require("./../../components/custom-dialog.js")), 
+    o(require("./../../mixins/user-mixin.js")));
+    function o(e) {
+        return e && e.__esModule ? e : {
+            default: e
+        };
     }
-    return function(t, n, a) {
-        return n && e(t.prototype, n), a && e(t, a), t;
-    };
-}(), _wepy = require("./../../npm/wepy/lib/wepy.js"), _wepy2 = _interopRequireDefault(_wepy), _matchStatusbar = require("./../../components/match-statusbar.js"), _matchStatusbar2 = _interopRequireDefault(_matchStatusbar), _konamiApi = require("./../../utils/konami-api.js"), _konamiApi2 = _interopRequireDefault(_konamiApi), _customDialog = require("./../../components/custom-dialog.js"), _customDialog2 = _interopRequireDefault(_customDialog), _userMixin = require("./../../mixins/user-mixin.js"), _userMixin2 = _interopRequireDefault(_userMixin), arenaRank = function(e) {
-    function t() {
-        var e, n, a, r;
-        _classCallCheck(this, t);
-        for (var o = arguments.length, i = Array(o), s = 0; s < o; s++) i[s] = arguments[s];
-        return n = a = _possibleConstructorReturn(this, (e = t.__proto__ || Object.getPrototypeOf(t)).call.apply(e, [ this ].concat(i))), 
-        a.config = {
-            navigationStyle: "custom"
-        }, a.$repeat = {}, a.$props = {
-            statusbar: {
-                title: "ARENA大赛排行榜",
-                leftIcon: "true"
-            }
-        }, a.$events = {}, a.components = {
-            statusbar: _matchStatusbar2.default
-        }, a.mixins = [ _userMixin2.default ], a.data = {
-            showAlert: !1,
-            alertTxt: "",
-            eventId: "",
-            rankList: [],
-            rankInfo: null,
-            eventDetail: "",
-            canLoadMore: !0,
-            pageNo: 1,
-            pageSize: 10
-        }, a.methods = {}, r = n, _possibleConstructorReturn(a, r);
+    function i(e, t) {
+        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
     }
-    return _inherits(t, e), _createClass(t, [ {
-        key: "onLoad",
-        value: function(e) {
-            this.eventId = e.eventId;
-        }
-    }, {
-        key: "onShow",
-        value: function() {
-            this.getEventRank();
-        }
-    }, {
-        key: "onReachBottom",
-        value: function() {
-            this.canLoadMore && (this.pageNo++, this.getEventRank());
-        }
-    }, {
-        key: "onShareAppMessage",
-        value: function(e) {
-            return {
-                title: "关注游艺宝，发现更多精彩",
-                path: "/pages/index/index",
-                imageUrl: "/assets/imgs/share.png",
-                success: function(e) {
-                    console.log("转发成功！");
-                },
-                fail: function(e) {
-                    return console.log(e.errMsg);
+    function s(e, t) {
+        if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return !t || "object" != typeof t && "function" != typeof t ? e : t;
+    }
+    var u = function(t) {
+        function o() {
+            var e, t, a;
+            i(this, o);
+            for (var u = arguments.length, c = Array(u), l = 0; l < u; l++) c[l] = arguments[l];
+            return t = a = s(this, (e = o.__proto__ || Object.getPrototypeOf(o)).call.apply(e, [ this ].concat(c))), 
+            a.config = {
+                navigationStyle: "custom"
+            }, a.$repeat = {}, a.$props = {
+                statusbar: {
+                    title: "ARENA大赛排行榜",
+                    leftIcon: "true"
                 }
-            };
+            }, a.$events = {}, a.components = {
+                statusbar: n.default
+            }, a.mixins = [ r.default ], a.data = {
+                showAlert: !1,
+                alertTxt: "",
+                eventId: "",
+                rankList: [],
+                rankInfo: null,
+                eventDetail: "",
+                canLoadMore: !0,
+                pageNo: 1,
+                pageSize: 10
+            }, a.methods = {}, s(a, t);
         }
-    }, {
-        key: "getEventRank",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
+        var u, c;
+        return function(e, t) {
+            if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
+            e.prototype = Object.create(t && t.prototype, {
+                constructor: {
+                    value: e,
+                    enumerable: !1,
+                    writable: !0,
+                    configurable: !0
+                }
+            }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+        }(o, t), e(o, [ {
+            key: "onLoad",
+            value: function(e) {
+                this.eventId = e.eventId;
             }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
+        }, {
+            key: "onShow",
+            value: function() {
+                this.getEventRank();
+            }
+        }, {
+            key: "onReachBottom",
+            value: function() {
+                this.canLoadMore && (this.pageNo++, this.getEventRank());
+            }
+        }, {
+            key: "onShareAppMessage",
+            value: function(e) {
+                return {
+                    title: "关注游艺宝，发现更多精彩",
+                    path: "/pages/index/index",
+                    imageUrl: "/assets/imgs/share.png",
+                    success: function(e) {
+                        console.log("转发成功！");
+                    },
+                    fail: function(e) {
+                        return console.log(e.errMsg);
+                    }
+                };
+            }
+        }, {
+            key: "getEventRank",
+            value: (u = regeneratorRuntime.mark(function e() {
                 var t, n;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
@@ -134,10 +107,10 @@ var _createClass = function() {
                             pageNo: this.pageNo,
                             pageSize: this.pageSize,
                             eventId: this.eventId
-                        }, e.next = 3, _konamiApi2.default.eventRank(t);
+                        }, e.next = 3, a.default.eventRank(t);
 
                       case 3:
-                        n = e.sent, 1 != n.code ? (this.showAlert = !0, this.alertTxt = n.message, this.$apply()) : (this.eventDetail = n.data.eventDetail, 
+                        1 != (n = e.sent).code ? (this.showAlert = !0, this.alertTxt = n.message, this.$apply()) : (this.eventDetail = n.data.eventDetail, 
                         0 === Object.keys(n.data.rankInfo).length ? this.rankInfo = null : this.rankInfo = n.data.rankInfo, 
                         (!n.data.rankList || n.data.rankList.length < this.pageSize) && (this.canLoadMore = !1), 
                         1 == this.pageNo ? this.rankList = n.data.rankList : this.rankList = this.rankList.concat(n.data.rankList), 
@@ -148,10 +121,27 @@ var _createClass = function() {
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    } ]), t;
-}(_wepy2.default.page);
-
-Page(require("./../../npm/wepy/lib/wepy.js").default.$createPage(arenaRank, "pages/match/arena-rank"));
+            }), c = function() {
+                var e = u.apply(this, arguments);
+                return new Promise(function(t, n) {
+                    return function a(r, o) {
+                        try {
+                            var i = e[r](o), s = i.value;
+                        } catch (e) {
+                            return void n(e);
+                        }
+                        if (!i.done) return Promise.resolve(s).then(function(e) {
+                            a("next", e);
+                        }, function(e) {
+                            a("throw", e);
+                        });
+                        t(s);
+                    }("next");
+                });
+            }, function() {
+                return c.apply(this, arguments);
+            })
+        } ]), o;
+    }(t.default.page);
+    Page(require("./../../npm/wepy/lib/wepy.js").default.$createPage(u, "pages/match/arena-rank"));
+}();

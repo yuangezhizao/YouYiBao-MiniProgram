@@ -1,0 +1,250 @@
+.bg-183 {
+    z-index: 9;
+}
+
+.statusBar {
+    position: relative;
+    z-index: 99;
+}
+
+.icon-group,.statusBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64rpx;
+}
+
+.icon-group {
+    position: fixed;
+    left: 0;
+    width: 174rpx;
+    background-color: rgba(0,0,0,.2);
+    border-radius: 35rpx;
+    margin-left: 30rpx;
+    border: 1rpx solid hsla(0,0%,98%,.3);
+    z-index: 9999!important;
+}
+
+.icon-group .line {
+    width: 3rpx;
+    height: 32rpx;
+    background: hsla(0,0%,98%,.3);
+}
+
+.icon-group .icon {
+    width: 38rpx;
+    height: 38rpx;
+    padding: 10rpx 20rpx;
+}
+
+page {
+    background: #f2f9ff;
+}
+
+.navbar {
+    flex: none;
+    display: flex;
+    width: 100%;
+    margin: auto;
+    background: #fff;
+    padding-top: 100rpx;
+}
+
+.navbar .item {
+    position: relative;
+    flex: auto;
+    text-align: center;
+    line-height: 50rpx;
+    font-size: 28rpx;
+    color: #999;
+}
+
+.navbar .item.active {
+    color: #2660e7;
+}
+
+.navbar .item.active:after {
+    content: "";
+    display: block;
+    height: 6rpx;
+    width: 15%;
+    margin: 10rpx auto;
+    background: #2660e7;
+    border-radius: 8rpx;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    width: 690rpx;
+    height: 80rpx;
+    border-radius: 40rpx;
+    background-color: #e9eff9;
+    margin: 41rpx auto 28rpx;
+}
+
+.search-box .icon {
+    width: 48rpx;
+    height: 48rpx;
+    background: url("http://yyb-oss.universal-space.cn/imgs/mine/icon_search.png");
+    background-size: 100% 100%;
+    margin-right: 24rpx;
+    margin-left: 30rpx;
+}
+
+.search-box input {
+    width: 550rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    color: #abb3ba;
+    font-size: 28rpx;
+    margin-left: 30rpx;
+}
+
+.music-list {
+    padding: 30rpx;
+}
+
+.music-list .music-item {
+    display: flex;
+    flex-direction: column;
+    min-height: 220rpx;
+    border-radius: 20rpx;
+    background-color: #fff;
+    box-shadow: 0rpx 8rpx 16rpx 0rpx rgba(17,85,233,.1);
+    box-sizing: border-box;
+    margin-bottom: 20rpx;
+}
+
+.music-list .music-item.lock .avatar {
+    position: relative;
+}
+
+.music-list .music-item.lock .avatar:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+    left: 0;
+    top: 0;
+    background: url("http://yyb-oss.universal-space.cn/imgs/record/icon_record_lock.png") no-repeat 50% rgba(0,0,0,.5);
+    background-size: 80rpx 80rpx;
+    z-index: 2;
+}
+
+.music-list .music-item .music-item-top {
+    display: flex;
+    margin: 40rpx 0 24rpx 15rpx;
+}
+
+.music-list .music-item .music-item-top .avatar {
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 12rpx;
+    border: 5rpx solid #fff;
+    overflow: hidden;
+    margin-right: 20rpx;
+}
+
+.music-list .music-item .music-item-top .avatar image {
+    width: 100%;
+    height: 100%;
+}
+
+.music-list .music-item .music-item-top .info .col {
+    display: flex;
+    font-size: 24rpx;
+    color: #666;
+    align-items: center;
+    line-height: 40rpx;
+}
+
+.music-list .music-item .music-item-top .info .col image {
+    margin-right: 5rpx;
+    width: 35rpx;
+    height: 35rpx;
+}
+
+.music-list .music-item .music-item-top .info .col text {
+    opacity: .8;
+    width: 345rpx;
+}
+
+.music-list .music-item .music-item-top .num {
+    width: 70rpx;
+    max-width: 70rpx;
+    text-align: center;
+    margin-right: 10rpx;
+    line-height: 150rpx;
+}
+
+.music-list .music-item:nth-child(1) .num {
+    color: #dbbb81;
+}
+
+.music-list .music-item:nth-child(2) .num {
+    color: #999;
+}
+
+.music-list .music-item:nth-child(3) .num {
+    color: #d5a187;
+}
+
+.music-list .music-item:nth-child(-n+9) .num {
+    font-size: 80rpx;
+}
+
+.music-list .music-item:nth-child(-n+99):nth-child(n+10) .num {
+    font-size: 60rpx;
+}
+
+.music-list .music-item:nth-child(-n+999):nth-child(n+100) .num {
+    font-size: 40rpx;
+}
+
+.music-list .music-item .music-rhomboid {
+    width: 421rpx;
+    height: 38rpx;
+    background-image: url("http://yyb-oss.universal-space.cn/imgs/wacca/icon_rhomboid.png");
+    background-size: 100% 100%;
+    margin-left: 90rpx;
+    position: relative;
+}
+
+.music-list .music-item .music-rhomboid text:nth-child(1) {
+    position: absolute;
+    left: 18%;
+}
+
+.music-list .music-item .music-rhomboid text:nth-child(2) {
+    position: absolute;
+    left: 50%;
+}
+
+.music-list .music-item .music-rhomboid text:nth-child(3) {
+    position: absolute;
+    left: 82%;
+}
+
+.music-list .music-item .music-bottom {
+    width: 100%;
+    height: 93rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 70rpx 0 90rpx;
+    box-sizing: border-box;
+    margin-top: 10rpx;
+    position: relative;
+}
+
+.music-list .music-item .music-bottom::before {
+    content: "";
+    width: 600rpx;
+    height: 2rpx;
+    background: hsla(0,0%,84.7%,.7);
+    position: absolute;
+    right: 0;
+    top: 0;
+}

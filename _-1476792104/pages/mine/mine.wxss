@@ -31,8 +31,9 @@
 .confirm-box .content {
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: center;
-    margin: 130rpx 0 40rpx 0;
+    margin: 130rpx 0 40rpx;
     text-align: center;
 }
 
@@ -42,7 +43,7 @@
     border-radius: 55rpx;
     text-align: center;
     line-height: 96rpx;
-    box-shadow: 0 8rpx 16rpx 0 rgba(53,131,254,0.22);
+    box-shadow: 0rpx 8rpx 16rpx 0rpx rgba(53,131,254,.22);
 }
 
 .confirm-box .button_group {
@@ -55,16 +56,16 @@
     width: 210rpx;
     height: 90rpx;
     border-radius: 55rpx;
-    background: linear-gradient(45deg,#9A9A9A,#575757);
+    background: linear-gradient(45deg,#9a9a9a,#575757);
     text-align: center;
     line-height: 90rpx;
-    box-shadow: 0 8rpx 16rpx 0 rgba(161,161,161,0.22);
+    box-shadow: 0rpx 8rpx 16rpx 0rpx hsla(0,0%,63.1%,.22);
     margin: 0 15rpx;
 }
 
 .confirm-box .button_group .button:last-child {
-    background: linear-gradient(45deg,#3CA6FD,#2F5FFF);
-    box-shadow: 0 8rpx 16rpx 0 rgba(53,131,254,0.22);
+    background: linear-gradient(45deg,#3ca6fd,#2f5fff);
+    box-shadow: 0rpx 8rpx 16rpx 0rpx rgba(53,131,254,.22);
 }
 
 ./components/scan.wxssrpx.tabbar_box {
@@ -77,7 +78,7 @@
     z-index: 999;
     width: 100%;
     height: 98rpx;
-    box-shadow: 0 -4rpx 25rpx 0 rgba(0,0,0,0.08);
+    box-shadow: 0rpx -4rpx 25rpx 0rpx rgba(0,0,0,.08);
 }
 
 .tabbar_box.iphoneX-height {
@@ -119,8 +120,6 @@
 .special-wrapper {
     position: absolute;
     top: -50rpx;
-    width: 120rpx;
-    height: 120rpx;
     border-radius: 50%;
     border-top: 2rpx solid #f2f2f3;
     background-color: #fff;
@@ -128,7 +127,7 @@
     box-sizing: border-box;
 }
 
-.special-wrapper .tabbar_icon {
+.special-wrapper,.special-wrapper .tabbar_icon {
     width: 120rpx;
     height: 120rpx;
 }
@@ -139,7 +138,7 @@
 }
 
 page {
-    background: #F2F9FF;
+    background: #f2f9ff;
     padding-bottom: 200rpx;
 }
 
@@ -153,10 +152,9 @@ page {
     width: 690rpx;
     height: 260rpx;
     border-radius: 20rpx;
-    margin: 0 auto;
-    margin-top: 50rpx;
+    margin: 50rpx auto 0;
     background-color: #fff;
-    box-shadow: 0 4rpx 20rpx 0 rgba(85,145,252,0.3);
+    box-shadow: 0rpx 4rpx 20rpx 0rpx rgba(85,145,252,.3);
     position: relative;
     background: url("http://yyb-oss.universal-space.cn/imgs/card_vip.png");
     background-size: 100% 100%;
@@ -168,8 +166,8 @@ page {
     border-radius: 50%;
     background: #ccc;
     margin: 0 30rpx;
-    border: 4rpx solid #347AFE;
-    box-shadow: 0 8rpx 10rpx 0 rgba(53,131,254,0.1);
+    border: 4rpx solid #347afe;
+    box-shadow: 0rpx 8rpx 10rpx 0rpx rgba(53,131,254,.1);
 }
 
 .white-bg .user-info .active {
@@ -190,8 +188,8 @@ page {
     align-items: center;
     justify-content: center;
     border-radius: 60rpx;
-    box-shadow: 0 8rpx 20rpx 0 rgba(53,131,254,0.22);
-    background: linear-gradient(45deg,#3CA6FD,#2F5FFF);
+    box-shadow: 0rpx 8rpx 20rpx 0rpx rgba(53,131,254,.22);
+    background: linear-gradient(45deg,#3ca6fd,#2f5fff);
     position: relative;
 }
 
@@ -219,11 +217,11 @@ page {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 40rpx 0 15rpx 0;
+    margin: 40rpx 0 15rpx;
 }
 
 .white-bg .wealth .wealth-title {
-    color: #3788FE;
+    color: #3788fe;
 }
 
 .white-bg .wealth .wealth-list {
@@ -263,7 +261,7 @@ page {
     height: 230rpx;
     background: #fff;
     border-radius: 20rpx;
-    box-shadow: 0 6rpx 10rpx 4rpx #e9f1ff;
+    box-shadow: 0rpx 6rpx 10rpx 4rpx #e9f1ff;
     display: flex;
     justify-content: space-around;
 }
@@ -288,7 +286,7 @@ page {
 }
 
 .game-medal .game-medal-bottom .medal-type .medal-image.disabled:after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     top: 0;
@@ -299,19 +297,19 @@ page {
 }
 
 .game-medal .game-medal-bottom .medal-type .v3 {
-    background: linear-gradient(to right,#FFD74C,#FF9014);
+    background: linear-gradient(90deg,#ffd74c,#ff9014);
 }
 
 .game-medal .game-medal-bottom .medal-type .v2 {
-    background: linear-gradient(to right,#9EA4B4,#626880);
+    background: linear-gradient(90deg,#9ea4b4,#626880);
 }
 
 .game-medal .game-medal-bottom .medal-type .v1 {
-    background: linear-gradient(to right,#C8BCC6,#A48D9F);
+    background: linear-gradient(90deg,#c8bcc6,#a48d9f);
 }
 
 .game-medal .game-medal-bottom .medal-type .v0 {
-    background: #BBBBBB;
+    background: #bbb;
 }
 
 .card-package {
@@ -332,17 +330,16 @@ page {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 302rpx;
     background: #fff;
     border-radius: 20rpx;
-    box-shadow: 0 6rpx 10rpx 4rpx #e9f1ff;
+    box-shadow: 0rpx 6rpx 10rpx 4rpx #e9f1ff;
 }
 
 .card-package .card-package-bottom .card-package-list {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1rpx solid #E6E8F0;
+    border-bottom: 1rpx solid #e6e8f0;
     height: 110rpx;
     padding: 0 33rpx;
 }

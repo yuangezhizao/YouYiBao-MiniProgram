@@ -1,0 +1,67 @@
+<view>
+    <view>
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$customStatusbar$menuButtonTop+60}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$customStatusbar$menuButtonTop}}px;">
+            <image bindtap="$customStatusbar$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$customStatusbar$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$customStatusbar$menuButtonTop}}px;">
+            <text class="title">{{$customStatusbar$title}}</text>
+        </view>
+    </view>
+    <view class="navbar">
+        <text bindtap="navbarTap" class="item fwb {{currentTab==index?'active':''}}" data-index="{{index}}" wx:for="{{navbar}}" wx:key="unique">{{item}}</text>
+    </view>
+    <view class="search-box">
+        <input bindinput="getTrackName" placeholder="请输入曲目" type="text" value="{{trackName}}"></input>
+        <view bindtap="searchTrack" class="icon"></view>
+    </view>
+    <view class="music-list">
+        <view bindtap="trackRank" class="music-item {{item.isLock==1?'lock':''}}" data-wpytrackrank-a="{{item.musicId}}" wx:for="{{trackList}}" wx:key="key">
+            <view class="music-item-top">
+                <view class="num Merriweather c_26">{{index+1}}</view>
+                <view class="avatar">
+                    <image src="{{item.musicCover}}"></image>
+                </view>
+                <view class="info">
+                    <view class="col c_99">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_song_blue.png"></image>
+                        <text class="ellipsis-1">歌曲名称：{{item.musicName}}</text>
+                    </view>
+                    <view class="col c_99">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_number  of  people small  blue.png"></image>
+                        <text class="ellipsis-1">艺人名称：{{item.artistName}}</text>
+                    </view>
+                    <view class="col c_99">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_pass_small_ blue.png"></image>
+                        <text>解锁次数：{{item.playCount}}</text>
+                    </view>
+                    <view class="col c_99">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_unlock_small_blue.png"></image>
+                        <text>解锁人数：{{item.userCount}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="music-rhomboid f28 c_ff">
+                <text>{{item.normalLevel}}</text>
+                <text>{{item.hardLevel}}</text>
+                <text>{{item.expertLevel}}</text>
+            </view>
+            <view class="music-bottom f28 c_77">
+                <text>N:{{item.normalCount}}</text>
+                <text>H:{{item.hardCount}}</text>
+                <text>EX:{{item.expertCount}}</text>
+            </view>
+        </view>
+        <view class="btm-tips" wx:if="{{trackList==''&&musicGrade==1&&trackName==''}}">
+            <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 暂无游玩曲目
+      </view>
+        <view class="btm-tips" wx:if="{{trackList==''&&musicGrade==2&&trackName==''}}">
+            <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 暂无未游玩曲目
+      </view>
+        <view class="btm-tips" wx:if="{{trackList==''&&trackName!=''}}">
+            <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 暂无该曲目
+      </view>
+    </view>
+</view>

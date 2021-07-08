@@ -13,12 +13,17 @@
     </view>
     <view class="record-list">
         <view class="record-item" wx:if="{{exchangeList!=''}}" wx:for="{{exchangeList}}">
-            <text class="f26 c_99">兑 换 码：{{item.couponNo}}
+            <text class="f26 c_99" wx:if="{{type!='1'}}">兑 换 码：{{item.couponNo}}
           机台名称：{{item.productType}}
           会员类型：{{item.memberTypeId}}
           卡券价值：{{item.memberTypePoint}} e-am点
           兑换时间：{{item.exchangeDate}}
           有效期至：{{item.endDate}}</text>
+            <text class="f26 c_99" wx:else>兑 换 码：{{item.code}} 
+          卡券名称：{{item.name}}
+          卡券类型：{{item.exTicketTypeName}}
+          发放门店：{{item.storeName}}
+          兑换时间：{{item.exchangeTime}}</text>
         </view>
         <view class="btm-tips" wx:if="{{exchangeList==''}}">
             <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 暂无记录

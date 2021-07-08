@@ -12,22 +12,27 @@
     </view>
     <view class="login">
         <image class="login-logo" src="http://yyb-oss.universal-space.cn/imgs/login-logo.png"></image>
-        <view bindtap="quickLogin" class="quick-login bg_blue">
+        <Button bindtap="quickLogin" class="quick-login bg_blue">
             <view class="f34 c_ff txt" slot="content">微信一键登录</view>
-        </view>
+        </Button>
         <view class="login-agreement f28 c_bb">登录代表您同意<text bindtap="goAgreement" class="c_37">《游艺宝用户协议》</text>
         </view>
         <view bindtap="mobileLogin" class="f28 c_37">手机账号登录 ></view>
     </view>
     <view>
         <view class="{{$userDialog$isShow?'back_warp':'back_warp hide'}}">
-            <view class="confirm-box both_center">
+            <view class="confirm-box both_center" wx:if="{{$userDialog$type!='lilybox'}}">
                 <image bindtap="$userDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
                 <view class="top">
-                    <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
-                    <text class="title f34 c_ff r">{{$userDialog$title}}</text>
+                    <image class="bg" src="{{$userDialog$isWacca2==$userDialog$false?'http://yyb-oss.universal-space.cn/imgs/bg_3.png':'http://yyb-oss.universal-space.cn/imgs/wacca2/common/dialog_bg.png'}}" wx:if="{{$userDialog$type!='wacca2-charge'}}"></image>
+                    <text class="title f34 {{$userDialog$type!='wacca2-charge'?'c_ff':'c_66'}} r">{{$userDialog$title}}</text>
                 </view>
-                <view class="f34 content c_99">{{$userDialog$content}}</view>
+                <view class="f34 content c_99">
+                    <text class="f36 {{$userDialog$type=='wacca2-charge'?'c_FF1':'c_33'}}" wx:if="{{$userDialog$subTitle!=''}}">{{$userDialog$subTitle}}</text>
+                    <image src="{{$userDialog$image}}" style="width:140px;height:38.5px" wx:if="{{$userDialog$image!=''}}"></image>
+                    <text class="f26 c_66" wx:if="{{$userDialog$desc!=''}}">{{$userDialog$desc}}</text>
+                    <text>{{$userDialog$content}}</text>
+                </view>
                 <view class="button_group" wx:if="{{$userDialog$type=='confirm'}}">
                     <view bindtap="$userDialog$confirm" class="button">
                         <text class="f30 c_ff">确定</text>
@@ -35,18 +40,37 @@
                 </view>
                 <button bindgetuserinfo="$userDialog$getAuthHandle" class="f34 btn_group_cus bg_blue c_ff" openType="getUserInfo" wx:if="{{$userDialog$type=='getAuth'}}">点击授权</button>
                 <button bindgetphonenumber="$userDialog$getPhoneNumber" class="f34 btn_group_cus bg_blue c_ff" openType="getPhoneNumber" wx:if="{{$userDialog$type=='phoneAuth'}}">点击授权</button>
+                <image bindtap="$userDialog$confirm" src="{{$userDialog$sureImage}}" style="width:{{$userDialog$type=='wacca2'?$userDialog$screenWidth*0.61:150}}px;height:{{$userDialog$type=='wacca2'?$userDialog$screenWidth*0.144:38}}px" wx:if="{{$userDialog$type=='wacca2'||$userDialog$type=='wacca2-charge'}}"></image>
+            </view>
+            <view class="confirm-box both_center" style="padding: 20px 15px;justify-content: start" wx:else>
+                <image bindtap="$userDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+                <view style="margin-top:10px;width: 100%">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/luck_draw.png" style="width: 100%;height: 46.5px"></image>
+                </view>
+                <view class="flex-column flex-between" style="margin-top:8px;height: 30px;">
+                    <text class="f26 c_66">{{$userDialog$title}}</text>
+                    <text class="f26" style="color: #F11A7D">{{$userDialog$subTitle}}</text>
+                </view>
+                <view style="margin-top:20px;">
+                    <image bindtap="$userDialog$confirm" src="http://yyb-oss.universal-space.cn/imgs/wacca2/lilybox/open.png" style="width: 124px;height: 45px"></image>
+                </view>
             </view>
         </view>
     </view>
     <view>
         <view class="{{$phoneDialog$isShow?'back_warp':'back_warp hide'}}">
-            <view class="confirm-box both_center">
+            <view class="confirm-box both_center" wx:if="{{$phoneDialog$type!='lilybox'}}">
                 <image bindtap="$phoneDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
                 <view class="top">
-                    <image class="bg" src="http://yyb-oss.universal-space.cn/imgs/bg_3.png"></image>
-                    <text class="title f34 c_ff r">{{$phoneDialog$title}}</text>
+                    <image class="bg" src="{{$phoneDialog$isWacca2==$phoneDialog$false?'http://yyb-oss.universal-space.cn/imgs/bg_3.png':'http://yyb-oss.universal-space.cn/imgs/wacca2/common/dialog_bg.png'}}" wx:if="{{$phoneDialog$type!='wacca2-charge'}}"></image>
+                    <text class="title f34 {{$phoneDialog$type!='wacca2-charge'?'c_ff':'c_66'}} r">{{$phoneDialog$title}}</text>
                 </view>
-                <view class="f34 content c_99">{{$phoneDialog$content}}</view>
+                <view class="f34 content c_99">
+                    <text class="f36 {{$phoneDialog$type=='wacca2-charge'?'c_FF1':'c_33'}}" wx:if="{{$phoneDialog$subTitle!=''}}">{{$phoneDialog$subTitle}}</text>
+                    <image src="{{$phoneDialog$image}}" style="width:140px;height:38.5px" wx:if="{{$phoneDialog$image!=''}}"></image>
+                    <text class="f26 c_66" wx:if="{{$phoneDialog$desc!=''}}">{{$phoneDialog$desc}}</text>
+                    <text>{{$phoneDialog$content}}</text>
+                </view>
                 <view class="button_group" wx:if="{{$phoneDialog$type=='confirm'}}">
                     <view bindtap="$phoneDialog$confirm" class="button">
                         <text class="f30 c_ff">确定</text>
@@ -54,6 +78,20 @@
                 </view>
                 <button bindgetuserinfo="$phoneDialog$getAuthHandle" class="f34 btn_group_cus bg_blue c_ff" openType="getUserInfo" wx:if="{{$phoneDialog$type=='getAuth'}}">点击授权</button>
                 <button bindgetphonenumber="$phoneDialog$getPhoneNumber" class="f34 btn_group_cus bg_blue c_ff" openType="getPhoneNumber" wx:if="{{$phoneDialog$type=='phoneAuth'}}">点击授权</button>
+                <image bindtap="$phoneDialog$confirm" src="{{$phoneDialog$sureImage}}" style="width:{{$phoneDialog$type=='wacca2'?$phoneDialog$screenWidth*0.61:150}}px;height:{{$phoneDialog$type=='wacca2'?$phoneDialog$screenWidth*0.144:38}}px" wx:if="{{$phoneDialog$type=='wacca2'||$phoneDialog$type=='wacca2-charge'}}"></image>
+            </view>
+            <view class="confirm-box both_center" style="padding: 20px 15px;justify-content: start" wx:else>
+                <image bindtap="$phoneDialog$close" class="close" src="http://yyb-oss.universal-space.cn/imgs/close.png"></image>
+                <view style="margin-top:10px;width: 100%">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/wacca2/firstpage/luck_draw.png" style="width: 100%;height: 46.5px"></image>
+                </view>
+                <view class="flex-column flex-between" style="margin-top:8px;height: 30px;">
+                    <text class="f26 c_66">{{$phoneDialog$title}}</text>
+                    <text class="f26" style="color: #F11A7D">{{$phoneDialog$subTitle}}</text>
+                </view>
+                <view style="margin-top:20px;">
+                    <image bindtap="$phoneDialog$confirm" src="http://yyb-oss.universal-space.cn/imgs/wacca2/lilybox/open.png" style="width: 124px;height: 45px"></image>
+                </view>
             </view>
         </view>
     </view>

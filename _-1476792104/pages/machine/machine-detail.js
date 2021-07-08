@@ -1,284 +1,298 @@
-function _interopRequireDefault(e) {
-    return e && e.__esModule ? e : {
-        default: e
-    };
-}
-
-function _asyncToGenerator(e) {
-    return function() {
-        var t = e.apply(this, arguments);
-        return new Promise(function(e, i) {
-            function a(n, s) {
-                try {
-                    var r = t[n](s), o = r.value;
-                } catch (e) {
-                    return void i(e);
-                }
-                if (!r.done) return Promise.resolve(o).then(function(e) {
-                    a("next", e);
-                }, function(e) {
-                    a("throw", e);
-                });
-                e(o);
+!function() {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+        value: !0
+    });
+    var e = function() {
+        function e(e, t) {
+            for (var i = 0; i < t.length; i++) {
+                var a = t[i];
+                a.enumerable = a.enumerable || !1, a.configurable = !0, "value" in a && (a.writable = !0), 
+                Object.defineProperty(e, a.key, a);
             }
-            return a("next");
-        });
-    };
-}
-
-function _classCallCheck(e, t) {
-    if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-}
-
-function _possibleConstructorReturn(e, t) {
-    if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    return !t || "object" != typeof t && "function" != typeof t ? e : t;
-}
-
-function _inherits(e, t) {
-    if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
-    e.prototype = Object.create(t && t.prototype, {
-        constructor: {
-            value: e,
-            enumerable: !1,
-            writable: !0,
-            configurable: !0
         }
-    }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
-}
-
-Object.defineProperty(exports, "__esModule", {
-    value: !0
-});
-
-var _createClass = function() {
-    function e(e, t) {
-        for (var i = 0; i < t.length; i++) {
-            var a = t[i];
-            a.enumerable = a.enumerable || !1, a.configurable = !0, "value" in a && (a.writable = !0), 
-            Object.defineProperty(e, a.key, a);
-        }
+        return function(t, i, a) {
+            return i && e(t.prototype, i), a && e(t, a), t;
+        };
+    }(), t = o(require("./../../npm/wepy/lib/wepy.js")), i = o(require("./../../utils/wechat.js")), a = o(require("./../../utils/api.js")), s = o(require("./../../utils/environment.js")), n = o(require("./../../mixins/user-mixin.js")), r = o(require("./../../components/custom-statusbar.js")), c = o(require("./../../components/custom-dialog.js"));
+    function o(e) {
+        return e && e.__esModule ? e : {
+            default: e
+        };
     }
-    return function(t, i, a) {
-        return i && e(t.prototype, i), a && e(t, a), t;
-    };
-}(), _wepy = require("./../../npm/wepy/lib/wepy.js"), _wepy2 = _interopRequireDefault(_wepy), _wechat = require("./../../utils/wechat.js"), _wechat2 = _interopRequireDefault(_wechat), _api = require("./../../utils/api.js"), _api2 = _interopRequireDefault(_api), _environment = require("./../../utils/environment.js"), _environment2 = _interopRequireDefault(_environment), _userMixin = require("./../../mixins/user-mixin.js"), _userMixin2 = _interopRequireDefault(_userMixin), _customStatusbar = require("./../../components/custom-statusbar.js"), _customStatusbar2 = _interopRequireDefault(_customStatusbar), _customDialog = require("./../../components/custom-dialog.js"), _customDialog2 = _interopRequireDefault(_customDialog), machineDetail = function(e) {
-    function t() {
-        var e, i, a, n;
-        _classCallCheck(this, t);
-        for (var s = arguments.length, r = Array(s), o = 0; o < s; o++) r[o] = arguments[o];
-        return i = a = _possibleConstructorReturn(this, (e = t.__proto__ || Object.getPrototypeOf(t)).call.apply(e, [ this ].concat(r))), 
-        a.config = {
-            navigationStyle: "custom"
-        }, a.$repeat = {}, a.$props = {
-            customStatusbar: {
-                title: "机台详情"
-            },
-            customDialog: {
-                "xmlns:v-bind": "",
-                "v-bind:isShow.sync": "showAlert",
-                title: "温馨提示",
-                "v-bind:content.sync": "alertTxt",
-                "xmlns:v-on": ""
-            }
-        }, a.$events = {
-            customDialog: {
-                "v-on:confirm": "confirm"
-            }
-        }, a.components = {
-            customStatusbar: _customStatusbar2.default,
-            customDialog: _customDialog2.default
-        }, a.mixins = [ _userMixin2.default ], a.data = {
-            serialNo: "",
-            tag: "",
-            cionPay: !1,
-            pricePay: !1,
-            cionPackagePay: !1,
-            pricePackagePay: !1,
-            machineDetail: "",
-            userAssets: "",
-            singlePrice: 0,
-            signleCoin: 0,
-            payPrice: 0,
-            payCoin: 0,
-            playTimes: 1,
-            payType: 4,
-            isFree: !1,
-            isLottery: !1,
-            showAlert: !1,
-            alertTxt: "",
-            coinCurrentTab: 0,
-            priceCurrentTab: 0,
-            machinePackageList: [],
-            packageTotalCoin: 0,
-            packagePlayTimes: 0,
-            packageId: 0,
-            packagePrice: 0,
-            pricePlayTimes: 0,
-            showGuide: !1,
-            isJackpot: !1,
-            firstShowGuide: !1,
-            showTips: !1,
-            prizeList: [],
-            templateIdList: []
-        }, a.computed = {}, a.methods = {
-            rechargeCoin: function() {
-                wx.navigateTo({
-                    url: "/pages/machine/recharge-coin?coin=" + this.userAssets.coin
-                });
-            },
-            payCoin: function() {
-                if (this.userAssets.coin <= 0) return void wx.showToast({
-                    title: "游点不足，请充值",
-                    icon: "none"
-                });
-                var e = this;
-                wx.requestSubscribeMessage({
-                    tmplIds: e.templateIdList,
-                    success: function(t) {
-                        var i = [];
-                        for (var a in t) "accept" == t[a] && i.push(a);
-                        e.subscribeTemplate(i);
-                    },
-                    fail: function(e) {
-                        console.error("这是订阅消息err", e);
-                    },
-                    complete: function() {
-                        null != e.machinePackageList ? e.cionPackagePay = !0 : e.cionPay = !0, e.payType = 4, 
-                        e.$apply();
+    function u(e) {
+        return function() {
+            var t = e.apply(this, arguments);
+            return new Promise(function(e, i) {
+                return function a(s, n) {
+                    try {
+                        var r = t[s](n), c = r.value;
+                    } catch (e) {
+                        return void i(e);
                     }
-                });
-            },
-            close: function() {
-                this.cionPay = !1, this.pricePay = !1, this.playTimes = 1, this.payCoin = this.signleCoin, 
-                this.payPrice = this.singlePrice, this.cionPackagePay = !1, this.pricePackagePay = !1, 
-                this.showTips = !1;
-            },
-            add: function() {
-                this.playTimes++, this.payCoin = Math.ceil(Number(this.machineDetail.coinQty) * Number(this.playTimes) * Number(this.machineDetail.coinPrice) * Number(this.machineDetail.coinExchange) / 100);
-            },
-            down: function() {
-                if (this.playTimes <= 1) return void (this.playTimes = 1);
-                this.playTimes--, this.payCoin = Math.ceil(Number(this.machineDetail.coinQty) * Number(this.playTimes) * Number(this.machineDetail.coinPrice) * Number(this.machineDetail.coinExchange) / 100);
-            },
-            payPrice: function() {
-                var e = this;
-                wx.requestSubscribeMessage({
-                    tmplIds: e.templateIdList,
-                    success: function(t) {
-                        var i = [];
-                        for (var a in t) "accept" == t[a] && i.push(a);
-                        e.subscribeTemplate(i);
-                    },
-                    fail: function(e) {
-                        console.error("这是订阅消息err", e);
-                    },
-                    complete: function() {
-                        null != e.machinePackageList ? e.pricePackagePay = !0 : e.pricePay = !0, e.payType = 5, 
-                        e.$apply();
-                    }
-                });
-            },
-            add_1: function() {
-                this.playTimes++, this.payPrice = Number(this.machineDetail.coinQty) * Number(this.playTimes) * Number(this.machineDetail.coinPrice) / 100;
-            },
-            down_1: function() {
-                if (this.playTimes <= 1) return void (this.playTimes = 1);
-                this.playTimes--, this.payPrice = Number(this.machineDetail.coinQty) * Number(this.playTimes) * Number(this.machineDetail.coinPrice) / 100;
-            },
-            confirmPay: function() {
-                this.createOrder();
-            },
-            payFree: function() {
-                console.log("点了免费体验");
-                var e = this;
-                wx.requestSubscribeMessage({
-                    tmplIds: e.templateIdList,
-                    success: function(e) {
-                        var t = [];
-                        for (var i in e) "accept" == e[i] && t.push(i);
-                    },
-                    fail: function(e) {
-                        console.error("这是订阅消息err", e);
-                    },
-                    complete: function() {
-                        e.subscribeTemplate(newTemplateIdList), e.payType = 0, e.createOrder(), e.$apply();
-                    }
-                });
-            },
-            confirm: function() {
-                this.showAlert = !1;
-            },
-            cionPackage: function(e, t) {
-                this.coinCurrentTab = e, this.packageTotalCoin = t.totalCoin, this.packagePlayTimes = t.playTimes, 
-                this.packageId = t.id, this.playTimes = t.playTimes;
-            },
-            pricePackage: function(e, t) {
-                this.priceCurrentTab = e, this.packagePrice = t.price, this.pricePlayTimes = t.playTimes, 
-                this.packageId = t.id, this.playTimes = this.pricePlayTimes;
-            },
-            getCoinPlayTimes: function(e) {
-                this.playTimes = e.detail.value, this.payCoin = Math.ceil(Number(this.machineDetail.coinQty) * Number(this.playTimes) * Number(this.machineDetail.coinPrice) * Number(this.machineDetail.coinExchange) / 100);
-            },
-            getPricePlayTimes: function(e) {
-                this.playTimes = e.detail.value, this.payPrice = Number(this.machineDetail.coinQty) * Number(this.playTimes) * Number(this.machineDetail.coinPrice) / 100;
-            },
-            showGuide: function() {
-                this.showGuide = !0;
-            },
-            closeGuide: function() {
-                this.showGuide = !1, wx.setStorageSync("showGuide", !1);
-            },
-            showTips: function() {
-                if ("" != this.prizeList) return void (this.showTips = !0);
-                this.myEventDetail();
-            },
-            jackpotDetail: function() {
-                wx.navigateTo({
-                    url: "/pages/match/activity?eventId=" + this.machineDetail.lastEventId
-                }), this.showTips = !1;
-            }
-        }, a.events = {}, n = i, _possibleConstructorReturn(a, n);
+                    if (!r.done) return Promise.resolve(c).then(function(e) {
+                        a("next", e);
+                    }, function(e) {
+                        a("throw", e);
+                    });
+                    e(c);
+                }("next");
+            });
+        };
     }
-    return _inherits(t, e), _createClass(t, [ {
-        key: "onLoad",
-        value: function(e) {
-            console.log("机台信息", e), this.serialNo = e.serialNo, this.tag = e.tag, this.getTemplateIds();
-        }
-    }, {
-        key: "onShow",
-        value: function() {
-            this.firstShowGuide = wx.getStorageSync("showGuide");
-            wx.getStorageSync("token");
-            this.getMachineDetail();
-        }
-    }, {
-        key: "onHide",
-        value: function() {
-            wx.hideKeyboard();
-        }
-    }, {
-        key: "onShareAppMessage",
-        value: function(e) {
-            return {
-                title: "关注游艺宝，发现更多精彩",
-                path: "/pages/index/index",
-                imageUrl: "/assets/imgs/share.png",
-                success: function(e) {
-                    console.log("转发成功！");
+    function l(e, t) {
+        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+    }
+    function h(e, t) {
+        if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return !t || "object" != typeof t && "function" != typeof t ? e : t;
+    }
+    var p = function(t) {
+        function o() {
+            var e, t, i;
+            l(this, o);
+            for (var a = arguments.length, s = Array(a), u = 0; u < a; u++) s[u] = arguments[u];
+            return t = i = h(this, (e = o.__proto__ || Object.getPrototypeOf(o)).call.apply(e, [ this ].concat(s))), 
+            i.config = {
+                navigationStyle: "custom"
+            }, i.$repeat = {}, i.$props = {
+                customStatusbar: {
+                    title: "机台详情"
                 },
-                fail: function(e) {
-                    return console.log(e.errMsg);
+                customDialog: {
+                    "xmlns:v-bind": "",
+                    "v-bind:isShow.sync": "showSubscribe",
+                    title: "温馨提示",
+                    "v-bind:content.sync": "subscribeString",
+                    "xmlns:v-on": ""
                 }
-            };
+            }, i.$events = {
+                customDialog: {
+                    "v-on:confirm": "onSubscribe"
+                }
+            }, i.components = {
+                customStatusbar: r.default,
+                customDialog: c.default
+            }, i.mixins = [ n.default ], i.data = {
+                showSubscribe: !1,
+                subscribeString: "点击获取游戏成绩推送",
+                serialNo: "",
+                tag: "",
+                cionPay: !1,
+                pricePay: !1,
+                cionPackagePay: !1,
+                pricePackagePay: !1,
+                machineDetail: "",
+                userAssets: "",
+                singlePrice: 0,
+                signleCoin: 0,
+                payPrice: 0,
+                payCoin: 0,
+                playTimes: 1,
+                payType: 4,
+                isFree: !1,
+                isLottery: !1,
+                showAlert: !1,
+                alertTxt: "",
+                coinCurrentTab: 0,
+                priceCurrentTab: 0,
+                machinePackageList: [],
+                packageTotalCoin: 0,
+                packagePlayTimes: 0,
+                packageId: 0,
+                packagePrice: 0,
+                pricePlayTimes: 0,
+                showGuide: !1,
+                isJackpot: !1,
+                firstShowGuide: !1,
+                showTips: !1,
+                prizeList: [],
+                templateIdList: []
+            }, i.computed = {}, i.methods = {
+                rechargeCoin: function() {
+                    wx.navigateTo({
+                        url: "/pages/machine/recharge-coin?coin=" + this.userAssets.coin
+                    });
+                },
+                onSubscribe: function() {
+                    var e = this;
+                    this.showSubscribe = !1, wx.requestSubscribeMessage({
+                        tmplIds: e.templateIdList,
+                        success: function(t) {
+                            var i = [];
+                            for (var a in t) "accept" == t[a] && i.push(a);
+                            e.subscribeTemplate(i), e.showSubscribe = !1;
+                        },
+                        fail: function(t) {
+                            console.error("这是订阅消息err", t), e.showSubscribe = !1;
+                        },
+                        complete: function() {
+                            e.showSubscribe = !1;
+                        }
+                    });
+                },
+                payCoin: function() {
+                    if (this.userAssets.coin <= 0) wx.showToast({
+                        title: "游点不足，请充值",
+                        icon: "none"
+                    }); else {
+                        var e = this;
+                        wx.requestSubscribeMessage({
+                            tmplIds: e.templateIdList,
+                            success: function(t) {
+                                var i = [];
+                                for (var a in t) "accept" == t[a] && i.push(a);
+                                e.subscribeTemplate(i);
+                            },
+                            fail: function(e) {
+                                console.error("这是订阅消息err", e);
+                            },
+                            complete: function() {
+                                null != e.machinePackageList ? e.cionPackagePay = !0 : e.cionPay = !0, e.payType = 4, 
+                                e.$apply();
+                            }
+                        });
+                    }
+                },
+                close: function() {
+                    this.cionPay = !1, this.pricePay = !1, this.playTimes = 1, this.payCoin = this.signleCoin, 
+                    this.payPrice = this.singlePrice, this.cionPackagePay = !1, this.pricePackagePay = !1, 
+                    this.showTips = !1;
+                },
+                add: function() {
+                    this.playTimes++, this.payCoin = Math.ceil(Number(this.machineDetail.coinQty) * Number(this.playTimes) * Number(this.machineDetail.coinPrice) * Number(this.machineDetail.coinExchange) / 100);
+                },
+                down: function() {
+                    this.playTimes <= 1 ? this.playTimes = 1 : (this.playTimes--, this.payCoin = Math.ceil(Number(this.machineDetail.coinQty) * Number(this.playTimes) * Number(this.machineDetail.coinPrice) * Number(this.machineDetail.coinExchange) / 100));
+                },
+                payPrice: function() {
+                    var e = this;
+                    wx.requestSubscribeMessage({
+                        tmplIds: e.templateIdList,
+                        success: function(t) {
+                            var i = [];
+                            for (var a in t) "accept" == t[a] && i.push(a);
+                            e.subscribeTemplate(i);
+                        },
+                        fail: function(e) {
+                            console.error("这是订阅消息err", e);
+                        },
+                        complete: function() {
+                            null != e.machinePackageList ? e.pricePackagePay = !0 : e.pricePay = !0, e.payType = 5, 
+                            e.$apply();
+                        }
+                    });
+                },
+                add_1: function() {
+                    this.playTimes++, this.payPrice = Number(this.machineDetail.coinQty) * Number(this.playTimes) * Number(this.machineDetail.coinPrice) / 100;
+                },
+                down_1: function() {
+                    this.playTimes <= 1 ? this.playTimes = 1 : (this.playTimes--, this.payPrice = Number(this.machineDetail.coinQty) * Number(this.playTimes) * Number(this.machineDetail.coinPrice) / 100);
+                },
+                confirmPay: function() {
+                    this.createOrder();
+                },
+                payFree: function() {
+                    console.log("点了免费体验");
+                    var e = this, t = [];
+                    wx.requestSubscribeMessage({
+                        tmplIds: e.templateIdList,
+                        success: function(e) {
+                            for (var i in console.log("成功"), e) "accept" == e[i] && t.push(i);
+                        },
+                        fail: function(e) {
+                            console.error("这是订阅消息err", e);
+                        },
+                        complete: function() {
+                            console.log("完成"), e.subscribeTemplate(t), e.payType = 0, e.createOrder(), e.$apply();
+                        }
+                    });
+                },
+                confirm: function() {
+                    this.showAlert = !1;
+                },
+                cionPackage: function(e, t) {
+                    this.coinCurrentTab = e, this.packageTotalCoin = t.totalCoin, this.packagePlayTimes = t.playTimes, 
+                    this.packageId = t.id, this.playTimes = t.playTimes;
+                },
+                pricePackage: function(e, t) {
+                    this.priceCurrentTab = e, this.packagePrice = t.price, this.pricePlayTimes = t.playTimes, 
+                    this.packageId = t.id, this.playTimes = this.pricePlayTimes;
+                },
+                getCoinPlayTimes: function(e) {
+                    this.playTimes = e.detail.value, this.payCoin = Math.ceil(Number(this.machineDetail.coinQty) * Number(this.playTimes) * Number(this.machineDetail.coinPrice) * Number(this.machineDetail.coinExchange) / 100);
+                },
+                getPricePlayTimes: function(e) {
+                    this.playTimes = e.detail.value, this.payPrice = Number(this.machineDetail.coinQty) * Number(this.playTimes) * Number(this.machineDetail.coinPrice) / 100;
+                },
+                showGuide: function() {
+                    this.showGuide = !0;
+                },
+                closeGuide: function() {
+                    this.showGuide = !1, wx.setStorageSync("showGuide", !1);
+                },
+                showTips: function() {
+                    "" == this.prizeList ? this.myEventDetail() : this.showTips = !0;
+                },
+                jackpotDetail: function() {
+                    wx.navigateTo({
+                        url: "/pages/match/activity?eventId=" + this.machineDetail.lastEventId
+                    }), this.showTips = !1;
+                }
+            }, i.events = {}, h(i, t);
         }
-    }, {
-        key: "getMachineDetail",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
+        var p, m, y, f, g, d, b;
+        return function(e, t) {
+            if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
+            e.prototype = Object.create(t && t.prototype, {
+                constructor: {
+                    value: e,
+                    enumerable: !1,
+                    writable: !0,
+                    configurable: !0
+                }
+            }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+        }(o, t), e(o, [ {
+            key: "onLoad",
+            value: function(e) {
+                console.log("机台信息", e), this.serialNo = e.serialNo, this.tag = e.tag, this.getTemplateIds();
             }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
+        }, {
+            key: "onShow",
+            value: function() {
+                this.firstShowGuide = wx.getStorageSync("showGuide");
+                wx.getStorageSync("token");
+                this.getMachineDetail(), console.log("来了来了"), this.jungleAlertSubscribe();
+            }
+        }, {
+            key: "jungleAlertSubscribe",
+            value: function() {
+                var e = JSON.stringify(this.userInfo);
+                this.userInfo || (console.log("=====" + e), this.showSubscribe = !0);
+            }
+        }, {
+            key: "onHide",
+            value: function() {
+                wx.hideKeyboard();
+            }
+        }, {
+            key: "onShareAppMessage",
+            value: function(e) {
+                return {
+                    title: "关注游艺宝，发现更多精彩",
+                    path: "/pages/index/index",
+                    imageUrl: "/assets/imgs/share.png",
+                    success: function(e) {
+                        console.log("转发成功！");
+                    },
+                    fail: function(e) {
+                        return console.log(e.errMsg);
+                    }
+                };
+            }
+        }, {
+            key: "getMachineDetail",
+            value: (b = u(regeneratorRuntime.mark(function e() {
                 var t, i;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
@@ -286,10 +300,10 @@ var _createClass = function() {
                         return t = {
                             serialNo: this.serialNo,
                             tag: this.tag
-                        }, e.next = 3, _api2.default.machineInfo(t);
+                        }, e.next = 3, a.default.machineInfo(t);
 
                       case 3:
-                        i = e.sent, 1 == i.code ? (console.log(i), this.machineDetail = i.data, this.singlePrice = Number(i.data.coinQty) * Number(this.playTimes) * Number(i.data.coinPrice) / 100, 
+                        1 == (i = e.sent).code ? (console.log(i), this.machineDetail = i.data, this.singlePrice = Number(i.data.coinQty) * Number(this.playTimes) * Number(i.data.coinPrice) / 100, 
                         this.signleCoin = Math.ceil(Number(i.data.coinQty) * Number(this.playTimes) * Number(i.data.coinPrice) * Number(i.data.coinExchange) / 100), 
                         this.payCoin = this.signleCoin, this.payPrice = this.singlePrice, 0 == this.singlePrice && (this.isFree = !0), 
                         this.machinePackageList = i.data.mnsMachinePackageList, null != this.machinePackageList ? (this.machinePackageList.map(function(e) {
@@ -307,41 +321,33 @@ var _createClass = function() {
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    }, {
-        key: "findScoreCoin",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
-            }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
+            })), function() {
+                return b.apply(this, arguments);
+            })
+        }, {
+            key: "findScoreCoin",
+            value: (d = u(regeneratorRuntime.mark(function e() {
                 var t;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
                       case 0:
-                        return e.next = 2, _api2.default.findScoreCoin();
+                        return e.next = 2, a.default.findScoreCoin();
 
                       case 2:
-                        t = e.sent, t && (console.log("游点积分", t), this.userAssets = t, this.$apply());
+                        (t = e.sent) && (console.log("游点积分", t), this.userAssets = t, this.$apply());
 
                       case 4:
                       case "end":
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    }, {
-        key: "createOrder",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
-            }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
-                var t, i, a = this;
+            })), function() {
+                return d.apply(this, arguments);
+            })
+        }, {
+            key: "createOrder",
+            value: (g = u(regeneratorRuntime.mark(function e() {
+                var t, s, n = this;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
                       case 0:
@@ -351,21 +357,21 @@ var _createClass = function() {
                             playTimes: this.playTimes,
                             payType: this.payType,
                             packageId: this.packageId
-                        }, e.prev = 1, e.next = 4, _api2.default.machineCreateOrder(t);
+                        }, e.prev = 1, e.next = 4, a.default.machineCreateOrder(t);
 
                       case 4:
-                        i = e.sent, console.log(i), i && (1 == i.code ? 4 == this.payType ? (this.cionPay = !1, 
-                        this.cionPackagePay = !1, this.playTimes = 1, console.log("游点支付"), this.machineOrderLottery(i.data.orderNo), 
-                        this.$apply()) : 5 == this.payType ? _wechat2.default.payment(i.data.wxpay).then(function(e) {
-                            console.log("微信支付"), a.pricePay = !1, a.pricePackagePay = !1, a.playTimes = 1, a.machineOrderLottery(i.data.orderNo), 
-                            a.$apply();
+                        s = e.sent, console.log(s), s && (1 == s.code ? 4 == this.payType ? (this.cionPay = !1, 
+                        this.cionPackagePay = !1, this.playTimes = 1, console.log("游点支付"), this.machineOrderLottery(s.data.orderNo), 
+                        this.$apply()) : 5 == this.payType ? i.default.payment(s.data.wxpay).then(function(e) {
+                            console.log("微信支付"), n.pricePay = !1, n.pricePackagePay = !1, n.playTimes = 1, n.machineOrderLottery(s.data.orderNo), 
+                            n.$apply();
                         }).catch(function(e) {
                             console.log("支付失败", e), wx.showToast({
                                 title: "支付失败",
                                 icon: "none",
                                 duration: 1500
                             });
-                        }) : 0 == this.payType && this.$apply() : (this.showAlert = !0, this.alertTxt = i.message, 
+                        }) : 0 == this.payType && this.$apply() : (this.showAlert = !0, this.alertTxt = s.message, 
                         this.$apply())), e.next = 16;
                         break;
 
@@ -378,26 +384,21 @@ var _createClass = function() {
                         return e.stop();
                     }
                 }, e, this, [ [ 1, 9 ] ]);
-            }));
-            return e;
-        }()
-    }, {
-        key: "machineOrderLottery",
-        value: function() {
-            function e(e) {
-                return t.apply(this, arguments);
-            }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e(t) {
-                var i;
+            })), function() {
+                return g.apply(this, arguments);
+            })
+        }, {
+            key: "machineOrderLottery",
+            value: (f = u(regeneratorRuntime.mark(function e(t) {
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
                       case 0:
-                        return e.next = 2, _api2.default.machineOrderLottery({
+                        return e.next = 2, a.default.machineOrderLottery({
                             orderNo: t
                         });
 
                       case 2:
-                        i = e.sent, 1 == i.code ? this.isLottery = !0 : this.isLottery = !1, wx.navigateTo({
+                        1 == e.sent.code ? this.isLottery = !0 : this.isLottery = !1, wx.navigateTo({
                             url: "/pages/machine/pay-success?isLottery=" + this.isLottery
                         }), this.$apply();
 
@@ -406,16 +407,12 @@ var _createClass = function() {
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    }, {
-        key: "myEventDetail",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
-            }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
+            })), function(e) {
+                return f.apply(this, arguments);
+            })
+        }, {
+            key: "myEventDetail",
+            value: (y = u(regeneratorRuntime.mark(function e() {
                 var t, i;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
@@ -424,10 +421,10 @@ var _createClass = function() {
                             pageNo: 1,
                             pageSize: 6,
                             eventId: this.machineDetail.lastEventId
-                        }, e.next = 3, _api2.default.myEventDetail(t);
+                        }, e.next = 3, a.default.myEventDetail(t);
 
                       case 3:
-                        i = e.sent, 1 == i.code && (this.prizeList = i.data.prizeList, this.showTips = !0, 
+                        1 == (i = e.sent).code && (this.prizeList = i.data.prizeList, this.showTips = !0, 
                         this.$apply());
 
                       case 5:
@@ -435,21 +432,17 @@ var _createClass = function() {
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    }, {
-        key: "getTemplateIds",
-        value: function() {
-            function e() {
-                return t.apply(this, arguments);
-            }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e() {
+            })), function() {
+                return y.apply(this, arguments);
+            })
+        }, {
+            key: "getTemplateIds",
+            value: (m = u(regeneratorRuntime.mark(function e() {
                 var t;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
                       case 0:
-                        return e.next = 2, _api2.default.templateIds();
+                        return e.next = 2, a.default.templateIds();
 
                       case 2:
                         t = e.sent, console.log("模板id", t), this.templateIdList = t.data;
@@ -459,42 +452,38 @@ var _createClass = function() {
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    }, {
-        key: "subscribeTemplate",
-        value: function() {
-            function e(e) {
-                return t.apply(this, arguments);
-            }
-            var t = _asyncToGenerator(regeneratorRuntime.mark(function e(t) {
-                var i, a, n, s, r;
+            })), function() {
+                return m.apply(this, arguments);
+            })
+        }, {
+            key: "subscribeTemplate",
+            value: (p = u(regeneratorRuntime.mark(function e(t) {
+                var n, r, c, o, u;
                 return regeneratorRuntime.wrap(function(e) {
                     for (;;) switch (e.prev = e.next) {
                       case 0:
-                        return e.next = 2, _wechat2.default.login();
+                        return e.next = 2, i.default.login();
 
                       case 2:
-                        return i = e.sent, a = i.code, n = _environment2.default.production ? _environment2.default.prod.appid : _environment2.default.dev.appid, 
-                        s = {
-                            appid: n,
-                            code: a,
+                        return n = e.sent, r = n.code, c = s.default.production ? s.default.prod.appid : s.default.dev.appid, 
+                        o = {
+                            appid: c,
+                            code: r,
                             templateIds: t
-                        }, console.log("参数", s), e.next = 9, _api2.default.subscribeTemplate(s);
+                        }, console.log("参数", o), e.next = 9, a.default.subscribeTemplate(o);
 
                       case 9:
-                        r = e.sent, console.log("订阅消息模板", r);
+                        u = e.sent, console.log("订阅消息模板", u);
 
                       case 11:
                       case "end":
                         return e.stop();
                     }
                 }, e, this);
-            }));
-            return e;
-        }()
-    } ]), t;
-}(_wepy2.default.page);
-
-Page(require("./../../npm/wepy/lib/wepy.js").default.$createPage(machineDetail, "pages/machine/machine-detail"));
+            })), function(e) {
+                return p.apply(this, arguments);
+            })
+        } ]), o;
+    }(t.default.page);
+    Page(require("./../../npm/wepy/lib/wepy.js").default.$createPage(p, "pages/machine/machine-detail"));
+}();

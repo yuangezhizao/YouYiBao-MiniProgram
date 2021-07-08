@@ -1,59 +1,53 @@
-function _interopRequireDefault(e) {
-    return e && e.__esModule ? e : {
-        default: e
-    };
-}
-
-function _classCallCheck(e, t) {
-    if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
-}
-
-function _possibleConstructorReturn(e, t) {
-    if (!e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-    return !t || "object" != typeof t && "function" != typeof t ? e : t;
-}
-
-function _inherits(e, t) {
-    if ("function" != typeof t && null !== t) throw new TypeError("Super expression must either be null or a function, not " + typeof t);
-    e.prototype = Object.create(t && t.prototype, {
-        constructor: {
-            value: e,
-            enumerable: !1,
-            writable: !0,
-            configurable: !0
-        }
-    }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
-}
-
-Object.defineProperty(exports, "__esModule", {
-    value: !0
-}), exports.default = void 0;
-
-var _wepy = require("./../npm/wepy/lib/wepy.js"), _wepy2 = _interopRequireDefault(_wepy), MatchDialog = function(e) {
-    function t() {
-        var e, o, r, n;
-        _classCallCheck(this, t);
-        for (var i = arguments.length, l = Array(i), s = 0; s < i; s++) l[s] = arguments[s];
-        return o = r = _possibleConstructorReturn(this, (e = t.__proto__ || Object.getPrototypeOf(t)).call.apply(e, [ this ].concat(l))), 
-        r.props = {
-            title: {
-                type: String,
-                default: "温馨提示"
-            },
-            size: {
-                type: String,
-                default: "default"
-            },
-            isShowDialog: {
-                twoWay: !0
-            }
-        }, r.methods = {
-            handleClick: function() {
-                this.isShowDialog = !1, this.$apply();
-            }
-        }, n = o, _possibleConstructorReturn(r, n);
+!function() {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+        value: !0
+    }), exports.default = void 0;
+    var t, e = require("./../npm/wepy/lib/wepy.js");
+    function o(t, e) {
+        if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
     }
-    return _inherits(t, e), t;
-}(_wepy2.default.component);
-
-exports.default = MatchDialog;
+    function r(t, e) {
+        if (!t) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return !e || "object" != typeof e && "function" != typeof e ? t : e;
+    }
+    var n = function(t) {
+        function e() {
+            var t, n, i;
+            o(this, e);
+            for (var a = arguments.length, l = Array(a), u = 0; u < a; u++) l[u] = arguments[u];
+            return n = i = r(this, (t = e.__proto__ || Object.getPrototypeOf(e)).call.apply(t, [ this ].concat(l))), 
+            i.props = {
+                title: {
+                    type: String,
+                    default: "温馨提示"
+                },
+                size: {
+                    type: String,
+                    default: "default"
+                },
+                isShowDialog: {
+                    twoWay: !0
+                }
+            }, i.methods = {
+                handleClick: function() {
+                    this.isShowDialog = !1, this.$apply();
+                }
+            }, r(i, n);
+        }
+        return function(t, e) {
+            if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function, not " + typeof e);
+            t.prototype = Object.create(e && e.prototype, {
+                constructor: {
+                    value: t,
+                    enumerable: !1,
+                    writable: !0,
+                    configurable: !0
+                }
+            }), e && (Object.setPrototypeOf ? Object.setPrototypeOf(t, e) : t.__proto__ = e);
+        }(e, t), e;
+    }(((t = e) && t.__esModule ? t : {
+        default: t
+    }).default.component);
+    exports.default = n;
+}();

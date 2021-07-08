@@ -8,7 +8,7 @@
     z-index: 999;
     width: 100%;
     height: 98rpx;
-    box-shadow: 0 -4rpx 25rpx 0 rgba(0,0,0,0.08);
+    box-shadow: 0rpx -4rpx 25rpx 0rpx rgba(0,0,0,.08);
 }
 
 .tabbar_box.iphoneX-height {
@@ -50,8 +50,6 @@
 .special-wrapper {
     position: absolute;
     top: -50rpx;
-    width: 120rpx;
-    height: 120rpx;
     border-radius: 50%;
     border-top: 2rpx solid #f2f2f3;
     background-color: #fff;
@@ -59,7 +57,7 @@
     box-sizing: border-box;
 }
 
-.special-wrapper .tabbar_icon {
+.special-wrapper,.special-wrapper .tabbar_icon {
     width: 120rpx;
     height: 120rpx;
 }
@@ -74,15 +72,13 @@ page {
 }
 
 .location {
-    display: flex;
     justify-content: space-between;
-    align-items: center;
     margin-top: 20rpx;
     position: relative;
     padding: 0 40rpx;
 }
 
-.location .location-left {
+.location,.location .location-left {
     display: flex;
     align-items: center;
 }
@@ -96,8 +92,10 @@ page {
 .swiper {
     width: 680rpx;
     height: 440rpx;
-    margin: 0 auto;
-    margin-top: 30rpx;
+    margin: 30rpx auto 0;
+}
+
+.swiper,.swiper .swiper-item {
     border-radius: 10rpx;
     overflow: hidden;
     transform: translateY(0);
@@ -106,9 +104,6 @@ page {
 .swiper .swiper-item {
     display: flex;
     justify-content: center;
-    border-radius: 10rpx;
-    overflow: hidden;
-    transform: translateY(0);
 }
 
 .swiper .swiper-item .swiper-img {
@@ -119,7 +114,7 @@ page {
 }
 
 .swiper.square-dot .wx-swiper-dot {
-    background-color: #3BA3FD;
+    background-color: #3ba3fd;
     width: 16rpx;
     height: 16rpx;
     border-radius: 20rpx;
@@ -158,7 +153,7 @@ page {
     height: 180rpx;
     line-height: 320rpx;
     white-space: nowrap;
-    background: #F2F9FF;
+    background: #f2f9ff;
 }
 
 .type .type-1 {
@@ -223,7 +218,7 @@ page {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(to top,rgba(34,34,34,0.35),rgba(232,241,254,0));
+    background: linear-gradient(0deg,rgba(34,34,34,.35),rgba(232,241,254,0));
 }
 
 .match .match-banner .match-banner-title .title {
@@ -233,7 +228,7 @@ page {
 .hot-game {
     display: flex;
     flex-direction: column;
-    background: #F2F9FF;
+    background: #f2f9ff;
     width: 100%;
     height: 900rpx;
     position: relative;
@@ -295,7 +290,7 @@ page {
     height: 128rpx;
 }
 
-.hot-game .game-content:nth-child(3) .icon,.hot-game .game-content:nth-child(3) .game-name {
+.hot-game .game-content:nth-child(3) .game-name,.hot-game .game-content:nth-child(3) .icon {
     margin-left: 50rpx;
 }
 
@@ -310,6 +305,6 @@ page {
     height: 125rpx;
 }
 
-.hot-game .game-content:nth-child(4) .icon,.hot-game .game-content:nth-child(4) .game-name {
+.hot-game .game-content:nth-child(4) .game-name,.hot-game .game-content:nth-child(4) .icon {
     margin-left: -30rpx;
 }

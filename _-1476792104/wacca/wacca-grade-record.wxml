@@ -1,0 +1,114 @@
+<view>
+    <view>
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$customStatusbar$menuButtonTop+60}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$customStatusbar$menuButtonTop}}px;">
+            <image bindtap="$customStatusbar$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$customStatusbar$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$customStatusbar$menuButtonTop}}px;">
+            <text class="title">{{$customStatusbar$title}}</text>
+        </view>
+    </view>
+    <view class="record-evaluate">
+        <text class="f30 c_99">播放歌曲获得的评价</text>
+        <view class="evaluate-bottom">
+            <view class="evaluate-bottom-left">
+                <view class="evaluate-row">
+                    <text class="f28 c_66">Master：</text>
+                    <text class="f26 c_26">{{userMusicRate?userMusicRate.masterCount:'--'}}</text>
+                </view>
+                <view class="evaluate-row">
+                    <text class="f28 c_66">Full Combo：</text>
+                    <text class="f26 c_26">{{userMusicRate?userMusicRate.fullcomboCount:'--'}}</text>
+                </view>
+                <view class="evaluate-row">
+                    <text class="f28 c_66">Clear：</text>
+                    <text class="f26 c_26">{{userMusicRate?userMusicRate.clearCount:'--'}}</text>
+                </view>
+                <view class="evaluate-row">
+                    <text class="f28 c_66">Missless：</text>
+                    <text class="f26 c_26">{{userMusicRate?userMusicRate.misslessCount:'--'}}</text>
+                </view>
+            </view>
+            <view class="evaluate-bottom-right">
+                <view class="evaluate-row">
+                    <text class="f28 c_66">SSS：</text>
+                    <text class="f26 c_26">{{userMusicRate?userMusicRate.rateSssCount:'--'}}</text>
+                </view>
+                <view class="evaluate-row">
+                    <text class="f28 c_66">SS：</text>
+                    <text class="f26 c_26">{{userMusicRate?userMusicRate.rateSsCount:'--'}}</text>
+                </view>
+                <view class="evaluate-row">
+                    <text class="f28 c_66">S：</text>
+                    <text class="f26 c_26">{{userMusicRate?userMusicRate.rateSCount:'--'}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="record-list">
+        <view class="list-top">
+            <text class="f30 c_99">我的全部记录</text>
+            <view class="switch-btn">
+                <text bindtap="navbarTap" class="switch-item f24 c_99 {{currentTab==index?'active':''}}" data-index="{{index}}" wx:for="{{navbar}}">{{item}}</text>
+            </view>
+        </view>
+        <view bindtap="recordDetail" class="latest-record" data-wpyrecorddetail-a="{{item}}" wx:for="{{recordList}}">
+            <view class="top">
+                <view class="tag">{{item.modeName}}</view>
+                <view class="locate">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_positioning.png"></image>
+              {{item.storeName}}
+            </view>
+            </view>
+            <view class="cont">
+                <view class="avatar">
+                    <image src="{{item.musicImage}}"></image>
+                </view>
+                <view class="info">
+                    <view class="col">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_song_blue.png"></image>
+                        <text class="ellipsis-1">曲目：{{item.musicName}}</text>
+                    </view>
+                    <view class="col">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/match/icon_record_blue.png"></image>
+                        <text>难度：{{item.musicGradeName}}</text>
+                    </view>
+                    <view class="col">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_type_blue.png"></image>
+                        <text>评价：{{item.musicRate}}</text>
+                    </view>
+                    <view class="col">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/record/icon_record_hit_small_blue.png"></image>
+                        <text>连击数：{{item.comboCount}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="color-lump-container">
+                <view class="f30 c_337">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_marvelous_pink.png"></image>{{item.marvelousCount}}
+            </view>
+                <view class="f30 c_337">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_great_yellow.png"></image>{{item.greatCount}}
+            </view>
+                <view class="f30 c_337">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_good_bluish.png"></image>{{item.goodCount}}
+            </view>
+                <view class="f30 c_337">
+                    <image src="http://yyb-oss.universal-space.cn/imgs/wacca/icon_miss_gray.png"></image>{{item.missCount}}
+            </view>
+            </view>
+            <view class="score">
+                <text>{{item.gameDate}} 游戏得分</text>
+                <text class="Merriweather">{{item.score}}</text>
+            </view>
+        </view>
+        <view class="btm-tips both_center" wx:if="{{recordList.length==0}}">
+            <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 暂无记录
+      </view>
+        <view class="btm-tips" wx:if="{{recordList.length>0&&canLoadMore==false}}">
+            <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 已经到底啦
+      </view>
+    </view>
+</view>
