@@ -1,0 +1,24 @@
+yuangezhizao@MacMini tool % node wuWxapkg.js _152161865_77.wxapkg
+Unpack file _152161865_77.wxapkg...
+
+Header info:
+  firstMark: 0xbe
+  unknownInfo:  0
+  infoListLength:  797
+  dataLength:  480892
+  lastMark: 0xed
+
+File list info:
+  fileCount:  18
+Saving files...
+Unpack done.
+/Applications/mp-unpack.app/Contents/Resources/tool/wuWxapkg.js:176
+            throw new Error("检测到此包是分包后的子包, 请通过 -s 参数指定存放路径后重试, 如 node wuWxapkg.js -s=/xxx/xxx ./testpkg/test-pkg-sub.wxapkg");
+            ^
+
+Error: 检测到此包是分包后的子包, 请通过 -s 参数指定存放路径后重试, 如 node wuWxapkg.js -s=/xxx/xxx ./testpkg/test-pkg-sub.wxapkg
+    at Array.packDone (/Applications/mp-unpack.app/Contents/Resources/tool/wuWxapkg.js:176:19)
+    at CntEvent.decount (/Applications/mp-unpack.app/Contents/Resources/tool/wuLib.js:22:54)
+    at /Applications/mp-unpack.app/Contents/Resources/tool/wuLib.js:95:17
+    at agent (/Applications/mp-unpack.app/Contents/Resources/tool/wuLib.js:66:23)
+    at FSReqCallback.oncomplete (node:fs:184:23)
