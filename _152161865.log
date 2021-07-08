@@ -1,4 +1,4 @@
-yuangezhizao@MacMini tool % node wuWxapkg.js _152161865_77.wxapkg
+yuangezhizao@MacMini tool % node wuWxapkg.js -s=/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 _152161865_77.wxapkg
 Unpack file _152161865_77.wxapkg...
 
 Header info:
@@ -12,13 +12,67 @@ File list info:
   fileCount:  18
 Saving files...
 Unpack done.
-/Applications/mp-unpack.app/Contents/Resources/tool/wuWxapkg.js:176
-            throw new Error("检测到此包是分包后的子包, 请通过 -s 参数指定存放路径后重试, 如 node wuWxapkg.js -s=/xxx/xxx ./testpkg/test-pkg-sub.wxapkg");
-            ^
-
-Error: 检测到此包是分包后的子包, 请通过 -s 参数指定存放路径后重试, 如 node wuWxapkg.js -s=/xxx/xxx ./testpkg/test-pkg-sub.wxapkg
-    at Array.packDone (/Applications/mp-unpack.app/Contents/Resources/tool/wuWxapkg.js:176:19)
-    at CntEvent.decount (/Applications/mp-unpack.app/Contents/Resources/tool/wuLib.js:22:54)
-    at /Applications/mp-unpack.app/Contents/Resources/tool/wuLib.js:95:17
-    at agent (/Applications/mp-unpack.app/Contents/Resources/tool/wuLib.js:66:23)
-    at FSReqCallback.oncomplete (node:fs:184:23)
+now dir: /Applications/mp-unpack.app/Contents/Resources/tool/_152161865_77
+param of mainDir: /Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104
+sub package word dir: /Applications/mp-unpack.app/Contents/Resources/tool/_152161865_77/pages/wacca
+real mainDir: /Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104
+Split app-service.js and make up configs & wxss & wxml & wxs...
+deal js ok
+deal sub html ok
+splitJs: /Applications/mp-unpack.app/Contents/Resources/tool/_152161865_77/pages/wacca/app-service.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-machine.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-detail.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-statis.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-vip-recharge.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-shop.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-consume-record.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-record.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-vip-rights.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-grade-record.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-achievement.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-change-avatar.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-trophy.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-trophy-detail.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-track.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-single-rank.js
+/Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104 pages/wacca/wacca-rank.js
+Splitting "/Applications/mp-unpack.app/Contents/Resources/tool/_152161865_77/pages/wacca/app-service.js" done.
+Decompile ./pages/wacca/wacca-achievement.wxml...
+Decompile success!
+Decompile ./pages/wacca/wacca-change-avatar.wxml...
+Decompile success!
+Decompile ./pages/wacca/wacca-consume-record.wxml...
+Decompile success!
+Decompile ./pages/wacca/wacca-detail.wxml...
+Decompile success!
+Decompile ./pages/wacca/wacca-grade-record.wxml...
+Decompile success!
+Decompile ./pages/wacca/wacca-machine.wxml...
+Decompile success!
+Decompile ./pages/wacca/wacca-rank.wxml...
+Decompile success!
+Decompile ./pages/wacca/wacca-record.wxml...
+Decompile success!
+Decompile ./pages/wacca/wacca-shop.wxml...
+Decompile success!
+Decompile ./pages/wacca/wacca-single-rank.wxml...
+Decompile success!
+Decompile ./pages/wacca/wacca-statis.wxml...
+Decompile success!
+Decompile ./pages/wacca/wacca-track.wxml...
+Decompile success!
+Decompile ./pages/wacca/wacca-trophy-detail.wxml...
+Decompile success!
+Decompile ./pages/wacca/wacca-trophy.wxml...
+Decompile success!
+Decompile ./pages/wacca/wacca-vip-recharge.wxml...
+Decompile success!
+Decompile ./pages/wacca/wacca-vip-rights.wxml...
+Decompile success!
+Guess wxss(first turn)...
+Import count info: {"./components/match-dialog.wxss":5,"./components/star.wxss":4,"./components/custom-statusbar.wxss":15,"./components/custom-progress.wxss":3,"./components/custom-dialog.wxss":3}
+Guess wxss(first turn) done.
+Generate wxss(second turn)...
+Generate wxss(second turn) done.
+Save wxss...
+saveDir: /Applications/mp-unpack.app/Contents/Resources/tool/_-1476792104

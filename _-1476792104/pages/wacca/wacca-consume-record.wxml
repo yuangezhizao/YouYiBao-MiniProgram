@@ -1,1 +1,61 @@
-<!--pages/wacca/wacca-consume-record.wxml--><text>pages/wacca/wacca-consume-record.wxml</text>
+<view>
+    <view>
+        <image class="bg-183" src="http://yyb-oss.universal-space.cn/imgs/bg_2.png" style="height:{{$customStatusbar$menuButtonTop+60}}px;"></image>
+        <view class="icon-group" style="margin-top:{{$customStatusbar$menuButtonTop}}px;">
+            <image bindtap="$customStatusbar$goBack" class="icon" src="http://yyb-oss.universal-space.cn/imgs/left.png"></image>
+            <view class="line"></view>
+            <image bindtap="$customStatusbar$goHome" class="icon" src="http://yyb-oss.universal-space.cn/imgs/icon_home.png"></image>
+        </view>
+        <view class="statusBar" style="padding-top:{{$customStatusbar$menuButtonTop}}px;">
+            <text class="title">{{$customStatusbar$title}}</text>
+        </view>
+    </view>
+    <view class="navbar">
+        <text bindtap="navbarTap" class="item {{currentTab==index?'active':''}}" data-index="{{index}}" wx:for="{{navbar}}" wx:key="unique">{{item}}</text>
+    </view>
+    <view class="record-container">
+        <block wx:if="{{currentTab==0}}">
+            <view class="record-item" wx:for="{{buyRecord}}" wx:key="key">
+                <text class="f30 c_33">{{item.goodsName}}</text>
+                <text class="f26 c_99">订单号：{{item.orderNo}}</text>
+                <view class="record-row">
+                    <text class="f26 c_99">价格：<text class="c_337">￥{{item.payAmount/100}}</text>
+                    </text>
+                    <text class="f26 c_99">数量：{{item.totalNum}}</text>
+                </view>
+                <view class="record-bottom">
+                    <view class="record-bottom-item">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/match/icon_match_time _blue.png"></image>
+                        <text class="f22 c_99">{{item.payDate}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="btm-tips both_center" wx:if="{{buyRecord.length==0}}">
+                <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 暂无记录
+        </view>
+        </block>
+        <block wx:if="{{currentTab==1}}">
+            <view class="record-item" wx:for="{{useRecord}}" wx:key="key">
+                <text class="f30 c_33">{{item.goodsName}}</text>
+                <view class="record-row">
+                    <text class="f26 c_99">{{item.reasonType}}</text>
+                    <text class="f26 c_99">数量：<text class="c_337">{{item.usedNum}}</text>
+                    </text>
+                </view>
+                <view class="record-bottom">
+                    <view class="record-bottom-item">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/match/icon_match_positioning_blue.png"></image>
+                        <text class="f22 c_99 ellipsis-1">{{item.storeName}}</text>
+                    </view>
+                    <view class="record-bottom-item">
+                        <image src="http://yyb-oss.universal-space.cn/imgs/match/icon_match_time _blue.png"></image>
+                        <text class="f22 c_99">{{item.usedDate}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="btm-tips both_center" wx:if="{{useRecord.length==0}}">
+                <image src="http://yyb-oss.universal-space.cn/imgs/record/icon.png?v=2"></image> 暂无记录
+        </view>
+        </block>
+    </view>
+</view>
